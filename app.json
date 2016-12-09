@@ -1,0 +1,13 @@
+{
+  "name": "decidim-hospitalet",
+  "description": "TODO: Add a short description about decidim-hospitalet",
+  "keywords": [],
+  "addons": [
+    "heroku-postgresql:hobby-dev",
+    "heroku-redis:hobby-dev",
+    "sendgrid:starter"
+  ],
+  "env": {
+    "SECRET_KEY_BASE": "3e65649679d526057b1e5cb87f15e01a204e384bb653e2f232ef1ee6a89cb9e8f04800b219f835e4e8db634457b3085d5d282f486044ff0c34d732df91c6ff06"
+  }
+}
