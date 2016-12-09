@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby '2.3.3'
 
-gem "decidim", "0.0.1.alpha9"
+gem "decidim", github: "AjuntamentdeBarcelona/decidim"
 
 gem 'puma', '~> 3.0'
 gem 'uglifier', '>= 1.3.0'
