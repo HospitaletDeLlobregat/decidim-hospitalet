@@ -24,8 +24,7 @@ end
 group :production do
   gem 'rails_12factor'
   gem 'sendgrid-ruby'
-  gem "fog"
-  gem "fog-aws"
+  gem 'fog', require: "fog/aws"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
