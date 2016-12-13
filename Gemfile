@@ -24,6 +24,7 @@ end
 group :production do
   gem 'rails_12factor'
   gem 'sendgrid-ruby'
+  gem "fog"
   gem "fog-aws"
 end
 
