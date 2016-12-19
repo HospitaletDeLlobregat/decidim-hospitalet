@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/AjuntamentdeBarcelona/decidim.git
-  revision: e5000786b34d0b16d6a16624c745229fd407444d
+  revision: 6b6e02542911b7416049d20baeddc76bb50ed6f7
   specs:
     decidim (0.0.1.alpha9)
       decidim-admin (= 0.0.1.alpha9)
@@ -39,7 +39,6 @@ GIT
       foundation_rails_helper (~> 2.0.0)
       jquery-rails (~> 4.0)
       rails (~> 5.0.0, >= 5.0.0.1)
-      react-rails (~> 1.10.0)
       sass-rails (~> 5.0.0)
       turbolinks (~> 5.0.0, >= 5.0.0.1)
     decidim-core (0.0.1.alpha9)
@@ -162,9 +161,7 @@ GEM
       mime-types (>= 1.16)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
-    coffee-script-source (1.12.2)
-    concurrent-ruby (1.0.2)
-    connection_pool (2.2.1)
+    concurrent-ruby (1.0.3)
     css_parser (1.4.7)
       addressable
     date_validator (0.9.0)
@@ -288,13 +285,6 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
-    react-rails (1.10.0)
-      babel-transpiler (>= 0.7.0)
-      coffee-script-source (~> 1.8)
-      connection_pool
-      execjs
-      railties (>= 3.2)
-      tilt
     rectify (0.8.0)
       activemodel (>= 4.1.0)
       activerecord (>= 4.1.0)
