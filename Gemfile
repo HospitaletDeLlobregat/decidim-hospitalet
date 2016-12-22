@@ -2,10 +2,7 @@ source "https://rubygems.org"
 
 ruby '2.3.3'
 
-gem "decidim", "0.0.1"
-gem "decidim-meetings"
-gem "decidim-proposals"
-gem "decidim-pages"
+gem "decidim", github: "AjuntamentdeBarcelona/decidim"
 
 gem 'puma', '~> 3.0'
 gem 'uglifier', '>= 1.3.0'
@@ -28,6 +25,7 @@ group :production do
   gem 'rails_12factor'
   gem 'sendgrid-ruby'
   gem 'fog-aws'
+  gem 'sentry-raven'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
