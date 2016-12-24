@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/AjuntamentdeBarcelona/decidim.git
-  revision: 4e4119bb2bc65bc53485c39a8d237ea4fd09ba75
+  revision: a82609b9585a736a12f74f2d11c62672faad987e
   specs:
     decidim (0.0.1)
       decidim-admin (= 0.0.1)
@@ -161,7 +161,7 @@ GEM
     builder (3.2.2)
     byebug (9.0.6)
     cancancan (1.15.0)
-    carrierwave (1.0.0.rc)
+    carrierwave (1.0.0)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
