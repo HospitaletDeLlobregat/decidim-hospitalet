@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161225194522) do
+ActiveRecord::Schema.define(version: 20161225195311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,12 +61,12 @@ ActiveRecord::Schema.define(version: 20161225194522) do
     t.text     "body",                                 null: false
     t.string   "decidim_commentable_type",             null: false
     t.integer  "decidim_commentable_id",               null: false
-    t.integer  "author_id",                            null: false
+    t.integer  "decidim_author_id",                    null: false
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.integer  "depth",                    default: 0, null: false
     t.integer  "alignment",                default: 0, null: false
-    t.index ["author_id"], name: "decidim_comments_comment_author", using: :btree
+    t.index ["decidim_author_id"], name: "decidim_comments_comment_author", using: :btree
     t.index ["decidim_commentable_type", "decidim_commentable_id"], name: "decidim_comments_comment_commentable", using: :btree
   end
 
