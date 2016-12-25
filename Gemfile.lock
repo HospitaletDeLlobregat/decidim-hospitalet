@@ -1,7 +1,6 @@
 GIT
   remote: git://github.com/AjuntamentdeBarcelona/decidim.git
-  revision: 3eec702d1c343bed92cb05519f6184fe4aa344e2
-  branch: feature/fix_viewport
+  revision: 8c340e56f17e683a3c9ead047f7a4f6a35b8a6cf
   specs:
     decidim (0.0.1)
       decidim-admin (= 0.0.1)
