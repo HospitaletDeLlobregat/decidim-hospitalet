@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209103964) do
+ActiveRecord::Schema.define(version: 20161225192017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,30 @@ ActiveRecord::Schema.define(version: 20161209103964) do
     t.index ["parent_id"], name: "index_decidim_categories_on_parent_id", using: :btree
   end
 
+  create_table "decidim_comments_comment_votes", force: :cascade do |t|
+    t.integer  "weight",             null: false
+    t.integer  "decidim_comment_id", null: false
+    t.integer  "decidim_author_id",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["decidim_author_id"], name: "decidim_comments_comment_vote_author", using: :btree
+    t.index ["decidim_comment_id", "decidim_author_id"], name: "decidim_comments_comment_vote_comment_author_unique", unique: true, using: :btree
+    t.index ["decidim_comment_id"], name: "decidim_comments_comment_vote_comment", using: :btree
+  end
+
+  create_table "decidim_comments_comments", force: :cascade do |t|
+    t.text     "body",                         null: false
+    t.string   "commentable_type",             null: false
+    t.integer  "commentable_id",               null: false
+    t.integer  "author_id",                    null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "depth",            default: 0, null: false
+    t.integer  "alignment",        default: 0, null: false
+    t.index ["author_id"], name: "decidim_comments_comment_author", using: :btree
+    t.index ["commentable_type", "commentable_id"], name: "decidim_comments_comment_commentable", using: :btree
+  end
+
   create_table "decidim_features", force: :cascade do |t|
     t.string  "manifest_name"
     t.jsonb   "name"
@@ -53,16 +77,34 @@ ActiveRecord::Schema.define(version: 20161209103964) do
     t.index ["decidim_participatory_process_id"], name: "index_decidim_features_on_decidim_participatory_process_id", using: :btree
   end
 
+  create_table "decidim_meetings_meetings", force: :cascade do |t|
+    t.jsonb    "title"
+    t.jsonb    "description"
+    t.jsonb    "short_description"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.text     "address"
+    t.jsonb    "location"
+    t.jsonb    "location_hints"
+    t.integer  "decidim_feature_id"
+    t.integer  "decidim_author_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["decidim_author_id"], name: "index_decidim_meetings_meetings_on_decidim_author_id", using: :btree
+    t.index ["decidim_feature_id"], name: "index_decidim_meetings_meetings_on_decidim_feature_id", using: :btree
+  end
+
   create_table "decidim_organizations", force: :cascade do |t|
     t.string   "name",                           null: false
     t.string   "host",                           null: false
     t.string   "default_locale",                 null: false
     t.string   "available_locales", default: [],              array: true
-    t.jsonb    "welcome_text",                   null: false
+    t.jsonb    "welcome_text"
     t.string   "homepage_image"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.jsonb    "description"
+    t.string   "logo"
     t.index ["host"], name: "index_decidim_organizations_on_host", unique: true, using: :btree
     t.index ["name"], name: "index_decidim_organizations_on_name", unique: true, using: :btree
   end
@@ -71,8 +113,9 @@ ActiveRecord::Schema.define(version: 20161209103964) do
     t.jsonb    "title"
     t.jsonb    "body"
     t.integer  "decidim_feature_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.boolean  "commentable",        default: false, null: false
     t.index ["decidim_feature_id"], name: "index_decidim_pages_pages_on_decidim_feature_id", using: :btree
   end
 
@@ -121,6 +164,21 @@ ActiveRecord::Schema.define(version: 20161209103964) do
     t.datetime "published_at"
     t.index ["decidim_organization_id", "slug"], name: "index_unique_process_slug_and_organization", unique: true, using: :btree
     t.index ["decidim_organization_id"], name: "index_decidim_processes_on_decidim_organization_id", using: :btree
+  end
+
+  create_table "decidim_proposals_proposals", force: :cascade do |t|
+    t.text     "title",               null: false
+    t.text     "body",                null: false
+    t.integer  "decidim_feature_id",  null: false
+    t.integer  "decidim_author_id"
+    t.integer  "decidim_category_id"
+    t.integer  "decidim_scope_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["decidim_author_id"], name: "index_decidim_proposals_proposals_on_decidim_author_id", using: :btree
+    t.index ["decidim_category_id"], name: "index_decidim_proposals_proposals_on_decidim_category_id", using: :btree
+    t.index ["decidim_feature_id"], name: "index_decidim_proposals_proposals_on_decidim_feature_id", using: :btree
+    t.index ["decidim_scope_id"], name: "index_decidim_proposals_proposals_on_decidim_scope_id", using: :btree
   end
 
   create_table "decidim_scopes", force: :cascade do |t|
@@ -186,6 +244,7 @@ ActiveRecord::Schema.define(version: 20161209103964) do
     t.string   "unconfirmed_email"
     t.string   "name",                                 null: false
     t.string   "locale"
+    t.string   "avatar"
     t.index ["confirmation_token"], name: "index_decidim_users_on_confirmation_token", unique: true, using: :btree
     t.index ["decidim_organization_id"], name: "index_decidim_users_on_decidim_organization_id", using: :btree
     t.index ["email"], name: "index_decidim_users_on_email", unique: true, using: :btree
