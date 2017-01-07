@@ -13,6 +13,8 @@ group :development, :test do
   gem 'byebug', platform: :mri
 end
 
+gem "roadie", git: "https://github.com/Mange/roadie.git", tag: "2c44ffc"
+
 group :development do
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
