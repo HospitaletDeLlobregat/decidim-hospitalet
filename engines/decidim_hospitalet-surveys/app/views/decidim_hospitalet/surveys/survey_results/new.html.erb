@@ -11,24 +11,55 @@
       <div class="card__content">
         <%= form_for(@form) do |form| %>
           <div class="field">
-            <%= form.text_field :title %>
+            <%= form.collection_select :scope_id, current_organization.scopes, :id, :name, prompt: true, label: t("questions.scope", scope: "decidim_hospitalet.surveys") %>
           </div>
 
           <div class="field">
-            <%= form.text_area :body, rows: 10 %>
+            <label><%= t("questions.categories", scope: "decidim_hospitalet.surveys") %></label>
+            <%= form.collection_check_boxes :category_id, current_feature.categories, :id, Proc.new {|c| translated_attribute(c.name) } do |b| %>
+              <div class="field"><%= b.check_box + b.label { b.text } %></div>
+            <% end %>
           </div>
 
-          <% if @form.categories&.any? %>
-            <div class="field">
-              <%= form.categories_select :category_id, @form.categories, prompt: t(".select_a_category") %>
-            </div>
-          <% end %>
+          <div class="field">
+            <%= form.text_area :other_priorities, label: t("questions.other_priorities", scope: "decidim_hospitalet.surveys") %>
+          </div>
 
-          <% if @form.scopes&.any? %>
-            <div class="field">
-              <%= form.select :scope_id, @form.scopes.map{|s| [s.name, s.id]}, prompt: t(".select_a_scope") %>
-            </div>
-          <% end %>
+          <div class="field">
+            <%= form.text_area :future_ideas, label: t("questions.future_ideas", scope: "decidim_hospitalet.surveys") %>
+          </div>
+
+          <div class="field">
+            <%= form.select :gender, ["male", "female", "other"], include_blank: true, label: t("questions.gender", scope: "decidim_hospitalet.surveys") %>
+          </div>
+
+          <div class="field">
+            <%= form.select :age_group, ["18-24", "25-34", "35-44", "45-54", "55+"], include_blank: true, label: t("questions.age_group", scope: "decidim_hospitalet.surveys") %>
+          </div>
+
+          <div class="field">
+            <%= form.text_field :zip_code, label: t("questions.zip_code", scope: "decidim_hospitalet.surveys") %>
+          </div>
+
+          <div class="field">
+            <%= form.check_box :living_at_scope, label: t("questions.living_at_scope", scope: "decidim_hospitalet.surveys")%>
+          </div>
+
+          <div class="field">
+            <%= form.check_box :working_at_scope, label: t("questions.working_at_scope", scope: "decidim_hospitalet.surveys")%>
+          </div>
+
+          <div class="field">
+            <%= form.select :city, ["L'Hospitalet de Llobregat", "other"], include_blank: true, label: t("questions.city", scope: "decidim_hospitalet.surveys") %>
+          </div>
+
+          <div class="field">
+            <%= form.text_field :name, label: t("questions.name", scope: "decidim_hospitalet.surveys") %>
+          </div>
+
+          <div class="field">
+            <%= form.text_field :phone, label: t("questions.phone", scope: "decidim_hospitalet.surveys") %>
+          </div>
 
           <div class="actions">
             <%= form.submit t(".send"), class: "button expanded" %>
