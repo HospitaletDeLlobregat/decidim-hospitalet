@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161225195311) do
+ActiveRecord::Schema.define(version: 20170109150730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,10 +88,14 @@ ActiveRecord::Schema.define(version: 20161225195311) do
     t.jsonb    "location_hints"
     t.integer  "decidim_feature_id"
     t.integer  "decidim_author_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "decidim_scope_id"
+    t.integer  "decidim_category_id"
     t.index ["decidim_author_id"], name: "index_decidim_meetings_meetings_on_decidim_author_id", using: :btree
+    t.index ["decidim_category_id"], name: "index_decidim_meetings_meetings_on_decidim_category_id", using: :btree
     t.index ["decidim_feature_id"], name: "index_decidim_meetings_meetings_on_decidim_feature_id", using: :btree
+    t.index ["decidim_scope_id"], name: "index_decidim_meetings_meetings_on_decidim_scope_id", using: :btree
   end
 
   create_table "decidim_organizations", force: :cascade do |t|
