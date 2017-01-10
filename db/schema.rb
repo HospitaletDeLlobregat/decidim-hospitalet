@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170109150730) do
+ActiveRecord::Schema.define(version: 20170110134455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,29 @@ ActiveRecord::Schema.define(version: 20170109150730) do
     t.jsonb   "name"
     t.integer "decidim_participatory_process_id"
     t.index ["decidim_participatory_process_id"], name: "index_decidim_features_on_decidim_participatory_process_id", using: :btree
+  end
+
+  create_table "decidim_hospitalet_surveys_survey_results", force: :cascade do |t|
+    t.integer  "decidim_feature_id",     null: false
+    t.integer  "decidim_user_id"
+    t.integer  "decidim_scope_id",       null: false
+    t.integer  "decidim_categories_ids"
+    t.text     "other_priorities"
+    t.text     "future_ideas"
+    t.string   "gender"
+    t.string   "age_group"
+    t.string   "zip_code"
+    t.boolean  "living_at_scope"
+    t.boolean  "working_at_scope"
+    t.string   "city"
+    t.string   "name"
+    t.string   "phone"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["decidim_categories_ids"], name: "index_decidim_hospitalet_surveys_on_categories_ids", using: :btree
+    t.index ["decidim_feature_id"], name: "index_decidim_hospitalet_surveys_on_feature_id", using: :btree
+    t.index ["decidim_scope_id"], name: "index_decidim_hospitalet_surveys_on_scope_id", using: :btree
+    t.index ["decidim_user_id"], name: "index_decidim_hospitalet_surveys_on_user_id", using: :btree
   end
 
   create_table "decidim_meetings_meetings", force: :cascade do |t|
