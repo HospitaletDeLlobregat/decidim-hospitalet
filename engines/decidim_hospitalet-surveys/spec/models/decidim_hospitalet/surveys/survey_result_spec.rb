@@ -19,6 +19,16 @@ module DecidimHospitalet
 
         it { is_expected.to be_invalid}
       end
+
+      context "when the user/scope/feature combination already exists" do
+        subject { build(:survey_result) }
+
+        before do
+          create(:survey_result, scope: subject.scope, user: subject.user, feature: subject.feature)
+        end
+
+        it { is_expected.not_to be_valid }
+      end
     end
   end
 end
