@@ -1,0 +1,4 @@
+source "https://rubygems.org"
+
+gemspec
+gem "decidim-dev", github: "AjuntamentdeBarcelona/decidim"

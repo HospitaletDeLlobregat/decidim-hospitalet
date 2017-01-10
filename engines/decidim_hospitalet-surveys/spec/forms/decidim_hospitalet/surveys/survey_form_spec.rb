@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 require "spec_helper"
 
-module Decidim
-  module Proposals
-    describe ProposalForm do
+module DecidimHospitalet
+  module Surveys
+    describe SurveyForm do
       let(:feature) { create(:feature)}
       let(:title) { "Oriol for president!" }
       let(:body) { "Everything would be better" }
-      let(:author) { create(:user, organization: feature.organization) }
+      let(:user) { create(:user, organization: feature.organization) }
       let(:category) { create(:category, participatory_process: feature.participatory_process) }
       let(:scope) { create(:scope, organization: feature.organization) }
       let(:category_id) { category.try(:id)}
@@ -16,8 +16,8 @@ module Decidim
         {
           title: title,
           body: body,
-          author: author,
-          category_id: category_id,
+          user: user,
+          categories_ids: [category_id],
           scope_id: scope_id,
           feature: feature
         }
@@ -29,34 +29,26 @@ module Decidim
         it { is_expected.to be_valid }
       end
 
-      context "when there's no title" do
-        let(:title) { nil }
+      context "when there's no user" do
+        let(:user) { nil }
         it { is_expected.to be_invalid }
       end
 
-      context "when there's no body" do
-        let(:body) { nil }
-        it { is_expected.to be_invalid }
-      end
+      context "decidim_categories_ids" do
+        context "with invalid id" do
+          let(:category_id) { 987 }
+          it { is_expected.not_to be_valid}
+        end
 
-      context "when there's no author" do
-        let(:author) { nil }
-        it { is_expected.to be_invalid }
-      end
-
-      context "when no category_id" do
-        let(:category_id) { nil }
-        it { is_expected.to be_valid }
+        context "when no category_id" do
+          let(:category_id) { nil }
+          it { is_expected.not_to be_valid }
+        end
       end
 
       context "when no scope_id" do
         let(:scope_id) { nil }
-        it { is_expected.to be_valid }
-      end
-
-      context "with invalid category_id" do
-        let(:category_id) { 987 }
-        it { is_expected.to be_invalid}
+        it { is_expected.not_to be_valid }
       end
 
       context "with invalid scope_id" do
@@ -64,21 +56,21 @@ module Decidim
         it { is_expected.to be_invalid}
       end
 
-      describe "category" do
-        subject { described_class.from_params(params).category }
+      describe "categories" do
+        subject { described_class.from_params(params).categories }
 
         context "when the category exists" do
-          it { is_expected.to be_kind_of(Decidim::Category) }
+          it { is_expected.to all(be_kind_of(Decidim::Category)) }
         end
 
         context "when the category does not exist" do
           let(:category_id) { 7654 }
-          it { is_expected.to eq(nil) }
+          it { is_expected.to eq([]) }
         end
 
         context "when the category is from another process" do
           let(:category_id) { create(:category).id }
-          it { is_expected.to eq(nil) }
+          it { is_expected.to eq([]) }
         end
       end
 

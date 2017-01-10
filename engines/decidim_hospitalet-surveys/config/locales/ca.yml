@@ -1,6 +1,9 @@
 ca:
   decidim_hospitalet:
     surveys:
+      create:
+        error: "Hi ha hagut algun error en la teva resposta."
+        success: "La teva resposta s'ha enviat correctament"
       questions:
         scope: "Tria el barri sobre el qual vols opinar:"
         categories: "Prioritats del meu barri: indica amb una X els 4 temes que trobis que són prioritaris en el teu barri per als propers 10 anys."

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-module DecidimHospitlet
+module DecidimHospitalet
   module Surveys
     # The data store for a SurveyResult in the DecidimHospitalet::Surveys component.
     class SurveyResult < Surveys::ApplicationRecord

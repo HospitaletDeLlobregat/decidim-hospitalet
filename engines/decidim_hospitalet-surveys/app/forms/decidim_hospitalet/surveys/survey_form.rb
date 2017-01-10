@@ -7,7 +7,7 @@ module DecidimHospitalet
 
       attribute :user, Decidim::User
       attribute :scope_id, Integer
-      attribute :category_id, Integer
+      attribute :categories_ids, Integer
       attribute :feature, Decidim::Feature
 
       attribute :other_priorities, String
@@ -21,13 +21,14 @@ module DecidimHospitalet
       attribute :name, String
       attribute :phone, String
 
-      validates :user, :category, :scope, :feature, presence: true
+      validates :user, :scope, :feature, presence: true
+      validates :categories, length: { minimum: 1, maximum: 4 }
 
       # Finds the Categories from the category_id.
       #
       # Returns a Decidim::Category
       def categories
-        @category ||= feature.categories.where(id: category_id)
+        @category ||= feature.categories.where(id: categories_ids)
       end
 
       # Finds the Scope from the scope_id.

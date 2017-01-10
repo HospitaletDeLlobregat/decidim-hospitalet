@@ -7,24 +7,36 @@ module DecidimHospitalet
       include Decidim::FormFactory
       before_action :authenticate_user!, only: [:new, :create]
 
+      helper_method :available_scopes
+
       def new
-        @form = form(SurveyForm).from_params({}, author: current_user, feature: current_feature)
+        @form = form(SurveyForm).from_params({}, user: current_user, feature: current_feature)
       end
 
       def create
-        @form = form(SurveyForm).from_params(params, author: current_user, feature: current_feature)
+        @form = form(SurveyForm).from_params(params, user: current_user, feature: current_feature)
 
         CreateSurveyResult.call(@form) do
-          on(:ok) do |proposal|
-            flash[:notice] = I18n.t("proposals.create.success", scope: "decidim")
-            redirect_to proposal_path(proposal)
+          on(:ok) do |survey_result|
+            flash[:notice] = I18n.t("surveys.create.success", scope: "decidim_hospitalet")
+            redirect_to decidim.participatory_process_path(current_participatory_process)
           end
 
           on(:invalid) do
-            flash.now[:alert] = I18n.t("proposals.create.error", scope: "decidim")
+            flash.now[:alert] = I18n.t("surveys.create.error", scope: "decidim_hospitalet")
             render :new
           end
         end
+      end
+
+      def available_scopes
+        @available_scopes ||= current_organization.scopes.reject { |scope| answered_surveys.pluck(:decidim_scope_id).include?(scope.id) }
+      end
+
+      private
+
+      def answered_surveys
+        @answered_surveys ||= SurveyResult.where(user: current_user, feature: current_feature)
       end
     end
   end

@@ -5,7 +5,7 @@ require_dependency "decidim/features/namer"
 Decidim.register_feature(:hospitalet_surveys) do |feature|
   feature.engine = DecidimHospitalet::Surveys::Engine
   feature.admin_engine = DecidimHospitalet::Surveys::AdminEngine
-  feature.icon = "decidim-hospitalet/surveys/icon.svg"
+  feature.icon = "decidim_hospitalet/surveys/icon.svg"
 
   feature.on(:before_destroy) do |instance|
   end
