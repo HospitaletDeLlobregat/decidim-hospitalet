@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/AjuntamentdeBarcelona/decidim.git
-  revision: 6f374ec4869626fedc12d3219952c9685ab57d0b
+  revision: da83d0bf58c6fc01e6657711e0c1d1a2ffc5b516
   specs:
     decidim (0.0.1)
       decidim-admin (= 0.0.1)
@@ -272,18 +272,18 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (2.0.2)
-    kaminari (1.0.0.rc1)
+    kaminari (1.0.0)
       activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.0.0.rc1)
-      kaminari-activerecord (= 1.0.0.rc1)
-      kaminari-core (= 1.0.0.rc1)
-    kaminari-actionview (1.0.0.rc1)
+      kaminari-actionview (= 1.0.0)
+      kaminari-activerecord (= 1.0.0)
+      kaminari-core (= 1.0.0)
+    kaminari-actionview (1.0.0)
       actionview
-      kaminari-core (= 1.0.0.rc1)
-    kaminari-activerecord (1.0.0.rc1)
+      kaminari-core (= 1.0.0)
+    kaminari-activerecord (1.0.0)
       activerecord
-      kaminari-core (= 1.0.0.rc1)
-    kaminari-core (1.0.0.rc1)
+      kaminari-core (= 1.0.0)
+    kaminari-core (1.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     listen (3.1.5)
