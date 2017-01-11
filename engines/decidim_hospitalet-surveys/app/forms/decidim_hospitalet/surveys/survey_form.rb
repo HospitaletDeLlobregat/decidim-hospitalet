@@ -23,6 +23,9 @@ module DecidimHospitalet
 
       validates :user, :scope, :feature, presence: true
       validates :categories, length: { minimum: 1, maximum: 4 }
+      validates :age_group, inclusion: { in: SurveyResult::AGE_GROUPS }, allow_blank: true
+      validates :gender, inclusion: { in: SurveyResult::GENDERS }, allow_blank: true
+      validates :city, inclusion: { in: Towns::TOWNS.keys }, allow_blank: true
 
       # Finds the Categories from the category_id.
       #

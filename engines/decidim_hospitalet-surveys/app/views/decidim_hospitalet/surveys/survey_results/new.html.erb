@@ -30,11 +30,11 @@
           </div>
 
           <div class="field">
-            <%= form.select :gender, ["male", "female", "other"], include_blank: true, label: t("questions.gender", scope: "decidim_hospitalet.surveys") %>
+            <%= form.select :gender, DecidimHospitalet::Surveys::SurveyResult::GENDERS.map { |gender| [t("questions.genders.#{gender}", scope: "decidim_hospitalet.surveys"), gender] }, include_blank: true, label: t("questions.gender", scope: "decidim_hospitalet.surveys") %>
           </div>
 
           <div class="field">
-            <%= form.select :age_group, ["18-24", "25-34", "35-44", "45-54", "55+"], include_blank: true, label: t("questions.age_group", scope: "decidim_hospitalet.surveys") %>
+            <%= form.select :age_group, DecidimHospitalet::Surveys::SurveyResult::AGE_GROUPS, include_blank: true, label: t("questions.age_group", scope: "decidim_hospitalet.surveys") %>
           </div>
 
           <div class="field">
@@ -50,7 +50,7 @@
           </div>
 
           <div class="field">
-            <%= form.select :city, ["L'Hospitalet de Llobregat", "other"], include_blank: true, label: t("questions.city", scope: "decidim_hospitalet.surveys") %>
+            <%= form.select :city, DecidimHospitalet::Surveys::Towns::TOWNS.map{| k, v| [v, k] }, include_blank: true, label: t("questions.city", scope: "decidim_hospitalet.surveys") %>
           </div>
 
           <div class="field">

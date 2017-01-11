@@ -91,6 +91,72 @@ module DecidimHospitalet
           it { is_expected.to eq(nil) }
         end
       end
+
+      describe "city" do
+        context "when it is set" do
+          context "to a blank value" do
+            subject { described_class.from_params(params.merge(city: "")) }
+
+            it { is_expected.to be_valid }
+          end
+
+          context "with a valid value" do
+            subject { described_class.from_params(params.merge(city: "801930008")) }
+
+            it { is_expected.to be_valid }
+          end
+
+          context "with an invalid value" do
+            subject { described_class.from_params(params.merge(city: "invalid city")) }
+
+            it { is_expected.not_to be_valid }
+          end
+        end
+      end
+
+      describe "gender" do
+        context "when it is set" do
+          context "to a blank value" do
+            subject { described_class.from_params(params.merge(gender: "")) }
+
+            it { is_expected.to be_valid }
+          end
+
+          context "with a valid value" do
+            subject { described_class.from_params(params.merge(gender: "male")) }
+
+            it { is_expected.to be_valid }
+          end
+
+          context "with an invalid value" do
+            subject { described_class.from_params(params.merge(gender: "invalid gender")) }
+
+            it { is_expected.not_to be_valid }
+          end
+        end
+      end
+
+      describe "age_group" do
+        context "when it is set" do
+          context "to a blank value" do
+            subject { described_class.from_params(params.merge(age_group: "")) }
+
+            it { is_expected.to be_valid }
+          end
+
+          context "with a valid value" do
+            subject { described_class.from_params(params.merge(age_group: "65+")) }
+
+            it { is_expected.to be_valid }
+          end
+
+          context "with an invalid value" do
+            subject { described_class.from_params(params.merge(age_group: "invalid group")) }
+
+            it { is_expected.not_to be_valid }
+          end
+        end
+      end
     end
   end
 end
