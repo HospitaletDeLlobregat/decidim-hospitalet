@@ -6,4 +6,5 @@ Decidim.configure do |config|
 
   # Uncomment this lines to set your preferred locales
   config.available_locales = %i{ca es}
+  config.default_locale = :ca
 end
