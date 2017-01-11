@@ -1,46 +1,27 @@
+---
 es:
-  decidim:
-    features:
-      proposals:
-        name: Propuestas
-    proposals:
-      actions:
-        new: Nueva propuesta
-      admin:
-        models:
-          proposal:
-            name: Propuesta
-        proposals:
-          create:
-            invalid: Ha habido un problema al crear esta propuesta
-            success: Propuesta creada correctamente
-          form:
-            select_a_category: Seleccione una categoría
-            select_a_scope: Seleccione un ámbito
-          index:
-            title: Propuestas
-          new:
-            create: Crear propuesta
-            title: Nueva propuesta
+  decidim_hospitalet:
+    surveys:
       create:
-        error: Ha habido errores al guardar la propuesta.
-        success: Propuesta creada correctamente.
-      models:
-        proposal:
-          fields:
-            category: Categoría
-            official_proposal: Propuesta oficial
-            scope: Ámbito
-            title: Título
-      proposals:
-        index:
-          new_proposal: Nueva propuesta
-          proposals_count: "%{count} propuestas"
+        error: Han habido errores en tu respuesta.
+        success: Tu respuesta se ha enviado correctamente
+      questions:
+        age_group: Edad
+        categories: 'Selecciona 4 temas que consideres que son prioritarios en tu
+          barrio para los próximos 10 años:'
+        city: "¿En qué municipio vives?"
+        future_ideas: Dentro de 10 años, ¿por qué te gustaría que se conociera tu
+          barrio?
+        gender: Género
+        living_at_scope: "¿Vives en el barrio?"
+        name: Nombre
+        other_priorities: 'Otros temas que consideres prioritarios (especifícalos):'
+        phone: Teléfono
+        scope: Elige el barrio sobre el que deseas opinar
+        working_at_scope: "¿Trabajas en el barrio?"
+        zip_code: Código postal
+      survey_results:
         new:
-          back: Atrás
-          select_a_category: Por favor, seleccione una categoría
-          select_a_scope: Por favor, seleccione un ámbito
-          send: Enviar
-          title: Nueva propuesta
-        proposal:
-          view_proposal: Ver propuesta
+          back: Volver
+          send: Enviar encuesta
+          title: Encuesta
