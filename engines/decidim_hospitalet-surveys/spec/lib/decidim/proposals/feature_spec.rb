@@ -1,10 +1,10 @@
 require "spec_helper"
 
-describe "Proposals feature" do
-  let!(:feature) { create(:proposal_feature) }
+describe "Hospitalet surveys feature" do
+  let!(:feature) { create(:surveys_feature) }
 
   describe "on destroy" do
-    context "when there are no proposals for the feature" do
+    context "when there are no survey submissions for the feature" do
       it "destroys the feature" do
         expect do
           Decidim::Admin::DestroyFeature.call(feature)
@@ -14,9 +14,9 @@ describe "Proposals feature" do
       end
     end
 
-    context "when there are proposals for the feature" do
+    context "when there are survey submissions for the feature" do
       before do
-        create(:proposal, feature: feature)
+        create(:survey_result, feature: feature)
       end
 
       it "raises an error" do

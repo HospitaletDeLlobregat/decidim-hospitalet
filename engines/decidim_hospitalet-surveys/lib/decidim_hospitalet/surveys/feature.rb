@@ -8,6 +8,9 @@ Decidim.register_feature(:hospitalet_surveys) do |feature|
   feature.icon = "decidim_hospitalet/surveys/icon.svg"
 
   feature.on(:before_destroy) do |instance|
+    if DecidimHospitalet::Surveys::SurveyResult.where(feature: instance).any?
+      raise "Can't destroy this feature when there are survey submissions"
+    end
   end
 
   feature.seeds do
