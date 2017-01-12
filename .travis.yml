@@ -10,6 +10,25 @@ branches:
   only:
     - master
 
+env:
+  - GEM=decidim_hospitalet-surveys DB=postgres
+
+before_install:
+  # Repo for newer Node.js versions
+  - export BUNDLE_PATH="$TRAVIS_BUILD_DIR/.bundle"
+
+cache:
+  bundler: true
+  directories:
+    - $TRAVIS_BUILD_DIR/.yarn-cache
+    - $TRAVIS_BUILD_DIR/node_modules
+    - $BUNDLE_PATH
+    - vendor/bundle
+
+script:
+  - cd engines/$GEM;
+  - bundle exec rake
+
 rvm:
   - 2.4.0
 
