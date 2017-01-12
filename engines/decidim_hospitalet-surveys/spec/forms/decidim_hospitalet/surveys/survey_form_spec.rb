@@ -44,6 +44,14 @@ module DecidimHospitalet
           let(:category_id) { nil }
           it { is_expected.not_to be_valid }
         end
+
+        context "when selecting more than 4 valid categories" do
+          let!(:categories) do
+            create_list(:category, 5, participatory_process: feature.participatory_process)
+          end
+          let(:category_id) { categories.map(&:id) }
+          it { is_expected.not_to be_valid }
+        end
       end
 
       context "when no scope_id" do
