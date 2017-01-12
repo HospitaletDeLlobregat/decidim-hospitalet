@@ -1,0 +1,20 @@
+sudo: required
+dist: trusty
+
+services:
+  - postgres
+
+language: ruby
+
+branches:
+  only:
+    - master
+
+rvm:
+  - 2.4.0
+
+notifications:
+    email: false
+
+addons:
+  postgresql: "9.4"
