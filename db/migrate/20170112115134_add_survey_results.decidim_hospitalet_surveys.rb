@@ -1,3 +1,4 @@
+# This migration comes from decidim_hospitalet_surveys (originally 20170109130000)
 class AddSurveyResults < ActiveRecord::Migration[5.0]
   def change
     create_table :decidim_hospitalet_surveys_survey_results do |t|
