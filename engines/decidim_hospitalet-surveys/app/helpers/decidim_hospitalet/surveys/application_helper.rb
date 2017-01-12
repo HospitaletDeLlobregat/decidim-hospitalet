@@ -4,6 +4,7 @@ module DecidimHospitalet
     # Custom helpers, scoped to the pages engine.
     #
     module ApplicationHelper
+      include SurveysHelper
     end
   end
 end
