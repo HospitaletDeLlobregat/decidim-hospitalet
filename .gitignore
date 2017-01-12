@@ -16,5 +16,5 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-# Ignore public uploads
-public/uploads
+**/spec/*_dummy_app
+/public/uploads/*

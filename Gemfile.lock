@@ -103,6 +103,13 @@ GIT
       railties (>= 4.1)
       tzinfo (~> 1.2, >= 1.2.2)
 
+PATH
+  remote: engines/decidim_hospitalet-surveys
+  specs:
+    decidim_hospitalet-surveys (0.0.1)
+      decidim-core
+      rectify (~> 0.8.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -390,6 +397,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   decidim!
+  decidim_hospitalet-surveys!
   faker (~> 1.6.6)
   fog-aws
   foundation_rails_helper!

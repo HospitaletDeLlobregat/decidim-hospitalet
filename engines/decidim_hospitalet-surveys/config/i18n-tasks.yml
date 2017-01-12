@@ -1,0 +1,4 @@
+base_locale: en
+locales: [en]
+ignore_unused:
+- "decidim_hospitalet.features.surveys.name"
