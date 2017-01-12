@@ -1,26 +1,18 @@
-# README
+# Decidim Hospitalet
+## How to contribute
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+In order to develop on Decidim Hospitalet, you'll need:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* **PostgreSQL** 9.4+
+* **Ruby** 2.4.0
 
-Things you may want to cover:
+The easiest way to work on decidim is to clone this repository and install its dependencies:
 
-* Ruby version
+```bash
+$ git clone git@github.com:HospitaletDeLlobregat/decidim-hospitalet.git
+$ cd decidim-hospitalet
+$ bundle install
+$ rake db:setup
+```
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+You should now be able to access Decidim Hospitalet at `http://localhost:3000`.
