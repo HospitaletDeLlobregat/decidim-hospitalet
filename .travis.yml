@@ -27,6 +27,8 @@ cache:
 
 script:
   - cd engines/$GEM;
+  - pwd
+  - bundle install
   - bundle exec rake
 
 rvm:
