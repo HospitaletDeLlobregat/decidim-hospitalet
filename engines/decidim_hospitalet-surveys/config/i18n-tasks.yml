@@ -1,4 +1,4 @@
 base_locale: ca
 locales: [ca, es]
 ignore_unused:
-- "decidim_hospitalet.features.surveys.name"
+- "decidim.features.hospitalet_surveys.name"
