@@ -1,0 +1,27 @@
+---
+es:
+  decidim_hospitalet:
+    surveys:
+      create:
+        error: Han habido errores en tu respuesta.
+        success: Tu respuesta se ha enviado correctamente
+      questions:
+        age_group: Edad
+        categories: 'Selecciona 4 temas que consideres que son prioritarios en tu
+          barrio para los próximos 10 años:'
+        city: "¿En qué municipio vives?"
+        future_ideas: Dentro de 10 años, ¿por qué te gustaría que se conociera tu
+          barrio?
+        gender: Género
+        living_at_scope: "¿Vives en el barrio?"
+        name: Nombre
+        other_priorities: 'Otros temas que consideres prioritarios (especifícalos):'
+        phone: Teléfono
+        scope: Elige el barrio sobre el que deseas opinar
+        working_at_scope: "¿Trabajas en el barrio?"
+        zip_code: Código postal
+      survey_results:
+        new:
+          back: Volver
+          send: Enviar encuesta
+          title: Encuesta

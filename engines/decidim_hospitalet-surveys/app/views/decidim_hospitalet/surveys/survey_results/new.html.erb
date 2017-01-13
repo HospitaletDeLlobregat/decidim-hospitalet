@@ -1,0 +1,71 @@
+<div class="row columns">
+  <%= link_to :back, class: "muted-link" do %>
+    <%= icon "chevron-left", class: "icon--small" %>
+    <%= t(".back") %>
+  <% end %>
+  <h2 class="section-heading"><%= t(".title") %></h2>
+</div>
+<div class="row">
+  <div class="columns large-6 medium-centered">
+    <div class="card">
+      <div class="card__content">
+        <%= form_for(@form) do |form| %>
+          <div class="field">
+            <%= form.collection_select :scope_id, available_scopes, :id, :name, prompt: true, label: t("questions.scope", scope: "decidim_hospitalet.surveys") %>
+          </div>
+
+          <div class="field">
+            <label><%= t("questions.categories", scope: "decidim_hospitalet.surveys") %></label>
+            <%= form.collection_check_boxes :categories_ids, current_feature.categories, :id, Proc.new {|c| translated_attribute(c.name) } do |b| %>
+              <%= b.label { b.check_box + b.text } %>
+            <% end %>
+          </div>
+
+          <div class="field">
+            <%= form.text_area :other_priorities, label: t("questions.other_priorities", scope: "decidim_hospitalet.surveys") %>
+          </div>
+
+          <div class="field">
+            <%= form.text_area :future_ideas, label: t("questions.future_ideas", scope: "decidim_hospitalet.surveys") %>
+          </div>
+
+          <div class="field">
+            <%= form.select :gender, survey_genders, include_blank: true, label: t("questions.gender", scope: "decidim_hospitalet.surveys") %>
+          </div>
+
+          <div class="field">
+            <%= form.select :age_group, survey_age_groups, include_blank: true, label: t("questions.age_group", scope: "decidim_hospitalet.surveys") %>
+          </div>
+
+          <div class="field">
+            <%= form.text_field :zip_code, label: t("questions.zip_code", scope: "decidim_hospitalet.surveys") %>
+          </div>
+
+          <div class="field">
+            <%= form.check_box :living_at_scope, label: t("questions.living_at_scope", scope: "decidim_hospitalet.surveys")%>
+          </div>
+
+          <div class="field">
+            <%= form.check_box :working_at_scope, label: t("questions.working_at_scope", scope: "decidim_hospitalet.surveys")%>
+          </div>
+
+          <div class="field">
+            <%= form.select :city, survey_towns, include_blank: true, label: t("questions.city", scope: "decidim_hospitalet.surveys") %>
+          </div>
+
+          <div class="field">
+            <%= form.text_field :name, label: t("questions.name", scope: "decidim_hospitalet.surveys") %>
+          </div>
+
+          <div class="field">
+            <%= form.text_field :phone, label: t("questions.phone", scope: "decidim_hospitalet.surveys") %>
+          </div>
+
+          <div class="actions">
+            <%= form.submit t(".send"), class: "button expanded" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

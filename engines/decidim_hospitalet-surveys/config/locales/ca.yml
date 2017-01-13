@@ -1,0 +1,29 @@
+---
+ca:
+  decidim_hospitalet:
+    surveys:
+      create:
+        error: Hi ha hagut algun error en la teva resposta.
+        success: La teva resposta s'ha enviat correctament
+      questions:
+        age_group: Edat
+        categories: 'Selecciona els 4 temes que trobis que són prioritaris en el teu
+          barri per als propers 10 anys:'
+        city: A quin municipi vius?
+        future_ideas: D'aquí 10 anys, per què t'agradaria que fos conegut el teu barri?
+        gender: Gènere
+        genders:
+          female: Dona
+          male: Home
+        living_at_scope: Vius al barri?
+        name: Nom
+        other_priorities: 'Altres temes que consideris que són prioritaris (especifica''ls):'
+        phone: Telèfon
+        scope: 'Tria el barri sobre el qual vols opinar:'
+        working_at_scope: Treballes al barri?
+        zip_code: Codi postal
+      survey_results:
+        new:
+          back: Tornar
+          send: Enviar enquesta
+          title: Enquesta

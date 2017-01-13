@@ -1,8 +1,9 @@
 source "https://rubygems.org"
 
-ruby '2.3.3'
+ruby '2.4.0'
 
 gem "decidim", git: "https://github.com/AjuntamentdeBarcelona/decidim.git"
+gem "decidim_hospitalet-surveys", path: "engines/decidim_hospitalet-surveys"
 
 gem 'puma', '~> 3.0'
 gem 'uglifier', '>= 1.3.0'
@@ -10,15 +11,16 @@ gem 'uglifier', '>= 1.3.0'
 gem "foundation_rails_helper", git: "https://github.com/sgruhier/foundation_rails_helper.git", tag: "df0bd8e"
 
 group :development, :test do
+  gem "decidim-dev", git: "https://github.com/AjuntamentdeBarcelona/decidim.git"
   gem 'byebug', platform: :mri
 end
 
 group :development do
   gem 'web-console'
-  gem 'listen', '~> 3.0.5'
+  gem 'listen', '~> 3.1.0'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'faker', '~> 1.6.6'
+  gem 'faker', '~> 1.7.2'
 end
 
 group :production do
