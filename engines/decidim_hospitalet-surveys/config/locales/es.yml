@@ -1,5 +1,9 @@
 ---
 es:
+  decidim:
+    features:
+      hospitalet_surveys:
+        name: Encuesta
   decidim_hospitalet:
     surveys:
       create:
@@ -22,6 +26,5 @@ es:
         zip_code: Código postal
       survey_results:
         new:
-          back: Volver
           send: Enviar encuesta
           title: Encuesta
