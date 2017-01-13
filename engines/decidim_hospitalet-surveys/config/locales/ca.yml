@@ -1,5 +1,9 @@
 ---
 ca:
+  decidim:
+    features:
+      hospitalet_surveys:
+        name: Enquesta
   decidim_hospitalet:
     surveys:
       create:
@@ -24,6 +28,5 @@ ca:
         zip_code: Codi postal
       survey_results:
         new:
-          back: Tornar
           send: Enviar enquesta
           title: Enquesta
