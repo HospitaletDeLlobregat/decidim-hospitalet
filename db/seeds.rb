@@ -8,6 +8,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # You can remove the 'faker' gem if you don't want Decidim seeds.
+raise if Rails.env.production?
+
 Decidim.seed!
 
 organization = Decidim::Organization.first
