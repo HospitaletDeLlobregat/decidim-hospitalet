@@ -8,8 +8,8 @@ module DecidimHospitalet
       isolate_namespace DecidimHospitalet::Surveys
 
       routes do
-        resources :survey_results, only: [:create, :new]
-        root to: "survey_results#new"
+        resources :survey_results, only: [:create, :new, :index]
+        root to: "survey_results#index"
       end
     end
   end
