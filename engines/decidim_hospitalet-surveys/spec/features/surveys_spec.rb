@@ -26,6 +26,7 @@ describe "Surveys", type: :feature do
       click_link "Processos"
       click_link translated(participatory_process.title, locale: :ca)
       click_link "Enquestes"
+      click_link "Respon l'enquesta"
 
       expect(page).to have_content("Has d'iniciar sessió o bé registrar-te abans de continuar.")
     end
@@ -41,6 +42,7 @@ describe "Surveys", type: :feature do
         click_link "Processos"
         click_link translated(participatory_process.title, locale: :ca)
         click_link "Enquestes"
+        click_link "Respon l'enquesta"
 
         within ".new_survey_result" do
           select scope.name, from: :survey_result_scope_id
@@ -59,6 +61,7 @@ describe "Surveys", type: :feature do
         click_link "Processos"
         click_link translated(participatory_process.title, locale: :ca)
         click_link "Enquestes"
+        click_link "Respon l'enquesta"
 
         within ".new_survey_result" do
           expect(page).not_to have_css("option", text: scope.name)

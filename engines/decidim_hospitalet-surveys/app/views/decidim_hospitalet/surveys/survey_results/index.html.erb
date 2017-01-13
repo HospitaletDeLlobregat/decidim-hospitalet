@@ -1,0 +1,21 @@
+<div class="row columns">
+  <h2 class="section-heading"><%= t(".title") %></h2>
+</div>
+<div class="row">
+  <div class="columns large-6 medium-centered">
+    <div class="card">
+      <div class="card__content">
+        <%== t('.surveys_info') %>
+        <div class="row">
+          <div class="columns medium-centered medium-7 mediumlarge-8">
+            <%= link_to action: :new do %>
+              <button class="button expanded button--sc">
+                <%= t('.answer_the_survey') %>
+              </button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

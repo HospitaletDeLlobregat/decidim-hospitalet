@@ -14,9 +14,11 @@ es:
         categories: 'Selecciona 4 temas que consideres que son prioritarios en tu
           barrio para los próximos 10 años:'
         city: "¿En qué municipio vives?"
-        future_ideas: Dentro de 10 años, ¿por qué te gustaría que se conociera tu
-          barrio?
+        future_ideas: Dentro de 10 años, ¿por qué te gustaría que se conociera tu barrio?
         gender: Género
+        genders:
+          female: Mujer
+          male: Hombre
         living_at_scope: "¿Vives en el barrio?"
         name: Nombre
         other_priorities: 'Otros temas que consideres prioritarios (especifícalos):'
@@ -25,6 +27,10 @@ es:
         working_at_scope: "¿Trabajas en el barrio?"
         zip_code: Código postal
       survey_results:
+        index:
+          answer_the_survey: "Responde la encuesta"
+          surveys_info: "<p>El Ayuntamiento de L’Hospitalet está impulsando el proceso participativo L’H ON dels Barris. Mediante este proceso lo que se pretende es obtener una visión compartida con la ciudadanía sobre el posicionamiento y los objetivos de futuro de los diferentes distritos y barrios que componen nuestra ciudad.</p><p>Una de las herramientas que estamos utilizando en este proceso es este cuestionario, en el que te preguntamos qué opinas sobre las prioridades de las que crees que tenemos que ocuparnos en tu barrio durante los próximos años.</p>"
+          title: Encuesta
         new:
           send: Enviar encuesta
           title: Encuesta

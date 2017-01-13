@@ -19,7 +19,7 @@ module DecidimHospitalet
         CreateSurveyResult.call(@form) do
           on(:ok) do |survey_result|
             flash[:notice] = I18n.t("surveys.create.success", scope: "decidim_hospitalet")
-            redirect_to decidim.participatory_process_path(current_participatory_process)
+            redirect_to action: :index
           end
 
           on(:invalid) do
