@@ -1,4 +1,7 @@
 source "https://rubygems.org"
 
 gemspec
-gem "decidim-dev", github: "AjuntamentdeBarcelona/decidim"
+
+group :development, :test do
+  gem "decidim-dev", github: "AjuntamentdeBarcelona/decidim"
+end
