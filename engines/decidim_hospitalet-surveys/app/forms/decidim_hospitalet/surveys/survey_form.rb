@@ -31,7 +31,7 @@ module DecidimHospitalet
       #
       # Returns a Decidim::Category
       def categories
-        @category ||= feature.categories.where(id: categories_ids)
+        @categories ||= feature.categories.where(id: categories_ids)
       end
 
       # Finds the Scope from the scope_id.

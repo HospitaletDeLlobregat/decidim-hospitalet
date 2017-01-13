@@ -37,7 +37,7 @@ describe "Surveys", type: :feature do
     end
 
     context "when the user has not submitted the survey" do
-      it "creates a new proposal" do
+      it "creates a new survey" do
         click_link "Processos"
         click_link translated(participatory_process.title, locale: :ca)
         click_link "Enquestes"

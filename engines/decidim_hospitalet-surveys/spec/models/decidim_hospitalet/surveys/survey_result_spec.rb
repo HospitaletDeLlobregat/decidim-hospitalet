@@ -8,6 +8,32 @@ module DecidimHospitalet
 
       it { is_expected.to be_valid }
 
+      context "when the user is missing" do
+        subject { build(:survey_result, user: nil)}
+
+        it { is_expected.to be_invalid}
+      end
+
+      context "when the scope is missing" do
+        subject { build(:survey_result, scope: nil)}
+
+        it { is_expected.to be_invalid}
+      end
+
+      context "when the feature is missing" do
+        let(:scope) { create :scope }
+        subject do
+          build(
+            :survey_result,
+            feature: nil,
+            scope: scope,
+            user: create(:user, organization: scope.organization)
+          )
+        end
+
+        it { is_expected.to be_invalid}
+      end
+
       context "when the author is from another organization" do
         subject { build(:survey_result, user: create(:user))}
 

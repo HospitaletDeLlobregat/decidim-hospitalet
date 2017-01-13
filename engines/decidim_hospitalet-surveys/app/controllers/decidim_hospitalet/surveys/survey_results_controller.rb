@@ -30,7 +30,7 @@ module DecidimHospitalet
       end
 
       def available_scopes
-        @available_scopes ||= current_organization.scopes.reject { |scope| answered_surveys.pluck(:decidim_scope_id).include?(scope.id) }
+        @available_scopes ||= current_organization.scopes.where.not(id: answered_surveys.pluck(:decidim_scope_id))
       end
 
       private
