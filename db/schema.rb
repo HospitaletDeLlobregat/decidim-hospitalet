@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110134455) do
+ActiveRecord::Schema.define(version: 20170113101001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,10 +78,10 @@ ActiveRecord::Schema.define(version: 20170110134455) do
   end
 
   create_table "decidim_hospitalet_surveys_survey_results", force: :cascade do |t|
-    t.integer  "decidim_feature_id",     null: false
+    t.integer  "decidim_feature_id",               null: false
     t.integer  "decidim_user_id"
-    t.integer  "decidim_scope_id",       null: false
-    t.integer  "decidim_categories_ids"
+    t.integer  "decidim_scope_id",                 null: false
+    t.integer  "selected_categories", default: [],              array: true
     t.text     "other_priorities"
     t.text     "future_ideas"
     t.string   "gender"
@@ -92,12 +92,13 @@ ActiveRecord::Schema.define(version: 20170110134455) do
     t.string   "city"
     t.string   "name"
     t.string   "phone"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.index ["decidim_categories_ids"], name: "index_decidim_hospitalet_surveys_on_categories_ids", using: :btree
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["decidim_feature_id", "decidim_user_id", "decidim_scope_id"], name: "index_unique_user_feaeture_scope_for_surveys", unique: true, using: :btree
     t.index ["decidim_feature_id"], name: "index_decidim_hospitalet_surveys_on_feature_id", using: :btree
     t.index ["decidim_scope_id"], name: "index_decidim_hospitalet_surveys_on_scope_id", using: :btree
     t.index ["decidim_user_id"], name: "index_decidim_hospitalet_surveys_on_user_id", using: :btree
+    t.index ["selected_categories"], name: "index_decidim_hospitalet_surveys_on_categories_ids", using: :btree
   end
 
   create_table "decidim_meetings_meetings", force: :cascade do |t|
@@ -132,6 +133,7 @@ ActiveRecord::Schema.define(version: 20170110134455) do
     t.datetime "updated_at",                     null: false
     t.jsonb    "description"
     t.string   "logo"
+    t.string   "twitter_handler"
     t.index ["host"], name: "index_decidim_organizations_on_host", unique: true, using: :btree
     t.index ["name"], name: "index_decidim_organizations_on_name", unique: true, using: :btree
   end

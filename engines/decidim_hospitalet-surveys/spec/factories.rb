@@ -13,5 +13,6 @@ FactoryGirl.define do
     feature
     user { create(:user, organization: feature.organization) }
     scope { create(:scope, organization: feature.organization) }
+    selected_categories { create_list(:category, 2, participatory_process: feature.participatory_process).map(&:id) }
   end
 end

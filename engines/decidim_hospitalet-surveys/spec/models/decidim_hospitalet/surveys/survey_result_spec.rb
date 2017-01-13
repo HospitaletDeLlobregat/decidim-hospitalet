@@ -22,11 +22,14 @@ module DecidimHospitalet
 
       context "when the feature is missing" do
         let(:scope) { create :scope }
+        let(:participatory_process) { create :participatory_process, organization: scope.organization }
+        let(:category) { create :category, participatory_process: participatory_process }
         subject do
           build(
             :survey_result,
             feature: nil,
             scope: scope,
+            selected_categories: [category.id],
             user: create(:user, organization: scope.organization)
           )
         end

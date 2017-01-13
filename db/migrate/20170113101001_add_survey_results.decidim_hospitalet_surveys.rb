@@ -5,7 +5,7 @@ class AddSurveyResults < ActiveRecord::Migration[5.0]
       t.references :decidim_feature, null: false, index: { name: "index_decidim_hospitalet_surveys_on_feature_id" }
       t.references :decidim_user, index: { name: "index_decidim_hospitalet_surveys_on_user_id" }
       t.references :decidim_scope, index: { name: "index_decidim_hospitalet_surveys_on_scope_id" }, null: false
-      t.integer :decidim_categories_ids, default: [], index: { name: "index_decidim_hospitalet_surveys_on_categories_ids" }
+      t.integer :selected_categories, array: true, default: [], index: { name: "index_decidim_hospitalet_surveys_on_categories_ids" }
       t.text :other_priorities
       t.text :future_ideas
       t.string :gender

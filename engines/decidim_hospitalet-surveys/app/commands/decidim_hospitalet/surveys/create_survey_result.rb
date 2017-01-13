@@ -39,7 +39,7 @@ module DecidimHospitalet
           city: form.city,
           name: form.name,
           phone: form.phone,
-          decidim_categories_ids: form.categories.map(&:id),
+          selected_categories: form.categories.map(&:id),
           scope: form.scope,
           user: form.user,
           feature: form.feature

@@ -34,7 +34,7 @@ module DecidimHospitalet
         it { is_expected.to be_invalid }
       end
 
-      context "decidim_categories_ids" do
+      context "selected_categories" do
         context "with invalid id" do
           let(:category_id) { 987 }
           it { is_expected.not_to be_valid}
