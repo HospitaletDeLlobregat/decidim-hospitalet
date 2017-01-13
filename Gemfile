@@ -20,7 +20,7 @@ group :development do
   gem 'listen', '~> 3.1.0'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'faker', '~> 1.6.6'
+  gem 'faker', '~> 1.7.2'
 end
 
 group :production do
