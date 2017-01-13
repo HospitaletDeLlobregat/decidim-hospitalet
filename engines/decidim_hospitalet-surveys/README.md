@@ -1,24 +1,14 @@
-# Decidim::Proposals
+# DecidimHospitalet::Surveys
 
-The Proposals module adds one of the main features of Decidim: allows users to contribute to a particiaptory process by creating proposals.
+The Surveys module allows users to answer surveys in a participatory process.
+
+There's only one survey right now.
 
 ## Usage
-Proposals will be available as a Feature for a Participatory Process.
-
-## Installation
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'decidim-proposals
-```
-
-And then execute:
-```bash
-$ bundle
-```
+Surveys will be available as a Feature for a Participatory Process.
 
 ## Contributing
-See [Decidim](https://github.com/AjuntamentdeBarcelona/decidim).
+See [Decidim L'Hospitalet](https://github.com/HospitaletDeLlobregat/decidim-hospitalet).
 
 ## License
-See [Decidim](https://github.com/AjuntamentdeBarcelona/decidim).
+See [Decidim L'Hospitalet](https://github.com/HospitaletDeLlobregat/decidim-hospitalet).
