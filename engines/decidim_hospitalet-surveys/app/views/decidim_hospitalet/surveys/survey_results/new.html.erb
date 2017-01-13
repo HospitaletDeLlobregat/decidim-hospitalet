@@ -16,7 +16,7 @@
 
           <div class="field">
             <label><%= t("questions.categories", scope: "decidim_hospitalet.surveys") %></label>
-            <%= form.collection_check_boxes :categories_ids, current_feature.categories, :id, Proc.new {|c| translated_attribute(c.name) } do |b| %>
+            <%= form.collection_check_boxes :categories_ids, current_feature.categories, Proc.new {|c| c.id.to_s }, Proc.new {|c| translated_attribute(c.name) } do |b| %>
               <%= b.label { b.check_box + b.text } %>
             <% end %>
           </div>
