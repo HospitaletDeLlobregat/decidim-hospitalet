@@ -9,6 +9,7 @@ module DecidimHospitalet
         let(:participatory_process) { create :participatory_process, organization: organization }
         let(:feature) { create(:feature, participatory_process: participatory_process) }
         let(:category) { create :category, participatory_process: participatory_process }
+        let(:user) { create(:user, organization: organization) }
         let(:form) do
           double(
             other_priorities: "Other priorities",
@@ -23,10 +24,9 @@ module DecidimHospitalet
             phone: "987654321",
             categories: [category],
             scope: create(:scope, organization: organization),
-            user: create(:user, organization: organization),
           )
         end
-        let(:command) { described_class.new(form, feature) }
+        let(:command) { described_class.new(form, feature, user) }
 
         describe "when the form is not valid" do
           before do

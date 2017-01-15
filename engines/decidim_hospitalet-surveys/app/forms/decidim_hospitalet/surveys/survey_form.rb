@@ -5,7 +5,6 @@ module DecidimHospitalet
     class SurveyForm < Decidim::Form
       mimic :survey_result
 
-      attribute :user, Decidim::User
       attribute :scope_id, Integer
       attribute :categories_ids, Integer
 
@@ -20,7 +19,7 @@ module DecidimHospitalet
       attribute :name, String
       attribute :phone, String
 
-      validates :user, :scope, presence: true
+      validates :scope, presence: true
       validates :categories, length: { minimum: 1, maximum: 4 }
       validates :age_group, inclusion: { in: SurveyResult::AGE_GROUPS }, allow_blank: true
       validates :gender, inclusion: { in: SurveyResult::GENDERS }, allow_blank: true
