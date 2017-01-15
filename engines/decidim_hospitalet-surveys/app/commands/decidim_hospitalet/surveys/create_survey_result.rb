@@ -6,7 +6,9 @@ module DecidimHospitalet
       # Public: Initializes the command.
       #
       # form - A form object with the params.
-      def initialize(form)
+      def initialize(form, feature, user)
+        @feature = feature
+        @user = user
         @form = form
       end
 
@@ -41,8 +43,8 @@ module DecidimHospitalet
           phone: form.phone,
           selected_categories: form.categories.map(&:id),
           scope: form.scope,
-          user: form.user,
-          feature: form.feature
+          user: @user,
+          feature: @feature
         )
       end
     end

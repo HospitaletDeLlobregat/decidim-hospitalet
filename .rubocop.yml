@@ -24,9 +24,7 @@ AllCops:
     - '**/*.gemspec'
     - 'vendor/**/*'
     - 'spec/*'
-    - 'decidim-*/spec/**/*'
-    - 'decidim-*/test/**/*'
-    - 'decidim-*/db/**/*'
+    - 'db/**/*'
     - 'development_app/**/*'
     - 'node_modules/**/*'
   # Default formatter will be used if no -f/--format option is given.

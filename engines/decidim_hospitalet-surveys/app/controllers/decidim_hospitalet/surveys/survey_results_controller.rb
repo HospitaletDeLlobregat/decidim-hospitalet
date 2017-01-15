@@ -10,19 +10,19 @@ module DecidimHospitalet
       helper_method :available_scopes
 
       def new
-        @form = form(SurveyForm).from_params({}, user: current_user, feature: current_feature)
+        @form = form(SurveyForm).from_params({})
       end
 
       def create
-        @form = form(SurveyForm).from_params(params, user: current_user, feature: current_feature)
+        @form = form(SurveyForm).from_params(params)
 
-        CreateSurveyResult.call(@form) do
-          on(:ok) do |survey_result|
+        CreateSurveyResult.call(@form, current_feature, current_user) do
+          on(:ok) do |_survey_result|
             flash[:notice] = I18n.t("surveys.create.success", scope: "decidim_hospitalet")
             redirect_to action: :index
           end
 
-          on(:invalid) do
+          on(:invalid) do |_survey_result|
             flash.now[:alert] = I18n.t("surveys.create.error", scope: "decidim_hospitalet")
             render :new
           end

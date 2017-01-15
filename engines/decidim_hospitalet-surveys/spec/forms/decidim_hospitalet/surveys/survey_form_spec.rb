@@ -4,40 +4,38 @@ require "spec_helper"
 module DecidimHospitalet
   module Surveys
     describe SurveyForm do
-      let(:feature) { create(:feature)}
+      let(:feature) { create(:feature) }
       let(:title) { "Oriol for president!" }
       let(:body) { "Everything would be better" }
       let(:user) { create(:user, organization: feature.organization) }
       let(:category) { create(:category, participatory_process: feature.participatory_process) }
       let(:scope) { create(:scope, organization: feature.organization) }
-      let(:category_id) { category.try(:id)}
-      let(:scope_id) { scope.try(:id)}
+      let(:category_id) { category.try(:id) }
+      let(:scope_id) { scope.try(:id) }
       let(:params) do
         {
           title: title,
           body: body,
-          user: user,
           categories_ids: [category_id],
-          scope_id: scope_id,
-          feature: feature
+          scope_id: scope_id
         }
       end
 
-      subject { described_class.from_params(params) }
+      subject do
+        described_class.from_params(params).with_context(
+          current_feature: feature,
+          current_user: user
+        )
+      end
 
       context "when everything is OK" do
         it { is_expected.to be_valid }
       end
 
-      context "when there's no user" do
-        let(:user) { nil }
-        it { is_expected.to be_invalid }
-      end
-
       context "selected_categories" do
         context "with invalid id" do
           let(:category_id) { 987 }
-          it { is_expected.not_to be_valid}
+          it { is_expected.not_to be_valid }
         end
 
         context "when no category_id" do
@@ -61,11 +59,15 @@ module DecidimHospitalet
 
       context "with invalid scope_id" do
         let(:scope_id) { 987 }
-        it { is_expected.to be_invalid}
+        it { is_expected.to be_invalid }
       end
 
       describe "categories" do
-        subject { described_class.from_params(params).categories }
+        subject do
+          described_class.from_params(params)
+                         .with_context(current_feature: feature)
+                         .categories
+        end
 
         context "when the category exists" do
           it { is_expected.to all(be_kind_of(Decidim::Category)) }
@@ -83,7 +85,11 @@ module DecidimHospitalet
       end
 
       describe "scope" do
-        subject { described_class.from_params(params).scope }
+        subject do
+          described_class.from_params(params)
+                         .with_context(current_feature: feature)
+                         .scope
+        end
 
         context "when the scope exists" do
           it { is_expected.to be_kind_of(Decidim::Scope) }
@@ -103,19 +109,28 @@ module DecidimHospitalet
       describe "city" do
         context "when it is set" do
           context "to a blank value" do
-            subject { described_class.from_params(params.merge(city: "")) }
+            subject do
+              described_class.from_params(params.merge(city: ""))
+                             .with_context(current_feature: feature)
+            end
 
             it { is_expected.to be_valid }
           end
 
           context "with a valid value" do
-            subject { described_class.from_params(params.merge(city: "801930008")) }
+            subject do
+              described_class.from_params(params.merge(city: "801930008"))
+                             .with_context(current_feature: feature)
+            end
 
             it { is_expected.to be_valid }
           end
 
           context "with an invalid value" do
-            subject { described_class.from_params(params.merge(city: "invalid city")) }
+            subject do
+              described_class.from_params(params.merge(city: "invalid city"))
+                             .with_context(current_feature: feature)
+            end
 
             it { is_expected.not_to be_valid }
           end
@@ -125,19 +140,28 @@ module DecidimHospitalet
       describe "gender" do
         context "when it is set" do
           context "to a blank value" do
-            subject { described_class.from_params(params.merge(gender: "")) }
+            subject do
+              described_class.from_params(params.merge(gender: ""))
+                             .with_context(current_feature: feature)
+            end
 
             it { is_expected.to be_valid }
           end
 
           context "with a valid value" do
-            subject { described_class.from_params(params.merge(gender: "male")) }
+            subject do
+              described_class.from_params(params.merge(gender: "male"))
+                             .with_context(current_feature: feature)
+            end
 
             it { is_expected.to be_valid }
           end
 
           context "with an invalid value" do
-            subject { described_class.from_params(params.merge(gender: "invalid gender")) }
+            subject do
+              described_class.from_params(params.merge(gender: "invalid gender"))
+                             .with_context(current_feature: feature)
+            end
 
             it { is_expected.not_to be_valid }
           end
@@ -147,19 +171,28 @@ module DecidimHospitalet
       describe "age_group" do
         context "when it is set" do
           context "to a blank value" do
-            subject { described_class.from_params(params.merge(age_group: "")) }
+            subject do
+              described_class.from_params(params.merge(age_group: ""))
+                             .with_context(current_feature: feature)
+            end
 
             it { is_expected.to be_valid }
           end
 
           context "with a valid value" do
-            subject { described_class.from_params(params.merge(age_group: "65+")) }
+            subject do
+              described_class.from_params(params.merge(age_group: "65+"))
+                             .with_context(current_feature: feature)
+            end
 
             it { is_expected.to be_valid }
           end
 
           context "with an invalid value" do
-            subject { described_class.from_params(params.merge(age_group: "invalid group")) }
+            subject do
+              described_class.from_params(params.merge(age_group: "invalid group"))
+                             .with_context(current_feature: feature)
+            end
 
             it { is_expected.not_to be_valid }
           end
