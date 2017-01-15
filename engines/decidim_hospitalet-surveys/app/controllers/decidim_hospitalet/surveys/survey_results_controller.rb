@@ -10,13 +10,13 @@ module DecidimHospitalet
       helper_method :available_scopes
 
       def new
-        @form = form(SurveyForm).from_params({}, user: current_user, feature: current_feature)
+        @form = form(SurveyForm).from_params({}, user: current_user)
       end
 
       def create
-        @form = form(SurveyForm).from_params(params, user: current_user, feature: current_feature)
+        @form = form(SurveyForm).from_params(params, user: current_user)
 
-        CreateSurveyResult.call(@form) do
+        CreateSurveyResult.call(@form, current_feature) do
           on(:ok) do |survey_result|
             flash[:notice] = I18n.t("surveys.create.success", scope: "decidim_hospitalet")
             redirect_to action: :index

@@ -8,7 +8,6 @@ module DecidimHospitalet
       attribute :user, Decidim::User
       attribute :scope_id, Integer
       attribute :categories_ids, Integer
-      attribute :feature, Decidim::Feature
 
       attribute :other_priorities, String
       attribute :future_ideas, String
@@ -21,7 +20,7 @@ module DecidimHospitalet
       attribute :name, String
       attribute :phone, String
 
-      validates :user, :scope, :feature, presence: true
+      validates :user, :scope, presence: true
       validates :categories, length: { minimum: 1, maximum: 4 }
       validates :age_group, inclusion: { in: SurveyResult::AGE_GROUPS }, allow_blank: true
       validates :gender, inclusion: { in: SurveyResult::GENDERS }, allow_blank: true
@@ -31,14 +30,14 @@ module DecidimHospitalet
       #
       # Returns a Decidim::Category
       def categories
-        @categories ||= feature.categories.where(id: categories_ids)
+        @categories ||= context.current_feature.categories.where(id: categories_ids)
       end
 
       # Finds the Scope from the scope_id.
       #
       # Returns a Decidim::Scope
       def scope
-        @scope ||= feature.scopes.where(id: scope_id).first
+        @scope ||= context.current_feature.scopes.where(id: scope_id).first
       end
     end
   end

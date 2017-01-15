@@ -24,10 +24,9 @@ module DecidimHospitalet
             categories: [category],
             scope: create(:scope, organization: organization),
             user: create(:user, organization: organization),
-            feature: feature,
           )
         end
-        let(:command) { described_class.new(form) }
+        let(:command) { described_class.new(form, feature) }
 
         describe "when the form is not valid" do
           before do
