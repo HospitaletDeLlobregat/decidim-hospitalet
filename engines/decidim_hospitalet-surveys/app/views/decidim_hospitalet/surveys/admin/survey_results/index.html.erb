@@ -1,0 +1,39 @@
+<h2><%= t(".title") %></h2>
+
+<div class="actions title">
+  <%= link_to t("actions.new", scope: "decidim.survey_results", name: t("models.survey_result.name", scope: "decidim.survey_results.admin")), new_survey_result_path, class: 'new' if can? :manage, current_feature %>
+</div>
+
+<table class="stack">
+  <thead>
+    <tr>
+      <th><%= t("models.survey_result.fields.title", scope: "decidim.survey_results") %></th>
+      <th><%= t("models.survey_result.fields.start_time", scope: "decidim.survey_results") %></th>
+      <th><%= t("models.survey_result.fields.end_time", scope: "decidim.survey_results") %></th>
+      <th class="actions"><%= t("actions.title", scope: "decidim.survey_results") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% survey_results.each do |survey_result| %>
+      <tr data-id="<%= survey_result.id %>">
+        <td>
+          <%= link_to translated_attribute(survey_result.title), decidim_survey_results.survey_result_path(id: survey_result, feature_id: current_feature, participatory_process_id: current_participatory_process), target: :blank %><br />
+        </td>
+        <td>
+          <% if survey_result.start_time %>
+            <%= l survey_result.start_time, format: :long %>
+          <%  end%>
+        </td>
+        <td>
+          <% if survey_result.end_time %>
+            <%= l survey_result.end_time, format: :long %>
+          <%  end%>
+        </td>
+        <td class="actions">
+          <%= link_to t("actions.edit", scope: "decidim.survey_results"), edit_survey_result_path(survey_result) if can? :update, current_feature %>
+          <%= link_to t("actions.destroy", scope: "decidim.survey_results"), survey_result_path(survey_result), method: :delete, class: "small alert button", data: { confirm: t("actions.confirm_destroy", scope: "decidim.survey_results") } if can? :destroy, current_feature %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
