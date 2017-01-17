@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170113101001) do
+ActiveRecord::Schema.define(version: 20170115191627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -204,10 +204,12 @@ ActiveRecord::Schema.define(version: 20170113101001) do
     t.integer  "decidim_scope_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.index ["body"], name: "decidim_proposals_proposal_body_search", using: :btree
     t.index ["decidim_author_id"], name: "index_decidim_proposals_proposals_on_decidim_author_id", using: :btree
     t.index ["decidim_category_id"], name: "index_decidim_proposals_proposals_on_decidim_category_id", using: :btree
     t.index ["decidim_feature_id"], name: "index_decidim_proposals_proposals_on_decidim_feature_id", using: :btree
     t.index ["decidim_scope_id"], name: "index_decidim_proposals_proposals_on_decidim_scope_id", using: :btree
+    t.index ["title"], name: "decidim_proposals_proposal_title_search", using: :btree
   end
 
   create_table "decidim_scopes", force: :cascade do |t|
