@@ -37,7 +37,7 @@ scopes = [
 ].map do |scope_name|
   { name: scope_name, organization: organization }
 end
-Decidim::Scope.create!(scopes)
+scopes = Decidim::Scope.create!(scopes)
 
 puts "Deleting default L'Hospitalet categories..."
 participatory_process.categories.destroy_all
@@ -61,5 +61,17 @@ categories = [
 Decidim::Category.transaction do
   categories.each do |data|
     Decidim::Category.create!(name: data, description: data, participatory_process: participatory_process)
+  end
+end
+
+categories = Decidim::Category.where(participatory_process: participatory_process).pluck(:id)
+
+Decidim::Feature.where(manifest_name: :hospitalet_surveys).find_each do |feature|
+  3.times do
+    DecidimHospitalet::Surveys::SurveyResult.create!(
+      feature: feature,
+      scope: scopes.sample,
+      selected_categories: categories.sample(Random.new.rand(1..4))
+    )
   end
 end
