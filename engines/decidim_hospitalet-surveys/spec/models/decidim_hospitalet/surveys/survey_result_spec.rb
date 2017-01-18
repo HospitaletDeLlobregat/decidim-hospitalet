@@ -11,7 +11,7 @@ module DecidimHospitalet
       context "when the user is missing" do
         subject { build(:survey_result, user: nil)}
 
-        it { is_expected.to be_invalid}
+        it { is_expected.to be_valid}
       end
 
       context "when the scope is missing" do
