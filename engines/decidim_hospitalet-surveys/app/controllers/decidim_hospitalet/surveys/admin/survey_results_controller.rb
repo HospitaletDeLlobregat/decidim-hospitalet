@@ -4,7 +4,7 @@ module DecidimHospitalet
     module Admin
       # This controller allows an admin to manage survey_results from a Participatory Process
       class SurveyResultsController < Admin::ApplicationController
-        helper_method :survey_results
+        helper_method :survey_results, :available_scopes
 
         def new
           @form = form(SurveyResultForm).instance
@@ -52,6 +52,10 @@ module DecidimHospitalet
           flash[:notice] = I18n.t("survey_results.destroy.success", scope: "decidim_hospitalet.surveys.admin")
 
           redirect_to survey_results_path
+        end
+
+        def available_scopes
+          @available_scopes ||= current_organization.scopes
         end
 
         private

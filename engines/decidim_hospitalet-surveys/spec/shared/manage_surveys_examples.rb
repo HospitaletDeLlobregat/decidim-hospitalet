@@ -3,16 +3,11 @@
 RSpec.shared_examples "manage surveys" do
   it "updates a survey" do
     within find("tr", text: survey.scope.name) do
-      click_link "Edit"
+      click_link "Editar"
     end
 
-    within ".edit_survey" do
-      fill_in_i18n(
-        :survey_name,
-        "#name-tabs",
-        es: "Mi nuevo título",
-        ca: "El meu nou títol"
-      )
+    within ".edit_survey_result" do
+      fill_in :survey_result_other_priorities, with: "Noves prioritats"
 
       find("*[type=submit]").click
     end
@@ -29,44 +24,15 @@ RSpec.shared_examples "manage surveys" do
   it "creates a new survey" do
     find(".actions .new").click
 
-    within ".new_survey" do
-      fill_in_i18n(
-        :survey_name,
-        "#name-tabs",
-        es: "Mi survey",
-        ca: "El meu survey"
-      )
-      fill_in_i18n(
-        :survey_location,
-        "#location-tabs",
-        es: "Location",
-        ca: "Location"
-      )
-      fill_in_i18n(
-        :survey_location_hints,
-        "#location_hints-tabs",
-        es: "Location hints",
-        ca: "Location hints"
-      )
-      fill_in_i18n_editor(
-        :survey_short_description,
-        "#short_description-tabs",
-        es: "Descripción corta",
-        ca: "Descripció curta"
-      )
-      fill_in_i18n_editor(
-        :survey_description,
-        "#description-tabs",
-        es: "Descripción más larga",
-        ca: "Descripció més llarga"
-      )
-
-      fill_in :survey_address, with: "Address"
-      fill_in :survey_start_time, with: 1.day.from_now
-      fill_in :survey_end_time, with: 1.day.from_now + 2.hours
-
-      select scope.name, from: :survey_decidim_scope_id
-      select translated(category.name), from: :survey_decidim_category_id
+    within ".new_survey_result" do
+      select scope.name, from: :survey_result_scope_id
+      check translated(category.name, locale: :ca)
+      fill_in :survey_result_other_priorities, with: "Altres prioritats"
+      fill_in :survey_result_future_ideas, with: "Idees pel futur"
+      select "Dona", from: :survey_result_gender
+      select "65+", from: :survey_result_age_group
+      check "Vius al barri?"
+      select "L'Hospitalet de Llobregat", from: :survey_result_city
 
       find("*[type=submit]").click
     end
@@ -76,7 +42,7 @@ RSpec.shared_examples "manage surveys" do
     end
 
     within "table" do
-      expect(page).to have_content("El meu survey")
+      expect(page).to have_selector(".tabs-panel tbody tr", count: 2)
     end
   end
 
