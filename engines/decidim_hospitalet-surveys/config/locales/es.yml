@@ -27,6 +27,8 @@ es:
           create:
             invalid: Han habido errores creando la respuesta.
             success: La respuesta se ha enviado correctamente
+          destroy:
+            success: La respuesta se ha eliminado correctamente
           edit:
             title: Editar respuesta de encuesta
             update: Guardar
@@ -35,6 +37,9 @@ es:
           new:
             create: Guardar
             title: Nueva respuesta de encuesta
+          update:
+            invalid: Han habido errores actualizando la respuesta.
+            success: La respuesta se ha actualizado correctamente
       create:
         error: Han habido errores en tu respuesta.
         success: Tu respuesta se ha enviado correctamente

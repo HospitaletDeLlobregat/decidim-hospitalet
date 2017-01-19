@@ -27,6 +27,8 @@ ca:
           create:
             invalid: Hi ha hagut algun error en crear la resposta.
             success: La resposta s'ha enviat correctament
+          destroy:
+            success: La resposta s'ha eliminat correctament
           edit:
             title: Editar resposta d'enquesta
             update: Desar
@@ -35,6 +37,9 @@ ca:
           new:
             create: Desar
             title: Crear resposta d'enquesta
+          update:
+            invalid: Hi ha hagut algun error en actualitzar la resposta.
+            success: La resposta s'ha actualitzat correctament
       create:
         error: Hi ha hagut algun error en la teva resposta.
         success: La teva resposta s'ha enviat correctament
