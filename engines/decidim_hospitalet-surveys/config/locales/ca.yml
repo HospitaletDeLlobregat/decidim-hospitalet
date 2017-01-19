@@ -5,7 +5,36 @@ ca:
       hospitalet_surveys:
         name: Enquesta
   decidim_hospitalet:
+    survey_results:
+      actions:
+        confirm_destroy: Segur que vols eliminar aquest recurs?
+        destroy: Eliminar
+        edit: Editar
+        new: Nova %{name}
+        title: Accions
+      admin:
+        models:
+          survey_result:
+            name: Resposta d'enquesta
+      models:
+        survey_result:
+          fields:
+            categories: Categories
+            scope_name: Àmbit
     surveys:
+      admin:
+        survey_results:
+          create:
+            invalid: Hi ha hagut algun error en crear la resposta.
+            success: La resposta s'ha enviat correctament
+          edit:
+            title: Editar resposta d'enquesta
+            update: Desar
+          index:
+            title: Respostes d'enquesta
+          new:
+            create: Desar
+            title: Crear resposta d'enquesta
       create:
         error: Hi ha hagut algun error en la teva resposta.
         success: La teva resposta s'ha enviat correctament
@@ -28,9 +57,15 @@ ca:
         zip_code: Codi postal
       survey_results:
         index:
-          answer_the_survey: "Respon l'enquesta"
+          answer_the_survey: Respon l'enquesta
           send_proposals: "També pots participar enviant propostes! Pots veure les <a href='%{index_url}'>existents</a> o <a href='%{new_url}'>enviar-ne una de nova</a>."
-          surveys_info: "<p>L’Ajuntament de L’Hospitalet està impulsant el procés participatiu L’H ON dels Barris. Amb aquest procés es pretén obtenir una visió compartida amb la ciutadania sobre el posicionament i els objectius de futur dels diferents districtes i barris de la nostra ciutat.</p><p>Una de les eines que estem utilitzant en aquest procés és aquest qüestionari, en què et demanem la teva opinió sobre les prioritats de què creus que ens hem d’ocupar al teu barri els propers anys.</p>"
+          surveys_info: "<p>L’Ajuntament de L’Hospitalet està impulsant el procés
+            participatiu L’H ON dels Barris. Amb aquest procés es pretén obtenir una
+            visió compartida amb la ciutadania sobre el posicionament i els objectius
+            de futur dels diferents districtes i barris de la nostra ciutat.</p><p>Una
+            de les eines que estem utilitzant en aquest procés és aquest qüestionari,
+            en què et demanem la teva opinió sobre les prioritats de què creus que
+            ens hem d’ocupar al teu barri els propers anys.</p>"
           title: Enquesta
         new:
           send: Enviar enquesta
