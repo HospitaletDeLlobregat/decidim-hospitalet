@@ -8,7 +8,7 @@ module DecidimHospitalet
       paths["db/migrate"] = nil
 
       routes do
-        resources :survey_results, only: [:index, :new, :create]
+        resources :survey_results
         root to: "survey_results#index"
       end
 
