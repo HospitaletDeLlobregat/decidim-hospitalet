@@ -24,6 +24,10 @@ module DecidimHospitalet
       validates :scope, uniqueness: { scope: [:feature, :user] }
       validates :selected_categories, length: { minimum: 1, maximum: 4 }, if: Proc.new { |object| object.feature.present? }
 
+      def categories
+        Decidim::Category.where(id: selected_categories)
+      end
+
       private
 
       def user_belongs_to_organization
