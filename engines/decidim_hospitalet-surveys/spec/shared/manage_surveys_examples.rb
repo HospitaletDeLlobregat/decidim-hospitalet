@@ -15,10 +15,6 @@ RSpec.shared_examples "manage surveys" do
     within ".flash" do
       expect(page).to have_content("correctament")
     end
-
-    within "table" do
-      expect(page).to have_content("El meu nou títol")
-    end
   end
 
   it "creates a new survey" do
