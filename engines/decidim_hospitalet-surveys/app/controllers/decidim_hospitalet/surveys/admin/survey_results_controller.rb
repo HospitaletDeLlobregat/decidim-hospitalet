@@ -13,7 +13,7 @@ module DecidimHospitalet
         def create
           @form = form(SurveyResultForm).from_params(params, current_feature: current_feature)
 
-          CreateSurveyResult.call(@form) do
+          Admin::CreateSurveyResult.call(@form) do
             on(:ok) do
               flash[:notice] = I18n.t("survey_results.create.success", scope: "decidim_hospitalet.surveys.admin")
               redirect_to survey_results_path

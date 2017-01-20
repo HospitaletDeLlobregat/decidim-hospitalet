@@ -95,10 +95,10 @@ ActiveRecord::Schema.define(version: 20170126102853) do
   end
 
   create_table "decidim_hospitalet_surveys_survey_results", force: :cascade do |t|
-    t.integer  "decidim_feature_id",               null: false
+    t.integer  "decidim_feature_id",                  null: false
     t.integer  "decidim_user_id"
-    t.integer  "decidim_scope_id",                 null: false
-    t.integer  "selected_categories", default: [],              array: true
+    t.integer  "decidim_scope_id",                    null: false
+    t.integer  "selected_categories", default: [],                 array: true
     t.text     "other_priorities"
     t.text     "future_ideas"
     t.string   "gender"
@@ -109,8 +109,9 @@ ActiveRecord::Schema.define(version: 20170126102853) do
     t.string   "city"
     t.string   "name"
     t.string   "phone"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.boolean  "created_by_admin",    default: false
     t.index ["decidim_feature_id", "decidim_user_id", "decidim_scope_id"], name: "index_unique_user_feaeture_scope_for_surveys", unique: true, using: :btree
     t.index ["decidim_feature_id"], name: "index_decidim_hospitalet_surveys_on_feature_id", using: :btree
     t.index ["decidim_scope_id"], name: "index_decidim_hospitalet_surveys_on_scope_id", using: :btree

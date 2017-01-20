@@ -20,6 +20,7 @@ ca:
         survey_result:
           fields:
             categories: Categories
+            created_by_admin: Creat per administrador
             scope_name: Àmbit
     surveys:
       admin:

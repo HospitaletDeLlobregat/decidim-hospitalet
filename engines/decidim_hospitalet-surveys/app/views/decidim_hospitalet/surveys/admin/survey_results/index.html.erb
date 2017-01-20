@@ -9,6 +9,7 @@
     <tr>
       <th><%= t("models.survey_result.fields.scope_name", scope: "decidim_hospitalet.survey_results") %></th>
       <th><%= t("models.survey_result.fields.categories", scope: "decidim_hospitalet.survey_results") %></th>
+      <th><%= t("models.survey_result.fields.created_by_admin", scope: "decidim_hospitalet.survey_results") %></th>
       <th class="actions"><%= t("actions.title", scope: "decidim_hospitalet.survey_results") %></th>
     </tr>
   </thead>
@@ -24,6 +25,9 @@
               <li><%= translated_attribute(category.name) %></li>
             <%  end%>
           </ul>
+        </td>
+        <td>
+          <%= humanize_boolean survey_result.created_by_admin? %>
         </td>
         <td class="actions">
           <%= link_to t("actions.edit", scope: "decidim_hospitalet.survey_results"), edit_survey_result_path(survey_result) if can? :update, current_feature %>
