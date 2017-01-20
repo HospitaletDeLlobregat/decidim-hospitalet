@@ -23,7 +23,7 @@ module DecidimHospitalet
             name: "My Name",
             phone: "987654321",
             categories: [category],
-            scope: create(:scope, organization: organization),
+            scope: create(:scope, organization: organization)
           )
         end
         let(:command) { described_class.new(form, feature, user) }

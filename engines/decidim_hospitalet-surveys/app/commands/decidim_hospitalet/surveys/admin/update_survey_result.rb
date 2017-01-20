@@ -46,7 +46,7 @@ module DecidimHospitalet
             name: form.name,
             phone: form.phone,
             selected_categories: form.categories.map(&:id),
-            scope: form.scope,
+            scope: form.scope
           }
         end
       end
