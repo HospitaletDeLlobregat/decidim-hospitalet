@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/AjuntamentdeBarcelona/decidim.git
-  revision: e51ee081a73f884e6d34142df3577250551f58a7
+  revision: 2ce4241370c6b75d66858dd4668c492f96e2ecfa
   specs:
     decidim (0.0.2)
       decidim-admin (= 0.0.2)
@@ -76,7 +76,7 @@ GIT
       decidim (= 0.0.2)
       factory_girl_rails
       faker (~> 1.7.2)
-      i18n-tasks (~> 0.9.8)
+      i18n-tasks (= 0.9.8)
       launchy
       listen (~> 3.1.0)
       poltergeist (~> 1.12.0)
@@ -89,7 +89,7 @@ GIT
     decidim-meetings (0.0.2)
       date_validator (~> 0.9)
       decidim-core (= 0.0.2)
-      kaminari (~> 1.0.0.rc1)
+      kaminari (~> 1.0.1)
       rectify (~> 0.8)
       searchlight (~> 4.1.0)
     decidim-pages (0.0.2)
@@ -99,7 +99,7 @@ GIT
     decidim-proposals (0.0.2)
       decidim-comments (= 0.0.2)
       decidim-core (= 0.0.2)
-      kaminari (~> 1.0.0.rc1)
+      kaminari (~> 1.0.1)
       rectify (~> 0.8.0)
       social-share-button (~> 0.8.8)
     decidim-system (0.0.2)
@@ -560,7 +560,6 @@ DEPENDENCIES
   decidim_hospitalet-surveys!
   faker (~> 1.7.2)
   fog-aws
-  i18n-tasks (= 0.9.8)
   listen (~> 3.1.0)
   puma (~> 3.0)
   rails_12factor
