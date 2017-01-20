@@ -1,6 +1,8 @@
+# frozen_string_literal: true
 module DecidimHospitalet
   module Surveys
     module Admin
+      # Handles the form to create admin-submitted surveys.
       class SurveyResultForm < Decidim::Form
         mimic :survey_result
 
