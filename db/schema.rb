@@ -112,7 +112,7 @@ ActiveRecord::Schema.define(version: 20170126102853) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.boolean  "created_by_admin",    default: false
-    t.index ["decidim_feature_id", "decidim_user_id", "decidim_scope_id"], name: "index_unique_user_feaeture_scope_for_surveys", unique: true, using: :btree
+    t.index ["decidim_feature_id", "decidim_user_id", "decidim_scope_id"], name: "index_unique_user_feaeture_scope_for_surveys", unique: true, where: "(decidim_user_id IS NOT NULL)", using: :btree
     t.index ["decidim_feature_id"], name: "index_decidim_hospitalet_surveys_on_feature_id", using: :btree
     t.index ["decidim_scope_id"], name: "index_decidim_hospitalet_surveys_on_scope_id", using: :btree
     t.index ["decidim_user_id"], name: "index_decidim_hospitalet_surveys_on_user_id", using: :btree
