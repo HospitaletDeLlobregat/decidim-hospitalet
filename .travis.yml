@@ -16,6 +16,7 @@ env:
 before_install:
   # Repo for newer Node.js versions
   - export BUNDLE_PATH="$TRAVIS_BUILD_DIR/.bundle"
+  - gem update --system
 
 # Skip the install step
 install: true
