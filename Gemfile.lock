@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/AjuntamentdeBarcelona/decidim.git
-  revision: 2ce4241370c6b75d66858dd4668c492f96e2ecfa
+  revision: d93fdf18e9579af7189bb989f66c057141368dae
   specs:
     decidim (0.0.2)
       decidim-admin (= 0.0.2)
@@ -542,7 +542,7 @@ GEM
       activemodel (>= 5.0)
       debug_inspector
       railties (>= 5.0)
-    websocket-driver (0.6.4)
+    websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
     wisper (1.6.1)
