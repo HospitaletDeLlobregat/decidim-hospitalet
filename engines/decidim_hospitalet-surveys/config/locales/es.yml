@@ -7,7 +7,7 @@ es:
   decidim_hospitalet:
     survey_results:
       actions:
-        confirm_destroy: Confirm destroy
+        confirm_destroy: ¿Seguro que quieres eliminar esta respuesta?
         destroy: Eliminar
         edit: Editar
         new: Nueva %{name}

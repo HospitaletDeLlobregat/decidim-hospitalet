@@ -25,7 +25,7 @@ module DecidimHospitalet
       validates :selected_categories, length: { minimum: 1, maximum: 4 }, if: proc { |object| object.feature.present? }
 
       def categories
-        Decidim::Category.where(id: selected_categories)
+        @categories ||= Decidim::Category.where(id: selected_categories)
       end
 
       private

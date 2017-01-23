@@ -2,7 +2,7 @@
 module DecidimHospitalet
   module Surveys
     module Admin
-      # A command with all the business logic when a user submits a new survey.
+      # A command with all the business logic when an admin submits a new survey.
       class CreateSurveyResult < Rectify::Command
         # Public: Initializes the command.
         #
@@ -20,10 +20,12 @@ module DecidimHospitalet
         def call
           return broadcast(:invalid) if form.invalid?
 
-          create_survey_result
-          return broadcast(:ok, :success) unless form.email.present?
-          link_survey_result_and_user
-          broadcast(:ok, :user_invited)
+          SurveyResult.transaction do
+            create_survey_result
+            return broadcast(:ok, :success) unless form.email.present?
+            link_survey_result_and_user
+            broadcast(:ok, :user_invited)
+          end
         end
 
         private
@@ -51,10 +53,12 @@ module DecidimHospitalet
         end
 
         def link_survey_result_and_user
+          return unless user
           survey_result.update_attributes!(user: user)
         end
 
         def user
+          return unless form.email.present?
           @user ||= Decidim::User.where(email: form.email, organization: form.current_feature.organization).first ||
                     Decidim::User.invite!(email: form.email, name: form.name, organization: form.current_feature.organization, tos_agreement: true)
         end

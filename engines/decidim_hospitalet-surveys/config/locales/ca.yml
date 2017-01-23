@@ -7,7 +7,7 @@ ca:
   decidim_hospitalet:
     survey_results:
       actions:
-        confirm_destroy: Segur que vols eliminar aquest recurs?
+        confirm_destroy: Segur que vols eliminar aquesta resposta?
         destroy: Eliminar
         edit: Editar
         new: Nova %{name}
