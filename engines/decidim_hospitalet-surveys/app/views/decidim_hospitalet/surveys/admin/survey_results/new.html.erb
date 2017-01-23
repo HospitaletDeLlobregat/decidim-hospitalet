@@ -5,8 +5,8 @@
 
   <div class="field">
     <%= f.email_field :email, label: t("questions.email", scope: "decidim_hospitalet.surveys") %>
+    <p class="help-text"><%= t("questions.email_hint", scope: "decidim_hospitalet.surveys") %></p>
   </div>
-
 
   <div class="actions">
     <%= f.submit t(".create") %>

@@ -51,6 +51,7 @@ es:
           barrio para los próximos 10 años:'
         city: "¿En qué municipio vives?"
         email: Correo electrónico
+        email_hint: Si rellenas este campo se invitará el usuario a la plataforma y se vinculará la respuesta de la encuesta con el usuario.
         future_ideas: Dentro de 10 años, ¿por qué te gustaría que se conociera tu
           barrio?
         gender: Género

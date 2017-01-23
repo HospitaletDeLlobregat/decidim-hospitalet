@@ -51,6 +51,7 @@ ca:
           barri per als propers 10 anys:'
         city: A quin municipi vius?
         email: Correu electrònic
+        email_hint: Si omples aquest camp, es convidarà l'usuari a la plataforma i es vincularà la resposta de l'enquesta amb l'usuari.
         future_ideas: D'aquí 10 anys, per què t'agradaria que fos conegut el teu barri?
         gender: Gènere
         genders:
