@@ -27,7 +27,8 @@ ca:
         survey_results:
           create:
             invalid: Hi ha hagut algun error en crear la resposta.
-            success: La resposta s'ha enviat correctament
+            success: La resposta s'ha enviat correctament.
+            user_invited: La resposta s'ha enviat correctament. També s'ha convidat l'usuari a la plataforma.
           destroy:
             success: La resposta s'ha eliminat correctament
           edit:
@@ -49,6 +50,7 @@ ca:
         categories: 'Selecciona els 4 temes que trobis que són prioritaris en el teu
           barri per als propers 10 anys:'
         city: A quin municipi vius?
+        email: Correu electrònic
         future_ideas: D'aquí 10 anys, per què t'agradaria que fos conegut el teu barri?
         gender: Gènere
         genders:

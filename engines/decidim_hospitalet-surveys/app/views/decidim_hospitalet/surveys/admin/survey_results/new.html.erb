@@ -3,6 +3,11 @@
 <%= form_for(@form) do |f| %>
   <%= render partial: 'form', object: f %>
 
+  <div class="field">
+    <%= f.email_field :email, label: t("questions.email", scope: "decidim_hospitalet.surveys") %>
+  </div>
+
+
   <div class="actions">
     <%= f.submit t(".create") %>
   </div>

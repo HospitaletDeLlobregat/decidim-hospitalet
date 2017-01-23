@@ -19,6 +19,7 @@ module DecidimHospitalet
         attribute :city, String
         attribute :name, String
         attribute :phone, String
+        attribute :email, String
 
         validates :scope, presence: true
         validates :categories, length: { minimum: 1, maximum: 4 }

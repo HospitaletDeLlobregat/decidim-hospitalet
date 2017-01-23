@@ -11,6 +11,7 @@ module DecidimHospitalet
           let(:feature) { create(:feature, participatory_process: participatory_process) }
           let(:category) { create :category, participatory_process: participatory_process }
           let(:user) { create(:user, organization: organization) }
+          let(:email) { nil }
           let(:form) do
             double(
               other_priorities: "Other priorities",
@@ -26,10 +27,11 @@ module DecidimHospitalet
               categories: [category],
               current_feature: feature,
               current_user: user,
+              email: email,
               scope: create(:scope, organization: organization)
             )
           end
-          let(:command) { described_class.new(form) }
+          let(:subject) { described_class.new(form) }
 
           describe "when the form is not valid" do
             before do
@@ -37,12 +39,12 @@ module DecidimHospitalet
             end
 
             it "broadcasts invalid" do
-              expect { command.call }.to broadcast(:invalid)
+              expect { subject.call }.to broadcast(:invalid)
             end
 
             it "doesn't create a survey result" do
               expect do
-                command.call
+                subject.call
               end.to_not change { SurveyResult.count }
             end
           end
@@ -53,17 +55,45 @@ module DecidimHospitalet
             end
 
             it "broadcasts ok" do
-              expect { command.call }.to broadcast(:ok)
+              expect { subject.call }.to broadcast(:ok, :success)
             end
 
             it "creates a new survey result" do
               expect do
-                command.call
+                subject.call
               end.to change { SurveyResult.count }.by(1)
+            end
+
+            it "does not create a new user" do
+              expect do
+                subject.call
+              end.not_to change { Decidim::User.count }
+            end
+
+            context "when the form has an email" do
+              let(:email) { "my_email@example.org" }
+
+              it "broadcasts ok" do
+                expect { subject.call }.to broadcast(:ok, :user_invited)
+              end
+
+              it "invites a new user" do
+                expect do
+                  subject.call
+                end.to change { Decidim::User.count }.by(1)
+              end
+
+              it "links the user and the survey result" do
+                subject.call
+                user = Decidim::User.last
+                survey_result = SurveyResult.last
+
+                expect(survey_result.user).to eq user
+              end
             end
           end
         end
       end
     end
   end
-  end
+end

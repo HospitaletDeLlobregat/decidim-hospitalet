@@ -21,7 +21,9 @@ module DecidimHospitalet
           return broadcast(:invalid) if form.invalid?
 
           create_survey_result
-          broadcast(:ok, survey_result)
+          return broadcast(:ok, :success) unless form.email.present?
+          link_survey_result_and_user
+          broadcast(:ok, :user_invited)
         end
 
         private
@@ -46,6 +48,15 @@ module DecidimHospitalet
             user: @user,
             feature: form.current_feature
           )
+        end
+
+        def link_survey_result_and_user
+          survey_result.update_attributes!(user: user)
+        end
+
+        def user
+          @user ||= Decidim::User.where(email: form.email, organization: form.current_feature.organization).first ||
+                    Decidim::User.invite!(email: form.email, name: form.name, organization: form.current_feature.organization, tos_agreement: true)
         end
       end
     end

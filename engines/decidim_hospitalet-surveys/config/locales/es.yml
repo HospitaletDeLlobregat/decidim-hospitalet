@@ -27,7 +27,8 @@ es:
         survey_results:
           create:
             invalid: Han habido errores creando la respuesta.
-            success: La respuesta se ha enviado correctamente
+            success: La respuesta se ha enviado correctamente.
+            user_invited: La respuesta se ha enviado correctamente. También se ha invitado el usuario a la plataforma.
           destroy:
             success: La respuesta se ha eliminado correctamente
           edit:
@@ -49,6 +50,7 @@ es:
         categories: 'Selecciona 4 temas que consideres que son prioritarios en tu
           barrio para los próximos 10 años:'
         city: "¿En qué municipio vives?"
+        email: Correo electrónico
         future_ideas: Dentro de 10 años, ¿por qué te gustaría que se conociera tu
           barrio?
         gender: Género

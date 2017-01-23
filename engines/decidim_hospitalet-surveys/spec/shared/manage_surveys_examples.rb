@@ -17,28 +17,59 @@ RSpec.shared_examples "manage surveys" do
     end
   end
 
-  it "creates a new survey" do
-    find(".actions .new").click
+  context "submitting a survey" do
+    it "creates a new survey" do
+      find(".actions .new").click
 
-    within ".new_survey_result" do
-      select scope.name, from: :survey_result_scope_id
-      check translated(category.name, locale: :ca)
-      fill_in :survey_result_other_priorities, with: "Altres prioritats"
-      fill_in :survey_result_future_ideas, with: "Idees pel futur"
-      select "Dona", from: :survey_result_gender
-      select "65+", from: :survey_result_age_group
-      check "Vius al barri?"
-      select "L'Hospitalet de Llobregat", from: :survey_result_city
+      within ".new_survey_result" do
+        select scope.name, from: :survey_result_scope_id
+        check translated(category.name, locale: :ca)
+        fill_in :survey_result_other_priorities, with: "Altres prioritats"
+        fill_in :survey_result_future_ideas, with: "Idees pel futur"
+        select "Dona", from: :survey_result_gender
+        select "65+", from: :survey_result_age_group
+        check "Vius al barri?"
+        select "L'Hospitalet de Llobregat", from: :survey_result_city
 
-      find("*[type=submit]").click
+        find("*[type=submit]").click
+      end
+
+      within ".flash" do
+        expect(page).to have_content("correctament")
+      end
+
+      within "table" do
+        expect(page).to have_selector(".tabs-panel tbody tr", count: 2)
+      end
     end
 
-    within ".flash" do
-      expect(page).to have_content("correctament")
-    end
+    context "when filling in the user data part" do
+      it "inivites the user to the platform" do
+        find(".actions .new").click
 
-    within "table" do
-      expect(page).to have_selector(".tabs-panel tbody tr", count: 2)
+        within ".new_survey_result" do
+          select scope.name, from: :survey_result_scope_id
+          check translated(category.name, locale: :ca)
+          fill_in :survey_result_other_priorities, with: "Altres prioritats"
+          fill_in :survey_result_future_ideas, with: "Idees pel futur"
+          select "Dona", from: :survey_result_gender
+          select "65+", from: :survey_result_age_group
+          check "Vius al barri?"
+          select "L'Hospitalet de Llobregat", from: :survey_result_city
+          fill_in :survey_result_email, with: "my_email@example.org"
+          fill_in :survey_result_name, with: "Hermenegilda Lozano"
+
+          find("*[type=submit]").click
+        end
+
+        within ".flash" do
+          expect(page).to have_content("convidat")
+        end
+
+        within "table" do
+          expect(page).to have_selector(".tabs-panel tbody tr", count: 2)
+        end
+      end
     end
   end
 
