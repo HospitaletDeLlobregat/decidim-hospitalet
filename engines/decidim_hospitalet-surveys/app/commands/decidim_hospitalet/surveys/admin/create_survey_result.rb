@@ -22,9 +22,8 @@ module DecidimHospitalet
 
           SurveyResult.transaction do
             create_survey_result
-            return broadcast(:ok, :success) unless form.email.present?
-            link_survey_result_and_user
-            broadcast(:ok, :user_invited)
+            broadcast(:ok, :user_invited) if form.email.present?
+            return broadcast(:ok, :success)
           end
         end
 
@@ -47,14 +46,9 @@ module DecidimHospitalet
             selected_categories: form.categories.map(&:id),
             created_by_admin: true,
             scope: form.scope,
-            user: @user,
+            user: user,
             feature: form.current_feature
           )
-        end
-
-        def link_survey_result_and_user
-          return unless user
-          survey_result.update_attributes!(user: user)
         end
 
         def user
