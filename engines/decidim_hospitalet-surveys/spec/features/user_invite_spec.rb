@@ -41,13 +41,13 @@ describe "User invite", type: :feature do
 
   describe "Accept an invitation", perform_enqueued: true do
     it "asks for a password and redirects to the organization dashboard" do
-      visit last_email_link
+      visit Nokogiri::HTML(last_email.html_part.body.encoded).css("table.content a").last["href"]
 
       fill_in :user_password, with: "123456"
       fill_in :user_password_confirmation, with: "123456"
       find("*[type=submit]").click
 
-      expect(page).to have_content("Dashboard")
+      expect(page).to have_content("Welcome to")
     end
   end
 end

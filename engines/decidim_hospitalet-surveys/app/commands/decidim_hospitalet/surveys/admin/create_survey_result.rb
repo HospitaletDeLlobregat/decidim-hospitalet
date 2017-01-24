@@ -22,8 +22,8 @@ module DecidimHospitalet
 
           SurveyResult.transaction do
             create_survey_result
-            broadcast(:ok, :user_invited) if form.email.present?
-            return broadcast(:ok, :success)
+            return broadcast(:ok, :user_invited) if form.email.present?
+            broadcast(:ok, :success)
           end
         end
 
@@ -53,8 +53,23 @@ module DecidimHospitalet
 
         def user
           return unless form.email.present?
-          @user ||= Decidim::User.where(email: form.email, organization: form.current_feature.organization).first ||
-                    Decidim::User.invite!(email: form.email, name: form.name, organization: form.current_feature.organization, tos_agreement: true)
+          return @user if @user
+          @user ||= existing_user || invited_user
+        end
+
+        def existing_user
+          Decidim::User.where(
+            email: form.email,
+            organization: form.current_feature.organization
+          ).first
+        end
+
+        def invited_user
+          Decidim::InviteUser.call(form) do
+            on(:ok) do |user|
+              return user
+            end
+          end
         end
       end
     end

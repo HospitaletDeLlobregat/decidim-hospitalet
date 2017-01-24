@@ -28,6 +28,10 @@ module DecidimHospitalet
               current_feature: feature,
               current_user: user,
               email: email,
+              organization: organization,
+              invited_by: nil,
+              roles: [],
+              invitation_instructions: "invite_admin",
               scope: create(:scope, organization: organization)
             )
           end
@@ -51,7 +55,7 @@ module DecidimHospitalet
 
           describe "when the form is valid" do
             before do
-              expect(form).to receive(:invalid?).and_return(false)
+              expect(form).to receive(:invalid?).at_least(1).and_return(false)
             end
 
             it "broadcasts ok" do

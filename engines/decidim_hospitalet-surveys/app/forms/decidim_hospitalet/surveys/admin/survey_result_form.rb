@@ -45,6 +45,22 @@ module DecidimHospitalet
         def scope
           @scope ||= context.current_feature.scopes.where(id: scope_id).first
         end
+
+        def organization
+          @organization ||= context.current_feature.organization
+        end
+
+        def invited_by
+          @invited_by ||= context.current_user
+        end
+
+        def roles
+          []
+        end
+
+        def invitation_instructions
+          "invite_user"
+        end
       end
     end
   end
