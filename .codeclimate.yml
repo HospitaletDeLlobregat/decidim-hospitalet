@@ -1,0 +1,35 @@
+---
+engines:
+  bundler-audit:
+    enabled: true
+  csslint:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+        javascript:
+          mass_threshold: 1000
+        ruby:
+          mass_threshold: 80
+  eslint:
+    enabled: false
+  fixme:
+    enabled: true
+
+ratings:
+  paths:
+  - Gemfile.lock
+  - "**.css"
+  - "**.inc"
+  - "**.js"
+  - "**.jsx"
+  - "**.module"
+  - "**.php"
+  - "**.py"
+  - "**.rb"
+exclude_paths:
+- "spec/**/*"
+- "Rakefile"
+- "vendor/**/*"
+- "db/**/*"
