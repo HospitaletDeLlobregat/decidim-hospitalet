@@ -20,13 +20,9 @@ AllCops:
     - '**/Fastfile'
     - '**/*Fastfile'
   Exclude:
-    - '**/Gemfile'
-    - '**/*.gemspec'
-    - 'vendor/**/*'
+    - 'db/*'
     - 'spec/*'
-    - 'db/**/*'
-    - 'development_app/**/*'
-    - 'node_modules/**/*'
+    - 'vendor/*'
   # Default formatter will be used if no -f/--format option is given.
   DefaultFormatter: progress
   # Cop names are not displayed in offense messages by default. Change behavior
@@ -287,7 +283,7 @@ Style/BracesAroundHashParameters:
 
 # Indentation of `when`.
 Style/CaseIndentation:
-  IndentWhenRelativeTo: case
+  EnforcedStyle: case
   SupportedStyles:
     - case
     - end
@@ -921,9 +917,6 @@ Style/StringMethods:
 
 Style/SpaceAroundBlockParameters:
   EnforcedStyleInsidePipes: no_space
-  SupportedStyles:
-    - space
-    - no_space
 
 Style/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: space
@@ -1001,10 +994,6 @@ Style/TrailingCommaInArguments:
   # If `consistent_comma`, the cop requires a comma after the last argument,
   # for all parenthesized method calls with arguments.
   EnforcedStyleForMultiline: no_comma
-  SupportedStyles:
-    - comma
-    - consistent_comma
-    - no_comma
 
 Style/TrailingCommaInLiteral:
   # If `comma`, the cop requires a comma after the last item in an array or
@@ -1012,10 +1001,6 @@ Style/TrailingCommaInLiteral:
   # If `consistent_comma`, the cop requires a comma after the last item of all
   # non-empty array and hash literals.
   EnforcedStyleForMultiline: no_comma
-  SupportedStyles:
-    - comma
-    - consistent_comma
-    - no_comma
 
 # TrivialAccessors requires exact name matches and doesn't allow
 # predicated methods by default.
@@ -1150,11 +1135,7 @@ Lint/BlockAlignment:
   # The value `start_of_line` means it should be aligned with the whole
   # expression's starting line.
   # The value `either` means both are allowed.
-  AlignWith: either
-  SupportedStyles:
-    - either
-    - start_of_block
-    - start_of_line
+  EnforcedStyleAlignWith: either
 
 # Align ends correctly.
 Lint/EndAlignment:
@@ -1165,11 +1146,7 @@ Lint/EndAlignment:
   # situations, `end` should still be aligned with the keyword.
   # The value `start_of_line` means that `end` should be aligned with the start
   # of the line which the matching keyword appears on.
-  AlignWith: keyword
-  SupportedStyles:
-    - keyword
-    - variable
-    - start_of_line
+  EnforcedStyleAlignWith: keyword
   AutoCorrect: false
 
 Lint/DefEndAlignment:
@@ -1177,10 +1154,7 @@ Lint/DefEndAlignment:
   # The value `start_of_line` means that `end` should be aligned with method
   # calls like `private`, `public`, etc, if present in front of the `def`
   # keyword on the same line.
-  AlignWith: start_of_line
-  SupportedStyles:
-    - start_of_line
-    - def
+  EnforcedStyleAlignWith: start_of_line
   AutoCorrect: false
 
 Lint/InheritException:
@@ -1288,10 +1262,7 @@ Rails/TimeZone:
     - flexible
 
 Rails/UniqBeforePluck:
-  EnforcedMode: conservative
-  SupportedModes:
-    - conservative
-    - aggressive
+  EnforcedStyle: conservative
   AutoCorrect: false
 
 Rails/Validation:
