@@ -19,7 +19,7 @@ if Rails.env.production?
       aws_access_key_id:     Rails.application.secrets.aws_access_key_id,       # required
       aws_secret_access_key: Rails.application.secrets.aws_secret_access_key,   # required
       host:                  "s3.eu-central-1.amazonaws.com",
-      endpoint: "https://s3.eu-central-1",
+      endpoint: "https://s3.eu-central-1.amazonaws.com",
       region:                "eu-central-1"                                     # optional, defaults to 'us-east-1'
     }
     config.fog_public = true
