@@ -22,16 +22,7 @@ AllCops:
   Exclude:
     - 'db/*'
     - 'spec/*'
-<<<<<<< HEAD
     - 'vendor/*'
-=======
-    - 'db/*'
-    - 'decidim-*/spec/**/*'
-    - 'decidim-*/test/**/*'
-    - 'decidim-*/db/**/*'
-    - 'development_app/**/*'
-    - 'node_modules/**/*'
->>>>>>> Update rubocop file
   # Default formatter will be used if no -f/--format option is given.
   DefaultFormatter: progress
   # Cop names are not displayed in offense messages by default. Change behavior
