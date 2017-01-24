@@ -11,7 +11,7 @@ end
 if Rails.env.production?
   CarrierWave.configure do |config|
     config.storage = :aws
-    config.aws_bucket = "decidim-hospitalet"
+    config.aws_bucket = ENV.fetch("decidim-hospitalet")
     config.aws_acl    = "public-read"
     config.aws_authenticated_url_expiration = 60 * 60 * 24 * 7
 
