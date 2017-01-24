@@ -24,7 +24,7 @@ end
 group :production do
   gem 'rails_12factor'
   gem 'sendgrid-ruby'
-  gem 'carrierwave-aws'
+  gem 'fog-aws'
   gem 'sentry-raven'
   gem 'newrelic_rpm'
 end
