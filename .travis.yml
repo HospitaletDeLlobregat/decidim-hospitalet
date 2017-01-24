@@ -11,28 +11,28 @@ branches:
     - master
 
 env:
-  - GEM=decidim_hospitalet-surveys DB=postgres
+  global:
+    - BUNDLE_GEMFILE="$TRAVIS_BUILD_DIR/Gemfile"
+    - BUNDLE_PATH="$HOME/.bundle"
+  matrix:
+    - GEM=decidim_hospitalet-surveys DB=postgres
 
 before_install:
-  # Repo for newer Node.js versions
-  - export BUNDLE_PATH="$TRAVIS_BUILD_DIR/.bundle"
   - gem update --system
 
 # Skip the install step
 install: true
 
 cache:
-  bundler: true
   directories:
+    - $HOME/.bundle
     - $TRAVIS_BUILD_DIR/.yarn-cache
     - $TRAVIS_BUILD_DIR/node_modules
     - $BUNDLE_PATH
-    - vendor/bundle
 
 script:
   - cd engines/$GEM;
-  - pwd
-  - bundle install --jobs=3 --retry=3
+  - bundle install --jobs=3 --retry=3 --deployment --path="$HOME/.bundle"
   - bundle exec rake
 
 rvm:
