@@ -6,8 +6,6 @@ module DecidimHospitalet
     module Admin
       describe SurveyForm do
         let(:feature) { create(:feature) }
-        let(:title) { "Oriol for president!" }
-        let(:body) { "Everything would be better" }
         let(:user) { create(:user, organization: feature.organization) }
         let(:category) { create(:category, participatory_process: feature.participatory_process) }
         let(:scope) { create(:scope, organization: feature.organization) }
@@ -15,8 +13,6 @@ module DecidimHospitalet
         let(:scope_id) { scope.try(:id) }
         let(:params) do
           {
-            title: title,
-            body: body,
             categories_ids: [category_id],
             scope_id: scope_id
           }
