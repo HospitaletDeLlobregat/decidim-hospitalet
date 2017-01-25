@@ -29,6 +29,7 @@ es:
       survey_results:
         index:
           answer_the_survey: "Responde la encuesta"
+          send_proposals: "También puedes participar enviando propuestas! Puedes ver las <a href='%{index_url}'>existents</a> o <a href='%{new_url}'>enviar una de nueva</a>."
           surveys_info: "<p>El Ayuntamiento de L’Hospitalet está impulsando el proceso participativo L’H ON dels Barris. Mediante este proceso lo que se pretende es obtener una visión compartida con la ciudadanía sobre el posicionamiento y los objetivos de futuro de los diferentes distritos y barrios que componen nuestra ciudad.</p><p>Una de las herramientas que estamos utilizando en este proceso es este cuestionario, en el que te preguntamos qué opinas sobre las prioridades de las que crees que tenemos que ocuparnos en tu barrio durante los próximos años.</p>"
           title: Encuesta
         new:

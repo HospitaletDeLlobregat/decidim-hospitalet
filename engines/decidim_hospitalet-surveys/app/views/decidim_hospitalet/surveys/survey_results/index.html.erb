@@ -1,3 +1,5 @@
+<% proposals_feature = Decidim::Feature.where(participatory_process: current_participatory_process, manifest_name: :proposals).first %>
+
 <div class="row columns">
   <h2 class="section-heading"><%= t(".title") %></h2>
 </div>
@@ -5,6 +7,11 @@
   <div class="columns large-6 medium-centered">
     <div class="card">
       <div class="card__content">
+        <% if answered_surveys.any? && proposals_feature %>
+          <div class="callout success">
+            <p><%== t(".send_proposals", index_url: decidim.feature_path(participatory_process_id: current_participatory_process.id, feature_id: proposals_feature), new_url: decidim_proposals.new_proposal_path(participatory_process_id: current_participatory_process.id, feature_id: proposals_feature.id)) %></p>
+          </div>
+        <% end %>
         <%== t('.surveys_info') %>
         <div class="row">
           <div class="columns medium-centered medium-7 mediumlarge-8">

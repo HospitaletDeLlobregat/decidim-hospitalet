@@ -7,7 +7,7 @@ module DecidimHospitalet
       include Decidim::FormFactory
       before_action :authenticate_user!, only: [:new, :create]
 
-      helper_method :available_scopes
+      helper_method :available_scopes, :answered_surveys
 
       def new
         @form = form(SurveyForm).from_params({})
