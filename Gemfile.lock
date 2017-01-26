@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/AjuntamentdeBarcelona/decidim.git
-  revision: 67dfe98ebd90042b5005f50d73fed60ec765daf4
+  revision: 2f51be2302cb265e6665060e21af2dbf95bb8f51
   specs:
     decidim (0.0.2)
       decidim-admin (= 0.0.2)
@@ -487,7 +487,7 @@ GEM
       ruby_http_client (~> 3.0.0)
     sentry-raven (2.3.0)
       faraday (>= 0.7.6, < 1.0)
-    simplecov (0.12.0)
+    simplecov (0.13.0)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
@@ -536,7 +536,7 @@ GEM
       coercible (~> 1.0)
       descendants_tracker (~> 0.0, >= 0.0.3)
       equalizer (~> 0.0, >= 0.0.9)
-    warden (1.2.6)
+    warden (1.2.7)
       rack (>= 1.0)
     web-console (3.4.0)
       actionview (>= 5.0)
