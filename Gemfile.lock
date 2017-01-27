@@ -207,6 +207,7 @@ GEM
     concurrent-ruby (1.0.4)
     css_parser (1.4.7)
       addressable
+    dalli (2.7.6)
     database_cleaner (1.5.3)
     date_validator (0.9.0)
       activemodel
@@ -549,6 +550,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  dalli
   decidim!
   decidim-dev!
   decidim_hospitalet-surveys!
