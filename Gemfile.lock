@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/AjuntamentdeBarcelona/decidim.git
-  revision: 88292a0cc20becadabbf1b1161269c81bdc315ad
+  revision: 08cb1948b8c696f61a2f214a8af12b3e3926c690
   specs:
     decidim (0.0.2)
       decidim-admin (= 0.0.2)
@@ -417,7 +417,7 @@ GEM
     rainbow (2.2.1)
     rake (12.0.0)
     rb-fsevent (0.9.8)
-    rb-inotify (0.9.7)
+    rb-inotify (0.9.8)
       ffi (>= 0.5.0)
     rectify (0.8.0)
       activemodel (>= 4.1.0)
