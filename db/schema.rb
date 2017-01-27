@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170126102853) do
+ActiveRecord::Schema.define(version: 20170127160048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -253,6 +253,20 @@ ActiveRecord::Schema.define(version: 20170126102853) do
     t.index ["from_type", "from_id"], name: "index_decidim_resource_links_on_from_type_and_from_id", using: :btree
     t.index ["name"], name: "index_decidim_resource_links_on_name", using: :btree
     t.index ["to_type", "to_id"], name: "index_decidim_resource_links_on_to_type_and_to_id", using: :btree
+  end
+
+  create_table "decidim_results_results", force: :cascade do |t|
+    t.jsonb    "title"
+    t.jsonb    "description"
+    t.jsonb    "short_description"
+    t.integer  "decidim_feature_id"
+    t.integer  "decidim_scope_id"
+    t.integer  "decidim_category_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["decidim_category_id"], name: "index_decidim_results_results_on_decidim_category_id", using: :btree
+    t.index ["decidim_feature_id"], name: "index_decidim_results_results_on_decidim_feature_id", using: :btree
+    t.index ["decidim_scope_id"], name: "index_decidim_results_results_on_decidim_scope_id", using: :btree
   end
 
   create_table "decidim_scopes", force: :cascade do |t|
