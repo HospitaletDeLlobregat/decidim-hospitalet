@@ -221,7 +221,7 @@ module DecidimHospitalet
         "890240003" => "Vilanova del Vallès",
         "821400000" => "Vilassar de Dalt",
         "821910007" => "Vilassar de Mar",
-        "830410007" => "Vilobí del Penedès",
+        "830410007" => "Vilobí del Penedès"
       }.freeze
     end
   end

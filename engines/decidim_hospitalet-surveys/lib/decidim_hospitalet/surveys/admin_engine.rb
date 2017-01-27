@@ -8,8 +8,8 @@ module DecidimHospitalet
       paths["db/migrate"] = nil
 
       routes do
-        resources :surveys, only: [:index, :new, :create]
-        root to: "surveys#index"
+        resources :survey_results
+        root to: "survey_results#index"
       end
 
       def load_seed

@@ -9,15 +9,22 @@ module DecidimHospitalet
       it { is_expected.to be_valid }
 
       context "when the user is missing" do
-        subject { build(:survey_result, user: nil)}
+        subject { build(:survey_result, user: nil) }
 
-        it { is_expected.to be_invalid}
+        it { is_expected.to be_valid }
+
+        it "allows multiple anonymous surveys" do
+          subject.save
+          new_survey = build(:survey_result, scope: subject.scope, feature: subject.feature)
+
+          expect(new_survey).to be_valid
+        end
       end
 
       context "when the scope is missing" do
-        subject { build(:survey_result, scope: nil)}
+        subject { build(:survey_result, scope: nil) }
 
-        it { is_expected.to be_invalid}
+        it { is_expected.to be_invalid }
       end
 
       context "when the feature is missing" do
@@ -34,19 +41,19 @@ module DecidimHospitalet
           )
         end
 
-        it { is_expected.to be_invalid}
+        it { is_expected.to be_invalid }
       end
 
       context "when the author is from another organization" do
-        subject { build(:survey_result, user: create(:user))}
+        subject { build(:survey_result, user: create(:user)) }
 
-        it { is_expected.to be_invalid}
+        it { is_expected.to be_invalid }
       end
 
       context "when the scope is from another organization" do
-        subject { build(:survey_result, scope: create(:scope))}
+        subject { build(:survey_result, scope: create(:scope)) }
 
-        it { is_expected.to be_invalid}
+        it { is_expected.to be_invalid }
       end
 
       context "when the user/scope/feature combination already exists" do

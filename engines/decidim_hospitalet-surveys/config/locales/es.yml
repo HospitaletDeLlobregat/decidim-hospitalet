@@ -5,7 +5,43 @@ es:
       hospitalet_surveys:
         name: Encuesta
   decidim_hospitalet:
+    survey_results:
+      actions:
+        confirm_destroy: ¿Seguro que quieres eliminar esta respuesta?
+        destroy: Eliminar
+        edit: Editar
+        new: Nueva %{name}
+        title: Acciones
+      admin:
+        models:
+          survey_result:
+            name: Respuesta de encuesta
+      models:
+        survey_result:
+          fields:
+            categories: Categorías
+            created_by_admin: Creado por administrador
+            scope_name: Ámbito
     surveys:
+      admin:
+        survey_results:
+          create:
+            invalid: Han habido errores creando la respuesta.
+            success: La respuesta se ha enviado correctamente.
+            user_invited: La respuesta se ha enviado correctamente. También se ha invitado el usuario a la plataforma.
+          destroy:
+            success: La respuesta se ha eliminado correctamente
+          edit:
+            title: Editar respuesta de encuesta
+            update: Guardar
+          index:
+            title: Respuestas de encuesta
+          new:
+            create: Guardar
+            title: Nueva respuesta de encuesta
+          update:
+            invalid: Han habido errores actualizando la respuesta.
+            success: La respuesta se ha actualizado correctamente
       create:
         error: Han habido errores en tu respuesta.
         success: Tu respuesta se ha enviado correctamente
@@ -14,7 +50,10 @@ es:
         categories: 'Selecciona 4 temas que consideres que son prioritarios en tu
           barrio para los próximos 10 años:'
         city: "¿En qué municipio vives?"
-        future_ideas: Dentro de 10 años, ¿por qué te gustaría que se conociera tu barrio?
+        email: Correo electrónico
+        email_hint: Si rellenas este campo se invitará el usuario a la plataforma y se vinculará la respuesta de la encuesta con el usuario.
+        future_ideas: Dentro de 10 años, ¿por qué te gustaría que se conociera tu
+          barrio?
         gender: Género
         genders:
           female: Mujer
@@ -28,10 +67,27 @@ es:
         zip_code: Código postal
       survey_results:
         index:
-          answer_the_survey: "Responde la encuesta"
+          answer_the_survey: Responde la encuesta
           send_proposals: "También puedes participar enviando propuestas! Puedes ver las <a href='%{index_url}'>existents</a> o <a href='%{new_url}'>enviar una de nueva</a>."
-          surveys_info: "<p>El Ayuntamiento de L’Hospitalet está impulsando el proceso participativo L’H ON dels Barris. Mediante este proceso lo que se pretende es obtener una visión compartida con la ciudadanía sobre el posicionamiento y los objetivos de futuro de los diferentes distritos y barrios que componen nuestra ciudad.</p><p>Una de las herramientas que estamos utilizando en este proceso es este cuestionario, en el que te preguntamos qué opinas sobre las prioridades de las que crees que tenemos que ocuparnos en tu barrio durante los próximos años.</p>"
+          surveys_info: "<p>El Ayuntamiento de L’Hospitalet está impulsando el proceso
+            participativo L’H ON dels Barris. Mediante este proceso lo que se pretende
+            es obtener una visión compartida con la ciudadanía sobre el posicionamiento
+            y los objetivos de futuro de los diferentes distritos y barrios que componen
+            nuestra ciudad.</p><p>Una de las herramientas que estamos utilizando en
+            este proceso es este cuestionario, en el que te preguntamos qué opinas
+            sobre las prioridades de las que crees que tenemos que ocuparnos en tu
+            barrio durante los próximos años.</p>"
           title: Encuesta
         new:
           send: Enviar encuesta
           title: Encuesta
+  devise:
+    mailer:
+      invitation_instructions:
+        accept: Aceptar invitación
+        accept_until: Esta invitación caducará el día %{due_date}.
+        hello: Hola %{email},
+        ignore: |-
+          Si no quieres aceptar la invitación ignora este correo.<br />
+          Tu cuenta no se creará hasta que accedas al enlance de abajo y escojas tu contraseña.
+        someone_invited_you: Alguien te ha invitado a %{application}, puedes aceptar la invitación con el enlace a continuación.

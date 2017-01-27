@@ -1,0 +1,39 @@
+<h2><%= t(".title") %></h2>
+
+<div class="actions title">
+  <%= link_to t("actions.new", scope: "decidim_hospitalet.survey_results", name: t("models.survey_result.name", scope: "decidim_hospitalet.survey_results.admin")), new_survey_result_path, class: 'new' if can? :manage, current_feature %>
+</div>
+
+<table class="stack">
+  <thead>
+    <tr>
+      <th><%= t("models.survey_result.fields.scope_name", scope: "decidim_hospitalet.survey_results") %></th>
+      <th><%= t("models.survey_result.fields.categories", scope: "decidim_hospitalet.survey_results") %></th>
+      <th><%= t("models.survey_result.fields.created_by_admin", scope: "decidim_hospitalet.survey_results") %></th>
+      <th class="actions"><%= t("actions.title", scope: "decidim_hospitalet.survey_results") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% survey_results.each do |survey_result| %>
+      <tr data-id="<%= survey_result.id %>">
+        <td>
+          <%= survey_result.scope.name %>
+        </td>
+        <td>
+          <ul>
+            <% survey_result.categories.each do |category| %>
+              <li><%= translated_attribute(category.name) %></li>
+            <%  end%>
+          </ul>
+        </td>
+        <td>
+          <%= humanize_boolean survey_result.created_by_admin? %>
+        </td>
+        <td class="actions">
+          <%= link_to t("actions.edit", scope: "decidim_hospitalet.survey_results"), edit_survey_result_path(survey_result) if can? :update, current_feature %>
+          <%= link_to t("actions.destroy", scope: "decidim_hospitalet.survey_results"), survey_result_path(survey_result), method: :delete, class: "small alert button", data: { confirm: t("actions.confirm_destroy", scope: "decidim_hospitalet.survey_results") } if can? :destroy, current_feature %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

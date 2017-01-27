@@ -3,7 +3,7 @@ module DecidimHospitalet
   module Surveys
     # The data store for a SurveyResult in the DecidimHospitalet::Surveys component.
     class SurveyResult < Surveys::ApplicationRecord
-      GENDERS = %w{female male}.freeze
+      GENDERS = %w(female male).freeze
       AGE_GROUPS = [
         "0-17",
         "18-24",
@@ -18,11 +18,15 @@ module DecidimHospitalet
       belongs_to :scope, foreign_key: "decidim_scope_id", class_name: Decidim::Scope
       has_one :organization, through: :feature
 
-      validates :user, :scope, :feature, presence: true
+      validates :scope, :feature, presence: true
       validate :user_belongs_to_organization
       validate :scope_belongs_to_organization
       validates :scope, uniqueness: { scope: [:feature, :user] }
-      validates :selected_categories, length: { minimum: 1, maximum: 4 }, if: Proc.new { |object| object.feature.present? }
+      validates :selected_categories, length: { minimum: 1, maximum: 4 }, if: proc { |object| object.feature.present? }
+
+      def categories
+        @categories ||= Decidim::Category.where(id: selected_categories)
+      end
 
       private
 

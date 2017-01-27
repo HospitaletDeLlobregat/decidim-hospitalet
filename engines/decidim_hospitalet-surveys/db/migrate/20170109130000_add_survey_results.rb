@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AddSurveyResults < ActiveRecord::Migration[5.0]
   def change
     create_table :decidim_hospitalet_surveys_survey_results do |t|
@@ -19,8 +20,8 @@ class AddSurveyResults < ActiveRecord::Migration[5.0]
     end
 
     add_index :decidim_hospitalet_surveys_survey_results,
-      [:decidim_feature_id, :decidim_user_id, :decidim_scope_id],
-      unique: true,
-      name: "index_unique_user_feaeture_scope_for_surveys"
+              [:decidim_feature_id, :decidim_user_id, :decidim_scope_id],
+              unique: true,
+              name: "index_unique_user_feaeture_scope_for_surveys"
   end
 end
