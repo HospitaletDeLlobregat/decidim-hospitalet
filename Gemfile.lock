@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/AjuntamentdeBarcelona/decidim.git
-  revision: f05422657ce60ede6d35c0b01afdf8c55d8b34cc
+  revision: 93b1127bb1adc6fe6d3dd16966d79095303d1418
   specs:
     decidim (0.0.2)
       decidim-admin (= 0.0.2)
@@ -391,7 +391,7 @@ GEM
       websocket-driver (>= 0.2.0)
     powerpack (0.1.1)
     public_suffix (2.0.5)
-    puma (3.6.2)
+    puma (3.7.0)
     rack (2.0.1)
     rack-cors (0.4.0)
     rack-protection (1.5.3)
