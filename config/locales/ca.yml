@@ -1,1 +1,5 @@
 ca:
+  pages:
+    home:
+      surveys: enquestes
+      surveys_explanation: Descripció enquestes.
