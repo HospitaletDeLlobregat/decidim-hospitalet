@@ -1,9 +1,10 @@
 es:
   pages:
     home:
-      meetings: Encuentros presenciales
-      meetings_explanation: Encuentros y sesiones de trabajo presenciales relacionadas con los procesos de participación activos.
-      proposals: Propuestas
-      proposals_explanation: Haz tus aportaciones en aquellos procesos activos en el web.
-      surveys: Encuestas
-      surveys_explanation: Descripción encuestas.
+      extended:
+        meetings: Encuentros presenciales
+        meetings_explanation: Encuentros y sesiones de trabajo presenciales relacionadas con los procesos de participación activos.
+        proposals: Propuestas
+        proposals_explanation: Haz tus aportaciones en aquellos procesos activos en el web.
+        surveys: Encuestas
+        surveys_explanation: Cuestionario para obtener información y conocer la opinión de la ciudadanía.
