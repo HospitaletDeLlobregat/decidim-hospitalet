@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170130082003) do
+ActiveRecord::Schema.define(version: 20170130180920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,9 +120,11 @@ ActiveRecord::Schema.define(version: 20170130082003) do
   end
 
   create_table "decidim_identities", force: :cascade do |t|
-    t.string  "provider",        null: false
-    t.string  "uid",             null: false
-    t.integer "decidim_user_id", null: false
+    t.string   "provider",        null: false
+    t.string   "uid",             null: false
+    t.integer  "decidim_user_id", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.index ["decidim_user_id"], name: "index_decidim_identities_on_decidim_user_id", using: :btree
     t.index ["provider", "uid"], name: "index_decidim_identities_on_provider_and_uid", unique: true, using: :btree
   end
@@ -130,7 +132,6 @@ ActiveRecord::Schema.define(version: 20170130082003) do
   create_table "decidim_meetings_meetings", force: :cascade do |t|
     t.jsonb    "title"
     t.jsonb    "description"
-    t.jsonb    "short_description"
     t.datetime "start_time"
     t.datetime "end_time"
     t.text     "address"
@@ -168,6 +169,7 @@ ActiveRecord::Schema.define(version: 20170130082003) do
     t.string   "logo"
     t.string   "twitter_handler"
     t.boolean  "show_statistics",   default: true
+    t.string   "favicon"
     t.index ["host"], name: "index_decidim_organizations_on_host", unique: true, using: :btree
     t.index ["name"], name: "index_decidim_organizations_on_name", unique: true, using: :btree
   end
@@ -264,7 +266,6 @@ ActiveRecord::Schema.define(version: 20170130082003) do
   create_table "decidim_results_results", force: :cascade do |t|
     t.jsonb    "title"
     t.jsonb    "description"
-    t.jsonb    "short_description"
     t.integer  "decidim_feature_id"
     t.integer  "decidim_scope_id"
     t.integer  "decidim_category_id"
@@ -320,13 +321,13 @@ ActiveRecord::Schema.define(version: 20170130082003) do
   end
 
   create_table "decidim_user_groups", force: :cascade do |t|
-    t.string   "name",                            null: false
-    t.string   "document_number",                 null: false
-    t.string   "phone",                           null: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.boolean  "verified",        default: false
+    t.string   "name",            null: false
+    t.string   "document_number", null: false
+    t.string   "phone",           null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "avatar"
+    t.datetime "verified_at"
   end
 
   create_table "decidim_users", force: :cascade do |t|
