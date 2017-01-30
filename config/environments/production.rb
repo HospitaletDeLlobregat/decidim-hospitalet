@@ -87,8 +87,6 @@ Rails.application.configure do
     :openssl_verify_mode => 'none'
   }
 
-  config.middleware.use Rack::Deflater
-
   if Rails.application.secrets.sendgrid
     config.action_mailer.default_options = {
       "X-SMTPAPI" => {
