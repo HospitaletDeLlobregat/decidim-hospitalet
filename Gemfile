@@ -22,6 +22,7 @@ group :development do
 end
 
 group :production do
+  gem 'sidekiq'
   gem 'dalli'
   gem 'rails_12factor'
   gem 'sendgrid-ruby'
