@@ -15,4 +15,5 @@ Gem::Specification.new do |s|
   s.add_dependency "rectify", "~> 0.8.0"
 
   s.add_development_dependency "decidim-dev"
+  s.add_development_dependency "decidim-proposals"
 end

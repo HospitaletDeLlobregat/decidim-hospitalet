@@ -22,6 +22,7 @@ module DecidimHospitalet
 
           SurveyResult.transaction do
             create_survey_result
+            create_proposals
             return broadcast(:ok, :user_invited) if form.email.present?
             broadcast(:ok, :success)
           end
@@ -48,6 +49,29 @@ module DecidimHospitalet
             scope: form.scope,
             user: user,
             feature: form.current_feature
+          )
+        end
+
+        def create_proposals
+          return unless form.proposals_feature
+
+          [
+            build_proposal(form.proposal_title_0, form.proposal_description_0, form.proposal_scope_id_0),
+            build_proposal(form.proposal_title_1, form.proposal_description_1, form.proposal_scope_id_1),
+            build_proposal(form.proposal_title_2, form.proposal_description_2, form.proposal_scope_id_2),
+            build_proposal(form.proposal_title_3, form.proposal_description_3, form.proposal_scope_id_3)
+          ].compact.map(&:save!)
+        end
+
+        def build_proposal(title, description, scope_id)
+          return unless title.present? || description.present?
+
+          Decidim::Proposals::Proposal.new(
+            title: title,
+            body: description,
+            author: user,
+            feature: form.proposals_feature,
+            decidim_scope_id: scope_id
           )
         end
 

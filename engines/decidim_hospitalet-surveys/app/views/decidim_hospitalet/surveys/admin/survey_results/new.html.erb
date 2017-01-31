@@ -21,7 +21,7 @@
       </div>
 
       <div class="field">
-        <%= f.collection_select :"proposal_scope_id_#{i}", @form.scopes, :id, :name, prompt: true, label: t("questions.proposal_scope", scope: "decidim_hospitalet.surveys") %>
+        <%= f.collection_select :"proposal_scope_id_#{i}", @form.scopes, :id, :name, include_blank: true, label: t("questions.proposal_scope", scope: "decidim_hospitalet.surveys") %>
       </div>
     <% end %>
   <% end %>

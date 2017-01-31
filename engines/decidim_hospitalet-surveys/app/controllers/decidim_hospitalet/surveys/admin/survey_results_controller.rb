@@ -11,7 +11,7 @@ module DecidimHospitalet
         end
 
         def create
-          @form = form(SurveyResultForm).from_params(params, current_feature: current_feature)
+          @form = form(SurveyResultForm).from_params(params, current_feature: current_feature, proposals_feature: proposals_feature)
 
           Admin::CreateSurveyResult.call(@form) do
             on(:ok) do |success_message|

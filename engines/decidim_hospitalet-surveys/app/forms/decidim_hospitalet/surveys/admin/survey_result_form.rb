@@ -74,6 +74,10 @@ module DecidimHospitalet
         def invitation_instructions
           "invite_user"
         end
+
+        def proposals_feature
+          context.proposals_feature
+        end
       end
     end
   end
