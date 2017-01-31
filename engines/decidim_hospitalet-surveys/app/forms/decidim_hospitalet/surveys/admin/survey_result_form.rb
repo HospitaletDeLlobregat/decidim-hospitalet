@@ -27,6 +27,15 @@ module DecidimHospitalet
         validates :gender, inclusion: { in: SurveyResult::GENDERS }, allow_blank: true
         validates :city, inclusion: { in: Towns::TOWNS.keys }, allow_blank: true
 
+        4.times do |index|
+          attribute :"proposal_title_#{index}", String
+          attribute :"proposal_description_#{index}", String
+          attribute :"proposal_scope_id_#{index}", String
+
+          validates :"proposal_title_#{index}", presence: true, if: proc { |m| m.send("proposal_description_#{index}").present? }
+          validates :"proposal_description_#{index}", presence: true, if: proc { |m| m.send("proposal_title_#{index}").present? }
+        end
+
         def map_model(model)
           self.scope_id = model.decidim_scope_id
           self.categories_ids = model.selected_categories.map(&:to_s)
@@ -43,7 +52,11 @@ module DecidimHospitalet
         #
         # Returns a Decidim::Scope
         def scope
-          @scope ||= context.current_feature.scopes.where(id: scope_id).first
+          @scope ||= scopes.where(id: scope_id).first
+        end
+
+        def scopes
+          @scopes ||= context.current_feature.scopes
         end
 
         def organization

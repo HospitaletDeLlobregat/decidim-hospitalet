@@ -4,7 +4,7 @@ module DecidimHospitalet
     module Admin
       # This controller allows an admin to manage survey_results from a Participatory Process
       class SurveyResultsController < Admin::ApplicationController
-        helper_method :survey_results, :available_scopes
+        helper_method :survey_results, :available_scopes, :proposals_feature
 
         def new
           @form = form(SurveyResultForm).instance
@@ -66,6 +66,10 @@ module DecidimHospitalet
 
         def survey_result
           @survey_result ||= survey_results.find(params[:id])
+        end
+
+        def proposals_feature
+          Decidim::Feature.where(participatory_process: current_participatory_process, manifest_name: :proposals).first
         end
       end
     end

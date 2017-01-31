@@ -7,7 +7,7 @@ es:
   decidim_hospitalet:
     survey_results:
       actions:
-        confirm_destroy: ¿Seguro que quieres eliminar esta respuesta?
+        confirm_destroy: "¿Seguro que quieres eliminar esta respuesta?"
         destroy: Eliminar
         edit: Editar
         new: Nueva %{name}
@@ -28,7 +28,8 @@ es:
           create:
             invalid: Han habido errores creando la respuesta.
             success: La respuesta se ha enviado correctamente.
-            user_invited: La respuesta se ha enviado correctamente. También se ha invitado el usuario a la plataforma.
+            user_invited: La respuesta se ha enviado correctamente. También se ha
+              invitado el usuario a la plataforma.
           destroy:
             success: La respuesta se ha eliminado correctamente
           edit:
@@ -38,6 +39,10 @@ es:
             title: Respuestas de encuesta
           new:
             create: Guardar
+            proposal: Propuesta
+            proposals_explanation: Las siguientes propuestas se vincularan al usuario
+              que ha rellenado la encuesta. Si la encuesta es anónima, las propuestas
+              no se vincularan a nadie.
             title: Nueva respuesta de encuesta
           update:
             invalid: Han habido errores actualizando la respuesta.
@@ -51,7 +56,8 @@ es:
           barrio para los próximos 10 años:'
         city: "¿En qué municipio vives?"
         email: Correo electrónico
-        email_hint: Si rellenas este campo se invitará el usuario a la plataforma y se vinculará la respuesta de la encuesta con el usuario.
+        email_hint: Si rellenas este campo se invitará el usuario a la plataforma
+          y se vinculará la respuesta de la encuesta con el usuario.
         future_ideas: Dentro de 10 años, ¿por qué te gustaría que se conociera tu
           barrio?
         gender: Género
@@ -62,13 +68,18 @@ es:
         name: Nombre
         other_priorities: 'Otros temas que consideres prioritarios (especifícalos):'
         phone: Teléfono
+        proposal_description: Descripción de la propuesta
+        proposal_scope: Barrio donde aplica la propuesta
+        proposal_title: Título de la propuesta
         scope: Elige el barrio sobre el que deseas opinar
         working_at_scope: "¿Trabajas en el barrio?"
         zip_code: Código postal
       survey_results:
         index:
           answer_the_survey: Responde la encuesta
-          send_proposals: "También puedes participar enviando propuestas! Puedes ver las <a href='%{index_url}'>existents</a> o <a href='%{new_url}'>enviar una de nueva</a>."
+          send_proposals: También puedes participar enviando propuestas! Puedes ver
+            las <a href='%{index_url}'>existents</a> o <a href='%{new_url}'>enviar
+            una de nueva</a>.
           surveys_info: "<p>El Ayuntamiento de L’Hospitalet está impulsando el proceso
             participativo L’H ON dels Barris. Mediante este proceso lo que se pretende
             es obtener una visión compartida con la ciudadanía sobre el posicionamiento
@@ -90,4 +101,5 @@ es:
         ignore: |-
           Si no quieres aceptar la invitación ignora este correo.<br />
           Tu cuenta no se creará hasta que accedas al enlance de abajo y escojas tu contraseña.
-        someone_invited_you: Alguien te ha invitado a %{application}, puedes aceptar la invitación con el enlace a continuación.
+        someone_invited_you: Alguien te ha invitado a %{application}, puedes aceptar
+          la invitación con el enlace a continuación.

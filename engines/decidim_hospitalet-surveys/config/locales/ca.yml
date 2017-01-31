@@ -28,7 +28,8 @@ ca:
           create:
             invalid: Hi ha hagut algun error en crear la resposta.
             success: La resposta s'ha enviat correctament.
-            user_invited: La resposta s'ha enviat correctament. També s'ha convidat l'usuari a la plataforma.
+            user_invited: La resposta s'ha enviat correctament. També s'ha convidat
+              l'usuari a la plataforma.
           destroy:
             success: La resposta s'ha eliminat correctament
           edit:
@@ -38,6 +39,10 @@ ca:
             title: Respostes d'enquesta
           new:
             create: Desar
+            proposal: Proposta
+            proposals_explanation: Les següents propostes es vincularan a l'usuari
+              que ha omplert l'enquesta. Si l'enquesta és anònima, les propostes no
+              es vincularan a ningú.
             title: Crear resposta d'enquesta
           update:
             invalid: Hi ha hagut algun error en actualitzar la resposta.
@@ -51,7 +56,8 @@ ca:
           barri per als propers 10 anys:'
         city: A quin municipi vius?
         email: Correu electrònic
-        email_hint: Si omples aquest camp, es convidarà l'usuari a la plataforma i es vincularà la resposta de l'enquesta amb l'usuari.
+        email_hint: Si omples aquest camp, es convidarà l'usuari a la plataforma i
+          es vincularà la resposta de l'enquesta amb l'usuari.
         future_ideas: D'aquí 10 anys, per què t'agradaria que fos conegut el teu barri?
         gender: Gènere
         genders:
@@ -61,13 +67,18 @@ ca:
         name: Nom
         other_priorities: 'Altres temes que consideris que són prioritaris (especifica''ls):'
         phone: Telèfon
+        proposal_description: Descripció de la proposta
+        proposal_scope: Barri on aplica la proposta
+        proposal_title: Títol de la proposta
         scope: 'Tria el barri sobre el qual vols opinar:'
         working_at_scope: Treballes al barri?
         zip_code: Codi postal
       survey_results:
         index:
           answer_the_survey: Respon l'enquesta
-          send_proposals: "També pots participar enviant propostes! Pots veure les <a href='%{index_url}'>existents</a> o <a href='%{new_url}'>enviar-ne una de nova</a>."
+          send_proposals: També pots participar enviant propostes! Pots veure les
+            <a href='%{index_url}'>existents</a> o <a href='%{new_url}'>enviar-ne
+            una de nova</a>.
           surveys_info: "<p>L’Ajuntament de L’Hospitalet està impulsant el procés
             participatiu L’H ON dels Barris. Amb aquest procés es pretén obtenir una
             visió compartida amb la ciutadania sobre el posicionament i els objectius
@@ -88,4 +99,5 @@ ca:
         ignore: |-
           Si no vols acceptar la invitació, ignora aquest correu.<br />
           El teu compte no es crearà fins que no accedeixis a l'enllaç de sota i triïs la teva contrasenya.
-        someone_invited_you: Algú t'ha convidat a %{application}, pots acceptar la invitació amb l'enllaç a continuació.
+        someone_invited_you: Algú t'ha convidat a %{application}, pots acceptar la
+          invitació amb l'enllaç a continuació.
