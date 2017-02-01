@@ -1,10 +1,11 @@
 GIT
   remote: https://github.com/AjuntamentdeBarcelona/decidim.git
-  revision: 3358ff0b2a6060117b04f175bcc40f9c6811ad72
+  revision: f92bd9d6fc8a1cc02993833f4a3dae2b81447edb
   specs:
     decidim (0.0.2)
       decidim-admin (= 0.0.2)
       decidim-api (= 0.0.2)
+      decidim-budgets (= 0.0.2)
       decidim-comments (= 0.0.2)
       decidim-core (= 0.0.2)
       decidim-meetings (= 0.0.2)
@@ -33,6 +34,12 @@ GIT
       rack-cors (~> 0.4.0)
       rails (~> 5.0.0, >= 5.0.0.1)
       sprockets-es6 (~> 0.9.2)
+    decidim-budgets (0.0.2)
+      decidim-comments (= 0.0.2)
+      decidim-core (= 0.0.2)
+      kaminari (~> 1.0.0.rc1)
+      rectify (~> 0.8)
+      searchlight (~> 4.1.0)
     decidim-comments (0.0.2)
       decidim-core (= 0.0.2)
       jquery-rails (~> 4.0)
