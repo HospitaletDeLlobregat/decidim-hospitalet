@@ -94,6 +94,8 @@ es:
           title: Encuesta
   devise:
     mailer:
+      invite_user:
+        subject: Confirmación inscripción L'HON-Participa
       invitation_instructions:
         accept: Aceptar invitación
         accept_until: Esta invitación caducará el día %{due_date}.
