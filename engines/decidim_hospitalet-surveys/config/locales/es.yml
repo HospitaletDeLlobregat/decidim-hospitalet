@@ -100,6 +100,8 @@ es:
         hello: Hola %{email},
         ignore: |-
           Si no quieres aceptar la invitación ignora este correo.<br />
-          Tu cuenta no se creará hasta que accedas al enlance de abajo y escojas tu contraseña.
-        someone_invited_you: Alguien te ha invitado a %{application}, puedes aceptar
-          la invitación con el enlace a continuación.
+          Tu cuenta no se creará hasta que accedas al enlance anterior y escojas tu contraseña.
+        someone_invited_you: Has sido invitado a %{application}, puedes aceptar la
+          invitación a través del siguiente enlace.
+      invite_user:
+        subject: Confirmación inscripción L'HON-Participa

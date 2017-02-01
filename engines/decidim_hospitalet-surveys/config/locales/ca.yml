@@ -98,6 +98,8 @@ ca:
         hello: Hola %{email},
         ignore: |-
           Si no vols acceptar la invitació, ignora aquest correu.<br />
-          El teu compte no es crearà fins que no accedeixis a l'enllaç de sota i triïs la teva contrasenya.
-        someone_invited_you: Algú t'ha convidat a %{application}, pots acceptar la
+          El teu compte no es crearà fins que no accedeixis a l'enllaç de dalt i triïs la teva contrasenya.
+        someone_invited_you: Has estat convidat a %{application}, pots acceptar la
           invitació amb l'enllaç a continuació.
+      invite_user:
+        subject: Confirmació inscripció L'HON-Participa
