@@ -4,19 +4,20 @@ require "spec_helper"
 module DecidimHospitalet
   module Surveys
     module Admin
-      describe SurveyForm do
+      describe SurveyResultForm do
         let(:feature) { create(:feature) }
         let(:user) { create(:user, organization: feature.organization) }
         let(:category) { create(:category, participatory_process: feature.participatory_process) }
         let(:scope) { create(:scope, organization: feature.organization) }
         let(:category_id) { category.try(:id) }
         let(:scope_id) { scope.try(:id) }
-        let(:params) do
+        let(:default_params) do
           {
             categories_ids: [category_id],
             scope_id: scope_id
           }
         end
+        let(:params) { default_params }
 
         subject do
           described_class.from_params(params).with_context(
@@ -193,6 +194,43 @@ module DecidimHospitalet
 
               it { is_expected.not_to be_valid }
             end
+          end
+        end
+
+        describe "proposal fields" do
+          context "when titles and decriptions are filled equally" do
+            let(:params) do
+              default_params.merge(
+                proposal_title_0: "Title",
+                proposal_description_0: "Description"
+              )
+            end
+
+            it { is_expected.to be_valid }
+          end
+
+          context "when there are more titles than descriptions" do
+            let(:params) do
+              default_params.merge(
+                proposal_title_0: "Title",
+                proposal_title_1: "Title 1",
+                proposal_description_0: "Description"
+              )
+            end
+
+            it { is_expected.not_to be_valid }
+          end
+
+          context "when there are more descriptions than titles" do
+            let(:params) do
+              default_params.merge(
+                proposal_title_0: "Title",
+                proposal_description_0: "Description",
+                proposal_description_1: "Description 1"
+              )
+            end
+
+            it { is_expected.not_to be_valid }
           end
         end
       end

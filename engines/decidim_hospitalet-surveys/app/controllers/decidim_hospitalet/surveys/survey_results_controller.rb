@@ -7,7 +7,7 @@ module DecidimHospitalet
       include Decidim::FormFactory
       before_action :authenticate_user!, only: [:new, :create]
 
-      helper_method :available_scopes, :answered_surveys
+      helper_method :available_scopes, :answered_surveys, :proposals_feature
 
       def new
         @form = form(SurveyForm).from_params({})
@@ -37,6 +37,10 @@ module DecidimHospitalet
 
       def answered_surveys
         @answered_surveys ||= SurveyResult.where(user: current_user, feature: current_feature)
+      end
+
+      def proposals_feature
+        Decidim::Feature.where(participatory_process: current_participatory_process, manifest_name: :proposals).first
       end
     end
   end

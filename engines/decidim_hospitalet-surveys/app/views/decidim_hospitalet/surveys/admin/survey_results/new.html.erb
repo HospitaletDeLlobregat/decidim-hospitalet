@@ -8,6 +8,24 @@
     <p class="help-text"><%= t("questions.email_hint", scope: "decidim_hospitalet.surveys") %></p>
   </div>
 
+  <% if proposals_feature %>
+    <p><%= t(".proposals_explanation") %></p>
+    <% 4.times do |i| %>
+      <h5><%= t(".proposal") %> <%= i + 1 %></h5>
+      <div class="field">
+        <%= f.text_field :"proposal_title_#{i}", label: t("questions.proposal_title", scope: "decidim_hospitalet.surveys") %>
+      </div>
+
+      <div class="field">
+        <%= f.text_area :"proposal_description_#{i}", label: t("questions.proposal_description", scope: "decidim_hospitalet.surveys"), rows: 10 %>
+      </div>
+
+      <div class="field">
+        <%= f.collection_select :"proposal_scope_id_#{i}", @form.scopes, :id, :name, include_blank: true, label: t("questions.proposal_scope", scope: "decidim_hospitalet.surveys") %>
+      </div>
+    <% end %>
+  <% end %>
+
   <div class="actions">
     <%= f.submit t(".create") %>
   </div>
