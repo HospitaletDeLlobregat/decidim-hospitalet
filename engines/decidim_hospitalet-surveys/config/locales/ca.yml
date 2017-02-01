@@ -92,8 +92,6 @@ ca:
           title: Enquesta
   devise:
     mailer:
-      invite_user:
-        subject: Confirmació inscripció L'HON-Participa
       invitation_instructions:
         accept: Acceptar invitació
         accept_until: Aquesta invitació caducarà el dia %{due_date}.
@@ -103,3 +101,5 @@ ca:
           El teu compte no es crearà fins que no accedeixis a l'enllaç de dalt i triïs la teva contrasenya.
         someone_invited_you: Has estat convidat a %{application}, pots acceptar la
           invitació amb l'enllaç a continuació.
+      invite_user:
+        subject: Confirmació inscripció L'HON-Participa
