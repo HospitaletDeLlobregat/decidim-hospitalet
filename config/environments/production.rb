@@ -1,3 +1,5 @@
+require "sayabon_middleware"
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -114,7 +116,6 @@ Rails.application.configure do
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
 
-  require "sayabon_middleware"
   config.middleware.insert_before 0, SabayonMiddleware
 
   # Do not dump schema after migrations.
