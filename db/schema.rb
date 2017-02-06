@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170203210120) do
+ActiveRecord::Schema.define(version: 20170206151617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -248,10 +248,13 @@ ActiveRecord::Schema.define(version: 20170203210120) do
     t.string   "banner_image"
     t.boolean  "promoted",                default: false
     t.datetime "published_at"
-    t.jsonb    "domain"
+    t.jsonb    "developer_group"
     t.date     "end_date"
-    t.string   "developer_group"
     t.jsonb    "scope"
+    t.jsonb    "local_area"
+    t.jsonb    "target"
+    t.jsonb    "participatory_scope"
+    t.jsonb    "participatory_structure"
     t.index ["decidim_organization_id", "slug"], name: "index_unique_process_slug_and_organization", unique: true, using: :btree
     t.index ["decidim_organization_id"], name: "index_decidim_processes_on_decidim_organization_id", using: :btree
   end
@@ -281,10 +284,13 @@ ActiveRecord::Schema.define(version: 20170203210120) do
     t.datetime "answered_at"
     t.jsonb    "answer"
     t.index ["body"], name: "decidim_proposals_proposal_body_search", using: :btree
+    t.index ["created_at"], name: "index_decidim_proposals_proposals_on_created_at", using: :btree
     t.index ["decidim_author_id"], name: "index_decidim_proposals_proposals_on_decidim_author_id", using: :btree
     t.index ["decidim_category_id"], name: "index_decidim_proposals_proposals_on_decidim_category_id", using: :btree
     t.index ["decidim_feature_id"], name: "index_decidim_proposals_proposals_on_decidim_feature_id", using: :btree
     t.index ["decidim_scope_id"], name: "index_decidim_proposals_proposals_on_decidim_scope_id", using: :btree
+    t.index ["proposal_votes_count"], name: "index_decidim_proposals_proposals_on_proposal_votes_count", using: :btree
+    t.index ["state"], name: "index_decidim_proposals_proposals_on_state", using: :btree
     t.index ["title"], name: "decidim_proposals_proposal_title_search", using: :btree
   end
 
