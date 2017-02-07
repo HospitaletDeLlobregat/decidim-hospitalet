@@ -1,1 +1,9 @@
 <%= render partial: "decidim_hospitalet/surveys/survey_results/form", locals: { form: form } %>
+
+<div class="field">
+  <%= form.text_field :name, label: t("questions.name", scope: "decidim_hospitalet.surveys") %>
+</div>
+
+<div class="field">
+  <%= form.text_field :phone, label: t("questions.phone", scope: "decidim_hospitalet.surveys") %>
+</div>

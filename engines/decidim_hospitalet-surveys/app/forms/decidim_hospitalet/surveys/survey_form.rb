@@ -16,8 +16,6 @@ module DecidimHospitalet
       attribute :living_at_scope, Boolean
       attribute :working_at_scope, Boolean
       attribute :city, String
-      attribute :name, String
-      attribute :phone, String
 
       validates :scope, presence: true
       validates :categories, length: { minimum: 1, maximum: 4 }
