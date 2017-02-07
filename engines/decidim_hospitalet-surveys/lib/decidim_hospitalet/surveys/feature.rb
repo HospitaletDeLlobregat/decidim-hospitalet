@@ -20,6 +20,7 @@ Decidim.register_feature(:hospitalet_surveys) do |feature|
       Decidim::Feature.create!(
         name: { es: "Encuestas", ca: "Enquestes" },
         manifest_name: :hospitalet_surveys,
+        published_at: Time.current,
         participatory_process: process
       )
     end
