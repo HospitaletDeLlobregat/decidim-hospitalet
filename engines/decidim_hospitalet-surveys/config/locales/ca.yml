@@ -14,7 +14,7 @@ ca:
         title: Accions
       admin:
         actions:
-          export_csv: Export csv
+          export_csv: Exportar CSV
         models:
           survey_result:
             name: Resposta d'enquesta

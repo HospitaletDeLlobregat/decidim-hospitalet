@@ -100,7 +100,7 @@ RSpec.shared_examples "manage surveys" do
 
     it "downloads a csv file with the data" do
       visit current_path
-      click_link "Export csv"
+      click_link "Exportar CSV"
       expect(page.response_headers["Content-Disposition"]).to match(/filename=\"survey_results([^.]*).csv\"/)
     end
   end
