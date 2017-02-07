@@ -10,10 +10,12 @@ module DecidimHospitalet
       let(:scope) { create(:scope, organization: feature.organization) }
       let(:category_id) { category.try(:id) }
       let(:scope_id) { scope.try(:id) }
+      let(:authorize_lopd) { true }
       let(:params) do
         {
           categories_ids: [category_id],
-          scope_id: scope_id
+          scope_id: scope_id,
+          authorize_lopd: authorize_lopd
         }
       end
 
@@ -55,6 +57,11 @@ module DecidimHospitalet
 
       context "with invalid scope_id" do
         let(:scope_id) { 987 }
+        it { is_expected.to be_invalid }
+      end
+
+      context "without accepting LOPD" do
+        let(:authorize_lopd) { nil }
         it { is_expected.to be_invalid }
       end
 

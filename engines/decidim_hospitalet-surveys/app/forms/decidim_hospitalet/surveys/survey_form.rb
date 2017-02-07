@@ -15,6 +15,7 @@ module DecidimHospitalet
       attribute :zip_code, String
       attribute :living_at_scope, Boolean
       attribute :working_at_scope, Boolean
+      attribute :authorize_lopd, Boolean
       attribute :city, String
 
       validates :scope, presence: true
@@ -22,6 +23,7 @@ module DecidimHospitalet
       validates :age_group, inclusion: { in: SurveyResult::AGE_GROUPS }, allow_blank: true
       validates :gender, inclusion: { in: SurveyResult::GENDERS }, allow_blank: true
       validates :city, inclusion: { in: Towns::TOWNS.keys }, allow_blank: true
+      validates :authorize_lopd, allow_nil: false, acceptance: true
 
       # Finds the Categories from the category_id.
       #

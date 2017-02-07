@@ -7,6 +7,12 @@
       <div class="card__content">
         <%= form_for(@form) do |form| %>
           <%= render partial: "form", locals: { form: form } %>
+
+          <div class="field">
+            <%= form.check_box :authorize_lopd, label: t("questions.authorize_lopd", scope: "decidim_hospitalet.surveys") %>
+            <p class="help-text"><%= t("questions.authorize_lopd_hint", scope: "decidim_hospitalet.surveys") %></p>
+          </div>
+
           <div class="actions">
             <%= form.submit t(".send"), class: "button expanded" %>
           </div>
