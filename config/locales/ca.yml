@@ -8,3 +8,8 @@ ca:
         proposals_explanation: Fes les teves aportacions en aquells processos actius al web.
         surveys: Enquesta
         surveys_explanation: Qüestionari per obtenir informació i conèixer l’opinió de la ciutadania.
+  decidim:
+    proposals:
+      proposals:
+        filters:
+          scopes: Barri
