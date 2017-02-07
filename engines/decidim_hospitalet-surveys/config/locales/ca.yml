@@ -13,6 +13,8 @@ ca:
         new: Nova %{name}
         title: Accions
       admin:
+        actions:
+          export_csv: Export csv
         models:
           survey_result:
             name: Resposta d'enquesta
@@ -52,8 +54,7 @@ ca:
         success: La teva resposta s'ha enviat correctament
       questions:
         age_group: Edat
-        categories: 'Selecciona els 4 temes que trobis que són prioritaris en el teu
-          barri per als propers 10 anys:'
+        categories: 'Selecciona els 4 temes que trobis que són prioritaris en el teu barri per als propers 10 anys:'
         city: A quin municipi vius?
         email: Correu electrònic
         email_hint: Si omples aquest camp, es convidarà l'usuari a la plataforma i
