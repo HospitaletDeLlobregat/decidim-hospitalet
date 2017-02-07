@@ -47,6 +47,7 @@ describe "Surveys", type: :feature do
         within ".new_survey_result" do
           select scope.name, from: :survey_result_scope_id
           check translated(category.name, locale: :ca)
+          check "Autoritzo"
 
           find("*[type=submit]").click
         end
