@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(version: 20170206202135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "pg_stat_statements"
 
   create_table "attachments", force: :cascade do |t|
   end
