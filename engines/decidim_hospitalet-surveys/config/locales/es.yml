@@ -13,6 +13,8 @@ es:
         new: Nueva %{name}
         title: Acciones
       admin:
+        actions:
+          export_csv: Exportar CSV
         models:
           survey_result:
             name: Respuesta de encuesta

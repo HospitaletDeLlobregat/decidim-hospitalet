@@ -94,4 +94,14 @@ RSpec.shared_examples "manage surveys" do
       end
     end
   end
+
+  context "exporting the survey results" do
+    let!(:surveys) { create_list(:survey_result, 3, feature: current_feature) }
+
+    it "downloads a csv file with the data" do
+      visit current_path
+      click_link "Exportar CSV"
+      expect(page.response_headers["Content-Disposition"]).to match(/filename=\"survey_results([^.]*).csv\"/)
+    end
+  end
 end

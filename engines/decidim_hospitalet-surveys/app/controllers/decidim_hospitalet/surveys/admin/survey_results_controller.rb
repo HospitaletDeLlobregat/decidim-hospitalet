@@ -6,6 +6,17 @@ module DecidimHospitalet
       class SurveyResultsController < Admin::ApplicationController
         helper_method :survey_results, :available_scopes, :proposals_feature
 
+        def index
+          respond_to do |format|
+            format.html
+            format.csv do
+              send_data(SurveyCSVPresenter.new(survey_results).to_data,
+                      type: "text/csv; charset=utf-8; header=present",
+                      filename: "survey_results_#{Time.now.to_s(:iso8601)}.csv")
+            end
+          end
+        end
+
         def new
           @form = form(SurveyResultForm).instance
         end
