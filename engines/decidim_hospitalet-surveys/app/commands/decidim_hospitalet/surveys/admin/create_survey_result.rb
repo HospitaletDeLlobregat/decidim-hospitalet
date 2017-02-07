@@ -46,6 +46,7 @@ module DecidimHospitalet
             phone: form.phone,
             selected_categories: form.categories.map(&:id),
             created_by_admin: true,
+            author: form.current_user,
             scope: form.scope,
             user: user,
             feature: form.current_feature

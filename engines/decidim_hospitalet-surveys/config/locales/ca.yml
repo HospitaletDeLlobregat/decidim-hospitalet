@@ -21,6 +21,7 @@ ca:
       models:
         survey_result:
           fields:
+            author: Autor
             categories: Categories
             created_by_admin: Creat per administrador
             scope_name: Àmbit

@@ -40,6 +40,7 @@ RSpec.shared_examples "manage surveys" do
 
       within "table" do
         expect(page).to have_selector(".tabs-panel tbody tr", count: 2)
+        expect(page).to have_content user.name
       end
     end
 

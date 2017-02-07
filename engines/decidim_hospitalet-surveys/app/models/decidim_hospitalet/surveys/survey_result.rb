@@ -3,6 +3,8 @@ module DecidimHospitalet
   module Surveys
     # The data store for a SurveyResult in the DecidimHospitalet::Surveys component.
     class SurveyResult < Surveys::ApplicationRecord
+      include Decidim::Authorable
+
       GENDERS = %w(female male).freeze
       AGE_GROUPS = [
         "0-17",
