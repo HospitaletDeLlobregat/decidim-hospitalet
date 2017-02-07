@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170207102712) do
+ActiveRecord::Schema.define(version: 20170207180705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_stat_statements"
 
   create_table "attachments", force: :cascade do |t|
   end
@@ -73,7 +74,6 @@ ActiveRecord::Schema.define(version: 20170207102712) do
   create_table "decidim_budgets_projects", force: :cascade do |t|
     t.jsonb    "title"
     t.jsonb    "description"
-    t.jsonb    "short_description"
     t.integer  "budget",              null: false
     t.integer  "decidim_feature_id"
     t.integer  "decidim_scope_id"
