@@ -20,8 +20,6 @@ module DecidimHospitalet
             living_at_scope: true,
             working_at_scope: true,
             city: "800180001",
-            name: "My Name",
-            phone: "987654321",
             categories: [category],
             scope: create(:scope, organization: organization)
           )
@@ -57,6 +55,11 @@ module DecidimHospitalet
             expect do
               command.call
             end.to change { SurveyResult.count }.by(1)
+          end
+
+          it "sets the survey result name to user name" do
+            command.call
+            expect(SurveyResult.last.name).to eq(user.name)
           end
         end
       end
