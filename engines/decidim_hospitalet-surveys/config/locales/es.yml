@@ -19,6 +19,7 @@ es:
       models:
         survey_result:
           fields:
+            author: Autor
             categories: Categorías
             created_by_admin: Creado por administrador
             scope_name: Ámbito

@@ -11,6 +11,7 @@ module DecidimHospitalet
           let(:feature) { create(:feature, participatory_process: participatory_process) }
           let(:proposals_feature) { create(:proposal_feature, participatory_process: participatory_process) }
           let(:category) { create :category, participatory_process: participatory_process }
+          let(:admin) { create(:user, :admin, organization: organization) }
           let(:user) { create(:user, organization: organization) }
           let(:email) { nil }
           let(:scope) { create(:scope, organization: organization) }
@@ -47,7 +48,8 @@ module DecidimHospitalet
               proposal_scope_id_2: nil,
               proposal_scope_id_3: nil,
               proposals_feature: proposals_feature,
-              scope: scope
+              scope: scope,
+              current_user: admin
             )
           end
           let(:subject) { described_class.new(form) }
@@ -81,6 +83,16 @@ module DecidimHospitalet
               expect do
                 subject.call
               end.to change { SurveyResult.count }.by(1)
+            end
+
+            it "sets the created_by_admin flag" do
+              subject.call
+              expect(SurveyResult.last.created_by_admin).to be_truthy
+            end
+
+            it "sets the author association to the current user" do
+              subject.call
+              expect(SurveyResult.last.author).to eq(admin)
             end
 
             it "does not create a new user" do

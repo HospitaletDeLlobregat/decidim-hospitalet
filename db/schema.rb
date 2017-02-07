@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170206202135) do
+ActiveRecord::Schema.define(version: 20170207102712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -148,6 +148,8 @@ ActiveRecord::Schema.define(version: 20170206202135) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.boolean  "created_by_admin",    default: false
+    t.integer  "decidim_author_id"
+    t.index ["decidim_author_id"], name: "index_decidim_hospitalet_surveys_on_author_id", using: :btree
     t.index ["decidim_feature_id", "decidim_user_id", "decidim_scope_id"], name: "index_unique_user_feaeture_scope_for_surveys", unique: true, where: "(decidim_user_id IS NOT NULL)", using: :btree
     t.index ["decidim_feature_id"], name: "index_decidim_hospitalet_surveys_on_feature_id", using: :btree
     t.index ["decidim_scope_id"], name: "index_decidim_hospitalet_surveys_on_scope_id", using: :btree
