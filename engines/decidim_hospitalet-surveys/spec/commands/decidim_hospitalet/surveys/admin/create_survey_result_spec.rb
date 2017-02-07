@@ -29,7 +29,6 @@ module DecidimHospitalet
               phone: "987654321",
               categories: [category],
               current_feature: feature,
-              current_user: user,
               email: email,
               organization: organization,
               invited_by: nil,

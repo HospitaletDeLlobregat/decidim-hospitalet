@@ -43,9 +43,11 @@ describe "User invite", type: :feature do
     it "asks for a password and redirects to the organization dashboard" do
       visit Nokogiri::HTML(last_email.html_part.body.encoded).css("table.content a").last["href"]
 
-      fill_in :user_password, with: "123456"
-      fill_in :user_password_confirmation, with: "123456"
-      find("*[type=submit]").click
+      within ".new_user" do
+        fill_in :user_password, with: "123456"
+        fill_in :user_password_confirmation, with: "123456"
+        find("*[type=submit]").click
+      end
 
       expect(page).to have_content("Welcome to")
     end
