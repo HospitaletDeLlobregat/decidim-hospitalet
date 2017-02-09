@@ -1,6 +1,10 @@
 ---
 ca:
   decidim:
+    meetings:
+      meetings:
+        filters:
+          scopes: Barri
     proposals:
       proposals:
         filters:

@@ -1,6 +1,10 @@
 ---
 es:
   decidim:
+    meetings:
+      meetings:
+        filters:
+          scopes: Barrio
     proposals:
       proposals:
         filters:
