@@ -20,13 +20,8 @@ module DecidimHospitalet
       # user - the User that needs its abilities checked.
       # context - a Hash with some context related to the current request.
       def initialize(user, context = {})
-        return unless user && user.role?(:moderator)
-        can :manage, SurveyResult
-        can :manage, :admin_dashboard
-        can :read, Decidim::ParticipatoryProcess
-        can :read, Decidim::Feature do |feature|
-          feature.manifest_name.to_s == "hospitalet_surveys"
-        end
+        return unless user && user.role?(:collaborator)
+        can [:create, :preview], SurveyResult
       end
     end
   end
