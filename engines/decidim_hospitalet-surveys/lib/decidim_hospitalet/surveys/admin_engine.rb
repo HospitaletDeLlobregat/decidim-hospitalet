@@ -12,6 +12,10 @@ module DecidimHospitalet
         root to: "survey_results#index"
       end
 
+      Decidim.configure do |config|
+        config.abilities += ["DecidimHospitalet::Surveys::Ability"]
+      end
+
       def load_seed
         nil
       end

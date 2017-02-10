@@ -3,6 +3,7 @@ source "https://rubygems.org"
 ruby '2.4.0'
 
 gem "decidim", git: "https://github.com/AjuntamentdeBarcelona/decidim.git"
+
 gem "decidim_hospitalet-surveys", path: "engines/decidim_hospitalet-surveys"
 
 gem "passenger"

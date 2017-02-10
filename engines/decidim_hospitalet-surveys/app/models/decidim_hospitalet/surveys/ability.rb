@@ -20,8 +20,22 @@ module DecidimHospitalet
       # user - the User that needs its abilities checked.
       # context - a Hash with some context related to the current request.
       def initialize(user, context = {})
-        return unless user && user.role?(:collaborator)
+        @user = user
+        @context = context
+
+        return unless user && (user.role?(:collaborator) || admin_or_process_admin?)
         can [:create, :preview], SurveyResult
+
+        return unless admin_or_process_admin?
+        can :manage, SurveyResult
+      end
+
+      def participatory_processes
+        @participatory_processes ||= Decidim::Admin::ManageableParticipatoryProcessesForUser.for(@user)
+      end
+
+      def admin_or_process_admin?
+        @user.role?(:admin) || participatory_processes.include?(@context[:current_participatory_process])
       end
     end
   end
