@@ -14,4 +14,6 @@ Decidim.configure do |config|
       here_app_code: Rails.application.secrets.geocoder["here_app_code"]
     }
   end
+
+  config.abilities += ["DecidimHospitalet::Surveys::Ability"]
 end
