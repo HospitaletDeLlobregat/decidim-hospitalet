@@ -30,7 +30,6 @@ module DecidimHospitalet
         4.times do |index|
           attribute :"proposal_title_#{index}", String
           attribute :"proposal_description_#{index}", String
-          attribute :"proposal_scope_id_#{index}", String
 
           validates :"proposal_title_#{index}", presence: true, if: proc { |m| m.send("proposal_description_#{index}").present? }
           validates :"proposal_description_#{index}", presence: true, if: proc { |m| m.send("proposal_title_#{index}").present? }

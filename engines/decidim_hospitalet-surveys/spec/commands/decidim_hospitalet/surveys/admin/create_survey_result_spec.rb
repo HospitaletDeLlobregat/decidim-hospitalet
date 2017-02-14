@@ -42,10 +42,6 @@ module DecidimHospitalet
               proposal_description_1: "Awesome description 1",
               proposal_description_2: nil,
               proposal_description_3: nil,
-              proposal_scope_id_0: scope.id,
-              proposal_scope_id_1: scope.id,
-              proposal_scope_id_2: nil,
-              proposal_scope_id_3: nil,
               proposals_feature: proposals_feature,
               scope: scope,
               current_user: admin
@@ -125,7 +121,7 @@ module DecidimHospitalet
             describe "with related proposals" do
               it { is_expected.to broadcast(:ok) }
 
-              context "when no propsoals featuer is present" do
+              context "when no proposals feature is present" do
                 let(:proposals_feature) { nil }
 
                 it "creates the proposals" do
@@ -139,6 +135,12 @@ module DecidimHospitalet
                 expect do
                   subject.call
                 end.to change(Decidim::Proposals::Proposal, :count).by(2)
+              end
+
+              it "sets the global scope for those proposals" do
+                subject.call
+                ids = Decidim::Proposals::Proposal.pluck(:decidim_scope_id)
+                expect(ids).to match_array [scope.id, scope.id]
               end
 
               context "when not creating a user" do
