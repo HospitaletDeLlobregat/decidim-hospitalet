@@ -3,8 +3,8 @@
 </div>
 
 <div class="field">
-  <%= form.label(:categories_ids, t("questions.categories", scope: "decidim_hospitalet.surveys")) %>
-  <%= form.collection_check_boxes :categories_ids, current_feature.categories, Proc.new {|c| c.id.to_s }, Proc.new {|c| translated_attribute(c.name) }, include_hidden: false do |b| %>
+  <label><%= t("questions.categories", scope: "decidim_hospitalet.surveys") %></label>
+  <%= form.collection_check_boxes :categories_ids, current_feature.categories, Proc.new {|c| c.id.to_s }, Proc.new {|c| translated_attribute(c.name) } do |b| %>
     <%= b.label { b.check_box + b.text } %>
   <% end %>
 </div>
