@@ -2,8 +2,13 @@
 # frozen_string_literal: true
 module DecidimHospitalet
   module Surveys
-    # A form object to be used when public users want to anser a survey.
+    # A helper class that encapsulates some of Catalonia's cities and towns
+    # so that they can be shown in a dropdown, ordered alphabetically not
+    # considering articles.
     class Towns
+      # That's L'Hospitalet
+      DEFAULT_TOWN_ID = "810170005"
+
       TOWNS = {
         "800180001" => "Abrera",
         "800230008" => "Aguilar de Segarra",

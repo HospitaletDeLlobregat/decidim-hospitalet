@@ -21,6 +21,10 @@ module DecidimHospitalet
       def survey_towns
         DecidimHospitalet::Surveys::Towns::TOWNS.map { |id, name| [name, id] }
       end
+
+      def survey_default_town
+        DecidimHospitalet::Surveys::Towns::DEFAULT_TOWN_ID
+      end
     end
   end
 end

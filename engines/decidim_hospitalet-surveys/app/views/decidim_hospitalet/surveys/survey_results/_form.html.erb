@@ -38,5 +38,5 @@
 </div>
 
 <div class="field">
-  <%= form.select :city, survey_towns, include_blank: true, label: t("questions.city", scope: "decidim_hospitalet.surveys") %>
+  <%= form.select :city, survey_towns, include_blank: true, label: t("questions.city", scope: "decidim_hospitalet.surveys"), selected: @form.city || survey_default_town %>
 </div>
