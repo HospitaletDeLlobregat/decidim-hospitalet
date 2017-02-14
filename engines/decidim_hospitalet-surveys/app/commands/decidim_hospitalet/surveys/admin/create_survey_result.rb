@@ -57,14 +57,14 @@ module DecidimHospitalet
           return unless form.proposals_feature
 
           [
-            build_proposal(form.proposal_title_0, form.proposal_description_0, form.proposal_scope_id_0),
-            build_proposal(form.proposal_title_1, form.proposal_description_1, form.proposal_scope_id_1),
-            build_proposal(form.proposal_title_2, form.proposal_description_2, form.proposal_scope_id_2),
-            build_proposal(form.proposal_title_3, form.proposal_description_3, form.proposal_scope_id_3)
+            build_proposal(form.proposal_title_0, form.proposal_description_0),
+            build_proposal(form.proposal_title_1, form.proposal_description_1),
+            build_proposal(form.proposal_title_2, form.proposal_description_2),
+            build_proposal(form.proposal_title_3, form.proposal_description_3)
           ].compact.map(&:save!)
         end
 
-        def build_proposal(title, description, scope_id)
+        def build_proposal(title, description)
           return unless title.present? || description.present?
 
           Decidim::Proposals::Proposal.new(
@@ -72,7 +72,7 @@ module DecidimHospitalet
             body: description,
             author: user,
             feature: form.proposals_feature,
-            decidim_scope_id: scope_id
+            scope: form.scope
           )
         end
 

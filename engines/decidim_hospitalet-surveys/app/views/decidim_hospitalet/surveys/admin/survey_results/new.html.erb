@@ -19,10 +19,6 @@
       <div class="field">
         <%= f.text_area :"proposal_description_#{i}", label: t("questions.proposal_description", scope: "decidim_hospitalet.surveys"), rows: 10 %>
       </div>
-
-      <div class="field">
-        <%= f.collection_select :"proposal_scope_id_#{i}", @form.scopes, :id, :name, include_blank: true, label: t("questions.proposal_scope", scope: "decidim_hospitalet.surveys") %>
-      </div>
     <% end %>
   <% end %>
 
