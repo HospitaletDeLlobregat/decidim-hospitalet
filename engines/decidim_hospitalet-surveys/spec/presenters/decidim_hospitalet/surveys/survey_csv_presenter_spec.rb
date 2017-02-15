@@ -10,7 +10,7 @@ module DecidimHospitalet
 
       subject { described_class.new(surveys) }
 
-      context "#to_data" do
+      describe "#to_data" do
         let(:data) { subject.to_data }
         let(:headers) { data.split("\n").first }
 
@@ -18,12 +18,25 @@ module DecidimHospitalet
           expect(headers).to include("Selecciona els 4 temes que trobis que són prioritaris en el teu barri per als propers 10 anys:")
         end
 
-        it "includes the surveys data" do
-          surveys[0].user = nil
-
+        it "includes survey categories" do
           surveys.each do |survey|
             expect(data).to include("#{survey.categories.map { |c| c.name["ca"] }.join(';')}")
-            expect(data).to include("#{survey.user&.email}")
+          end
+        end
+
+        it "includes user emails" do
+          surveys.each do |survey|
+              expect(data).to include("#{survey.user.email}")
+          end
+        end
+
+        context "when a survey doesn't have a user" do
+          before do
+            surveys.last.update_attribute(:user, nil)
+          end
+
+          it "works without user email" do
+            expect(data.split("\n").length).to eq(4)
           end
         end
       end
