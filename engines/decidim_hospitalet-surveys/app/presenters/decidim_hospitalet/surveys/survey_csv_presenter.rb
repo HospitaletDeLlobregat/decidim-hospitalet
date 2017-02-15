@@ -29,7 +29,10 @@ module DecidimHospitalet
 
       def headers
         CSV.generate_line(
-          [I18n.t("decidim_hospitalet.surveys.questions.categories")].concat(
+          [
+            I18n.t("decidim_hospitalet.surveys.questions.email"),
+            I18n.t("decidim_hospitalet.surveys.questions.categories")
+          ].concat(
             COMMON_FIELDS.map do |field|
               I18n.t("decidim_hospitalet.surveys.questions.#{field}")
             end
@@ -40,7 +43,10 @@ module DecidimHospitalet
       def fields
         @surveys.map do |survey|
           CSV.generate_line(
-            [survey.categories.map {|c| c.name[I18n.locale.to_s] }.join(";")].concat(
+            [
+              survey.user.email,
+              survey.categories.map {|c| c.name[I18n.locale.to_s] }.join(";")
+            ].concat(
               COMMON_FIELDS.map { |field| survey.send(field) }
             )
           )

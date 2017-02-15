@@ -54,6 +54,7 @@ es:
         error: Han habido errores en tu respuesta.
         success: Tu respuesta se ha enviado correctamente
       questions:
+        email: Correo electrónico
         age_group: Edad
         authorize_lopd: Autorizo
         authorize_lopd_hint: (Doy mi conformidad para que los datos personales aportados se incluyan en los ficheros de protección de datos de titularidad municipal, con la única finalidad que me sea enviada información relativa a las actividades relacionadas con la presente enquesta)

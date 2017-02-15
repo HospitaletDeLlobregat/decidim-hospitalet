@@ -54,6 +54,7 @@ ca:
         error: Hi ha hagut algun error en la teva resposta.
         success: La teva resposta s'ha enviat correctament
       questions:
+        email: Correu electrònic
         age_group: Edat
         authorize_lopd: Autoritzo
         authorize_lopd_hint: (Dono la meva conformitat per a que les dades personals aportades s’incloguin als fitxers de protecció de dades de titularitat municipal, amb l’única finalitat que sigui em tramesa informació relativa a les activitats de la pròpia enquesta)
