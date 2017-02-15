@@ -44,7 +44,7 @@ module DecidimHospitalet
         @surveys.map do |survey|
           CSV.generate_line(
             [
-              survey.user.email,
+              survey.user&.email,
               survey.categories.map {|c| c.name[I18n.locale.to_s] }.join(";")
             ].concat(
               COMMON_FIELDS.map { |field| survey.send(field) }
