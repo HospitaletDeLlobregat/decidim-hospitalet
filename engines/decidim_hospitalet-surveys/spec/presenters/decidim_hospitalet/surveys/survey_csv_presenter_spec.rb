@@ -21,6 +21,7 @@ module DecidimHospitalet
         it "includes the surveys data" do
           surveys.each do |survey|
             expect(data).to include("#{survey.categories.map { |c| c.name["ca"] }.join(';')}")
+            expect(data).to include("#{survey.user&.email}")
           end
         end
       end
