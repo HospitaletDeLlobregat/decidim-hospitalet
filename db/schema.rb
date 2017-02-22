@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214191508) do
+ActiveRecord::Schema.define(version: 20170222081907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -234,7 +234,6 @@ ActiveRecord::Schema.define(version: 20170214191508) do
   end
 
   create_table "decidim_pages_pages", force: :cascade do |t|
-    t.jsonb    "title"
     t.jsonb    "body"
     t.integer  "decidim_feature_id"
     t.datetime "created_at",         null: false
@@ -244,7 +243,6 @@ ActiveRecord::Schema.define(version: 20170214191508) do
 
   create_table "decidim_participatory_process_steps", force: :cascade do |t|
     t.jsonb    "title",                                            null: false
-    t.jsonb    "short_description"
     t.jsonb    "description"
     t.datetime "start_date"
     t.datetime "end_date"
