@@ -144,19 +144,24 @@ module DecidimHospitalet
               end
 
               context "when not creating a user" do
+                let!(:default_user) do
+                  create :user,
+                    email: "enquestes@lhon-participa.cat",
+                    organization: organization
+                end
+
                 let(:email) { nil }
 
-                it "creates anonymous proposals" do
+                it "assigns the proposal to the fake user 'Enquesta / Encuesta'" do
                   subject.call
                   proposals = Decidim::Proposals::Proposal.all
 
-                  expect(proposals.map(&:author)).to eq [nil, nil]
+                  expect(proposals.map(&:author)).to eq [default_user, default_user]
                 end
               end
 
               context "when creating a user" do
                 let(:email) { "my_email@example.com" }
-
                 it "assigns the proposals to the user" do
                   subject.call
                   authors = Decidim::Proposals::Proposal.all.map(&:author)

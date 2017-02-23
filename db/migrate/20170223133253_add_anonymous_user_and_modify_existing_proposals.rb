@@ -2,7 +2,7 @@ class AddAnonymousUserAndModifyExistingProposals < ActiveRecord::Migration[5.0]
   def change
     user = Decidim::User.create!(
       {
-        name:"Enquesta/Encuesta",
+        name:"Enquesta / Encuesta",
         password: "decidim123456",
         password_confirmation: "decidim123456",
         email: "enquestes@lhon-participa.cat",
