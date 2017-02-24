@@ -77,7 +77,7 @@ module DecidimHospitalet
         end
 
         def user
-          return unless form.email.present?
+          return default_user unless form.email.present?
           return @user if @user
           @user ||= existing_user || invited_user
         end
@@ -85,6 +85,13 @@ module DecidimHospitalet
         def existing_user
           Decidim::User.where(
             email: form.email,
+            organization: form.current_feature.organization
+          ).first
+        end
+
+        def default_user
+          Decidim::User.where(
+            email: "enquestes@lhon-participa.cat",
             organization: form.current_feature.organization
           ).first
         end
