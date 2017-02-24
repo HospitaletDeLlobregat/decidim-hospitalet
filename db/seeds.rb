@@ -75,3 +75,18 @@ Decidim::Feature.where(manifest_name: :hospitalet_surveys).find_each do |feature
     )
   end
 end
+
+Decidim::User.where(
+    email: "enquestes@lhon-participa.cat",
+    organization: organization,
+  ).first || Decidim::User.create!(
+  {
+    name: "Enquesta / Encuesta",
+    password: "decidim123456",
+    password_confirmation: "decidim123456",
+    email: "enquestes@lhon-participa.cat",
+    tos_agreement: "1",
+    organization: organization,
+    confirmed_at: Time.current
+  }
+)
