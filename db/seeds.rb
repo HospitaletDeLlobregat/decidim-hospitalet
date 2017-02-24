@@ -14,6 +14,7 @@ Decidim.seed!
 
 organization = Decidim::Organization.first
 participatory_process = Decidim::ParticipatoryProcess.published.promoted.first
+password = SecureRandom.base64(16)
 
 puts "Deleting default L'Hospitalet scopes..."
 organization.scopes.destroy_all
@@ -82,8 +83,8 @@ Decidim::User.where(
   ).first || Decidim::User.create!(
   {
     name: "Enquesta / Encuesta",
-    password: "decidim123456",
-    password_confirmation: "decidim123456",
+    password: password,
+    password_confirmation: password,
     email: "enquestes@lhon-participa.cat",
     tos_agreement: "1",
     organization: organization,
