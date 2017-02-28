@@ -21,6 +21,7 @@ module DecidimHospitalet
         attribute :phone, String
         attribute :email, String
 
+        validates :name, presence: true, if: proc { |form| form.email.present? }
         validates :scope, :scope_id, presence: true
         validates :categories, :categories_ids, length: { minimum: 1, maximum: 4 }
         validates :age_group, inclusion: { in: SurveyResult::AGE_GROUPS }, allow_blank: true
