@@ -235,7 +235,7 @@ module DecidimHospitalet
         end
 
         describe "name" do
-          context "exists when the email isn't present" do
+          context "when the email isn't present" do
             let(:params) do
               default_params.merge(
                 name: "",
