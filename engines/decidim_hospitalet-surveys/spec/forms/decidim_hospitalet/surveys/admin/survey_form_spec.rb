@@ -233,6 +233,20 @@ module DecidimHospitalet
             it { is_expected.not_to be_valid }
           end
         end
+
+        describe "name" do
+          context "exists when the email isn't present" do
+            let(:params) do
+              default_params.merge(
+                name: "",
+                email: "test@lhon-participa.cat"
+              )
+            end
+            it { is_expected.not_to be_valid }
+          end
+
+        end
+
       end
     end
   end
