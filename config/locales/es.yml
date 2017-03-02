@@ -5,6 +5,9 @@ es:
       meetings:
         filters:
           scopes: Barrio
+  participatory_processes:
+    scopes:
+      global: Toda la ciudad
     proposals:
       proposals:
         filters:
@@ -21,3 +24,6 @@ es:
         surveys: Encuestas
         surveys_explanation: Cuestionario para obtener información y conocer la opinión
           de la ciudadanía.
+  shared:
+    reference:
+      reference: 'Referencia: %{reference}'
