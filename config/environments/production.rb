@@ -116,10 +116,6 @@ Rails.application.configure do
 
   require "sabayon_middleware"
   config.middleware.insert_before 0, SabayonMiddleware
-  config.middleware.insert_before ActionDispatch::SSL, Rack::HostRedirect, {
-    "lhon-participa.cat" => "www.lhon-participa.cat",
-    "decidim-hospitalet.herokuapp.com" => "www.lhon-participa.cat"
-  }
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
