@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302144046) do
+ActiveRecord::Schema.define(version: 20170309085334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "pg_stat_statements"
 
   create_table "attachments", force: :cascade do |t|
   end
@@ -232,6 +231,7 @@ ActiveRecord::Schema.define(version: 20170302144046) do
     t.string   "official_img_footer"
     t.string   "official_url"
     t.string   "reference_prefix",                   null: false
+    t.string   "secondary_hosts",     default: [],                array: true
     t.index ["host"], name: "index_decidim_organizations_on_host", unique: true, using: :btree
     t.index ["name"], name: "index_decidim_organizations_on_name", unique: true, using: :btree
   end

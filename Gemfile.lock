@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/AjuntamentdeBarcelona/decidim.git
-  revision: 801c9ba83288c56458fcb3c1d354baff3167c2b0
+  revision: 45a466cc9e2afb29326ef6a3c7646ff49bdd24fc
   specs:
     decidim (0.0.5)
       decidim-admin (= 0.0.5)
@@ -267,9 +267,9 @@ GEM
       railties (>= 3.0.0)
     faker (1.7.3)
       i18n (~> 0.5)
-    faraday (0.10.1)
+    faraday (0.11.0)
       multipart-post (>= 1.2, < 3)
-    ffi (1.9.17)
+    ffi (1.9.18)
     file_validators (2.1.0)
       activemodel (>= 3.0)
       mime-types (>= 1.0)
@@ -304,7 +304,7 @@ GEM
       activesupport (>= 4.1.0)
     graphiql-rails (1.4.1)
       rails
-    graphql (1.4.4)
+    graphql (1.4.5)
     hashdiff (0.3.2)
     hashie (3.5.5)
     high_voltage (3.0.0)
@@ -378,8 +378,8 @@ GEM
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
     oauth (0.5.1)
-    oauth2 (1.3.0)
-      faraday (>= 0.8, < 0.11)
+    oauth2 (1.3.1)
+      faraday (>= 0.8, < 0.12)
       jwt (~> 1.0)
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
@@ -598,7 +598,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
     wisper (1.6.1)
-    wisper-rspec (0.0.2)
+    wisper-rspec (0.0.3)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
