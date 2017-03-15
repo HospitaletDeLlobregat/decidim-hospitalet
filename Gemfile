@@ -8,6 +8,7 @@ gem "decidim_hospitalet-surveys", path: "engines/decidim_hospitalet-surveys"
 
 gem "passenger"
 gem 'uglifier', '>= 1.3.0'
+gem 'lograge'
 
 group :development, :test do
   gem "decidim-dev", git: "https://github.com/AjuntamentdeBarcelona/decidim.git"
