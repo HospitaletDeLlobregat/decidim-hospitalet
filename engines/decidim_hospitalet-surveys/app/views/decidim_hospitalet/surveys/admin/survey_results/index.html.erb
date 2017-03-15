@@ -16,7 +16,8 @@
     </tr>
   </thead>
   <tbody>
-    <% survey_results.each do |survey_result| %>
+    <% @survey_results = survey_results.page(params[:page]).per(50) %>
+    <% @survey_results.each do |survey_result| %>
       <tr data-id="<%= survey_result.id %>">
         <td>
           <%= survey_result.scope.name %>
@@ -44,3 +45,4 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @survey_results, theme: "decidim" %>
