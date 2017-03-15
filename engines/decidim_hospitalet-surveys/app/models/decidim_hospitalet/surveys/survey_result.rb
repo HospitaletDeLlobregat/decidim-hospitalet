@@ -23,7 +23,7 @@ module DecidimHospitalet
       validates :scope, :feature, presence: true
       validate :user_belongs_to_organization
       validate :scope_belongs_to_organization
-      validates :scope, uniqueness: { scope: [:feature, :user] }
+      validates :scope, uniqueness: { scope: [:feature, :user] }, if: proc { |object| object.user.present? }
       validates :selected_categories, length: { minimum: 1, maximum: 4 }, if: proc { |object| object.feature.present? }
 
       def categories

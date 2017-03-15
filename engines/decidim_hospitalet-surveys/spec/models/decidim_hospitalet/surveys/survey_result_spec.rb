@@ -19,6 +19,16 @@ module DecidimHospitalet
 
           expect(new_survey).to be_valid
         end
+
+        context "when the user/scope/feature combination already exists" do
+          subject { build(:survey_result, user: nil) }
+
+          before do
+            create(:survey_result, scope: subject.scope, user: subject.user, feature: subject.feature)
+          end
+
+          it { is_expected.to be_valid }
+        end
       end
 
       context "when the scope is missing" do
