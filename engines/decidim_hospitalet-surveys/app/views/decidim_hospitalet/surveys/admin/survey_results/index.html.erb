@@ -33,9 +33,7 @@
           <%= humanize_boolean survey_result.created_by_admin? %>
         </td>
         <td>
-          <% if survey_result.author.present? %>
-            <%= survey_result.author.name %>
-          <% end %>
+          <%= survey_result.author_name %>
         </td>
         <td class="actions">
           <%= link_to t("actions.edit", scope: "decidim_hospitalet.survey_results"), edit_survey_result_path(survey_result) if can? :update, survey_result %>

@@ -30,6 +30,11 @@ module DecidimHospitalet
         @categories ||= Decidim::Category.where(id: selected_categories)
       end
 
+      def author_name
+        return author.name if author.present?
+        return user.name if user.name?
+      end
+
       private
 
       def user_belongs_to_organization
