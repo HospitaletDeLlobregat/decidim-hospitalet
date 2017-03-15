@@ -313,6 +313,18 @@ ActiveRecord::Schema.define(version: 20170315083335) do
     t.index ["decidim_organization_id"], name: "index_decidim_processes_on_decidim_organization_id", using: :btree
   end
 
+  create_table "decidim_proposals_proposal_reports", force: :cascade do |t|
+    t.integer  "decidim_proposal_id", null: false
+    t.integer  "decidim_user_id",     null: false
+    t.string   "reason",              null: false
+    t.text     "details"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["decidim_proposal_id", "decidim_user_id"], name: "decidim_proposals_proposal_report_proposal_user_unique", unique: true, using: :btree
+    t.index ["decidim_proposal_id"], name: "decidim_proposals_proposal_result_proposal", using: :btree
+    t.index ["decidim_user_id"], name: "decidim_proposals_proposal_result_user", using: :btree
+  end
+
   create_table "decidim_proposals_proposal_votes", force: :cascade do |t|
     t.integer  "decidim_proposal_id", null: false
     t.integer  "decidim_author_id",   null: false
