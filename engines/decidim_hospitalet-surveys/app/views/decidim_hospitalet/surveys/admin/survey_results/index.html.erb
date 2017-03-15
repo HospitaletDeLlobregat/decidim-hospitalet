@@ -16,7 +16,8 @@
     </tr>
   </thead>
   <tbody>
-    <% survey_results.each do |survey_result| %>
+    <% @survey_results = survey_results.page(params[:page]).per(50) %>
+    <% @survey_results.each do |survey_result| %>
       <tr data-id="<%= survey_result.id %>">
         <td>
           <%= survey_result.scope.name %>
@@ -32,9 +33,7 @@
           <%= humanize_boolean survey_result.created_by_admin? %>
         </td>
         <td>
-          <% if survey_result.author.present? %>
-            <%= survey_result.author.name %>
-          <% end %>
+          <%= survey_result.author_name %>
         </td>
         <td class="actions">
           <%= link_to t("actions.edit", scope: "decidim_hospitalet.survey_results"), edit_survey_result_path(survey_result) if can? :update, survey_result %>
@@ -44,3 +43,4 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @survey_results, theme: "decidim" %>

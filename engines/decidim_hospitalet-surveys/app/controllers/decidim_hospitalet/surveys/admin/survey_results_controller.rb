@@ -72,7 +72,7 @@ module DecidimHospitalet
         private
 
         def survey_results
-          @survey_results ||= SurveyResult.where(feature: current_feature)
+          @survey_results ||= SurveyResult.where(feature: current_feature).includes(:scope, :user, :feature, :author)
         end
 
         def survey_result
