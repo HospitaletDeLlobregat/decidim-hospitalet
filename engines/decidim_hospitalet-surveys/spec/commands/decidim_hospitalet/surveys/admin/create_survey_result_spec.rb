@@ -94,6 +94,7 @@ module DecidimHospitalet
               expect do
                 subject.call
               end.not_to change { Decidim::User.count }
+              expect(SurveyResult.last.user).to be_nil
             end
 
             context "when the form has an email" do

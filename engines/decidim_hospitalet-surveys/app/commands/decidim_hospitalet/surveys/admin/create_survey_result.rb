@@ -48,7 +48,7 @@ module DecidimHospitalet
             created_by_admin: true,
             author: form.current_user,
             scope: form.scope,
-            user: user,
+            user: existing_user || invited_user,
             feature: form.current_feature
           )
         end
@@ -83,6 +83,7 @@ module DecidimHospitalet
         end
 
         def existing_user
+          return unless form.email.present?
           Decidim::User.where(
             email: form.email,
             organization: form.current_feature.organization
@@ -97,6 +98,7 @@ module DecidimHospitalet
         end
 
         def invited_user
+          return unless form.email.present?
           Decidim::InviteUser.call(form) do
             on(:ok) do |user|
               return user
