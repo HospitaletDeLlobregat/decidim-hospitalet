@@ -7,7 +7,28 @@
     "heroku-redis:hobby-dev",
     "sendgrid:starter"
   ],
+  "scripts": {
+    "postdeploy":"rake db:schema:load db:migrate db:seed"
+  },
   "env": {
-    "SECRET_KEY_BASE": "3e65649679d526057b1e5cb87f15e01a204e384bb653e2f232ef1ee6a89cb9e8f04800b219f835e4e8db634457b3085d5d282f486044ff0c34d732df91c6ff06"
+    "SECRET_KEY_BASE": {
+      "description": "A secret used by Rails to identify sessions",
+      "generator": "secret"
+    },
+    "AWS_ACCESS_KEY_ID": {
+      "required": true
+    },
+    "AWS_SECRET_ACCESS_KEY": {
+      "required": true
+    },
+    "HERE_APP_ID": {
+      "required": true
+    },
+    "HERE_APP_CODE": {
+      "required": true
+    },
+    "HEROKU_APP_NAME": {
+      "required": true
+    }
   }
 }
