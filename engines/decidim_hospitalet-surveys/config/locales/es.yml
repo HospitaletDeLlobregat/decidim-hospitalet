@@ -4,6 +4,11 @@ es:
     features:
       hospitalet_surveys:
         name: Encuesta
+    survey_results:
+      actions:
+        confirm_destroy: Confirm destroy
+        destroy: Destroy
+        edit: Edit
   decidim_hospitalet:
     survey_results:
       actions:

@@ -1,46 +1,57 @@
-<h2><%= t(".title") %></h2>
+<div class="card">
+  <div class="card-divider">
+    <h2 class="card-title">
+      <%= t(".title") %>
+      <%= link_to t("actions.new", scope: "decidim_hospitalet.survey_results", name: t("models.survey_result.name", scope: "decidim_hospitalet.survey_results.admin")), new_survey_result_path, class: 'button tiny button--title button--title--export', style: "margin-left: 10px" if can? :create, DecidimHospitalet::Surveys::SurveyResult %>
+      <%= link_to t("actions.export_csv", scope: "decidim_hospitalet.survey_results.admin"), survey_results_path(format: :csv), class: 'button tiny button button--title button--title--export' %>
+    </h2>
+  </div>
 
-<div class="actions title">
-  <%= link_to t("actions.new", scope: "decidim_hospitalet.survey_results", name: t("models.survey_result.name", scope: "decidim_hospitalet.survey_results.admin")), new_survey_result_path, class: 'new' if can? :create, DecidimHospitalet::Surveys::SurveyResult %>
-  | <%= link_to t("actions.export_csv", scope: "decidim_hospitalet.survey_results.admin"), survey_results_path(format: :csv) %>
+  <div class="card-section">
+    <div class="table-scroll">
+      <table class="table-list">
+        <thead>
+          <tr>
+            <th><%= t("models.survey_result.fields.scope_name", scope: "decidim_hospitalet.survey_results") %></th>
+            <th><%= t("models.survey_result.fields.categories", scope: "decidim_hospitalet.survey_results") %></th>
+            <th><%= t("models.survey_result.fields.created_by_admin", scope: "decidim_hospitalet.survey_results") %></th>
+            <th><%= t("models.survey_result.fields.author", scope: "decidim_hospitalet.survey_results") %></th>
+            <th class="actions"><%= t("actions.title", scope: "decidim_hospitalet.survey_results") %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @survey_results.each do |survey_result| %>
+            <tr data-id="<%= survey_result.id %>">
+              <td>
+                <%= survey_result.scope.name %>
+              </td>
+              <td>
+                <ul>
+                  <% survey_result.categories.each do |category| %>
+                    <li><%= translated_attribute(category.name) %></li>
+                  <%  end%>
+                </ul>
+              </td>
+              <td>
+                <%= humanize_boolean survey_result.created_by_admin? %>
+              </td>
+              <td>
+                <%= survey_result.author_name %>
+              </td>
+              <td class="table-list__actions">
+                <% if can? :update, survey_result %>
+                  <%= icon_link_to "pencil", edit_survey_result_path(survey_result), t("actions.edit", scope: "decidim.survey_results"), class: "action-icon--edit" %>
+                <% end %>
+
+                <% if can? :destroy, survey_result %>
+                  <%= icon_link_to "circle-x", survey_result_path(survey_result), t("actions.destroy", scope: "decidim.survey_results"), class: "action-icon--remove", method: :delete, data: { confirm: t("actions.confirm_destroy", scope: "decidim.survey_results") } %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @survey_results, theme: "decidim" %>
+    </div>
+  </div>
 </div>
-
-<table class="stack">
-  <thead>
-    <tr>
-      <th><%= t("models.survey_result.fields.scope_name", scope: "decidim_hospitalet.survey_results") %></th>
-      <th><%= t("models.survey_result.fields.categories", scope: "decidim_hospitalet.survey_results") %></th>
-      <th><%= t("models.survey_result.fields.created_by_admin", scope: "decidim_hospitalet.survey_results") %></th>
-      <th><%= t("models.survey_result.fields.author", scope: "decidim_hospitalet.survey_results") %></th>
-      <th class="actions"><%= t("actions.title", scope: "decidim_hospitalet.survey_results") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @survey_results = survey_results.page(params[:page]).per(50) %>
-    <% @survey_results.each do |survey_result| %>
-      <tr data-id="<%= survey_result.id %>">
-        <td>
-          <%= survey_result.scope.name %>
-        </td>
-        <td>
-          <ul>
-            <% survey_result.categories.each do |category| %>
-              <li><%= translated_attribute(category.name) %></li>
-            <%  end%>
-          </ul>
-        </td>
-        <td>
-          <%= humanize_boolean survey_result.created_by_admin? %>
-        </td>
-        <td>
-          <%= survey_result.author_name %>
-        </td>
-        <td class="actions">
-          <%= link_to t("actions.edit", scope: "decidim_hospitalet.survey_results"), edit_survey_result_path(survey_result) if can? :update, survey_result %>
-          <%= link_to t("actions.destroy", scope: "decidim_hospitalet.survey_results"), survey_result_path(survey_result), method: :delete, class: "small alert button", data: { confirm: t("actions.confirm_destroy", scope: "decidim_hospitalet.survey_results") } if can? :destroy, survey_result %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= paginate @survey_results, theme: "decidim" %>
