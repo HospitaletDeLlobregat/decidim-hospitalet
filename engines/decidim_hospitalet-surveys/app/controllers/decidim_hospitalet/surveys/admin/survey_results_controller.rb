@@ -8,7 +8,9 @@ module DecidimHospitalet
 
         def index
           respond_to do |format|
-            format.html
+            format.html do
+              @survey_results = survey_results.page(params[:page]).per(50)
+            end
             format.csv do
               send_data(SurveyCSVPresenter.new(survey_results).to_data,
                       type: "text/csv; charset=utf-8; header=present",

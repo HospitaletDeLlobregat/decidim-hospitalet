@@ -1,28 +1,28 @@
-<h3><%= t ".title" %></h3>
+<%= decidim_form_for(@form, html: { class: "form new_survey_result" }) do |f| %>
+  <%= render partial: 'form', object: f, locals: { title: t(".title"), captured: capture do %>
+    <div class="row column">
+      <%= f.email_field :email, label: t("questions.email", scope: "decidim_hospitalet.surveys") %>
+      <p class="help-text"><%= t("questions.email_hint", scope: "decidim_hospitalet.surveys") %></p>
+    </div>
 
-<%= decidim_form_for(@form) do |f| %>
-  <%= render partial: 'form', object: f %>
+    <% if proposals_feature %>
+      <div class="row column">
+        <p><%= t(".proposals_explanation") %></p>
+        <% 4.times do |i| %>
+          <h5><%= t(".proposal") %> <%= i + 1 %></h5>
+          <div class="row column">
+            <%= f.text_field :"proposal_title_#{i}", label: t("questions.proposal_title", scope: "decidim_hospitalet.surveys") %>
+          </div>
 
-  <div class="field">
-    <%= f.email_field :email, label: t("questions.email", scope: "decidim_hospitalet.surveys") %>
-    <p class="help-text"><%= t("questions.email_hint", scope: "decidim_hospitalet.surveys") %></p>
-  </div>
-
-  <% if proposals_feature %>
-    <p><%= t(".proposals_explanation") %></p>
-    <% 4.times do |i| %>
-      <h5><%= t(".proposal") %> <%= i + 1 %></h5>
-      <div class="field">
-        <%= f.text_field :"proposal_title_#{i}", label: t("questions.proposal_title", scope: "decidim_hospitalet.surveys") %>
-      </div>
-
-      <div class="field">
-        <%= f.text_area :"proposal_description_#{i}", label: t("questions.proposal_description", scope: "decidim_hospitalet.surveys"), rows: 10 %>
+          <div class="row column">
+            <%= f.text_area :"proposal_description_#{i}", label: t("questions.proposal_description", scope: "decidim_hospitalet.surveys"), rows: 10 %>
+          </div>
+        <% end %>
       </div>
     <% end %>
-  <% end %>
+  <% end } %>
 
-  <div class="actions">
+  <div class="button--double form-general-submit">
     <%= f.submit t(".create") %>
   </div>
 <% end %>

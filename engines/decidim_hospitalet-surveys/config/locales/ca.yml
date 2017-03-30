@@ -4,12 +4,14 @@ ca:
     features:
       hospitalet_surveys:
         name: Enquesta
+    survey_results:
+      actions:
+        confirm_destroy: N'estàs segur?
+        destroy: Eliminar
+        edit: Editar
   decidim_hospitalet:
     survey_results:
       actions:
-        confirm_destroy: Segur que vols eliminar aquesta resposta?
-        destroy: Eliminar
-        edit: Editar
         new: Nova %{name}
         title: Accions
       admin:

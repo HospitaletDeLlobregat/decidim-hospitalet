@@ -3,7 +3,7 @@
 RSpec.shared_examples "manage surveys" do
   it "updates a survey" do
     within find("tr", text: survey.scope.name) do
-      click_link "Editar"
+      page.find('.action-icon--edit').click
     end
 
     within ".edit_survey_result" do
@@ -12,14 +12,16 @@ RSpec.shared_examples "manage surveys" do
       find("*[type=submit]").click
     end
 
-    within ".flash" do
+    within ".callout-wrapper" do
       expect(page).to have_content("correctament")
     end
   end
 
   context "submitting a survey" do
     it "creates a new survey" do
-      find(".actions .new").click
+      within ".card-title" do
+        page.find('.button--title--new').click
+      end
 
       within ".new_survey_result" do
         select scope.name, from: :survey_result_scope_id
@@ -34,19 +36,21 @@ RSpec.shared_examples "manage surveys" do
         find("*[type=submit]").click
       end
 
-      within ".flash" do
+      within ".callout-wrapper" do
         expect(page).to have_content("correctament")
       end
 
       within "table" do
-        expect(page).to have_selector(".tabs-panel tbody tr", count: 2)
+        expect(page).to have_selector(".table-list tbody tr", count: 2)
         expect(page).to have_content user.name
       end
     end
 
     context "when filling in the user data part" do
       it "inivites the user to the platform" do
-        find(".actions .new").click
+        within ".card-title" do
+          page.find('.button--title--new').click
+        end
 
         within ".new_survey_result" do
           select scope.name, from: :survey_result_scope_id
@@ -63,12 +67,12 @@ RSpec.shared_examples "manage surveys" do
           find("*[type=submit]").click
         end
 
-        within ".flash" do
+        within ".callout-wrapper" do
           expect(page).to have_content("convidat")
         end
 
         within "table" do
-          expect(page).to have_selector(".tabs-panel tbody tr", count: 2)
+          expect(page).to have_selector(".table-list tbody tr", count: 2)
         end
       end
     end
@@ -83,10 +87,10 @@ RSpec.shared_examples "manage surveys" do
 
     it "deletes a survey" do
       within find("tr", text: survey2.scope.name) do
-        click_link "Eliminar"
+        page.find('.action-icon--remove').click
       end
 
-      within ".flash" do
+      within ".callout-wrapper" do
         expect(page).to have_content("correctament")
       end
 
@@ -101,7 +105,11 @@ RSpec.shared_examples "manage surveys" do
 
     it "downloads a csv file with the data" do
       visit current_path
-      click_link "Exportar CSV"
+
+      within ".card-title" do
+        page.find('.button--title--export').click
+      end
+
       expect(page.response_headers["Content-Disposition"]).to match(/filename=\"survey_results([^.]*).csv\"/)
     end
   end
