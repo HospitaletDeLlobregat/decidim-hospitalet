@@ -32,7 +32,7 @@ module DecidimHospitalet
 
       def author_name
         return author.name if author.present?
-        return user.name if user.name?
+        return user.name if user.present?
       end
 
       private

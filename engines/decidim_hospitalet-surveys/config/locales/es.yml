@@ -4,12 +4,14 @@ es:
     features:
       hospitalet_surveys:
         name: Encuesta
+    survey_results:
+      actions:
+        confirm_destroy: '¿Estás seguro?'
+        destroy: Eliminar
+        edit: Editar
   decidim_hospitalet:
     survey_results:
       actions:
-        confirm_destroy: "¿Seguro que quieres eliminar esta respuesta?"
-        destroy: Eliminar
-        edit: Editar
         new: Nueva %{name}
         title: Acciones
       admin:
