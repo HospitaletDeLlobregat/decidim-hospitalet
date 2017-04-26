@@ -31,9 +31,9 @@ cache:
     - $BUNDLE_PATH
 
 script:
-  - cd engines/$GEM;
   - bundle install --jobs=3 --retry=3 --deployment --path="$HOME/.bundle"
-  - bundle exec rake
+  - bundle exec rake decidim:generate_test_app
+  - cd engines/$GEM && bundle exec rake
 
 rvm:
   - 2.4.1
