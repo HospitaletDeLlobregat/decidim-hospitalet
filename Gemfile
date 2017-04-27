@@ -2,9 +2,9 @@ source "https://rubygems.org"
 
 ruby '2.4.1'
 
-gem "decidim", git: "https://github.com/AjuntamentdeBarcelona/decidim.git"
+gem "decidim", git: "https://github.com/decidim/decidim.git"
 
-gem "decidim_hospitalet-surveys", path: "engines/decidim_hospitalet-surveys"
+gem "decidim_hospitalet-surveys", path: "decidim_hospitalet-surveys"
 
 gem "passenger"
 gem 'uglifier', '>= 1.3.0'
@@ -12,7 +12,7 @@ gem 'lograge'
 gem 'faker', '~> 1.7.2'
 
 group :development, :test do
-  gem "decidim-dev", git: "https://github.com/AjuntamentdeBarcelona/decidim.git"
+  gem "decidim-dev", git: "https://github.com/decidim/decidim.git"
   gem 'byebug', platform: :mri
 end
 
