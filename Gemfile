@@ -7,9 +7,9 @@ gem "decidim", git: "https://github.com/decidim/decidim.git"
 gem "decidim_hospitalet-surveys", path: "decidim_hospitalet-surveys"
 
 gem "passenger"
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 gem 'lograge'
-gem 'faker', '~> 1.7.2'
+gem 'faker'
 
 group :development, :test do
   gem "decidim-dev", git: "https://github.com/decidim/decidim.git"
@@ -18,9 +18,9 @@ end
 
 group :development do
   gem 'web-console'
-  gem 'listen', '~> 3.1.0'
+  gem 'listen'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen'
 end
 
 group :production do
