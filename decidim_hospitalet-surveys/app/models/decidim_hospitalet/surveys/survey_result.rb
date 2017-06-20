@@ -20,7 +20,6 @@ module DecidimHospitalet
       belongs_to :scope, foreign_key: "decidim_scope_id", class_name: Decidim::Scope
       has_one :organization, through: :feature
 
-      validates :scope, :feature, presence: true
       validate :user_belongs_to_organization
       validate :scope_belongs_to_organization
       validates :scope, uniqueness: { scope: [:feature, :user] }, if: proc { |object| object.user.present? }
