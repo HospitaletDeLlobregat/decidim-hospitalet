@@ -16,7 +16,7 @@ module DecidimHospitalet
       ].freeze
 
       belongs_to :feature, foreign_key: "decidim_feature_id", class_name: Decidim::Feature
-      belongs_to :user, foreign_key: "decidim_user_id", class_name: Decidim::User
+      belongs_to :user, foreign_key: "decidim_user_id", class_name: Decidim::User, optional: true
       belongs_to :scope, foreign_key: "decidim_scope_id", class_name: Decidim::Scope
       has_one :organization, through: :feature
 
