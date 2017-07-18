@@ -15,6 +15,10 @@ es:
     shared:
       reference:
         reference: 'Referencia: %{reference}'
+  devise:
+    invitations:
+      user:
+        updated: "Tu contraseña se ha actualizado correctamente."
   pages:
     home:
       extended:
@@ -27,3 +31,5 @@ es:
         surveys: Encuestas
         surveys_explanation: Cuestionario para obtener información y conocer la opinión
           de la ciudadanía.
+      footer_sub_hero:
+        footer_sub_hero_headline: "Bienvenida y bienvenido a la plataforma participativa %{organization}."

@@ -49,7 +49,7 @@ describe "User invite", type: :feature do
         find("*[type=submit]").click
       end
 
-      expect(page).to have_content("Benvingut a")
+      expect(page).to have_content("Benvingut")
     end
   end
 end
