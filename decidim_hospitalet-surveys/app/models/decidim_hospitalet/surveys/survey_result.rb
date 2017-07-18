@@ -15,9 +15,9 @@ module DecidimHospitalet
         "65+"
       ].freeze
 
-      belongs_to :feature, foreign_key: "decidim_feature_id", class_name: Decidim::Feature
-      belongs_to :user, foreign_key: "decidim_user_id", class_name: Decidim::User, optional: true
-      belongs_to :scope, foreign_key: "decidim_scope_id", class_name: Decidim::Scope
+      belongs_to :feature, foreign_key: "decidim_feature_id", class_name: "Decidim::Feature", optional: false
+      belongs_to :user, foreign_key: "decidim_user_id", class_name: "Decidim::User", optional: true
+      belongs_to :scope, foreign_key: "decidim_scope_id", class_name: "Decidim::Scope", optional: false
       has_one :organization, through: :feature
 
       validate :user_belongs_to_organization

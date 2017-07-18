@@ -24,7 +24,7 @@ describe "Surveys", type: :feature do
   context "when the user is not logged in" do
     it "is asked to sign in" do
       click_link "Processos"
-      click_link translated(participatory_process.title, locale: :ca)
+      page.find('a', text: translated(participatory_process.title, locale: :ca)).trigger('click')
       click_link "Enquestes"
       click_link "Respon l'enquesta"
 
@@ -40,7 +40,7 @@ describe "Surveys", type: :feature do
     context "when the user has not submitted the survey" do
       it "creates a new survey" do
         click_link "Processos"
-        click_link translated(participatory_process.title, locale: :ca)
+        page.find('a', text: translated(participatory_process.title, locale: :ca)).trigger('click')
         click_link "Enquestes"
         click_link "Respon l'enquesta"
 
@@ -60,7 +60,7 @@ describe "Surveys", type: :feature do
       it "cannot select the scope he has already selected" do
         create :survey_result, user: user, feature: feature, scope: scope
         click_link "Processos"
-        click_link translated(participatory_process.title, locale: :ca)
+        page.find('a', text: translated(participatory_process.title, locale: :ca)).trigger('click')
         click_link "Enquestes"
         click_link "Respon l'enquesta"
 

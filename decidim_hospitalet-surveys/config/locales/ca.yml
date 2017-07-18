@@ -1,5 +1,14 @@
 ---
 ca:
+  activerecord:
+    errors:
+      models:
+        decidim_hospitalet/surveys/survey_result:
+          attributes:
+            feature:
+              required: es obligatori
+            scope:
+              required: es obligatori
   decidim:
     features:
       hospitalet_surveys:

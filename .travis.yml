@@ -32,7 +32,7 @@ cache:
 
 script:
   - bundle install --jobs=3 --retry=3 --deployment --path="$HOME/.bundle"
-  - bundle exec rake decidim:generate_test_app
+  - bundle exec rake db:test:prepare
   - cd $GEM && bundle exec rake
 
 rvm:
