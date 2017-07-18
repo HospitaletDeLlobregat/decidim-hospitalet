@@ -6,9 +6,9 @@ ca:
         decidim_hospitalet/surveys/survey_result:
           attributes:
             feature:
-              required: es obligatori
+              required: és obligatori
             scope:
-              required: es obligatori
+              required: és obligatori
   decidim:
     features:
       hospitalet_surveys:
