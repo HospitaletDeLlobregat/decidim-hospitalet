@@ -32,7 +32,7 @@ module DecidimHospitalet
               email: email,
               organization: organization,
               invited_by: nil,
-              roles: [],
+              admin: false,
               invitation_instructions: "invite_admin",
               proposal_title_0: "My proposal 0",
               proposal_title_1: "My proposal 1",
