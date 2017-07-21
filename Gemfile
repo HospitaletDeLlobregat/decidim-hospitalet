@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby '2.4.1'
 
-gem "decidim", "~> 0.4.0"
+gem "decidim", git: "https://github.com/decidim/decidim", tag: "v0.4.1"
 
 gem "decidim_hospitalet-surveys", path: "decidim_hospitalet-surveys"
 
@@ -12,7 +12,7 @@ gem 'lograge'
 gem 'faker'
 
 group :development, :test do
-  gem "decidim-dev"
+  gem "decidim-dev", git: "https://github.com/decidim/decidim", tag: "v0.4.1"
   gem 'byebug', platform: :mri
 end
 
