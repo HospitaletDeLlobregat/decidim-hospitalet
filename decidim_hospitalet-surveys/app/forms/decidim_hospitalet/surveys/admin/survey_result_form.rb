@@ -67,8 +67,8 @@ module DecidimHospitalet
           @invited_by ||= context.current_user
         end
 
-        def roles
-          []
+        def admin
+          false
         end
 
         def invitation_instructions

@@ -16,8 +16,6 @@ Decidim.configure do |config|
     }
   end
 
-  config.abilities += ["DecidimHospitalet::Surveys::Ability"]
-
   if ENV["HEROKU_APP_NAME"].present?
     config.base_uploads_path = ENV["HEROKU_APP_NAME"] + "/"
   end

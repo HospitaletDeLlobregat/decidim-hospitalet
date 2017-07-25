@@ -13,7 +13,11 @@ module DecidimHospitalet
       end
 
       Decidim.configure do |config|
-        config.abilities += ["DecidimHospitalet::Surveys::Ability"]
+        config.admin_abilities += [
+          "DecidimHospitalet::Surveys::Abilities::AdminAbility",
+          "DecidimHospitalet::Surveys::Abilities::ParticipatoryProcessAdminAbility",
+          "DecidimHospitalet::Surveys::Abilities::ParticipatoryProcessCollaboratorAbility"
+        ]
       end
 
       def load_seed
