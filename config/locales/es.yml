@@ -8,6 +8,20 @@ es:
     participatory_processes:
       scopes:
         global: Toda la ciudad
+      statistics:
+        answers_count: Respuestas
+        comments_count: Comentarios
+        headline: Actividad
+        meetings_count: Encuentros presenciales
+        orders_count: Votos
+        pages_count: Páginas
+        processes_count: Procesos
+        projects_count: Proyectos
+        proposals_count: Propuestas
+        results_count: Resultados
+        surveys_count: Encuestas
+        users_count: Participantes
+        votes_count: Soportes
     proposals:
       proposals:
         filters:
