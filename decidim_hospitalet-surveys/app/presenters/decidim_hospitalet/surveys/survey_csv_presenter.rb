@@ -30,6 +30,7 @@ module DecidimHospitalet
       def headers
         CSV.generate_line(
           [
+            I18n.t("decidim_hospitalet.surveys.questions.id"),
             I18n.t("decidim_hospitalet.surveys.questions.email"),
             I18n.t("decidim_hospitalet.surveys.questions.categories")
           ].concat(
@@ -44,6 +45,7 @@ module DecidimHospitalet
         @surveys.map do |survey|
           CSV.generate_line(
             [
+              survey.user&.id,
               survey.user&.email,
               survey.categories.map {|c| c.name[I18n.locale.to_s] }.join(";")
             ].concat(

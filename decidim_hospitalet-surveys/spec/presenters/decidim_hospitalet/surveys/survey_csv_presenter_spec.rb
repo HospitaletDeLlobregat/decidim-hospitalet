@@ -24,6 +24,12 @@ module DecidimHospitalet
           end
         end
 
+        it "includes user id" do
+          surveys.each do |survey|
+              expect(data).to include("#{survey.user.id}")
+          end
+        end
+
         it "includes user emails" do
           surveys.each do |survey|
               expect(data).to include("#{survey.user.email}")

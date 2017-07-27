@@ -83,6 +83,7 @@ es:
         genders:
           female: Mujer
           male: Hombre
+        id: ID
         living_at_scope: "¿Vives en el barrio?"
         name: Nombre
         other_priorities: 'Otros temas que consideres prioritarios (especifícalos):'
