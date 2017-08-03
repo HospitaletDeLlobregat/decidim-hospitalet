@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(version: 20170725131118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "pg_stat_statements"
 
   create_table "attachments", id: :serial, force: :cascade do |t|
   end
@@ -86,7 +85,7 @@ ActiveRecord::Schema.define(version: 20170725131118) do
 
   create_table "decidim_categorizations", force: :cascade do |t|
     t.bigint "decidim_category_id", null: false
-    t.string "categorizable_type"
+    t.string "categorizable_type", null: false
     t.bigint "categorizable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -25,5 +25,4 @@ class AddOrganizationToUserGroups < ActiveRecord::Migration[5.0]
 
     change_column :decidim_user_groups, :decidim_organization_id, :integer, null: false
   end
-  end
 end
