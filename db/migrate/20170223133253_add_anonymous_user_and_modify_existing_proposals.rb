@@ -1,7 +1,16 @@
 class AddAnonymousUserAndModifyExistingProposals < ActiveRecord::Migration[5.0]
+  class Decidim::User
+    def deleted_at
+      nil
+    end
+  end
+
   def change
     password = SecureRandom.base64(16)
     organization = Decidim::Organization.first
+
+    return unless organization.present?
+
     user = Decidim::User.where(
         email: "enquestes@lhon-participa.cat",
         organization: organization
