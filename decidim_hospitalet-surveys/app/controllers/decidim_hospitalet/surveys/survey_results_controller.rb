@@ -9,28 +9,10 @@ module DecidimHospitalet
 
       helper_method :available_scopes, :answered_surveys, :proposals_feature
 
-      def new
-        @form = form(SurveyForm).from_params({})
-      end
-
-      def create
-        @form = form(SurveyForm).from_params(params)
-
-        CreateSurveyResult.call(@form, current_feature, current_user) do
-          on(:ok) do |_survey_result|
-            flash[:notice] = I18n.t("surveys.create.success", scope: "decidim_hospitalet")
-            redirect_to action: :index
-          end
-
-          on(:invalid) do |_survey_result|
-            flash.now[:alert] = I18n.t("surveys.create.error", scope: "decidim_hospitalet")
-            render :new
-          end
-        end
-      end
-
       def available_scopes
-        @available_scopes ||= current_organization.scopes.where.not(id: answered_surveys.pluck(:decidim_scope_id))
+        @available_scopes ||= current_organization.scopes.where.not(id: answered_surveys.pluck(:decidim_scope_id)).map do |scope|
+          OpenStruct.new(id: scope.id, name: scope.name[I18n.locale.to_s])
+        end
       end
 
       private
