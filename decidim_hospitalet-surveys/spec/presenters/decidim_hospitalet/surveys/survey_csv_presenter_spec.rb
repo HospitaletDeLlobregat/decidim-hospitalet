@@ -20,7 +20,7 @@ module DecidimHospitalet
 
         it "includes survey categories" do
           surveys.each do |survey|
-            expect(data).to include("#{survey.categories.map { |c| c.name["ca"] }.join(';')}")
+            expect(data).to include("#{survey.categories.map { |c| c.name[I18n.locale.to_s] }.join(';')}")
           end
         end
 
