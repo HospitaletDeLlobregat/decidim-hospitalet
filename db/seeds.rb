@@ -20,6 +20,7 @@ participatory_process = Decidim::ParticipatoryProcess.published.promoted.first
 password = SecureRandom.base64(16)
 
 puts "Deleting default L'Hospitalet scopes..."
+Decidim::Scope.where.not(parent_id: nil).where(organization: organization).destroy_all
 organization.scopes.destroy_all
 
 puts "Creating custom L'Hospitalet scopes..."
@@ -39,7 +40,7 @@ scopes = [
   "Bellvitge",
   "El Gornal"
 ].map do |scope_name|
-  { name: scope_name, organization: organization }
+  { name: scope_name, organization: organization, code: scope_name }
 end
 scopes = Decidim::Scope.create!(scopes)
 
@@ -64,11 +65,11 @@ categories = [
 
 Decidim::Category.transaction do
   categories.each do |data|
-    Decidim::Category.create!(name: data, description: data, participatory_process: participatory_process)
+    Decidim::Category.create!(name: data, description: data, participatory_space: participatory_process)
   end
 end
 
-categories = Decidim::Category.where(participatory_process: participatory_process).pluck(:id)
+categories = Decidim::Category.where(participatory_space: participatory_process).pluck(:id)
 
 Decidim::Feature.where(manifest_name: :hospitalet_surveys).find_each do |feature|
   3.times do
