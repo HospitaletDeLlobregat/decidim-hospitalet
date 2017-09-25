@@ -40,7 +40,7 @@ module DecidimHospitalet
       context "when the feature is missing" do
         let(:scope) { create :scope }
         let(:participatory_process) { create :participatory_process, organization: scope.organization }
-        let(:category) { create :category, participatory_process: participatory_process }
+        let(:category) { create :category, participatory_space: participatory_process }
         subject do
           build(
             :survey_result,
