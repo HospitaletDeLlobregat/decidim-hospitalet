@@ -26,21 +26,21 @@ organization.scopes.destroy_all
 puts "Creating custom L'Hospitalet scopes..."
 
 scopes = [
-  "El Centre",
-  "Sant Josep",
-  "Sanfeliu",
-  "Collblanc",
-  "La Torrassa",
-  "Santa Eulàlia",
-  "Granvia",
-  "La Florida",
-  "Les Planes",
-  "Pubilla Cases",
-  "Can Serra",
-  "Bellvitge",
-  "El Gornal"
+  { ca: "El Centre" },
+  { ca: "Sant Josep" },
+  { ca: "Sanfeliu" },
+  { ca: "Collblanc" },
+  { ca: "La Torrassa" },
+  { ca: "Santa Eulàlia" },
+  { ca: "Granvia" },
+  { ca: "La Florida" },
+  { ca: "Les Planes" },
+  { ca: "Pubilla Cases" },
+  { ca: "Can Serra" },
+  { ca: "Bellvitge" },
+  { ca: "El Gornal" },
 ].map do |scope_name|
-  { name: scope_name, organization: organization, code: scope_name }
+  { name: scope_name, organization: organization, code: scope_name[:ca] }
 end
 scopes = Decidim::Scope.create!(scopes)
 
