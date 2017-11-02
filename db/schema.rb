@@ -10,13 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170925080453) do
+ActiveRecord::Schema.define(version: 20171102153626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pg_stat_statements"
 
   create_table "attachments", id: :serial, force: :cascade do |t|
+  end
+
+  create_table "decidim_accountability_results", id: :serial, force: :cascade do |t|
+    t.jsonb "title"
+    t.jsonb "description"
+    t.string "reference"
+    t.date "start_date"
+    t.date "end_date"
+    t.decimal "progress", precision: 5, scale: 2
+    t.integer "parent_id"
+    t.integer "decidim_accountability_status_id"
+    t.integer "decidim_feature_id"
+    t.integer "decidim_scope_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "children_count", default: 0
+    t.index ["decidim_accountability_status_id"], name: "decidim_accountability_results_on_status_id"
+    t.index ["decidim_feature_id"], name: "index_decidim_accountability_results_on_decidim_feature_id"
+    t.index ["decidim_scope_id"], name: "index_decidim_accountability_results_on_decidim_scope_id"
+    t.index ["parent_id"], name: "decidim_accountability_results_on_parent_id"
+  end
+
+  create_table "decidim_accountability_statuses", id: :serial, force: :cascade do |t|
+    t.string "key"
+    t.jsonb "name"
+    t.integer "decidim_feature_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.jsonb "description"
+    t.integer "progress"
+    t.index ["decidim_feature_id"], name: "index_decidim_accountability_statuses_on_decidim_feature_id"
+  end
+
+  create_table "decidim_accountability_timeline_entries", id: :serial, force: :cascade do |t|
+    t.date "entry_date"
+    t.jsonb "description"
+    t.integer "decidim_accountability_result_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["decidim_accountability_result_id"], name: "index_decidim_accountability_timeline_entries_on_results_id"
+    t.index ["entry_date"], name: "index_decidim_accountability_timeline_entries_on_entry_date"
   end
 
   create_table "decidim_attachments", id: :serial, force: :cascade do |t|
@@ -87,7 +128,7 @@ ActiveRecord::Schema.define(version: 20170925080453) do
 
   create_table "decidim_categorizations", force: :cascade do |t|
     t.bigint "decidim_category_id", null: false
-    t.string "categorizable_type"
+    t.string "categorizable_type", null: false
     t.bigint "categorizable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -301,6 +342,8 @@ ActiveRecord::Schema.define(version: 20170925080453) do
     t.string "secondary_hosts", default: [], array: true
     t.string "available_authorizations", default: [], array: true
     t.text "header_snippets"
+    t.jsonb "cta_button_text"
+    t.string "cta_button_path"
     t.index ["host"], name: "index_decidim_organizations_on_host", unique: true
     t.index ["name"], name: "index_decidim_organizations_on_name", unique: true
   end
@@ -438,18 +481,6 @@ ActiveRecord::Schema.define(version: 20170925080453) do
     t.index ["from_type", "from_id"], name: "index_decidim_resource_links_on_from_type_and_from_id"
     t.index ["name"], name: "index_decidim_resource_links_on_name"
     t.index ["to_type", "to_id"], name: "index_decidim_resource_links_on_to_type_and_to_id"
-  end
-
-  create_table "decidim_results_results", id: :serial, force: :cascade do |t|
-    t.jsonb "title"
-    t.jsonb "description"
-    t.integer "decidim_feature_id"
-    t.integer "decidim_scope_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "reference"
-    t.index ["decidim_feature_id"], name: "index_decidim_results_results_on_decidim_feature_id"
-    t.index ["decidim_scope_id"], name: "index_decidim_results_results_on_decidim_scope_id"
   end
 
   create_table "decidim_scope_types", id: :serial, force: :cascade do |t|
