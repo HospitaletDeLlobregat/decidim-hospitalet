@@ -32,12 +32,6 @@ jobs:
           name: Wait for db
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
-          name: Generate test app
-          command: bundle exec rake decidim:generate_external_test_app
-      - run:
-          name: Create test DB
-          command: cd spec/decidim_dummy_app && RAILS_ENV=test bundle exec rails db:environment:set db:create db:schema:load
-      - run:
           name: Run tests
           command: bundle exec rake
       - store_artifacts:
