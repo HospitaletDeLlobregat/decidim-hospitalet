@@ -21,6 +21,7 @@ group :development do
   gem 'listen'
   gem 'spring'
   gem 'spring-watcher-listen'
+  gem "rspec-rails"
 end
 
 group :production do
