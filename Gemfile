@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby '2.4.1'
 
-gem "decidim", "0.7.1"
+gem "decidim", "0.8.2"
 gem "decidim-assemblies"
 
 gem "decidim_hospitalet-surveys", path: "decidim_hospitalet-surveys"
