@@ -14,7 +14,7 @@ describe DecidimHospitalet::Surveys::Abilities::ParticipatoryProcessCollaborator
 
   subject do
     described_class.new(user, {
-      current_participatory_process: participatory_process
+      current_participatory_space: participatory_process
     })
   end
 
