@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Visit the home page', type: :feature, perform_enqueued: true do
+describe 'Visit the home page', type: :system, perform_enqueued: true do
   let(:organization) { create :organization }
 
   before do
@@ -13,4 +13,4 @@ describe 'Visit the home page', type: :feature, perform_enqueued: true do
     visit decidim.root_path
     expect(page).to have_content('Welcome')
   end
-  end
+end
