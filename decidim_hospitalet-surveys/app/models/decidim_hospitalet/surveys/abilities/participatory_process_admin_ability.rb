@@ -10,7 +10,7 @@ module DecidimHospitalet
           super
 
           can :manage, SurveyResult do |survey_result|
-            can_manage_process?(survey_result.feature.participatory_process)
+            can_manage_process?(survey_result.feature.participatory_space)
           end
         end
       end

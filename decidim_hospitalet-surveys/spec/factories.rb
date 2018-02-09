@@ -4,7 +4,7 @@ require "decidim/comments/test/factories"
 require "decidim/proposals/test/factories"
 require "decidim/participatory_processes/test/factories"
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :surveys_feature, parent: :feature do
     name { { ca: "Enquestes", es: "Encuestas" } }
     manifest_name :hospitalet_surveys

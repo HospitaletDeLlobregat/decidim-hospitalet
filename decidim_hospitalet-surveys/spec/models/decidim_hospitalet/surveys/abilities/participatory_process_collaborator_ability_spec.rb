@@ -6,7 +6,7 @@ describe DecidimHospitalet::Surveys::Abilities::ParticipatoryProcessCollaborator
   let(:organization) { create(:organization) }
   let(:user) { build(:user, organization: organization) }
   let(:participatory_process) { create(:participatory_process, organization: organization) }
-  let(:feature) { create(:surveys_feature, participatory_process: participatory_process) }
+  let(:feature) { create(:surveys_feature, participatory_space: participatory_process) }
 
   before do
     create(:participatory_process_user_role, user: user, participatory_process: participatory_process, role: :collaborator)
@@ -14,7 +14,7 @@ describe DecidimHospitalet::Surveys::Abilities::ParticipatoryProcessCollaborator
 
   subject do
     described_class.new(user, {
-      current_participatory_process: participatory_process
+      current_participatory_space: participatory_process
     })
   end
 

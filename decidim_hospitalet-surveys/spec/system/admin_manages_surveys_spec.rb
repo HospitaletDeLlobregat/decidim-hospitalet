@@ -4,11 +4,10 @@ require "spec_helper"
 require_relative "../shared/admin_shared_context"
 require_relative "../shared/manage_surveys_examples"
 
-describe "Process admin manages surveys", type: :feature do
+describe "Admin manages surveys", type: :system do
   let(:manifest_name) { :hospitalet_surveys }
   include_context "admin"
-  include_context "feature admin"
-  let(:user) { process_admin }
+  include_context "when managing a feature as an admin"
   it_behaves_like "manage surveys"
 
   before do

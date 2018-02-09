@@ -1,10 +1,8 @@
 source "https://rubygems.org"
 
-ruby '2.4.2'
+ruby RUBY_VERSION
 
-gem "decidim", "0.8.2"
-gem "decidim-assemblies"
-
+gem "decidim", "0.9.2"
 gem "decidim_hospitalet-surveys", path: "decidim_hospitalet-surveys"
 
 gem "passenger"
