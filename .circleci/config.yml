@@ -32,17 +32,14 @@ jobs:
           name: Wait for db
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
-          name: Create external test app
-          command: bundle exec rake decidim:generate_external_test_app
-      - run:
-          name: Run debates test
-          command: cd decidim_hospitalet-surveys && bundle exec rake
-      - run:
           name: Create test DB
           command: RAILS_ENV=test bundle exec rails db:create db:schema:load
       - run:
           name: Run tests
-          command: bundle exec rake
+          command: bundle exec rake      
+      - run:
+          name: Run surveys test
+          command: cd decidim_hospitalet-surveys && bundle exec rake
       - store_artifacts:
           path: /app/tmp/capybara
 
