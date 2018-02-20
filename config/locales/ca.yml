@@ -1,6 +1,78 @@
 ---
 ca:
   decidim:
+    admin:
+      assemblies:
+        create:
+          error: S'ha produït un error en crear un nou Consell, Taula o Òrgan de Participació.
+          success: Consell, Taula o Òrgan de Participació creat correctament.
+        destroy:
+          success: El Consell, Taula o Òrgan de Participació s'ha eliminat amb èxit.
+        new:
+          title: Nou Consell, Taula o Òrgan de Participació
+        update:
+          error: S'ha produït un error en actualitzar aquest Consell, Taula o Òrgan de Participació.
+          success: El Consell, Taula o Òrgan de Participació s'ha actualitzat correctament.
+      assemblies_copies:
+        create:
+          error: S'ha produït un error en duplicar aquest Consell, Taula o Òrgan de Participació.
+          success: El Consell, Taula o Òrgan de Participació s'ha duplicat correctament.
+      assembly_copies:
+        new:
+          title: Consell, Taula o Òrgan de Participació duplicat
+      assembly_publications:
+        create:
+          error: S'ha produït un error en publicar aquest Consell, Taula o Òrgan de Participació.
+          success: Consell, Taula o Òrgan de Participació publicat amb èxit.
+        destroy:
+          error: S'ha produït un error en despublicar aquest Consell, Taula o Òrgan de Participació.
+          success: Consell, Taula o Òrgan de Participació despublicat amb èxit.
+      assembly_user_roles:
+        create:
+          error: S'ha produït un error en afegir un usuari per a aquest Consell, Taula o Òrgan de Participació.
+          success: L'usuari s'ha creat correctament per a aquest Consell, Taula o Òrgan de Participació.
+        destroy:
+          success: S'ha destruït l'usuari amb èxit per a aquest Consell, Taula o Òrgan de Participació.
+        edit:
+          title: Actualitza l'usuari del Consell, Taula o Òrgan de Participació.
+        index:
+          assembly_admins_title: Usuaris del Consell, Taula o Òrgan de Participació
+        new:
+          title: Nou usuari del Consell, Taula o Òrgan de Participació.
+        update:
+          error: S'ha produït un error en l'actualització d'un usuari per a aquest Consell, Taula o Òrgan de Participació.
+          success: L'usuari s'ha actualitzat correctament per a aquest Consell, Taula o Òrgan de Participació.
+      menu:
+        assemblies: Consells, Taules i Òrgans de Participació
+        assemblies_submenu:
+          assembly_admins: Usuaris del Consell, Taula o Òrgan de Participació
+      models:
+        assembly:
+          name: Consell, Taula o Òrgan de Participació
+        assembly_user_role:
+          name: Usuari del Consell, Taula o Òrgan de Participació
+      titles:
+        assemblies: Consells, Taules i Òrgans de Participació
+    assemblies:
+      admin:
+        assemblies:
+          form:
+            slug_help: 'Els noms curts d''URL s''utilitzen per generar les URL que apunten a aquest Consell, Taula o Òrgan de Participació. Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
+        assembly_copies:
+          form:
+            slug_help: 'Els noms curts d''URL s''utilitzen per generar els URL que apunten a aquest Consell, Taula o Òrgan de Participació. Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
+    assemblies:
+      index:
+        title: Consells, Taules i Òrgans de Participació
+      pages:
+        home:
+          highlighted_assemblies:
+            active_assemblies: Consells, Taules i Òrgans de Participació actives
+            see_all_assemblies: Veure tots els Consells, Taules i Òrgans de Participació
+      statistics:
+        assemblies_count: Consells, Taules i Òrgans de Participació
+    menu:
+      assemblies: Consells, Taules i Òrgans de Participació
     meetings:
       meetings:
         filters:
@@ -44,3 +116,14 @@ ca:
         surveys_explanation: Qüestionari per obtenir informació i conèixer l’opinió de la ciutadania.
       footer_sub_hero:
         footer_sub_hero_headline: "Benvingut/da a la plataforma participativa %{organization}."
+  layouts:
+    decidim:
+      assemblies:
+        index:
+          promoted_assemblies: Consells, Taules i Òrgans de Participació destacades
+        order_by_assemblies:
+          assemblies:
+            one: "%{count} Consells, Taules i Òrgans de Participació"
+            other: "%{count} Consells, Taules i Òrgans de Participació"
+      assembly_header:
+        assembly_menu_item: El Consell, Taula o Òrgan de Participació
