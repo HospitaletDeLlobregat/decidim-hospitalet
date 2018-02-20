@@ -1,6 +1,78 @@
 ---
 es:
   decidim:
+    admin:
+      assemblies:
+        create:
+          error: Se produjo un error al crear un nuevo Consejo, Mesa o Órgano de Participación.
+          success: Consejo, Mesa o Órgano de Participación creado correctamente.
+        destroy:
+          success: Consejo, Mesa o Órgano de Participación destruido correctamente.
+        new:
+          title: Nuevo Consejo, Mesa o Órgano de Participación
+        update:
+          error: Se ha producido un error al actualizar este Consejo, Mesa o Órgano de Participación.
+          success: El Consejo, Mesa o Órgano de Participación se ha actualizado correctamente.
+      assemblies_copies:
+        create:
+          error: Se produjo un error al duplicar este Consejo, Mesa o Órgano de Participación.
+          success: Consejo, Mesa o Órgano de Participación duplicado correctamente.
+      assembly_copies:
+        new:
+          title: Duplicar Consejo, Mesa o Órgano de Participación
+      assembly_publications:
+        create:
+          error: Se produjo un error al publicar este Consejo, Mesa o Órgano de Participación.
+          success: Consejo, Mesa o Órgano de Participación publicado con éxito.
+        destroy:
+          error: Se produjo un error al despublicar este Consejo, Mesa o Órgano de Participación.
+          success: Consejo, Mesa o Órgano de Participación despublicado con éxito.
+      assembly_user_roles:
+        create:
+          error: Se ha producido un error al agregar un usuario para este Consejo, Mesa o Órgano de Participación.
+          success: Usuario creado con éxito para este Consejo, Mesa o Órgano de Participación.
+        destroy:
+          success: Usuario destruido con éxito para este Consejo, Mesa o Órgano de Participación.
+        edit:
+          title: Actualizar el usuario del Consejo, Mesa o Órgano de Participación.
+        index:
+          assembly_admins_title: Usuarios del Consejo, Mesa o Órgano de Participación
+        new:
+          title: Nuevo usuario del Consejo, Mesa o Órgano de Participación.
+        update:
+          error: Ha habido un error al actualizar un usuario para este Consejo, Mesa o Órgano de Participación.
+          success: Usuario actualizado con éxito para este Consejo, Mesa o Órgano de Participación.
+      menu:
+        assemblies: Consejos, Mesas o Órganos de participación
+        assemblies_submenu:
+          assembly_admins: Usuarios del Consejo, Mesa o Órgano de Participación
+      models:
+        assembly:
+          name: Consejo, Mesa o Órgano de Participación
+        assembly_user_role:
+          name: Usuario del Consejo, Mesa o Órgano de Participación
+      titles:
+        assemblies: Consejos, Mesas o Órganos de participación
+    assemblies:
+      admin:
+        assemblies:
+          form:
+            slug_help: 'Los textos cortos de URL se utilizan para generar las URL que apuntan a este Consejo, Mesa o Órgano de Participación. Sólo acepta letras, números y guiones, y debe comenzar con una letra. Ejemplo: %{url}'
+        assembly_copies:
+          form:
+            slug_help: 'Los textos cortos de URL se utilizan para generar las URL que apuntan a este Consejo, Mesa o Órgano de Participación. Sólo acepta letras, números y guiones, y debe comenzar con una letra. Ejemplo: %{url}'
+    assemblies:
+      index:
+        title: Consejos, Mesas y Órganos de Participación
+      pages:
+        home:
+          highlighted_assemblies:
+            active_assemblies: Consejos, Mesas y Órganos de Participación activos
+            see_all_assemblies: Ver todos los Consejos, Mesas y Órganos de Participación
+      statistics:
+        assemblies_count: Consejos, Mesas y Órganos de Participación
+    menu:
+      assemblies: Consejos, Mesas y Órganos de Participación
     meetings:
       meetings:
         filters:
@@ -37,13 +109,21 @@ es:
     home:
       extended:
         meetings: Encuentros presenciales
-        meetings_explanation: Encuentros y sesiones de trabajo presenciales relacionadas
-          con los procesos de participación activos.
+        meetings_explanation: Encuentros y sesiones de trabajo presenciales relacionadas con los procesos de participación activos.
         proposals: Propuestas
-        proposals_explanation: Haz tus aportaciones en aquellos procesos activos en
-          el web.
+        proposals_explanation: Haz tus aportaciones en aquellos procesos activos en el web.
         surveys: Encuestas
-        surveys_explanation: Cuestionario para obtener información y conocer la opinión
-          de la ciudadanía.
+        surveys_explanation: Cuestionario para obtener información y conocer la opinión de la ciudadanía.
       footer_sub_hero:
         footer_sub_hero_headline: "Bienvenida y bienvenido a la plataforma participativa %{organization}."
+  layouts:
+    decidim:
+      assemblies:
+        index:
+          promoted_assemblies: Consejos, Mesas y Órganos de Participación destacades
+        order_by_assemblies:
+          assemblies:
+            one: "%{count} Consejos, Mesas y Órganos de Participación"
+            other: "%{count} Consejos, Mesas y Órganos de Participación"
+      assembly_header:
+        assembly_menu_item: El Consejo, Mesa o Órgano de Participación
