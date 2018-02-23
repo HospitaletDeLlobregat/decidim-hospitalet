@@ -87,6 +87,7 @@ Decidim::User.where(
   ).first || Decidim::User.create!(
   {
     name: "Enquesta / Encuesta",
+    nickname: "enquesta-encuesta",
     password: password,
     password_confirmation: password,
     email: "enquestes@lhon-participa.cat",
