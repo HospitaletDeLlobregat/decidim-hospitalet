@@ -9,6 +9,7 @@ gem "passenger"
 gem 'uglifier'
 gem 'lograge'
 gem 'faker'
+gem "virtus-multiparams"
 
 group :development, :test do
   gem "decidim-dev"

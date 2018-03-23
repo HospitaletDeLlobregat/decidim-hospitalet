@@ -613,6 +613,8 @@ GEM
       coercible (~> 1.0)
       descendants_tracker (~> 0.0, >= 0.0.3)
       equalizer (~> 0.0, >= 0.0.9)
+    virtus-multiparams (0.1.1)
+      virtus (~> 1.0)
     warden (1.2.7)
       rack (>= 1.0)
     webmock (3.3.0)
@@ -651,6 +653,7 @@ DEPENDENCIES
   spring-watcher-listen
   tzinfo-data
   uglifier
+  virtus-multiparams
 
 RUBY VERSION
    ruby 2.5.0p0
