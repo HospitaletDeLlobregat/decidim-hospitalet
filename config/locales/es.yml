@@ -1,6 +1,29 @@
 ---
 es:
+  activemodel:
+    attributes:
+      census_authorization_handler:
+        date_of_birth: Fecha de nacimiento
+        document_number: Número de documento
+        postal_code: Código postal
+  census_authorization:
+    form:
+      date_select:
+        day: Día
+        month: Mes
+        year: Año
+  census_authorization_handler:
+    age_under_16: Tienes que ser mayor de 16 años para validarte
+    invalid_document: Número de documento incorrecto
   decidim:
+    authorization_handlers:
+      census_authorization_handler:
+        explanation: Verifícate con el padrón
+        fields:
+          date_of_birth: Fecha de nacimiento
+          document_number: Número de documento
+          postal_code: Código postal
+        name: El padrón
     admin:
       assemblies:
         create:
