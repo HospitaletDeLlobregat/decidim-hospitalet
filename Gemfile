@@ -13,6 +13,7 @@ gem 'faker'
 group :development, :test do
   gem "decidim-dev"
   gem 'byebug', platform: :mri
+  gem "puma"
 end
 
 group :development do
