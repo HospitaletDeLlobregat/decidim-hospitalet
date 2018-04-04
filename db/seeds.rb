@@ -71,16 +71,6 @@ end
 
 categories = Decidim::Category.where(participatory_space: participatory_process).pluck(:id)
 
-Decidim::Feature.where(manifest_name: :hospitalet_surveys).find_each do |feature|
-  3.times do
-    DecidimHospitalet::Surveys::SurveyResult.create!(
-      feature: feature,
-      scope: scopes.sample,
-      selected_categories: categories.sample(Random.new.rand(1..4))
-    )
-  end
-end
-
 Decidim::User.where(
     email: "enquestes@lhon-participa.cat",
     organization: organization,

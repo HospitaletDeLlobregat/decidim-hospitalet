@@ -36,10 +36,7 @@ jobs:
           command: RAILS_ENV=test bundle exec rails db:create db:schema:load
       - run:
           name: Run tests
-          command: bundle exec rspec      
-      - run:
-          name: Run surveys test
-          command: cd decidim_hospitalet-surveys && bundle exec rake
+          command: bundle exec rspec
       - store_artifacts:
           path: /app/tmp/capybara
 

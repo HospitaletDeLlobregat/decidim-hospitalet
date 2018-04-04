@@ -114,7 +114,6 @@ ca:
         projects_count: Projectes
         proposals_count: Propostes
         results_count: Resultats
-        surveys_count: Enquestes
         users_count: Participants
         votes_count: Suports
     proposals:
@@ -135,8 +134,6 @@ ca:
         meetings_explanation: Trobades i sessions de treball presencials relacionades amb els processos de participació actius.
         proposals: Propostes
         proposals_explanation: Fes les teves aportacions en aquells processos actius al web.
-        surveys: Enquesta
-        surveys_explanation: Qüestionari per obtenir informació i conèixer l’opinió de la ciutadania.
       footer_sub_hero:
         footer_sub_hero_headline: "Benvingut/da a la plataforma participativa %{organization}."
   layouts:

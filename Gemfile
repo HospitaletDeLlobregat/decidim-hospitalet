@@ -2,8 +2,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-gem "decidim", "0.9.2"
-gem "decidim_hospitalet-surveys", path: "decidim_hospitalet-surveys"
+gem "decidim", "~> 0.10.0"
 
 gem "passenger"
 gem 'uglifier'
@@ -14,6 +13,7 @@ gem "virtus-multiparams"
 group :development, :test do
   gem "decidim-dev"
   gem 'byebug', platform: :mri
+  gem "puma"
 end
 
 group :development do
