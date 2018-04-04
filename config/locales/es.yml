@@ -91,7 +91,6 @@ es:
         projects_count: Proyectos
         proposals_count: Propuestas
         results_count: Resultados
-        surveys_count: Encuestas
         users_count: Participantes
         votes_count: Soportes
     proposals:
@@ -112,8 +111,6 @@ es:
         meetings_explanation: Encuentros y sesiones de trabajo presenciales relacionadas con los procesos de participación activos.
         proposals: Propuestas
         proposals_explanation: Haz tus aportaciones en aquellos procesos activos en el web.
-        surveys: Encuestas
-        surveys_explanation: Cuestionario para obtener información y conocer la opinión de la ciudadanía.
       footer_sub_hero:
         footer_sub_hero_headline: "Bienvenida y bienvenido a la plataforma participativa %{organization}."
   layouts:
