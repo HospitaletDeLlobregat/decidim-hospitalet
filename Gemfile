@@ -1,8 +1,9 @@
 source "https://rubygems.org"
 
 ruby RUBY_VERSION
+DECIDIM_VERSION = { git: "https://github.com/decidim/decidim" }
 
-gem "decidim", "~> 0.10.0"
+gem "decidim", DECIDIM_VERSION
 
 gem "passenger"
 gem 'uglifier'
@@ -11,7 +12,7 @@ gem 'faker'
 gem "virtus-multiparams"
 
 group :development, :test do
-  gem "decidim-dev"
+  gem "decidim-dev", DECIDIM_VERSION
   gem 'byebug', platform: :mri
   gem "puma"
 end
