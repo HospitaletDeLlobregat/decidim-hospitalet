@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/decidim/decidim
-  revision: 1719a918679dcb85c0de36e0403a8a423b79cfa2
+  revision: 6974a9c77000a127cd3bb1292c1e2c7225d9f3b1
   specs:
     decidim (0.11.0.pre)
       decidim-accountability (= 0.11.0.pre)
@@ -244,7 +244,7 @@ GEM
     cells-erb (0.1.0)
       cells (~> 4.0)
       erbse (>= 0.1.1)
-    cells-rails (0.0.8)
+    cells-rails (0.0.9)
       actionpack (>= 3.0)
       cells (>= 4.1.6, < 5.0.0)
     childprocess (0.9.0)
