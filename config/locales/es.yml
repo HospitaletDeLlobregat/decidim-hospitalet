@@ -96,6 +96,7 @@ es:
         assemblies_count: Consejos, Mesas y Órganos de Participación
     menu:
       assemblies: Consejos, Mesas y Órganos de Participación
+      entities: Entidades
     meetings:
       meetings:
         filters:

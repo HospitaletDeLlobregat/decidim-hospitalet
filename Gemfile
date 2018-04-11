@@ -10,9 +10,12 @@ gem 'uglifier'
 gem 'lograge'
 gem 'faker'
 gem "virtus-multiparams"
+gem 'redcarpet'
+gem 'emd'
 
 group :development, :test do
   gem "decidim-dev", DECIDIM_VERSION
+  gem "rubocop"
   gem 'byebug', platform: :mri
   gem "puma"
 end

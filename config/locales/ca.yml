@@ -96,6 +96,7 @@ ca:
         assemblies_count: Consells, Taules i Òrgans de Participació
     menu:
       assemblies: Consells, Taules i Òrgans de Participació
+      entities: Entitats
     meetings:
       meetings:
         filters:

@@ -297,6 +297,8 @@ GEM
     easy_translate (0.5.1)
       thread
       thread_safe
+    emd (0.1.0)
+      redcarpet
     equalizer (0.0.11)
     erb_lint (0.0.23)
       activesupport
@@ -537,6 +539,7 @@ GEM
       activesupport (>= 4.1.0)
       virtus (~> 1.0.5)
       wisper (>= 1.6.1)
+    redcarpet (3.4.0)
     redis (4.0.1)
     request_store (1.4.1)
       rack (>= 1.4)
@@ -692,6 +695,7 @@ DEPENDENCIES
   dalli
   decidim!
   decidim-dev!
+  emd
   faker
   fog-aws
   listen
@@ -700,7 +704,9 @@ DEPENDENCIES
   passenger
   puma
   rails_12factor
+  redcarpet
   rspec-rails
+  rubocop
   sendgrid-ruby
   sentry-raven
   sidekiq
