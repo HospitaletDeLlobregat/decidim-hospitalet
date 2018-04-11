@@ -1,0 +1,2 @@
+<!-- replace_contents '.columns.small-centered.large-10' -->
+<%= render partial: "pages/home/footer_sub_hero_content" %>

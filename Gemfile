@@ -12,6 +12,7 @@ gem 'faker'
 gem "virtus-multiparams"
 gem 'redcarpet'
 gem 'emd'
+gem 'deface'
 
 group :development, :test do
   gem "decidim-dev", DECIDIM_VERSION
