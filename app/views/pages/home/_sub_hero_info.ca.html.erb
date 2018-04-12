@@ -1,4 +1,8 @@
-<p>Benvinguts i benvingudes al web de participació de la ciutat de L’Hospitalet, depenent de la Regidoria de Participació Ciutadana, de l’Àrea d’Alcladia-Presidència. El Servei de Participació te com a missió la promoció d’una ciutat participativa on veïns, veïnes, entitats i govern municipal contribueixin al bon govern, la convivència i la cohesió social de L’Hospitalet de Llobregat.</p>
+<p>Benvinguts i benvingudes al web de participació de la ciutat de L’Hospitalet, depenent de la Regidoria de Participació Ciutadana,
+  de l’Àrea d’Alcladia-Presidència.</p>
+
+<p>El Servei de Participació te com a missió la promoció d’una ciutat participativa on veïns, veïnes, entitats i govern municipal
+  contribueixin al bon govern, la convivència i la cohesió social de L’Hospitalet de Llobregat.</p>
 
 <p>Les funcions del Servei de Participació són:</p>
 <ul>
@@ -8,4 +12,38 @@
   <li>Oferir suport i assessorament tècnic a entitats de la ciutat.</li>
 </ul>
 
-<p>En aquest espai trobaràs informació sobre els processos i els canals de participació que fan de l’Hospitalet una ciutat que mira al futur comptant amb la participació de tots i totes. La ciutat de la participació la construïm des d’ara.</p>
+<p>En aquest espai trobaràs informació sobre els processos i els canals de participació que fan de l’Hospitalet una ciutat que
+  mira al futur comptant amb la participació de tots i totes. La ciutat de la participació la construïm des d’ara.</p>
+
+<div class="card card--list">
+  <div class="card--list__item">
+    <div class="card--list__text">
+      <%= link_to asset_path("reglament.pdf"), class: "card__link" do %>
+        <h6 class="card--list__heading heading6">
+          Reglament de Participació de L'Hospitalet de Llobregat
+          <small>pdf 260KB</small>
+        </h6>
+        <% end %>
+    </div>
+    <div class="card--list__data">
+      <%= link_to asset_path("reglament.pdf"), class: "card--list__data__icon" do %>
+        <%= icon "cloud-download" %>
+          <% end %>
+    </div>
+  </div>
+  <div class="card--list__item">
+    <div class="card--list__text">
+      <%= link_to asset_path("agenda.pdf"), class: "card__link" do %>
+        <h6 class="card--list__heading heading6">
+          Agenda Participativa de Ciutat 2018
+          <small>pdf 485KB</small>
+        </h6>
+        <% end %>
+    </div>
+    <div class="card--list__data">
+      <%= link_to asset_path("agenda.pdf"), class: "card--list__data__icon" do %>
+        <%= icon "cloud-download" %>
+          <% end %>
+    </div>
+  </div>
+</div>
