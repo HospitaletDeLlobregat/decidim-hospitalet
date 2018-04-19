@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410062470) do
+ActiveRecord::Schema.define(version: 20180419131746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "ltree"
   enable_extension "pg_stat_statements"
   enable_extension "pg_trgm"
-  enable_extension "ltree"
 
   create_table "attachments", id: :serial, force: :cascade do |t|
   end
@@ -852,6 +852,7 @@ ActiveRecord::Schema.define(version: 20180410062470) do
     t.bigint "decidim_survey_question_id"
     t.jsonb "body"
     t.boolean "free_text"
+    t.integer "position", default: 0
     t.index ["decidim_survey_question_id"], name: "index_decidim_surveys_answer_options_question_id"
   end
 
