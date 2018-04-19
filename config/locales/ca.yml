@@ -6,6 +6,8 @@ ca:
         date_of_birth: Data de naixement
         document_number: Número de document
         postal_code: Codi postal
+      survey_answer:
+        choices: Les opcions seleccionades
   census_authorization:
     form:
       date_select:
