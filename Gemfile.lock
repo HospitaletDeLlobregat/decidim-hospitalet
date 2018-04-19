@@ -276,6 +276,11 @@ GEM
     declarative-builder (0.1.0)
       declarative-option (< 0.2.0)
     declarative-option (0.1.0)
+    deface (1.3.0)
+      nokogiri (~> 1.6)
+      polyglot
+      rails (>= 4.1)
+      rainbow (>= 2.1.0)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     devise (4.4.3)
@@ -297,6 +302,8 @@ GEM
     easy_translate (0.5.1)
       thread
       thread_safe
+    emd (0.1.0)
+      redcarpet
     equalizer (0.0.11)
     erb_lint (0.0.23)
       activesupport
@@ -469,6 +476,7 @@ GEM
     pg (1.0.0)
     polyamorous (1.3.3)
       activerecord (>= 3.0)
+    polyglot (0.3.5)
     powerpack (0.1.1)
     premailer (1.11.1)
       addressable
@@ -537,6 +545,7 @@ GEM
       activesupport (>= 4.1.0)
       virtus (~> 1.0.5)
       wisper (>= 1.6.1)
+    redcarpet (3.4.0)
     redis (4.0.1)
     request_store (1.4.1)
       rack (>= 1.4)
@@ -692,6 +701,8 @@ DEPENDENCIES
   dalli
   decidim!
   decidim-dev!
+  deface
+  emd
   faker
   fog-aws
   listen
@@ -700,7 +711,9 @@ DEPENDENCIES
   passenger
   puma
   rails_12factor
+  redcarpet
   rspec-rails
+  rubocop
   sendgrid-ruby
   sentry-raven
   sidekiq

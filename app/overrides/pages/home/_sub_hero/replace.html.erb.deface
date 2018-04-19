@@ -1,0 +1,4 @@
+<!-- replace 'h2' -->
+<div style="text-align: left">
+  <%= render partial: "pages/home/sub_hero_info" %>
+</div>
