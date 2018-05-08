@@ -29,75 +29,75 @@ ca:
     admin:
       assemblies:
         create:
-          error: S'ha produït un error en crear un nou Consell, Taula o Òrgan de Participació.
-          success: Consell, Taula o Òrgan de Participació creat correctament.
+          error: S'ha produït un error en crear un nou Òrgan de Participació.
+          success: Òrgan de Participació creat correctament.
         destroy:
-          success: El Consell, Taula o Òrgan de Participació s'ha eliminat amb èxit.
+          success: L'Òrgan de Participació s'ha eliminat amb èxit.
         new:
-          title: Nou Consell, Taula o Òrgan de Participació
+          title: Nou Òrgan de Participació
         update:
-          error: S'ha produït un error en actualitzar aquest Consell, Taula o Òrgan de Participació.
-          success: El Consell, Taula o Òrgan de Participació s'ha actualitzat correctament.
+          error: S'ha produït un error en actualitzar aquest Òrgan de Participació.
+          success: L'Òrgan de Participació s'ha actualitzat correctament.
       assemblies_copies:
         create:
-          error: S'ha produït un error en duplicar aquest Consell, Taula o Òrgan de Participació.
-          success: El Consell, Taula o Òrgan de Participació s'ha duplicat correctament.
+          error: S'ha produït un error en duplicar aquest Òrgan de Participació.
+          success: L'Òrgan de Participació s'ha duplicat correctament.
       assembly_copies:
         new:
-          title: Consell, Taula o Òrgan de Participació duplicat
+          title: Òrgan de Participació duplicat
       assembly_publications:
         create:
-          error: S'ha produït un error en publicar aquest Consell, Taula o Òrgan de Participació.
-          success: Consell, Taula o Òrgan de Participació publicat amb èxit.
+          error: S'ha produït un error en publicar aquest Òrgan de Participació.
+          success: Òrgan de Participació publicat amb èxit.
         destroy:
-          error: S'ha produït un error en despublicar aquest Consell, Taula o Òrgan de Participació.
-          success: Consell, Taula o Òrgan de Participació despublicat amb èxit.
+          error: S'ha produït un error en despublicar aquest Òrgan de Participació.
+          success: Òrgan de Participació despublicat amb èxit.
       assembly_user_roles:
         create:
-          error: S'ha produït un error en afegir un usuari per a aquest Consell, Taula o Òrgan de Participació.
-          success: L'usuari s'ha creat correctament per a aquest Consell, Taula o Òrgan de Participació.
+          error: S'ha produït un error en afegir un usuari per a aquest Òrgan de Participació.
+          success: L'usuari s'ha creat correctament per a aquest Òrgan de Participació.
         destroy:
-          success: S'ha destruït l'usuari amb èxit per a aquest Consell, Taula o Òrgan de Participació.
+          success: S'ha destruït l'usuari amb èxit per a aquest Òrgan de Participació.
         edit:
-          title: Actualitza l'usuari del Consell, Taula o Òrgan de Participació.
+          title: Actualitza l'usuari del Òrgan de Participació.
         index:
-          assembly_admins_title: Usuaris del Consell, Taula o Òrgan de Participació
+          assembly_admins_title: Usuaris del Òrgan de Participació
         new:
-          title: Nou usuari del Consell, Taula o Òrgan de Participació.
+          title: Nou usuari del Òrgan de Participació.
         update:
-          error: S'ha produït un error en l'actualització d'un usuari per a aquest Consell, Taula o Òrgan de Participació.
-          success: L'usuari s'ha actualitzat correctament per a aquest Consell, Taula o Òrgan de Participació.
+          error: S'ha produït un error en l'actualització d'un usuari per a aquest Òrgan de Participació.
+          success: L'usuari s'ha actualitzat correctament per a aquest Òrgan de Participació.
       menu:
-        assemblies: Consells, Taules i Òrgans de Participació
+        assemblies: Òrgans de Participació
         assemblies_submenu:
-          assembly_admins: Usuaris del Consell, Taula o Òrgan de Participació
+          assembly_admins: Usuaris del Òrgan de Participació
       models:
         assembly:
-          name: Consell, Taula o Òrgan de Participació
+          name: Òrgan de Participació
         assembly_user_role:
-          name: Usuari del Consell, Taula o Òrgan de Participació
+          name: Usuari del Òrgan de Participació
       titles:
-        assemblies: Consells, Taules i Òrgans de Participació
+        assemblies: Òrgans de Participació
     assemblies:
       admin:
         assemblies:
           form:
-            slug_help: 'Els noms curts d''URL s''utilitzen per generar les URL que apunten a aquest Consell, Taula o Òrgan de Participació. Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
+            slug_help: 'Els noms curts d''URL s''utilitzen per generar les URL que apunten a aquest Òrgan de Participació. Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
         assembly_copies:
           form:
-            slug_help: 'Els noms curts d''URL s''utilitzen per generar els URL que apunten a aquest Consell, Taula o Òrgan de Participació. Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
+            slug_help: 'Els noms curts d''URL s''utilitzen per generar els URL que apunten a aquest Òrgan de Participació. Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
     assemblies:
       index:
-        title: Consells, Taules i Òrgans de Participació
+        title: Òrgans de Participació
       pages:
         home:
           highlighted_assemblies:
-            active_assemblies: Consells, Taules i Òrgans de Participació actives
-            see_all_assemblies: Veure tots els Consells, Taules i Òrgans de Participació
+            active_assemblies: Òrgans de Participació actives
+            see_all_assemblies: Veure tots els Òrgans de Participació
       statistics:
-        assemblies_count: Consells, Taules i Òrgans de Participació
+        assemblies_count: Òrgans de Participació
     menu:
-      assemblies: Consells, Taules i Òrgans de Participació
+      assemblies: Òrgans de Participació
       entities: Entitats
     meetings:
       meetings:
@@ -143,10 +143,10 @@ ca:
     decidim:
       assemblies:
         index:
-          promoted_assemblies: Consells, Taules i Òrgans de Participació destacades
+          promoted_assemblies: Òrgans de Participació destacats
         order_by_assemblies:
           assemblies:
-            one: "%{count} Consells, Taules i Òrgans de Participació"
-            other: "%{count} Consells, Taules i Òrgans de Participació"
+            one: "%{count} Òrgans de Participació"
+            other: "%{count} Òrgans de Participació"
       assembly_header:
-        assembly_menu_item: El Consell, Taula o Òrgan de Participació
+        assembly_menu_item: L'Òrgan de Participació

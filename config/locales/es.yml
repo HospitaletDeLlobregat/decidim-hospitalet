@@ -29,75 +29,75 @@ es:
     admin:
       assemblies:
         create:
-          error: Se produjo un error al crear un nuevo Consejo, Mesa o Órgano de Participación.
-          success: Consejo, Mesa o Órgano de Participación creado correctamente.
+          error: Se produjo un error al crear un nuevo Órgano de Participación.
+          success: Órgano de Participación creado correctamente.
         destroy:
-          success: Consejo, Mesa o Órgano de Participación destruido correctamente.
+          success: Órgano de Participación destruido correctamente.
         new:
-          title: Nuevo Consejo, Mesa o Órgano de Participación
+          title: Nuevo Órgano de Participación
         update:
-          error: Se ha producido un error al actualizar este Consejo, Mesa o Órgano de Participación.
-          success: El Consejo, Mesa o Órgano de Participación se ha actualizado correctamente.
+          error: Se ha producido un error al actualizar este Órgano de Participación.
+          success: El Órgano de Participación se ha actualizado correctamente.
       assemblies_copies:
         create:
-          error: Se produjo un error al duplicar este Consejo, Mesa o Órgano de Participación.
-          success: Consejo, Mesa o Órgano de Participación duplicado correctamente.
+          error: Se produjo un error al duplicar este Órgano de Participación.
+          success: Órgano de Participación duplicado correctamente.
       assembly_copies:
         new:
-          title: Duplicar Consejo, Mesa o Órgano de Participación
+          title: Duplicar Órgano de Participación
       assembly_publications:
         create:
-          error: Se produjo un error al publicar este Consejo, Mesa o Órgano de Participación.
-          success: Consejo, Mesa o Órgano de Participación publicado con éxito.
+          error: Se produjo un error al publicar este Órgano de Participación.
+          success: Órgano de Participación publicado con éxito.
         destroy:
-          error: Se produjo un error al despublicar este Consejo, Mesa o Órgano de Participación.
-          success: Consejo, Mesa o Órgano de Participación despublicado con éxito.
+          error: Se produjo un error al despublicar este Órgano de Participación.
+          success: Órgano de Participación despublicado con éxito.
       assembly_user_roles:
         create:
-          error: Se ha producido un error al agregar un usuario para este Consejo, Mesa o Órgano de Participación.
-          success: Usuario creado con éxito para este Consejo, Mesa o Órgano de Participación.
+          error: Se ha producido un error al agregar un usuario para este Órgano de Participación.
+          success: Usuario creado con éxito para este Órgano de Participación.
         destroy:
-          success: Usuario destruido con éxito para este Consejo, Mesa o Órgano de Participación.
+          success: Usuario destruido con éxito para este Órgano de Participación.
         edit:
-          title: Actualizar el usuario del Consejo, Mesa o Órgano de Participación.
+          title: Actualizar el usuario del Órgano de Participación.
         index:
-          assembly_admins_title: Usuarios del Consejo, Mesa o Órgano de Participación
+          assembly_admins_title: Usuarios del Órgano de Participación
         new:
-          title: Nuevo usuario del Consejo, Mesa o Órgano de Participación.
+          title: Nuevo usuario del Órgano de Participación.
         update:
-          error: Ha habido un error al actualizar un usuario para este Consejo, Mesa o Órgano de Participación.
-          success: Usuario actualizado con éxito para este Consejo, Mesa o Órgano de Participación.
+          error: Ha habido un error al actualizar un usuario para este Órgano de Participación.
+          success: Usuario actualizado con éxito para este Órgano de Participación.
       menu:
         assemblies: Consejos, Mesas o Órganos de participación
         assemblies_submenu:
-          assembly_admins: Usuarios del Consejo, Mesa o Órgano de Participación
+          assembly_admins: Usuarios del Órgano de Participación
       models:
         assembly:
-          name: Consejo, Mesa o Órgano de Participación
+          name: Órgano de Participación
         assembly_user_role:
-          name: Usuario del Consejo, Mesa o Órgano de Participación
+          name: Usuario del Órgano de Participación
       titles:
         assemblies: Consejos, Mesas o Órganos de participación
     assemblies:
       admin:
         assemblies:
           form:
-            slug_help: 'Los textos cortos de URL se utilizan para generar las URL que apuntan a este Consejo, Mesa o Órgano de Participación. Sólo acepta letras, números y guiones, y debe comenzar con una letra. Ejemplo: %{url}'
+            slug_help: 'Los textos cortos de URL se utilizan para generar las URL que apuntan a este Órgano de Participación. Sólo acepta letras, números y guiones, y debe comenzar con una letra. Ejemplo: %{url}'
         assembly_copies:
           form:
-            slug_help: 'Los textos cortos de URL se utilizan para generar las URL que apuntan a este Consejo, Mesa o Órgano de Participación. Sólo acepta letras, números y guiones, y debe comenzar con una letra. Ejemplo: %{url}'
+            slug_help: 'Los textos cortos de URL se utilizan para generar las URL que apuntan a este Órgano de Participación. Sólo acepta letras, números y guiones, y debe comenzar con una letra. Ejemplo: %{url}'
     assemblies:
       index:
-        title: Consejos, Mesas y Órganos de Participación
+        title: Órganos de Participación
       pages:
         home:
           highlighted_assemblies:
-            active_assemblies: Consejos, Mesas y Órganos de Participación activos
-            see_all_assemblies: Ver todos los Consejos, Mesas y Órganos de Participación
+            active_assemblies: Órganos de Participación activos
+            see_all_assemblies: Ver todos los Órganos de Participación
       statistics:
-        assemblies_count: Consejos, Mesas y Órganos de Participación
+        assemblies_count: Órganos de Participación
     menu:
-      assemblies: Consejos, Mesas y Órganos de Participación
+      assemblies: Órganos de Participación
       entities: Entidades
     meetings:
       meetings:
@@ -143,10 +143,10 @@ es:
     decidim:
       assemblies:
         index:
-          promoted_assemblies: Consejos, Mesas y Órganos de Participación destacades
+          promoted_assemblies: Órganos de Participación destacados
         order_by_assemblies:
           assemblies:
-            one: "%{count} Consejos, Mesas y Órganos de Participación"
-            other: "%{count} Consejos, Mesas y Órganos de Participación"
+            one: "%{count} Órganos de Participación"
+            other: "%{count} Órganos de Participación"
       assembly_header:
-        assembly_menu_item: El Consejo, Mesa o Órgano de Participación
+        assembly_menu_item: El Órgano de Participación
