@@ -19,6 +19,10 @@ describe CensusAuthorizationHandler do
 
   it_behaves_like "an authorization handler"
 
+  before do
+    handler.user = create(:user)
+  end
+
   context "with a valid response" do
     before do
       allow(handler)
