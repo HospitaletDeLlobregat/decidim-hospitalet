@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180419131746) do
+ActiveRecord::Schema.define(version: 20180515085840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,6 +129,25 @@ ActiveRecord::Schema.define(version: 20180419131746) do
     t.bigint "parent_id"
     t.ltree "parents_path"
     t.integer "children_count", default: 0
+    t.jsonb "purpose_of_action"
+    t.jsonb "composition"
+    t.string "assembly_type"
+    t.jsonb "assembly_type_other"
+    t.date "creation_date"
+    t.string "created_by"
+    t.jsonb "created_by_other"
+    t.date "duration"
+    t.date "included_at"
+    t.date "closing_date"
+    t.jsonb "closing_date_reason"
+    t.jsonb "internal_organisation"
+    t.boolean "is_transparent", default: true
+    t.jsonb "special_features"
+    t.string "twitter_handler"
+    t.string "instagram_handler"
+    t.string "facebook_handler"
+    t.string "youtube_handler"
+    t.string "github_handler"
     t.index ["decidim_area_id"], name: "index_decidim_assemblies_on_decidim_area_id"
     t.index ["decidim_organization_id", "slug"], name: "index_unique_assembly_slug_and_organization", unique: true
     t.index ["decidim_organization_id"], name: "index_decidim_assemblies_on_decidim_organization_id"
@@ -180,6 +199,16 @@ ActiveRecord::Schema.define(version: 20180419131746) do
     t.string "verification_attachment"
     t.index ["decidim_user_id", "name"], name: "index_decidim_authorizations_on_decidim_user_id_and_name", unique: true
     t.index ["decidim_user_id"], name: "index_decidim_authorizations_on_decidim_user_id"
+  end
+
+  create_table "decidim_blogs_posts", id: :serial, force: :cascade do |t|
+    t.jsonb "title"
+    t.jsonb "body"
+    t.integer "decidim_component_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "decidim_author_id"
+    t.index ["decidim_component_id"], name: "index_decidim_blogs_posts_on_decidim_component_id"
   end
 
   create_table "decidim_budgets_line_items", id: :serial, force: :cascade do |t|
@@ -435,6 +464,7 @@ ActiveRecord::Schema.define(version: 20180419131746) do
     t.datetime "expired_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "reason"
     t.index ["decidim_admin_id"], name: "index_decidim_impersonation_logs_on_decidim_admin_id"
     t.index ["decidim_user_id"], name: "index_decidim_impersonation_logs_on_decidim_user_id"
   end
@@ -464,6 +494,7 @@ ActiveRecord::Schema.define(version: 20180419131746) do
     t.integer "available_slots", default: 0, null: false
     t.jsonb "registration_terms"
     t.integer "reserved_slots", default: 0, null: false
+    t.jsonb "services", default: []
     t.index ["decidim_author_id"], name: "index_decidim_meetings_meetings_on_decidim_author_id"
     t.index ["decidim_component_id"], name: "index_decidim_meetings_meetings_on_decidim_component_id"
     t.index ["decidim_scope_id"], name: "index_decidim_meetings_meetings_on_decidim_scope_id"
