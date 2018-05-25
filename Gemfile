@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby RUBY_VERSION
 DECIDIM_VERSION = "0.11.1"
 
-gem "decidim", DECIDIM_VERSION
+gem "decidim", git: "https://github.com/decidim/decidim.git", branch: "0.11-stable"
 
 gem "passenger"
 gem 'uglifier'
@@ -15,7 +15,7 @@ gem 'emd'
 gem 'deface'
 
 group :development, :test do
-  gem "decidim-dev", DECIDIM_VERSION
+  gem "decidim-dev", git: "https://github.com/decidim/decidim.git", branch: "0.11-stable"
   gem "rubocop"
   gem 'byebug', platform: :mri
   gem "puma"
