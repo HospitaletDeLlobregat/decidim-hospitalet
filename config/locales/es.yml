@@ -29,75 +29,75 @@ es:
     admin:
       assemblies:
         create:
-          error: Se produjo un error al crear un nuevo Órgano de Participación.
-          success: Órgano de Participación creado correctamente.
+          error: Se produjo un error al crear un nuevo órgano de participación.
+          success: Órgano de participación creado correctamente.
         destroy:
-          success: Órgano de Participación destruido correctamente.
+          success: Órgano de participación destruido correctamente.
         new:
-          title: Nuevo Órgano de Participación
+          title: Nuevo órgano de participación
         update:
-          error: Se ha producido un error al actualizar este Órgano de Participación.
-          success: El Órgano de Participación se ha actualizado correctamente.
+          error: Se ha producido un error al actualizar este órgano de participación.
+          success: Órgano de participación actualizado correctamente.
       assemblies_copies:
         create:
-          error: Se produjo un error al duplicar este Órgano de Participación.
-          success: Órgano de Participación duplicado correctamente.
+          error: Se produjo un error al duplicar este órgano de participación.
+          success: Órgano de participación duplicado correctamente.
       assembly_copies:
         new:
-          title: Duplicar Órgano de Participación
+          title: Duplicar órgano de participación
       assembly_publications:
         create:
-          error: Se produjo un error al publicar este Órgano de Participación.
-          success: Órgano de Participación publicado con éxito.
+          error: Se produjo un error al publicar este órgano de participación.
+          success: Órgano de participación publicado con éxito.
         destroy:
-          error: Se produjo un error al despublicar este Órgano de Participación.
-          success: Órgano de Participación despublicado con éxito.
+          error: Se produjo un error al despublicar este órgano de participación.
+          success: Órgano de participación despublicado con éxito.
       assembly_user_roles:
         create:
-          error: Se ha producido un error al agregar un usuario para este Órgano de Participación.
-          success: Usuario creado con éxito para este Órgano de Participación.
+          error: Se ha producido un error al agregar un usuario para este órgano de participación.
+          success: Usuario creado con éxito para este órgano de participación.
         destroy:
-          success: Usuario destruido con éxito para este Órgano de Participación.
+          success: Usuario destruido con éxito para este órgano de participación.
         edit:
-          title: Actualizar el usuario del Órgano de Participación.
+          title: Actualizar el usuario del órgano de participación.
         index:
-          assembly_admins_title: Usuarios del Órgano de Participación
+          assembly_admins_title: Usuarios del órgano de participación
         new:
-          title: Nuevo usuario del Órgano de Participación.
+          title: Nuevo usuario del órgano de participación.
         update:
-          error: Ha habido un error al actualizar un usuario para este Órgano de Participación.
-          success: Usuario actualizado con éxito para este Órgano de Participación.
+          error: Ha habido un error al actualizar un usuario para este órgano de participación.
+          success: Usuario actualizado con éxito para este órgano de participación.
       menu:
-        assemblies: Consejos, Mesas o Órganos de participación
+        assemblies: Órganos de participación
         assemblies_submenu:
-          assembly_admins: Usuarios del Órgano de Participación
+          assembly_admins: Usuarios del órgano de participación
       models:
         assembly:
-          name: Órgano de Participación
+          name: Órgano de participación
         assembly_user_role:
-          name: Usuario del Órgano de Participación
+          name: Usuario del órgano de participación
       titles:
-        assemblies: Consejos, Mesas o Órganos de participación
+        assemblies: Órganos de participación
     assemblies:
       admin:
         assemblies:
           form:
-            slug_help: 'Los textos cortos de URL se utilizan para generar las URL que apuntan a este Órgano de Participación. Sólo acepta letras, números y guiones, y debe comenzar con una letra. Ejemplo: %{url}'
+            slug_help: 'Los textos cortos de URL se utilizan para generar las URL que apuntan a este órgano de participación. Sólo acepta letras, números y guiones, y debe comenzar con una letra. Ejemplo: %{url}'
         assembly_copies:
           form:
-            slug_help: 'Los textos cortos de URL se utilizan para generar las URL que apuntan a este Órgano de Participación. Sólo acepta letras, números y guiones, y debe comenzar con una letra. Ejemplo: %{url}'
+            slug_help: 'Los textos cortos de URL se utilizan para generar las URL que apuntan a este órgano de participación. Sólo acepta letras, números y guiones, y debe comenzar con una letra. Ejemplo: %{url}'
     assemblies:
       index:
-        title: Órganos de Participación
+        title: Órganos de participación
       pages:
         home:
           highlighted_assemblies:
-            active_assemblies: Órganos de Participación activos
-            see_all_assemblies: Ver todos los Órganos de Participación
+            active_assemblies: Órganos de participación activos
+            see_all_assemblies: Ver todos los órganos de participación
       statistics:
-        assemblies_count: Órganos de Participación
+        assemblies_count: Órganos de participación
     menu:
-      assemblies: Órganos de Participación
+      assemblies: Órganos de participación
       entities: Entidades
     meetings:
       meetings:
@@ -143,10 +143,10 @@ es:
     decidim:
       assemblies:
         index:
-          promoted_assemblies: Órganos de Participación destacados
+          promoted_assemblies: Órganos de participación destacados
         order_by_assemblies:
           assemblies:
-            one: "%{count} Órganos de Participación"
-            other: "%{count} Órganos de Participación"
+            one: "%{count} órganos de participación"
+            other: "%{count} órganos de participación"
       assembly_header:
-        assembly_menu_item: El Órgano de Participación
+        assembly_menu_item: El órgano de participación

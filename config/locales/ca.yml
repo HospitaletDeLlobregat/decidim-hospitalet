@@ -29,75 +29,75 @@ ca:
     admin:
       assemblies:
         create:
-          error: S'ha produït un error en crear un nou Òrgan de Participació.
-          success: Òrgan de Participació creat correctament.
+          error: S'ha produït un error en crear un nou òrgan de participació.
+          success: Òrgan de participació creat correctament.
         destroy:
-          success: L'Òrgan de Participació s'ha eliminat amb èxit.
+          success: L'òrgan de participació s'ha eliminat amb èxit.
         new:
-          title: Nou Òrgan de Participació
+          title: Nou òrgan de participació
         update:
-          error: S'ha produït un error en actualitzar aquest Òrgan de Participació.
-          success: L'Òrgan de Participació s'ha actualitzat correctament.
+          error: S'ha produït un error en actualitzar aquest òrgan de participació.
+          success: L'òrgan de participació s'ha actualitzat correctament.
       assemblies_copies:
         create:
-          error: S'ha produït un error en duplicar aquest Òrgan de Participació.
-          success: L'Òrgan de Participació s'ha duplicat correctament.
+          error: S'ha produït un error en duplicar aquest òrgan de participació.
+          success: L'òrgan de participació s'ha duplicat correctament.
       assembly_copies:
         new:
-          title: Òrgan de Participació duplicat
+          title: Òrgan de participació duplicat
       assembly_publications:
         create:
-          error: S'ha produït un error en publicar aquest Òrgan de Participació.
-          success: Òrgan de Participació publicat amb èxit.
+          error: S'ha produït un error en publicar aquest òrgan de participació.
+          success: Òrgan de participació publicat amb èxit.
         destroy:
-          error: S'ha produït un error en despublicar aquest Òrgan de Participació.
-          success: Òrgan de Participació despublicat amb èxit.
+          error: S'ha produït un error en despublicar aquest òrgan de participació.
+          success: Òrgan de participació despublicat amb èxit.
       assembly_user_roles:
         create:
-          error: S'ha produït un error en afegir un usuari per a aquest Òrgan de Participació.
-          success: L'usuari s'ha creat correctament per a aquest Òrgan de Participació.
+          error: S'ha produït un error en afegir un usuari per a aquest òrgan de participació.
+          success: L'usuari s'ha creat correctament per a aquest òrgan de participació.
         destroy:
-          success: S'ha destruït l'usuari amb èxit per a aquest Òrgan de Participació.
+          success: S'ha destruït l'usuari amb èxit per a aquest òrgan de participació.
         edit:
-          title: Actualitza l'usuari del Òrgan de Participació.
+          title: Actualitza l'usuari del òrgan de participació.
         index:
-          assembly_admins_title: Usuaris del Òrgan de Participació
+          assembly_admins_title: Usuaris del òrgan de participació
         new:
-          title: Nou usuari del Òrgan de Participació.
+          title: Nou usuari del òrgan de participació.
         update:
-          error: S'ha produït un error en l'actualització d'un usuari per a aquest Òrgan de Participació.
-          success: L'usuari s'ha actualitzat correctament per a aquest Òrgan de Participació.
+          error: S'ha produït un error en l'actualització d'un usuari per a aquest òrgan de participació.
+          success: L'usuari s'ha actualitzat correctament per a aquest òrgan de participació.
       menu:
-        assemblies: Òrgans de Participació
+        assemblies: Òrgans de participació
         assemblies_submenu:
-          assembly_admins: Usuaris del Òrgan de Participació
+          assembly_admins: Usuaris del òrgan de participació
       models:
         assembly:
-          name: Òrgan de Participació
+          name: Òrgan de participació
         assembly_user_role:
-          name: Usuari del Òrgan de Participació
+          name: Usuari del òrgan de participació
       titles:
-        assemblies: Òrgans de Participació
+        assemblies: Òrgans de participació
     assemblies:
       admin:
         assemblies:
           form:
-            slug_help: 'Els noms curts d''URL s''utilitzen per generar les URL que apunten a aquest Òrgan de Participació. Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
+            slug_help: 'Els noms curts d''URL s''utilitzen per generar les URL que apunten a aquest òrgan de participació. Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
         assembly_copies:
           form:
-            slug_help: 'Els noms curts d''URL s''utilitzen per generar els URL que apunten a aquest Òrgan de Participació. Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
+            slug_help: 'Els noms curts d''URL s''utilitzen per generar els URL que apunten a aquest òrgan de participació. Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
     assemblies:
       index:
-        title: Òrgans de Participació
+        title: Òrgans de participació
       pages:
         home:
           highlighted_assemblies:
-            active_assemblies: Òrgans de Participació actives
-            see_all_assemblies: Veure tots els Òrgans de Participació
+            active_assemblies: Òrgans de participació actives
+            see_all_assemblies: Veure tots els òrgans de participació
       statistics:
-        assemblies_count: Òrgans de Participació
+        assemblies_count: Òrgans de participació
     menu:
-      assemblies: Òrgans de Participació
+      assemblies: Òrgans de participació
       entities: Entitats
     meetings:
       meetings:
@@ -143,10 +143,10 @@ ca:
     decidim:
       assemblies:
         index:
-          promoted_assemblies: Òrgans de Participació destacats
+          promoted_assemblies: Òrgans de participació destacats
         order_by_assemblies:
           assemblies:
-            one: "%{count} Òrgans de Participació"
-            other: "%{count} Òrgans de Participació"
+            one: "%{count} òrgans de participació"
+            other: "%{count} òrgans de participació"
       assembly_header:
-        assembly_menu_item: L'Òrgan de Participació
+        assembly_menu_item: L'òrgan de participació
