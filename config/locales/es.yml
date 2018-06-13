@@ -6,8 +6,30 @@ es:
         date_of_birth: Fecha de nacimiento
         document_number: Número de documento
         postal_code: Código postal
+      close_meeting:
+        proposal_ids: Propuestas creadas en la sesión
+      meeting:
+        available_slots: Espacios disponibles para esta sesión
+        private_meeting: Sesión privada
       survey_answer:
         choices: Las opciones seleccionadas
+    models:
+      decidim/meetings/close_meeting_event: Sesión cerrada
+      decidim/meetings/create_meeting_event: Sesión
+      decidim/meetings/upcoming_meeting_event: Próxima sesión
+      decidim/meetings/update_meeting_event: Sesión actualizada
+  activerecord:
+    errors:
+      models:
+        meeting_agenda:
+          attributes:
+            base:
+              too_many_minutes: La duración de los ítems supera la duración de la
+                sesión en %{count} minutos
+    models:
+      decidim/meetings/meeting:
+        one: Sesión
+        other: Sesiones
   census_authorization:
     form:
       date_select:
@@ -18,14 +40,6 @@ es:
     age_under_16: Tienes que ser mayor de 16 años para validarte
     invalid_document: Número de documento incorrecto
   decidim:
-    authorization_handlers:
-      census_authorization_handler:
-        explanation: Verifícate con el padrón
-        fields:
-          date_of_birth: Fecha de nacimiento
-          document_number: Número de documento
-          postal_code: Código postal
-        name: El padrón
     admin:
       assemblies:
         create:
@@ -54,7 +68,8 @@ es:
           success: Órgano de participación despublicado con éxito.
       assembly_user_roles:
         create:
-          error: Se ha producido un error al agregar un usuario para este órgano de participación.
+          error: Se ha producido un error al agregar un usuario para este órgano de
+            participación.
           success: Usuario creado con éxito para este órgano de participación.
         destroy:
           success: Usuario destruido con éxito para este órgano de participación.
@@ -67,6 +82,12 @@ es:
         update:
           error: Ha habido un error al actualizar un usuario para este órgano de participación.
           success: Usuario actualizado con éxito para este órgano de participación.
+      meeting_copies:
+        create:
+          error: Se ha producido un error al duplicar esta sesión.
+          success: La sesión se ha duplicado con éxito.
+        new:
+          title: Duplicar sesión
       menu:
         assemblies: Órganos de participación
         assemblies_submenu:
@@ -79,14 +100,6 @@ es:
       titles:
         assemblies: Órganos de participación
     assemblies:
-      admin:
-        assemblies:
-          form:
-            slug_help: 'Los textos cortos de URL se utilizan para generar las URL que apuntan a este órgano de participación. Sólo acepta letras, números y guiones, y debe comenzar con una letra. Ejemplo: %{url}'
-        assembly_copies:
-          form:
-            slug_help: 'Los textos cortos de URL se utilizan para generar las URL que apuntan a este órgano de participación. Sólo acepta letras, números y guiones, y debe comenzar con una letra. Ejemplo: %{url}'
-    assemblies:
       index:
         title: Órganos de participación
       pages:
@@ -96,13 +109,162 @@ es:
             see_all_assemblies: Ver todos los órganos de participación
       statistics:
         assemblies_count: Órganos de participación
-    menu:
-      assemblies: Órganos de participación
-      entities: Entidades
+    authorization_handlers:
+      census_authorization_handler:
+        explanation: Verifícate con el padrón
+        fields:
+          date_of_birth: Fecha de nacimiento
+          document_number: Número de documento
+          postal_code: Código postal
+        name: El padrón
+    components:
+      meetings:
+        name: Sesiones
+    events:
+      meetings:
+        meeting_closed:
+          email_intro: 'Se ha cerrado la sesión "%{resource_title}". Puedes leer las
+            conclusiones en su página:'
+          email_outro: Has recibido esta notificación porque sigues la sesión "%{resource_title}".
+            Puedes dejar de seguirlo en el enlace anterior.
+          email_subject: Se ha cerrado la sesión "%{resource_title}"
+          notification_title: La sesión <a href="%{resource_path}">%{resource_title}</a>
+            ha sido cerrada.
+        meeting_created:
+          email_intro: Se ha añadido la sesión "%{resource_title}" al espacio "%{participatory_space_title}"
+            que estás siguiendo.
+          email_subject: Nueva sesión añadida a %{participatory_space_title}
+          notification_title: Se ha añadido la sesión <a href="%{resource_path}">%{resource_title}</a>
+            a %{participatory_space_title}
+        meeting_registrations_over_percentage:
+          email_outro: Has recibido esta notificación porque eres es un administrador
+            del espacio participativo de la sesión.
+          notification_title: Las inscripciones de <a href="%{resource_path}">%{resource_title}</a>
+            están por encima del %{percentage}%.
+        meeting_updated:
+          email_intro: 'Se ha cerrado la sesión "%{resource_title}". Puedes leer las
+            conclusiones en su página:'
+          email_outro: Has recibido esta notificación porque sigues la sesión "%{resource_title}".
+            Puedes dejar de seguirla en el enlace anterior.
+          email_subject: Se ha actualizado la sesión "%{resource_title}"
+          notification_title: La sesión <a href="%{resource_path}">%{resource_title}</a>
+            ha sido actualizada.
+        registrations_enabled:
+          email_intro: 'La sesión "%{resource_title}" ha abierto las inscripciones.
+            Puedes inscribirte en su página:'
+          email_outro: Has recibido esta notificación porque sigues la sesión "%{resource_title}".
+            Puedes dejar de seguirla en el enlace anterior.
+          email_subject: La sesión "%{resource_title}" ha abierto las inscripciones.
+          notification_title: La sesión <a href="%{resource_path}">%{resource_title}</a>
+            ha abierto las inscripciones.
+        upcoming_meeting:
+          email_intro: La sesión "%{resource_title}" comenzará en menos de 48 h.
+          email_outro: Has recibido esta notificación porque sigues la sesión "%{resource_title}".
+            Puedes dejar de seguirla en el enlace anterior.
+          email_subject: La sesión "%{resource_title}" comenzará en menos de 48 h.
+          notification_title: La sesión <a href="%{resource_path}">%{resource_title}</a>
+            comenzará en menos de 48 h.
     meetings:
+      actions:
+        confirm_destroy: "¿Está seguro de que quiere eliminar esta sesión?"
+      admin:
+        invite_join_meeting_mailer:
+          invite:
+            invited_you_to_join_a_meeting: "%{invited_by} te ha invitado a unirte
+              a una sesión en %{application}. Puedes aceptarlo a través del siguiente
+              enlace."
+            join: Únete a la sesión '%{meeting_title}'
+        invites:
+          create:
+            error: Ha habido un problema al invitar al usuario a unirse a la sesión.
+            success: El usuario ha sido invitado con éxito a unirse a la sesión.
+          new:
+            explanation: El usuario será invitado a unirse a un sesión. Si el correo
+              electrónico no está registrado, será invitado a la organización también.
+        meeting_closes:
+          edit:
+            title: Cerrar sesión
+        meetings:
+          close:
+            invalid: Ha habido un problema al cerrar esta sesión
+            success: Sesión cerrado con éxito
+          create:
+            invalid: Ha habido un problema al crear esta sesión
+            success: Sesión creado con éxito
+          destroy:
+            success: La sesión se ha eliminado correctamente
+          index:
+            title: Sesiones
+          new:
+            title: Crear sesión
+          update:
+            invalid: Ha habido un problema al actualizar esta sesión
+            success: Sesión actualizado correctamente
+        models:
+          meeting:
+            name: Sesión
+        registrations:
+          update:
+            success: Se han guardado correctamente las configuraciones de inscripciones
+              de sesiones.
+      admin_log:
+        meeting:
+          close: "%{user_name} cerró la sesión %{resource_name} en el espacio %{space_name}"
+          create: "%{user_name} creó la sesión %{resource_name} en el espacio %{space_name}"
+          delete: "%{user_name} eliminó la sesión %{resource_name} en el espacio %{space_name}"
+          export_registrations: "%{user_name} exportó los registros de la sesión %{resource_name}
+            en el espacio %{space_name}"
+          update: "%{user_name} actualizó la sesión %{resource_name} en el espacio
+            %{space_name}"
+        minutes:
+          create: "%{user_name} ha creado el acta de la sesión %{resource_name} en
+            el espacio %{space_name}"
+          update: "%{user_name} ha creado el acta de la sesión %{resource_name} en
+            el espacio %{space_name}"
+      mailer:
+        invite_join_meeting_mailer:
+          invite:
+            subject: Invitación a unirse a una sesión
+        registration_mailer:
+          confirmation:
+            subject: La inscripción a tu sesión ha sido confirmada
+      meeting:
+        not_allowed: No puedes ver esta sesión
       meetings:
         filters:
           scopes: Barrio
+        index:
+          view_meeting: Ver sesión
+        meeting_minutes:
+          meeting_minutes: Acta de la sesión
+        meetings:
+          no_meetings_warning: No hay sesiones que coincidan con el criterio de búsqueda
+            o no hay ningún sesión programado.
+          upcoming_meetings_warning: Actualmente no hay sesiones programados, pero
+            puedes ver los sesiones anteriores.
+        show:
+          join: Inscribirse a la sesión
+          meeting_report: Informe de la sesión
+          remaining_slots:
+            one: 1 inscripción disponible
+            other: "%{count} inscripciones disponibles"
+      read_more: "(leer más)"
+      registration_mailer:
+        confirmation:
+          confirmed_html: Se ha confirmado su inscripción para la sesión <a href="%{url}">%{title}</a>.
+          details: Encontrarás detalles de la sesión en el archivo adjunto.
+      registrations:
+        create:
+          invalid: Ha habido un problema al unirse a esta sesión.
+          success: Te has inscrito a la sesión con éxito.
+        destroy:
+          invalid: Ha habido un problema al salir de esta sesión.
+          success: Has salido de la sesión con éxito.
+      types:
+        private_meeting: Sesión privada
+    menu:
+      assemblies: Órganos de participación
+      entities: Entidades
     participatory_processes:
       scopes:
         global: Toda la ciudad
@@ -119,26 +281,32 @@ es:
         results_count: Resultados
         users_count: Participantes
         votes_count: Soportes
+    participatory_spaces:
+      highlighted_meetings:
+        past_meetings: Sesiones pasadas
+        see_all_meetings: Ver todas las sesiones
+        upcoming_meetings: Próximas sesiones
+      upcoming_meeting_for_card:
+        upcoming_meeting: Próxima sesión
     proposals:
       proposals:
         filters:
           scopes: Barrio
+    resource_links:
+      meetings_through_proposals:
+        result_meeting: 'Sesiones relacionadas:'
+      proposals_from_meeting:
+        proposal_meeting: 'Sesiones relacionadas:'
     shared:
       reference:
         reference: 'Referencia: %{reference}'
   devise:
     invitations:
       user:
-        updated: "Tu contraseña se ha actualizado correctamente."
-  pages:
-    home:
-      extended:
-        meetings: Encuentros presenciales
-        meetings_explanation: Encuentros y sesiones de trabajo presenciales relacionadas con los procesos de participación activos.
-        proposals: Propuestas
-        proposals_explanation: Haz tus aportaciones en aquellos procesos activos en el web.
-      footer_sub_hero:
-        footer_sub_hero_headline: "Bienvenida y bienvenido a la plataforma participativa %{organization}."
+        updated: Tu contraseña se ha actualizado correctamente.
+    mailer:
+      join_meeting:
+        subject: Invitación a unirse a una sesión
   layouts:
     decidim:
       assemblies:
@@ -150,3 +318,15 @@ es:
             other: "%{count} órganos de participación"
       assembly_header:
         assembly_menu_item: El órgano de participación
+  pages:
+    home:
+      extended:
+        meetings: Encuentros presenciales
+        meetings_explanation: Encuentros y sesiones de trabajo presenciales relacionadas
+          con los procesos de participación activos.
+        proposals: Propuestas
+        proposals_explanation: Haz tus aportaciones en aquellos procesos activos en
+          el web.
+      footer_sub_hero:
+        footer_sub_hero_headline: Bienvenida y bienvenido a la plataforma participativa
+          %{organization}.

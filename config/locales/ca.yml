@@ -6,8 +6,30 @@ ca:
         date_of_birth: Data de naixement
         document_number: Número de document
         postal_code: Codi postal
+      close_meeting:
+        proposal_ids: Propostes creades en una sessió
+      meeting:
+        available_slots: Espais disponibles per a aquesta sessió
+        private_meeting: Sessió privada
       survey_answer:
         choices: Les opcions seleccionades
+    errors:
+      models:
+        meeting_agenda:
+          attributes:
+            base:
+              too_many_minutes: La durada dels elements supera la durada de la sessió
+                per %{count} minuts
+    models:
+      decidim/meetings/close_meeting_event: Sessió tancada
+      decidim/meetings/create_meeting_event: Sessió
+      decidim/meetings/upcoming_meeting_event: Propera sessió
+      decidim/meetings/update_meeting_event: Sessió actualitzada
+  activerecord:
+    models:
+      decidim/meetings/meeting:
+        one: Sessió
+        other: Sessions
   census_authorization:
     form:
       date_select:
@@ -18,14 +40,6 @@ ca:
     age_under_16: Has de ser major de 16 anys per validar-te
     invalid_document: Número de document incorrecte
   decidim:
-    authorization_handlers:
-      census_authorization_handler:
-        explanation: Verifica't amb el padró
-        fields:
-          date_of_birth: Data de naixement
-          document_number: Número de document
-          postal_code: Codi postal
-        name: El padró
     admin:
       assemblies:
         create:
@@ -65,8 +79,15 @@ ca:
         new:
           title: Nou usuari del òrgan de participació.
         update:
-          error: S'ha produït un error en l'actualització d'un usuari per a aquest òrgan de participació.
+          error: S'ha produït un error en l'actualització d'un usuari per a aquest
+            òrgan de participació.
           success: L'usuari s'ha actualitzat correctament per a aquest òrgan de participació.
+      meeting_copies:
+        create:
+          error: S'ha produït un error en duplicar aquesta sessió.
+          success: Sessió duplicada amb èxit.
+        new:
+          title: Duplicar sessió
       menu:
         assemblies: Òrgans de participació
         assemblies_submenu:
@@ -79,14 +100,6 @@ ca:
       titles:
         assemblies: Òrgans de participació
     assemblies:
-      admin:
-        assemblies:
-          form:
-            slug_help: 'Els noms curts d''URL s''utilitzen per generar les URL que apunten a aquest òrgan de participació. Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
-        assembly_copies:
-          form:
-            slug_help: 'Els noms curts d''URL s''utilitzen per generar els URL que apunten a aquest òrgan de participació. Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
-    assemblies:
       index:
         title: Òrgans de participació
       pages:
@@ -96,14 +109,162 @@ ca:
             see_all_assemblies: Veure tots els òrgans de participació
       statistics:
         assemblies_count: Òrgans de participació
+    authorization_handlers:
+      census_authorization_handler:
+        explanation: Verifica't amb el padró
+        fields:
+          date_of_birth: Data de naixement
+          document_number: Número de document
+          postal_code: Codi postal
+        name: El padró
+    components:
+      meetings:
+        name: Sessions
+    events:
+      meetings:
+        meeting_closed:
+          email_intro: 'La sessió "%{resource_title}" ha estat tancada. Pots llegir
+            les conclusions a la seva pàgina:'
+          email_outro: Has rebut aquesta notificació perquè estàs seguint la sessió
+            "%{resource_title}". Pots deixar-la de seguir des de l'enllaç anterior.
+          email_subject: S'ha tancat la sessió "%{resource_title}"
+          notification_title: La sessió <a href="%{resource_path}">%{resource_title}</a>
+            s'ha tancat.
+        meeting_created:
+          email_intro: S'ha afegit la sessió "%{resource_title}" a l'espai "%{participatory_space_title}"
+            que estàs seguint.
+          email_outro: Has rebut aquesta notificació perquè estàs seguint "%{participatory_space_title}".
+            Pots deixar de seguir-lo des de l'enllaç anterior.
+          email_subject: Nova sessió a %{participatory_space_title}
+          notification_title: S'ha afegit la sessió <a href="%{resource_path}">%{resource_title}</a>
+            a %{participatory_space_title}
+        meeting_registrations_over_percentage:
+          email_intro: La disponibilitat d'espais a la sessió "%{resource_title}"
+            està per sobre del %{percentage}%.
+          email_outro: Has rebut aquesta notificació perquè ets un administrador de
+            l'espai participatiu d'aquesta sessió.
+          email_subject: La disponibilitat d'espais a la sessió "%{resource_title}"
+            està per sobre del %{percentage}%
+          notification_title: L'espai ocupat per la sessió <a href="%{resource_path}">%{resource_title}</a>
+            està per sobre del %{percentage}%.
+        meeting_updated:
+          email_intro: 'La sessió "%{resource_title}" ha estat actualitzada. Pots
+            llegir-ne la nova versió a la seva pàgina:'
+          email_outro: Has rebut aquesta notificació perquè estàs seguint la sessió
+            "%{resource_title}". Pots deixar-la de seguir des de l'enllaç anterior.
+          email_subject: La sessió "%{resource_title}" s'ha actualitzat
+          notification_title: La sessió <a href="%{resource_path}">%{resource_title}</a>
+            ha estat actualitzada.
+        registrations_enabled:
+          email_intro: 'La sessió "%{resource_title}" ha activat inscripcions. Pots
+            registrar-te a la seva pàgina:'
+          email_outro: Has rebut aquesta notificació perquè estàs seguint la sessió
+            "%{resource_title}". Pots deixar-la de seguir des de l'enllaç anterior.
+          email_subject: La sessió "%{resource_title}" ha obert les inscripcions.
+          notification_title: La sessió <a href="%{resource_path}">%{resource_title}</a>
+            ha obert les inscripcions.
+        upcoming_meeting:
+          email_intro: En menys de 48 hores s'iniciarà la sessió "%{resource_title}".
+          email_outro: Has rebut aquesta notificació perquè estàs seguint la sessió
+            "%{resource_title}". Pots deixar-la de seguir des de l'enllaç anterior.
+          email_subject: En menys de 48 hores s'iniciarà la sessió "%{resource_title}".
+          notification_title: La sessió <a href="%{resource_path}">%{resource_title}</a>
+            començarà en menys de 48 hores.
+    meetings:
+      actions:
+        confirm_destroy: Segur que vols suprimir aquesta sessió?
+      admin:
+        invite_join_meeting_mailer:
+          invite:
+            invited_you_to_join_a_meeting: "%{invited_by} t'ha convidat a participar
+              en una sessió a %{application}. Pots acceptar la invitació a través
+              de l'enllaç següent."
+            join: Uneix-te a la sessió '%{meeting_title}'
+        invites:
+          create:
+            error: Hi ha hagut un problema al convidar l'usuari a unir-se a la sessió.
+            success: L'usuari s'ha convidat correctament a unir-se a la sessió.
+          new:
+            explanation: L'usuari serà convidat a participar en una sessió. Si el
+              correu electrònic no està registrat, també se'l convidarà a l'organització.
+        meeting_closes:
+          edit:
+            title: Tancar sessió
+        meetings:
+          close:
+            invalid: Hi ha hagut un problema en tancar aquesta sessió
+            success: Sessió tancada amb èxit
+          create:
+            invalid: Hi ha hagut un problema en crear aquesta sessió
+            success: Sessió creada amb èxit
+          destroy:
+            success: La sessió s'ha eliminat correctament
+          index:
+            title: Sessions
+          new:
+            title: Crear sessió
+          update:
+            invalid: Hi ha hagut un problema en actualitzar aquesta sessió
+            success: Sessió actualitzada correctament
+        models:
+          meeting:
+            name: Sessió
+        registrations:
+          update:
+            success: La configuració de les inscripcions de la sessió s'ha desat correctament.
+      admin_log:
+        meeting:
+          close: "%{user_name} ha tancat la sessió %{resource_name} a l'espai %{space_name}"
+          create: "%{user_name} ha creat la sessió %{resource_name} a l'espai %{space_name}"
+          delete: "%{user_name} ha eliminat la sessió %{resource_name} a l'espai %{space_name}"
+          export_registrations: "%{user_name} va exportar les inscripcions de la sessió
+            %{resource_name} de l'espai %{space_name}"
+          update: "%{user_name} ha actualitzat la sessió %{resource_name} a l'espai
+            %{space_name}"
+      mailer:
+        invite_join_meeting_mailer:
+          invite:
+            subject: Invitació per participar en una sessió
+        registration_mailer:
+          confirmation:
+            subject: La teva inscripció a la sessió ha estat confirmada
+      meeting:
+        not_allowed: No tens permís per veure aquesta sessió
+      meetings:
+        index:
+          view_meeting: Veure sessió
+        meeting_minutes:
+          meeting_minutes: Acta
+        meetings:
+          no_meetings_warning: No hi ha sessions que coincideixin amb el criteri de
+            cerca o no hi ha cap sessió programada.
+          upcoming_meetings_warning: Actualment no hi ha sessions programades, però
+            pots veure les anteriors sessions.
+        show:
+          join: Inscriu-te a la sessió
+          meeting_report: Informe de la sessió
+      registration_mailer:
+        confirmation:
+          confirmed_html: La teva inscripció a la sessió <a href="%{url}">%{title}</a>
+            ha estat confirmada.
+          details: A l'arxiu adjunt trobaràs els detalls de la sessió.
+      registrations:
+        create:
+          invalid: Hi ha hagut un problema en inscriure's a aquesta sessió.
+          success: T'has inscrit a la sessió amb èxit.
+        destroy:
+          invalid: Hi ha hagut un problema en sortir d'aquesta sessió.
+          success: Heu deixat la sessió amb èxit.
+      types:
+        private_meeting: Sessió privada
     menu:
       assemblies: Òrgans de participació
       entities: Entitats
-    meetings:
-      meetings:
-        filters:
-          scopes: Barri
     participatory_processes:
+      participatory_process_groups:
+        highlighted_meetings:
+          past_meetings: Sessions anteriors
+          upcoming_meetings: Properes sessions
       scopes:
         global: Tota la ciutat
       statistics:
@@ -119,26 +280,32 @@ ca:
         results_count: Resultats
         users_count: Participants
         votes_count: Suports
+    participatory_spaces:
+      highlighted_meetings:
+        past_meetings: Sessions anteriors
+        see_all_meetings: Veure totes les sessions
+        upcoming_meetings: Properes sessions
+      upcoming_meeting_for_card:
+        upcoming_meeting: Propera sessió
     proposals:
       proposals:
         filters:
           scopes: Barri
+    resource_links:
+      meetings_through_proposals:
+        result_meeting: 'Sessions relacionades:'
+      proposals_from_meeting:
+        proposal_meeting: 'Sessions relacionades:'
     shared:
       reference:
         reference: 'Referència: %{reference}'
   devise:
     invitations:
       user:
-        updated: "La teva contrasenya s'ha actualitzat correctament."
-  pages:
-    home:
-      extended:
-        meetings: Trobades presencials
-        meetings_explanation: Trobades i sessions de treball presencials relacionades amb els processos de participació actius.
-        proposals: Propostes
-        proposals_explanation: Fes les teves aportacions en aquells processos actius al web.
-      footer_sub_hero:
-        footer_sub_hero_headline: "Benvingut/da a la plataforma participativa %{organization}."
+        updated: La teva contrasenya s'ha actualitzat correctament.
+    mailer:
+      join_meeting:
+        subject: Invitació per participar en una sessió
   layouts:
     decidim:
       assemblies:
@@ -150,3 +317,14 @@ ca:
             other: "%{count} òrgans de participació"
       assembly_header:
         assembly_menu_item: L'òrgan de participació
+  pages:
+    home:
+      extended:
+        meetings: Trobades presencials
+        meetings_explanation: Trobades i sessions de treball presencials relacionades
+          amb els processos de participació actius.
+        proposals: Propostes
+        proposals_explanation: Fes les teves aportacions en aquells processos actius
+          al web.
+      footer_sub_hero:
+        footer_sub_hero_headline: Benvingut/da a la plataforma participativa %{organization}.
