@@ -1,9 +1,9 @@
 source "https://rubygems.org"
 
 ruby RUBY_VERSION
-DECIDIM_VERSION = "0.11.1"
+DECIDIM_VERSION = "~> 0.13.1"
 
-gem "decidim", git: "https://github.com/decidim/decidim.git", branch: "0.11-stable"
+gem "decidim", DECIDIM_VERSION
 
 gem "passenger"
 gem 'uglifier'
@@ -15,7 +15,7 @@ gem 'emd'
 gem 'deface'
 
 group :development, :test do
-  gem "decidim-dev", git: "https://github.com/decidim/decidim.git", branch: "0.11-stable"
+  gem "decidim-dev", DECIDIM_VERSION
   gem "rubocop"
   gem 'byebug', platform: :mri
   gem "puma"
