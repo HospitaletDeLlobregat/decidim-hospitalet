@@ -12,7 +12,7 @@ gem 'faker'
 gem "virtus-multiparams"
 gem 'redcarpet'
 gem 'emd'
-gem 'deface', git: "https://github.com/spree/deface"
+gem 'deface'
 gem "rails", "5.2.0"
 
 group :development, :test do
