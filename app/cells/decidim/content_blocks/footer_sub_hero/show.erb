@@ -1,0 +1,11 @@
+<section class="footer__subhero extended subhero home-section">
+  <div class="row">
+    <div class="columns small-centered large-10">
+      <% if I18n.locale.to_s %>
+        <%= render I18n.locale.to_s %>
+      <% else %>
+        <%= render :ca %>
+      <% end %>
+    </div>
+  </div>
+</section>
