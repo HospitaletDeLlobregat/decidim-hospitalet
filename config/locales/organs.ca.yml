@@ -1,0 +1,164 @@
+ca:
+  activemodel:
+    attributes:
+      assembly:
+        assembly_type: Tipus d'òrgan de participació
+        assembly_type_other: Altre tipus d'òrgan de participació
+        parent_id: Òrgan de participació principal
+  activerecord:
+    models:
+      decidim/assembly:
+        one: Òrgan de participació
+        other: Òrgans de participació
+      decidim/assembly_member:
+        one: Membre de l'òrgan de participació
+        other: Membres de l'òrgan de participació
+      decidim/assembly_user_role:
+        one: Rol d'usuari de l'òrgan de participació
+        other: Rol dels usuaris de l'òrgan de participació
+  decidim:
+    admin:
+      actions:
+        new_assembly: Nou òrgan de participació
+      assemblies:
+        create:
+          error: S'ha produït un error en crear un nou òrgan de participació .
+          success: Òrgan de participació creat correctament.
+        index:
+          not_published: No publicat
+          private: Privat
+          public: Públic
+          published: Publicat
+        new:
+          title: Nou òrgan de participació
+        update:
+          error: S'ha produït un error en actualitzar aquest òrgan de participació .
+          success: L'òrgan de participació s'ha actualitzat correctament.
+      assemblies_copies:
+        create:
+          error: S'ha produït un error en duplicar aquest òrgan de participació .
+          success: L'òrgan de participació s'ha duplicat correctament.
+      assembly_copies:
+        new:
+          title: Òrgan de participació duplicat
+      assembly_members:
+        create:
+          error: S'ha produït un error en afegir un membre per a aquest òrgan de participació .
+          success: Membre creat amb èxit per a aquest òrgan de participació .
+        destroy:
+          success: Membre eliminat amb èxit per a aquest òrgan de participació .
+        edit:
+          title: Actualitza el membre de l'òrgan de participació .
+        index:
+          assembly_members_title: Membres de l'òrgan de participació
+        new:
+          title: Nou membre de l'òrgan de participació .
+        update:
+          error: S'ha produït un error en actualitzar el membre d'aquest òrgan de participació .
+          success: Membre actualitzat amb èxit per a aquest òrgan de participació .
+      assembly_publications:
+        create:
+          error: S'ha produït un error en publicar aquest òrgan de participació .
+          success: Òrgan de participació publicat amb èxit.
+        destroy:
+          error: S'ha produït un error en despublicar aquest òrgan de participació .
+          success: Òrgan de participació despublicat amb èxit.
+      assembly_user_roles:
+        create:
+          error: S'ha produït un error en afegir un usuari per a aquest òrgan de participació .
+          success: L'usuari s'ha afegit correctament a aquest òrgan de participació .
+        destroy:
+          success: L'usuari s'ha eliminat d'aquest òrgan de participació correctament.
+        edit:
+          title: Actualitza l'usuari de l'òrgan de participació .
+          update: Actualitza
+        index:
+          assembly_admins_title: Usuaris de l'òrgan de participació
+        new:
+          title: Nou usuari de l'òrgan de participació .
+        update:
+          error: S'ha produït un error en l'actualització d'un usuari per a aquest òrgan de participació .
+          success: L'usuari s'ha actualitzat correctament per a aquest òrgan de participació .
+      menu:
+        assemblies: Òrgans de participació
+        assemblies_submenu:
+          assembly_admins: Usuaris de l'òrgan de participació
+      models:
+        assembly:
+          name: Òrgan de participació
+        assembly_user_role:
+          name: Usuari de l'òrgan de participació
+      titles:
+        assemblies: Òrgans de participació
+    admin_log:
+      assembly:
+        create: "%{user_name} ha creat l'òrgan de participació %{resource_name}"
+        publish: "%{user_name} ha publicat l'òrgan de participació %{resource_name}"
+        unpublish: "%{user_name} ha despublicat l'òrgan de participació %{resource_name}"
+        update: "%{user_name} ha actualitzat l'òrgan de participació %{resource_name}"
+      assembly_member:
+        create: "%{user_name} ha afegit el membre %{resource_name} a l'òrgan de participació %{space_name}"
+        delete: "%{user_name} esborrat el membre %{resource_name} de l'òrgan de participació %{space_name}"
+        update: "%{user_name} ha actualitzat el membre %{resource_name} de l'òrgan de participació %{space_name}"
+      assembly_user_role:
+        create: "%{user_name} ha convidat %{resource_name} a l'òrgan de participació %{space_name}"
+        delete: "%{user_name} ha eliminat l'usuari %{resource_name} de l'òrgan de participació %{space_name}"
+        update: "%{user_name} ha canviat el rol de %{resource_name} a l'òrgan de participació %{space_name}"
+    assemblies:
+      admin:
+        assemblies:
+          form:
+            duration_help: Si la durada d'aquest òrgan de participació és limitada, selecciona la data de finalització. En cas contrari, apareixerà com a indefinit.
+            included_at_help: Selecciona la data en què es va afegir aquest òrgan de participació a Decidim. No necessàriament ha de ser la mateixa que la data de creació.
+            select_an_assembly_type: Seleccioneu un tipus d'òrgan de participació
+            slug_help: 'Els noms curts d''URL s''utilitzen per generar les URL que apunten a aquest òrgan de participació . Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
+        assembly_copies:
+          form:
+            slug_help: 'Els noms curts d''URL s''utilitzen per generar els URL que apunten a aquest òrgan de participació . Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
+      content_blocks:
+        highlighted_assemblies:
+          name: òrgans de participació destacats
+      index:
+        title: Òrgans de participació
+      last_activity:
+        new_assembly: Nou òrgan de participació
+      pages:
+        home:
+          highlighted_assemblies:
+            active_assemblies: Òrgans de participació actius
+            see_all_assemblies: Veure tots els òrgans de participació
+      show:
+        area: Àrea
+        assembly_type: Tipus d'òrgan de participació
+        children: Òrgans de participació
+        private_space: Aquest és un òrgan de participació privat
+      statistics:
+        assemblies_count: Òrgans de participació
+    help:
+      participatory_spaces:
+        assemblies:
+          contextual: "<p>Un òrgan de participació és un grup format per membres d'una organització que es reuneixen periòdicament per prendre decisions sobre un àmbit o àrea específica del mateix.</p> <p>Els òrgans de participació realitzen trobades, alguns són privats i altres són oberts. Si són oberts s’hi pot participar (per exemple: assistint si l'aforament ho permet, afegint punts a l'ordre del dia, o comentant les propostes i decisions preses per aquest òrgan).</p> <p>Exemples: Un òrgan de participació general (que es reuneix un cop l'any per definir les línies principals d'acció de l'organització així com als seus òrgans de participació executius per votació), unconsell assessor d'igualtat (que es reuneix cada dos mesos per fer propostes de com millorar les relacions de gènere en l'organització), una comissió d'avaluació (que es reuneix cada mes per fer el seguiment d'un procés) o una òrgan de participació de garanties (que recull les incidències, abusos o propostes de millora dels procediments de presa de decisions) són tot exemples d'òrgans de participació.</p>\n"
+          page: "<p>Un òrgan de participació és un grup format per membres d'una organització que es reuneixen periòdicament per prendre decisions sobre un àmbit o àrea específica del mateix.</p> <p>Els òrgans de participació realitzen trobades, alguns són privats i altres són oberts. Si són oberts s’hi pot participar (per exemple: assistint si l'aforament ho permet, afegint punts a l'ordre del dia, o comentant les propostes i decisions preses per aquest òrgan).</p> <p>Exemples: Un òrgan de participació general (que es reuneix un cop l'any per definir les línies principals d'acció de l'organització així com als seus òrgans de participació executius per votació), un consell assessor d'igualtat (que es reuneix cada dos mesos per fer propostes de com millorar les relacions de gènere en l'organització), una comissió d'avaluació (que es reuneix cada mes per fer el seguiment d'un procés) o una òrgan de participació de garanties (que recull les incidències, abusos o propostes de millora dels procediments de presa de decisions) són tot exemples d'òrgans de participació.</p>\n"
+          title: Què són els òrgans de participació?
+    log:
+      value_types:
+        assembly_presenter:
+          not_found: 'L''òrgan de participació no s''ha trobat a la base de dades (ID: %{id})'
+    menu:
+      assemblies: Òrgans de participació
+    metrics:
+      assemblies:
+        description: Nombre d'òrgans de participació creats
+        object: òrgans de participació
+        title: Òrgans de participació
+  layouts:
+    decidim:
+      assemblies:
+        index:
+          promoted_assemblies: Òrgans de participació destacats
+        order_by_assemblies:
+          assemblies:
+            one: "%{count} òrgan"
+            other: "%{count} òrgans de participació"
+      assembly_navigation:
+        assembly_menu_item: L'òrgan de participació
