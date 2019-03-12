@@ -1,0 +1,221 @@
+ca:
+  activemodel:
+    attributes:
+      agenda:
+      close_meeting:
+        proposal_ids: Propostes creades en una sessió
+      meeting:
+        available_slots: Espais disponibles per a aquesta sessió
+        private_meeting: Sessió privada
+    errors:
+      models:
+        meeting_agenda:
+          attributes:
+            base:
+              too_many_minutes: La durada dels elements supera la durada de la sessió per %{count} minuts
+              too_many_minutes_child: La durada del sub-ítem supera la durada del punt "%{parent_title}" del programa per %{count} minuts
+    models:
+      decidim/meetings/close_meeting_event: Sessió tancada
+      decidim/meetings/create_meeting_event: Sessió
+      decidim/meetings/upcoming_meeting_event: Propera sessió
+      decidim/meetings/update_meeting_event: Sessió actualitzada
+  activerecord:
+    models:
+      decidim/meetings/meeting:
+        one: Sessió
+        other: Sessions
+  decidim:
+    admin:
+      meeting_copies:
+        create:
+          error: S'ha produït un error en duplicar aquesta sessió.
+          success: Sessió duplicada amb èxit.
+        new:
+          title: Duplicar sessió
+    components:
+      meetings:
+        name: Sessions
+        settings:
+          global:
+            resources_permissions_enabled: Es poden establir permisos d'accions per a cada sessió
+    events:
+      meetings:
+        meeting_closed:
+          affected_user:
+            email_intro: 'S''ha tancat la teva sessió "%{resource_title}". Podeu llegir les conclusions des de la seva pàgina:'
+            email_outro: Has rebut aquesta notificació perquè has organitzat la sessió "%{resource_title}".
+            email_subject: S'ha tancat la sessió "%{resource_title}"
+            notification_title: La sessió de <a href="%{resource_path}">%{resource_title}</a> s'ha tancat.
+          follower:
+            email_intro: 'La sessió de "%{resource_title}" ha estat tancada. Pots llegir les conclusions a la seva pàgina:'
+            email_outro: Has rebut aquesta notificació perquè estàs seguint la sessió "%{resource_title}". Pots deixar de seguir-la des de l'enllaç anterior.
+            email_subject: S'ha tancat la sessió "%{resource_title}"
+            notification_title: La sessió de <a href="%{resource_path}">%{resource_title}</a> s'ha tancat.
+        meeting_created:
+          email_intro: S'ha afegit la sessió "%{resource_title}" a l'espai "%{participatory_space_title}" que estàs seguint.
+          email_outro: Has rebut aquesta notificació perquè estàs seguint "%{participatory_space_title}". Pots deixar de seguir-lo des de l'enllaç anterior.
+          email_subject: Nova sessió a %{participatory_space_title}
+          notification_title: S'ha afegit la sessió <a href="%{resource_path}">%{resource_title}</a> a %{participatory_space_title}
+        meeting_registration_confirmed:
+          notification_title: S'ha confirmat el teu registre per a la sessió <a href="%{resource_url}">%{resource_title}</a>. El teu codi de registre és %{registration_code}.
+        meeting_registrations_over_percentage:
+          email_intro: La disponibilitat d'espais a la sessió "%{resource_title}" està per sobre del %{percentage}%.
+          email_outro: Has rebut aquesta notificació perquè ets un administrador de l'espai participatiu d'aquesta sessió.
+          email_subject: La disponibilitat d'espais a la sessió "%{resource_title}" està per sobre del %{percentage}%
+          notification_title: L'espai ocupat per la sessió <a href="%{resource_path}">%{resource_title}</a> està per sobre del %{percentage}%.
+        meeting_updated:
+          email_intro: 'La sessió de "%{resource_title}" ha estat actualitzada. Pots llegir-ne la nova versió a la seva pàgina:'
+          email_outro: Has rebut aquesta notificació perquè estàs seguint la sessió "%{resource_title}". Pots deixar-la de seguir des de l'enllaç anterior.
+          email_subject: La sessió "%{resource_title}" s'ha actualitzat
+          notification_title: La sessió <a href="%{resource_path}">%{resource_title}</a> ha estat actualitzada.
+        registration_code_validated:
+          email_intro: S'ha validat el teu codi d'inscripció "%{registration_code}" per a la sessió "%{resource_title}".
+          email_outro: Has rebut aquesta notificació perquè s'ha validat el teu codi de registre per a la sessió "%{resource_title}".
+          email_subject: S'ha validat el teu codi d'inscripció "%{registration_code}" per a la sessió "%{resource_title}"
+          notification_title: S'ha validat el teu codi de registre "%{registration_code}" per a la sessió <a href="%{resource_path}">%{resource_title}</a>.
+        registrations_enabled:
+          email_intro: 'La sessió "%{resource_title}" ha activat inscripcions. Pots registrar-te a la seva pàgina:'
+          email_outro: Has rebut aquesta notificació perquè estàs seguint la sessió "%{resource_title}". Pots deixar-la de seguir des de l'enllaç anterior.
+          email_subject: La sessió de "%{resource_title}" ha obert les inscripcions.
+          notification_title: La sessió <a href="%{resource_path}">%{resource_title}</a> ha obert les inscripcions.
+        upcoming_meeting:
+          email_intro: En menys de 48 hores s'iniciarà la sessió "%{resource_title}".
+          email_outro: Has rebut aquesta notificació perquè estàs seguint la sessió "%{resource_title}". Pots deixar-la de seguir des de l'enllaç anterior.
+          email_subject: En menys de 48 hores s'iniciarà la sessió "%{resource_title}".
+          notification_title: La sessió <a href="%{resource_path}">%{resource_title}</a> començarà en menys de 48 hores.
+    gamification:
+      badges:
+        attended_meetings:
+          conditions:
+            - Inscriu-te a les sessions que vulguis assistir
+          description: Aquest distintiu s'aconsegueix assistint a diverses sessions presencials.
+          description_another: Aquest usuari ha assistit a %{score} sessions.
+          description_own: Has assistit a %{score} sessions.
+          name: Sessions a les que has assistit
+          next_level_in: Assisteix a més de %{score} sessions per arribar al següent nivell!
+          unearned_another: Aquest usuari encara no ha assistit a cap sessió.
+          unearned_own: Encara no has assistit a cap sessió.
+    meetings:
+      actions:
+        confirm_destroy: Segur que vols suprimir aquesta sessió?
+        new: Nova sessió
+      admin:
+        exports:
+          meetings: Sessions
+        invite_join_meeting_mailer:
+          invite:
+            invited_you_to_join_a_meeting: "%{invited_by} t'ha convidat a unir-te a una sessió a l' %{application}. Pots rebutjar o acceptar la invitació a través dels enllaços a continuació."
+            join: Uneix-te a la sessió '%{meeting_title}'
+        invites:
+          create:
+            error: Hi ha hagut un problema al convidar l'usuari a unir-se a la sessió.
+            success: L'usuari s'ha convidat correctament a unir-se a la sessió.
+          form:
+            invite_explanation: L'usuari serà convidat a participar a la sessió i també a l'organització.
+        meeting_closes:
+          edit:
+            title: Tancar sessió
+        meetings:
+          close:
+            invalid: Hi ha hagut un problema en tancar aquesta sessió
+            success: Sessió tancada amb èxit
+          create:
+            invalid: Hi ha hagut un problema en crear aquesta sessió
+            success: Sessió creada amb èxit
+          destroy:
+            success: La sessió s'ha eliminat correctament
+          index:
+            title: Sessions
+          new:
+            title: Crear sessió
+          update:
+            invalid: Hi ha hagut un problema en actualitzar aquesta sessió
+            success: Sessió actualitzada correctament
+        models:
+          meeting:
+            name: Sessió
+        registrations:
+          update:
+            success: La configuració de les inscripcions de la sessió s'ha desat correctament.
+      admin_log:
+        invite:
+          create: "%{user_name} ha convidat %{attendee_name} a unir-se a la sessió %{resource_name} dins l'espai %{space_name}"
+          deleted: "%{user_name} ha eliminat l'invitació de %{attendee_name} per unir-se a la sessió %{resource_name} a l'espai %{space_name}"
+          update: "%{user_name} ha convidat %{attendee_name} a unir-se a la sessió %{resource_name} a l'espai %{space_name}"
+        meeting:
+          close: "%{user_name} ha tancat la sessió %{resource_name} a l'espai %{space_name}"
+          create: "%{user_name} ha creat la sessió %{resource_name} a l'espai %{space_name}"
+          delete: "%{user_name} ha eliminat la sessió %{resource_name} a l'espai %{space_name}"
+          export_registrations: "%{user_name} va exportar les inscripcions de la sessió %{resource_name} de l'espai %{space_name}"
+          update: "%{user_name} ha actualitzat la sessió %{resource_name} a l'espai %{space_name}"
+          value_types:
+            organizer_presenter:
+              not_found: 'L''organitzador no s''ha trobat a la base de dades (identificació: %{id})'
+        minutes:
+          create: "%{user_name} ha creat l'acta de la sessió %{resource_name} a l'espai %{space_name}"
+          update: "%{user_name} va ha actualitzat l'acta de la sessió %{resource_name} a l'espai %{space_name}"
+      directory:
+        meetings:
+          index:
+            meetings: Sessions
+      last_activity:
+        new_meeting_at_html: "<span>Nova sessió a %{link}</span>"
+      mailer:
+        invite_join_meeting_mailer:
+          invite:
+            subject: Invitació per participar en una sessió
+        registration_mailer:
+          confirmation:
+            subject: La teva inscripció a la sessió ha estat confirmada
+      meeting:
+        not_allowed: No tens permís per veure aquesta sessió
+      meetings:
+        meeting_minutes:
+          meeting_minutes: Minuts de sessió
+        meetings:
+          no_meetings_warning: No hi ha sessions que coincideixin amb el criteri de cerca o no hi ha cap sessió programada.
+          upcoming_meetings_warning: Actualment no hi ha sessions programades, però pots veure les anteriors sessions.
+        show:
+          join: Inscriu-te a la sessió
+          meeting_report: Informe de la sessió
+      meetings_map:
+        view_meeting: Veure sessió
+      registration_mailer:
+        confirmation:
+          confirmed_html: La teva inscripció a la sessió <a href="%{url}">%{title}</a> ha estat confirmada.
+          details: A l'arxiu adjunt trobaràs els detalls de la sessió.
+      registrations:
+        create:
+          invalid: Hi ha hagut un problema en inscriure's a aquesta sessió.
+          success: T'has inscrit a la sessió amb èxit.
+        destroy:
+          invalid: Hi ha hagut un problema en sortir d'aquesta sessió.
+          success: Heu deixat la sessió amb èxit.
+      types:
+        private_meeting: Sessió privada
+    metrics:
+      meetings:
+        description: Nombre de sessions creades
+        object: sessions
+        title: Sessions
+    participatory_processes:
+      participatory_process_groups:
+        highlighted_meetings:
+          past_meetings: Sessions anteriors
+          upcoming_meetings: Properes sessions
+    participatory_spaces:
+      highlighted_meetings:
+        past_meetings: Sessions anteriors
+        see_all: Veure tots (%{count})
+        upcoming_meetings: Properes sessions
+      upcoming_meeting_for_card:
+        upcoming_meeting: Propera sessió
+    resource_links:
+      meetings_through_proposals:
+        result_meeting: 'Sessions relacionades:'
+      proposals_from_meeting:
+        proposal_meeting: 'Sessions relacionades:'
+  devise:
+    mailer:
+      join_meeting:
+        subject: Invitació per participar en una sessió
