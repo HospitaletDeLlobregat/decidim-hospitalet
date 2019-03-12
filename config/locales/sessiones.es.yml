@@ -1,0 +1,226 @@
+es:
+  activemodel:
+    attributes:
+      close_meeting:
+        proposal_ids: Propuestas creadas en la sesión
+      meeting:
+        available_slots: Espacios disponibles para esta sesión
+        private_meeting: Sesión privada
+    errors:
+      models:
+        meeting_agenda:
+          attributes:
+            base:
+              too_many_minutes: La duración de los ítems supera la duración de la sesión en %{count} minutos
+    models:
+      decidim/meetings/close_meeting_event: Sesión cerrada
+      decidim/meetings/create_meeting_event: Sesión
+      decidim/meetings/upcoming_meeting_event: Próxima sesión
+      decidim/meetings/update_meeting_event: Sesión actualizada
+  activerecord:
+    models:
+      decidim/meetings/meeting:
+        one: Sesión
+        other: Sesiones
+  decidim:
+    admin:
+      meeting_copies:
+        create:
+          error: Se ha producido un error al duplicar esta sesión.
+          success: La sesión se ha duplicado con éxito.
+        new:
+          title: Duplicar sesión
+    components:
+      meetings:
+        name: Sesiones
+        settings:
+          global:
+            resources_permissions_enabled: Se pueden establecer permisos de acciones para cada sesión
+    events:
+      meetings:
+        meeting_closed:
+          affected_user:
+            email_intro: 'Tu sesión "%{resource_title}" fue cerrada. Puedes leer las conclusiones desde su página:'
+            email_outro: Ha recibido esta notificación porque organizó la sesión "%{resource_title}".
+            email_subject: Se ha cerrado la sesión "%{resource_title}"
+            notification_title: La sesión <a href="%{resource_path}">%{resource_title}</a> ha sido cerrada.
+          follower:
+            email_intro: 'Se ha cerrado la sesión "%{resource_title}". Puedes leer las conclusiones en su página:'
+            email_outro: Has recibido esta notificación porque estás siguiendo la sesión "%{resource_title}". Puedes dejar de seguirla desde el enlace anterior.
+            email_subject: Se ha cerrado la sesión "%{resource_title}"
+            notification_title: La sesión <a href="%{resource_path}">%{resource_title}</a> ha sido cerrada.
+        meeting_created:
+          email_intro: Se ha añadido la sesión "%{resource_title}" al espacio "%{participatory_space_title}" que estás siguiendo.
+          email_outro: Has recibido esta notificación porque sigues "%{participatory_space_title}". Puedes dejar de seguirlo en el enlace anterior.
+          email_subject: Nuevo sesión añadido a %{participatory_space_title}
+          notification_title: Se ha añadido la sesión <a href="%{resource_path}">%{resource_title}</a> a %{participatory_space_title}
+        meeting_registration_confirmed:
+          notification_title: Su inscripción para la sesión <a href="%{resource_url}">%{resource_title}</a> ha sido confirmada. Su código de registro es %{registration_code}.
+        meeting_registrations_over_percentage:
+          email_intro: Las inscripciones ocupadas en "%{resource_title}" son %{percentage}%.
+          email_outro: Has recibido esta notificación porque eres es un administrador del espacio participativo de la sesión.
+          email_subject: Las inscripciones en "%{resource_title}" están por encima del %{percentage}%
+          notification_title: Las inscripciones de <a href="%{resource_path}">%{resource_title}</a> están por encima del %{percentage}%.
+        meeting_updated:
+          email_intro: 'Se ha cerrado la sesión "%{resource_title}". Puedes leer las conclusiones en su página:'
+          email_outro: Has recibido esta notificación porque sigues la sesión "%{resource_title}". Puedes dejar de seguirla en el enlace anterior.
+          email_subject: Se ha actualizado la sesión "%{resource_title}"
+          notification_title: La sesión <a href="%{resource_path}">%{resource_title}</a> ha sido actualizado.
+        registration_code_validated:
+          email_intro: Tu código de inscripción "%{registration_code}" en la sesión "%{resource_title}" ha sido validado.
+          email_outro: Recibió esta notificación porque su código de registro para la sesión "%{resource_title}" ha sido validado.
+          email_subject: Tu código de inscripción "%{registration_code}" en la sesión "%{resource_title}" ha sido validado
+          notification_title: Su código de registro "%{registration_code}" para la sesión <a href="%{resource_path}">%{resource_title}</a> ha sido validado.
+        registrations_enabled:
+          email_intro: 'La sesión "%{resource_title}" ha ha abierto las inscripciones. Puedes inscribirte en su página:'
+          email_outro: Has recibido esta notificación porque sigues la sesión "%{resource_title}". Puedes dejar de seguirla en el enlace anterior.
+          email_subject: La sesión "%{resource_title}" ha abierto las inscripciones.
+          notification_title: La sesión <a href="%{resource_path}">%{resource_title}</a> ha abierto las inscripciones.
+        upcoming_meeting:
+          email_intro: La sesión "%{resource_title}" comenzará en menos de 48 h.
+          email_outro: Has recibido esta notificación porque sigues la sesión "%{resource_title}". Puedes dejar de seguirla en el enlace anterior.
+          email_subject: La sesión "%{resource_title}" comenzará en menos de 48 h.
+          notification_title: La sesión <a href="%{resource_path}">%{resource_title}</a> comenzará en menos de 48 h.
+    gamification:
+      badges:
+        attended_meetings:
+          conditions:
+            - Regístrate en los sesiones a las que quieres asistir
+          description: Este distintivo se otorga cuando asistas a varias sesiones presenciales.
+          description_another: Este usuario asistió a %{score} sesiones.
+          description_own: Has asistido a %{score} sesiones.
+          name: Sesiones a los que has asistido
+          next_level_in: '¡Asiste a %{score} sesiones más para alcanzar el siguiente nivel!'
+          unearned_another: Este usuario aún no ha asistido a ninguna sesión.
+          unearned_own: No has asistido a ningún sesión todavía.
+    meetings:
+      actions:
+        confirm_destroy: '¿Está seguro de que quiere eliminar esta sesión?'
+        new: Nuevo sesión
+      admin:
+        exports:
+          meetings: Sesiones
+        invite_join_meeting_mailer:
+          invite:
+            invited_you_to_join_a_meeting: "%{invited_by} te ha invitado a unirte a una sesión en %{application}. Puedes rechazar o aceptar la invitación a través de los enlaces a continuación."
+            join: Únete a la sesión '%{meeting_title}'
+        invites:
+          create:
+            error: Ha habido un problema al invitar al usuario a unirse a la sesión.
+            success: El usuario ha sido invitado con éxito a unirse a la sesión.
+          form:
+            invite_explanation: El usuario será invitado a unirse a la sesión y también a la organización.
+        meeting_closes:
+          edit:
+            title: Cerrar sesión
+        meetings:
+          close:
+            invalid: Ha habido un problema al cerrar esta sesión
+            success: Sesión cerrada con éxito
+          create:
+            invalid: Ha habido un problema al crear esta sesión
+            success: Sesión creada con éxito
+          destroy:
+            success: La sesión se ha eliminado correctamente
+          index:
+            title: Sesiones
+          new:
+            title: Crear sesión
+          update:
+            invalid: Ha habido un problema al actualizar esta sesión
+            success: Sesión actualizada correctamente
+        models:
+          meeting:
+            name: Sesión
+        registrations:
+          update:
+            success: Se han guardado correctamente las configuraciones de inscripciones de sesiones.
+      admin_log:
+        invite:
+          create: "%{user_name} ha invitado a %{attendee_name} a unirse a la sesión %{resource_name} en el espacio %{space_name}"
+          deleted: "%{user_name} ha eliminado la invitación de %{attendee_name} de unirse a la sesión %{resource_name} en el espacio %{space_name}"
+          update: "%{user_name} ha invitado a %{attendee_name} a unirse a la sesión %{resource_name} en el espacio %{space_name}"
+        meeting:
+          close: "%{user_name} cerró la sesión %{resource_name} en el espacio %{space_name}"
+          create: "%{user_name} creó la sesión %{resource_name} en el espacio %{space_name}"
+          delete: "%{user_name} eliminó la sesión %{resource_name} en el espacio %{space_name}"
+          export_registrations: "%{user_name} exportó los registros de la sesión %{resource_name} en el espacio %{space_name}"
+          update: "%{user_name} actualizó la sesión %{resource_name} en el espacio %{space_name}"
+        minutes:
+          create: "%{user_name} ha creado el acta de la sesión %{resource_name} en el espacio %{space_name}"
+          update: "%{user_name} ha creado el acta de la sesión %{resource_name} en el espacio %{space_name}"
+      content_blocks:
+        upcoming_events:
+          name: Próximas sesiones
+          upcoming_events: Próximas sesiones
+      directory:
+        meetings:
+          index:
+            meetings: Sesiones
+      last_activity:
+        new_meeting_at_html: "<span>Nueva sesión en %{link}</span>"
+      mailer:
+        invite_join_meeting_mailer:
+          invite:
+            subject: Invitación a unirse a una sesión
+        registration_mailer:
+          confirmation:
+            subject: La inscripción a tu sesión ha sido confirmada
+      meeting:
+        not_allowed: No puedes ver esta sesión
+      meetings:
+        filters:
+          past: Pasados
+          upcoming: Próximos
+        meeting_minutes:
+          meeting_minutes: Acta de la sesión
+        meetings:
+          no_meetings_warning: No hay sesiones que coincidan con el criterio de búsqueda o no hay ninguna sesión programada.
+          upcoming_meetings_warning: Actualmente no hay sesiones programadas, pero puedes ver los sesiones anteriores.
+        show:
+          join: Inscribirse a la sesión
+          meeting_report: Informe de la sesión
+      meetings_map:
+        view_meeting: Ver sesión
+      models:
+        meeting:
+          fields:
+            closed: Cerrada
+      registration_mailer:
+        confirmation:
+          confirmed_html: Se ha confirmado su inscripción para la sesión <a href="%{url}">%{title}</a>.
+          details: Encontrarás detalles de la sesión en el archivo adjunto.
+      registrations:
+        create:
+          invalid: Ha habido un problema al unirse a esta sesión.
+          success: Te has inscrito a la sesión con éxito.
+        destroy:
+          invalid: Ha habido un problema al salir de esta sesión.
+          success: Has salido de la sesión con éxito.
+      types:
+        private_meeting: Sesión privado
+    metrics:
+      meetings:
+        description: Número de sesiones creadas
+        object: sesiones
+        title: Sesiones
+    participatory_processes:
+      participatory_process_groups:
+        highlighted_meetings:
+          past_meetings: Sesiones pasadas
+          upcoming_meetings: Próximas sesiones
+    participatory_spaces:
+      highlighted_meetings:
+        past_meetings: Sesiones pasadas
+        upcoming_meetings: Próximas sesiones
+      upcoming_meeting_for_card:
+        upcoming_meeting: Próxima reunion
+    resource_links:
+      meetings_through_proposals:
+        result_meeting: 'Sesiones relacionadas:'
+      proposals_from_meeting:
+        proposal_meeting: 'Sesiones relacionadas:'
+  devise:
+    mailer:
+      join_meeting:
+        subject: Invitación a unirse a una sesión
