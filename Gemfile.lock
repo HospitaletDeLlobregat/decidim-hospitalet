@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/decidim/decidim
-  revision: 7c82e9d8a81be22b604b8cbc98092459e6ba617d
+  revision: c5b711d5c8cdacfcd6db8025e00994b7eaf12847
   branch: 0.16-stable
   specs:
     decidim (0.16.0)
@@ -660,7 +660,7 @@ GEM
       unicode-display_width (~> 1.0, >= 1.0.1)
     rubocop-rspec (1.30.0)
       rubocop (>= 0.58.0)
-    ruby-ole (1.2.12.1)
+    ruby-ole (1.2.12.2)
     ruby-progressbar (1.10.0)
     ruby_dep (1.5.0)
     ruby_http_client (3.3.0)
@@ -703,7 +703,7 @@ GEM
     smart_properties (1.13.1)
     social-share-button (1.2.0)
       coffee-rails
-    spreadsheet (1.2.2)
+    spreadsheet (1.2.3)
       ruby-ole (>= 1.0)
     spring (2.0.2)
       activesupport (>= 4.2)
