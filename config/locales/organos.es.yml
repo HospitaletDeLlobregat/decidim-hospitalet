@@ -1,0 +1,166 @@
+es:
+  activemodel:
+    attributes:
+      assembly:
+        assembly_type: Tipo de órgano de participación
+        assembly_type_other: Otro tipo de órgano de participación
+        parent_id: Órgano de participación padre
+  activerecord:
+    models:
+      decidim/assembly:
+        one: Órgano de participación
+        other: Órganos de participación
+      decidim/assembly_member:
+        one: Miembro del órgano de participación
+        other: Miembros del órgano de participación
+      decidim/assembly_user_role:
+        one: Rol de usuario del órgano de participación
+        other: Roles de usuario del órgano de participación
+  decidim:
+    admin:
+      actions:
+        new_assembly: Nuevo órgano de participación
+      assemblies:
+        create:
+          error: Se produjo un error al crear un nuevo órgano de participación.
+          success: Órgano de participación creado correctamente.
+        index:
+          not_published: No publicado
+          private: Privado
+          public: Público
+          published: Publicado
+        new:
+          title: Nuevo órgano de participación
+        update:
+          error: Se ha producido un error al actualizar este órgano de participación.
+          success: El órgano de participación se ha actualizado correctamente.
+      assemblies_copies:
+        create:
+          error: Se produjo un error al duplicar este órgano de participación.
+          success: Órgano de participación duplicada correctamente.
+      assembly_copies:
+        new:
+          title: Duplicar órgano de participación
+      assembly_members:
+        create:
+          error: Se produjo un error al agregar un miembro para este órgano de participación.
+          success: Miembro creado con éxito para este órgano de participación.
+        destroy:
+          success: Miembro eliminado con éxito en este órgano de participación.
+        edit:
+          title: Actualizar miembro del órgano de participación.
+        index:
+          assembly_members_title: Miembros del órgano de participación
+        new:
+          title: Nuevo miembro del órgano de participación.
+        update:
+          error: Se produjo un error al actualizar el miembro para este órgano de participación.
+          success: Miembro actualizado con éxito para este órgano de participación.
+      assembly_publications:
+        create:
+          error: Se produjo un error al publicar este órgano de participación.
+          success: Órgano de participación publicada con éxito.
+        destroy:
+          error: Se produjo un error al despublicar este órgano de participación.
+          success: Órgano de participación despublicada con éxito.
+      assembly_user_roles:
+        create:
+          error: Se ha producido un error al agregar un usuario para este órgano de participación.
+          success: Usuario agregado conéxito a este órgano de participación.
+        destroy:
+          success: Usuario eliminado con éxito de este órgano de participación.
+        edit:
+          title: Actualizar el usuario del órgano de participación.
+        index:
+          assembly_admins_title: Usuarios del órgano de participación
+        new:
+          title: Nuevo usuario del órgano de participación.
+        update:
+          error: Ha habido un error al actualizar un usuario para este órgano de participación.
+          success: Usuario actualizado con éxito para este órgano de participación.
+      menu:
+        assemblies: Órganos de participación
+        assemblies_submenu:
+          assembly_admins: Usuarios del órgano de participación
+      models:
+        assembly:
+          name: Órgano de participación
+        assembly_user_role:
+          name: Usuario del órgano de participación
+      titles:
+        assemblies: Órganos de participación
+    admin_log:
+      assembly:
+        create: "%{user_name} creó el órgano de participación %{resource_name}"
+        publish: "%{user_name} publicó el órgano de participación %{resource_name}"
+        unpublish: "%{user_name} despublicó el órgano de participación %{resource_name}"
+        update: "%{user_name} actualizó el órgano de participación %{resource_name}"
+      assembly_member:
+        create: "%{user_name} creó el miembro %{resource_name} en el órgano de participación %{space_name}"
+        delete: "%{user_name} eliminó %{resource_name} del órgano de participación %{space_name}"
+        update: "%{user_name} actualizó el miembro %{resource_name} del órgano de participación %{space_name}"
+      assembly_user_role:
+        create: "%{user_name} invitó %{resource_name} al órgano de participación %{space_name}"
+        delete: "%{user_name} eliminó al usuario %{resource_name} del órgano de participación %{space_name}"
+        update: "%{user_name} cambió el rol de %{resource_name} en el órgano de participación %{space_name}"
+    assemblies:
+      admin:
+        assemblies:
+          form:
+            duration_help: Si la duración de este órgano de participación es limitada, selecciona la fecha de finalización. De lo contrario, aparecerá como indefinido.
+            included_at_help: Selecciona la fecha en que se agregó este órgano de participación a Decidim. No necesariamente tiene que ser la misma que la fecha de creación.
+            select_a_created_by: Selecciona creado por
+            select_an_assembly_type: Selecciona tipo de órgano de participación
+            select_parent_assembly: Selecciona órgano de participación principal
+            slug_help: 'Los textos cortos de URL se utilizan para generar las URL que apuntan a este órgano de participación. Sólo acepta letras, números y guiones, y debe comenzar con una letra. Ejemplo: %{url}'
+        assembly_copies:
+          form:
+            slug_help: 'Los textos cortos de URL se utilizan para generar las URL que apuntan a este órgano de participación. Sólo acepta letras, números y guiones, y debe comenzar con una letra. Ejemplo: %{url}'
+      content_blocks:
+        highlighted_assemblies:
+          name: Órganos de participación destacados
+      filter:
+        all: Todos
+      index:
+        title: Órganos de participación
+      last_activity:
+        new_assembly: Nuevo órgano de participación
+      pages:
+        home:
+          highlighted_assemblies:
+            active_assemblies: Órganos de participación activos
+            see_all_assemblies: Ver todos los órganos de participación
+      show:
+        assembly_type: Tipo de órganos de participación
+        children: Órganos de participación
+        private_space: Este es una órgano de participación privado
+      statistics:
+        assemblies_count: Órganos de participación
+    help:
+      participatory_spaces:
+        assemblies:
+          contextual: "<p>Un órgano de participación es un grupo formado por miembros de una organización que se reúnen periódicamente para tomar decisiones sobre un ámbito o área específica del mismo.</p> <p>Los órganos de participación realizan encuentros, algunos son privados y otros son abiertos. Si son abiertos se puede participar en ellos (por ejemplo: asistiendo si el aforo lo permite, añadiendo puntos al orden del día, o comentando las propuestas y decisiones tomadas por dicho órgano de participación).</p> <p>Ejemplos: Un órgano de participación general (que se reúne una vez al año para definir las líneas principales de acción de la organización así como a sus órganos de participación ejecutivos por votación), un consejo asesor de igualdad (que se reúne cada dos meses para realizar propuestas de cómo mejorar las relaciones de género en la organización), una comisión de evaluación (que se reúne cada mes para realizar el seguimiento de un proceso) o un órgano de participación de garantías (que recoge las incidencias, abusos o propuestas de mejora de los procedimientos de toma de decisiones) son todo ejemplos de órganos de participación.</p>\n"
+          page: "<p>Un órgano de participación es un grupo formado por miembros de una organización que se reúnen periódicamente para tomar decisiones sobre un ámbito o área específica del mismo.</p> <p>Los órganos de participación realizan encuentros, algunos son privados y otros son abiertos. Si son abiertos se puede participar en ellos (por ejemplo: asistiendo si el aforo lo permite, añadiendo puntos al orden del día, o comentando las propuestas y decisiones tomadas por dicho órgano de participación).</p> <p>Ejemplos: Un órgano de participación general (que se reúne una vez al año para definir las líneas principales de acción de la organización así como a sus órganos de participación ejecutivos por votación), un consejo asesor de igualdad (que se reúne cada dos meses para realizar propuestas de cómo mejorar las relaciones de género en la organización), una comisión de evaluación (que se reúne cada mes para realizar el seguimiento de un proceso) o un órgano de participación de garantías (que recoge las incidencias, abusos o propuestas de mejora de los procedimientos de toma de decisiones) son todo ejemplos de órganos de participación.</p>\n"
+          title: '¿Qué son los órganos de participación?'
+    log:
+      value_types:
+        assembly_presenter:
+          not_found: 'No se encontró el órgano de participación en la base de datos (ID: %{id})'
+    menu:
+      assemblies: Órganos de participación
+    metrics:
+      assemblies:
+        description: Número de órganos de participación creados
+        object: órganos de participación
+        title: Órganos de participación
+  layouts:
+    decidim:
+      assemblies:
+        index:
+          promoted_assemblies: Órganos de participación destacados
+        order_by_assemblies:
+          assemblies:
+            one: "%{count} órgano de participación"
+            other: "%{count} órganos de participación"
+      assembly_navigation:
+        assembly_menu_item: El órgano de participación
