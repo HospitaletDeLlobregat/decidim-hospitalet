@@ -14,6 +14,7 @@ gem 'emd'
 gem 'deface'
 gem "rails"
 gem "puma"
+gem "sprockets", "~> 3.7.2"
 
 group :development, :test do
   gem "decidim-dev", DECIDIM_VERSION
