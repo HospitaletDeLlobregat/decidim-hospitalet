@@ -1,6 +1,9 @@
 Decidim.menu :menu do |menu|
+  page = Decidim::StaticPage.find_by(slug: 'entitats')
+  return unless page
+
   menu.item I18n.t("menu.entities", scope: "decidim"),
-            Rails.application.routes.url_helpers.entities_path,
+            page_path(page.slug),
             position: 3,
             active: :inclusive
 end
