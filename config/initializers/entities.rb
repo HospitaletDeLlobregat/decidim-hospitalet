@@ -3,7 +3,7 @@ Decidim.menu :menu do |menu|
   return unless page
 
   menu.item I18n.t("menu.entities", scope: "decidim"),
-            page_path(page.slug),
+            decidim.page_path(page),
             position: 3,
             active: :inclusive
 end
