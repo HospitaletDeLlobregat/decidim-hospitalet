@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_24_140837) do
+ActiveRecord::Schema.define(version: 2020_03_03_135446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -284,6 +284,18 @@ ActiveRecord::Schema.define(version: 2020_02_24_140837) do
     t.string "reference"
     t.index ["decidim_component_id"], name: "index_decidim_budgets_projects_on_decidim_component_id"
     t.index ["decidim_scope_id"], name: "index_decidim_budgets_projects_on_decidim_scope_id"
+  end
+
+  create_table "decidim_calendar_external_events", force: :cascade do |t|
+    t.jsonb "title", null: false
+    t.datetime "start_at", null: false
+    t.datetime "end_at", null: false
+    t.string "url"
+    t.integer "decidim_author_id", null: false
+    t.string "decidim_author_type"
+    t.integer "decidim_organization_id", null: false
+    t.index ["decidim_author_id"], name: "decidim_calendar_external_event_author"
+    t.index ["decidim_organization_id"], name: "decidim_calendar_external_event_organization"
   end
 
   create_table "decidim_categories", id: :serial, force: :cascade do |t|
