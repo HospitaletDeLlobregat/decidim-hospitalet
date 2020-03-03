@@ -4,6 +4,7 @@ ruby RUBY_VERSION
 DECIDIM_VERSION = "~> 0.20.0"
 
 gem "decidim", DECIDIM_VERSION
+gem "geocoder", "~> 1.5.2"
 
 gem 'uglifier'
 gem 'lograge'
