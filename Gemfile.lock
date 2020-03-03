@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/alabs/decidim-module-calendar.git
+  revision: 926fd37f160912af20e2b58f2f445040286cb0ab
+  branch: fix/version-pinning
+  specs:
+    decidim-calendar (0.19.0)
+      decidim-admin (>= 0.19.0)
+      decidim-core (>= 0.19.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -768,6 +777,7 @@ DEPENDENCIES
   byebug
   dalli
   decidim (~> 0.20.0)
+  decidim-calendar!
   decidim-dev (~> 0.20.0)
   deface
   emd
