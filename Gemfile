@@ -6,7 +6,7 @@ DECIDIM_VERSION = "~> 0.20.0"
 gem "decidim", DECIDIM_VERSION
 gem "geocoder", "~> 1.5.2"
 
-gem "decidim-calendar", git: "https://github.com/alabs/decidim-module-calendar.git", branch: "fix/version-pinning"
+gem "decidim-calendar", git: "https://github.com/alabs/decidim-module-calendar.git"
 
 gem 'uglifier'
 gem 'lograge'
