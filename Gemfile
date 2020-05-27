@@ -7,6 +7,7 @@ gem "decidim", DECIDIM_VERSION
 gem "geocoder", "~> 1.5.2"
 
 gem "decidim-calendar", git: "https://github.com/alabs/decidim-module-calendar.git"
+gem "decidim-direct_verifications", git: "https://github.com/Platoniq/decidim-verifications-direct_verifications.git"
 
 gem 'uglifier'
 gem 'lograge'

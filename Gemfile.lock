@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/Platoniq/decidim-verifications-direct_verifications.git
+  revision: 9f710c92a6c5f56ca99cf0c19c3d484ad37c3e29
+  specs:
+    decidim-direct_verifications (0.20)
+      decidim-admin (>= 0.17.0)
+      decidim-core (>= 0.17.0)
+
+GIT
   remote: https://github.com/alabs/decidim-module-calendar.git
   revision: 74548a036095aee1f20724a6a47f0e0d3121c2be
   specs:
@@ -778,6 +786,7 @@ DEPENDENCIES
   decidim (~> 0.20.0)
   decidim-calendar!
   decidim-dev (~> 0.20.0)
+  decidim-direct_verifications!
   deface
   emd
   faker
