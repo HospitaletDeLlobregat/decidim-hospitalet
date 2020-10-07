@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 ruby RUBY_VERSION
-DECIDIM_VERSION = "~> 0.20.0"
+DECIDIM_VERSION = "~> 0.22.0"
 
 gem "decidim", DECIDIM_VERSION
 gem "geocoder", "~> 1.5.2"
