@@ -4,7 +4,7 @@ ruby RUBY_VERSION
 DECIDIM_VERSION = "~> 0.22.0"
 
 gem "decidim", DECIDIM_VERSION
-gem "geocoder", "~> 1.5.2"
+gem "geocoder", "~> 1.6.1"
 
 gem "decidim-calendar", git: "https://github.com/alabs/decidim-module-calendar.git"
 gem "decidim-direct_verifications", git: "https://github.com/Platoniq/decidim-verifications-direct_verifications.git"
