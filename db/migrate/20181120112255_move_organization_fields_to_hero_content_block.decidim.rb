@@ -1,16 +1,15 @@
 # frozen_string_literal: true
+
 # This migration comes from decidim (originally 20180810092428)
 
 class MoveOrganizationFieldsToHeroContentBlock < ActiveRecord::Migration[5.2]
-  class ::Decidim::Organization < ApplicationRecord
+  class Organization < ApplicationRecord
     self.table_name = :decidim_organizations
-
     mount_uploader :homepage_image, ::Decidim::HomepageImageUploader
   end
 
   def change
-    Decidim::ContentBlock.reset_column_information
-    Decidim::Organization.find_each do |organization|
+    Organization.find_each do |organization|
       content_block = Decidim::ContentBlock.find_by(organization: organization, scope: :homepage, manifest_name: :hero)
       settings = {}
       welcome_text = organization.welcome_text || {}
@@ -18,8 +17,6 @@ class MoveOrganizationFieldsToHeroContentBlock < ActiveRecord::Migration[5.2]
 
       content_block.settings = settings
       content_block.images_container.background_image = organization.homepage_image.file
-      content_block.settings_will_change!
-      content_block.images_will_change!
       content_block.save!
     end
 
