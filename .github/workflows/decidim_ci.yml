@@ -1,0 +1,50 @@
+name: "[CI] Decidim"
+on: [push]
+
+env:
+  RUBY_VERSION: 2.6.5
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:11
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        env:
+          POSTGRES_PASSWORD: postgres
+      redis:
+        image: redis:3.2-alpine
+        ports: ["6379:6379"]
+    env:
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: postgres
+      DATABASE_HOST: localhost
+    steps:
+      - uses: actions/checkout@v2.0.0
+        with:
+          fetch-depth: 1
+      - uses: ruby/setup-ruby@master
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+      - name: Recover dependency cache
+        uses: actions/cache@v1
+        with:
+          path: ./vendor/bundle
+          key: ${{ runner.OS }}-deps-${{ hashFiles('Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-deps-${{ env.cache-name }}-
+            ${{ runner.OS }}-deps-
+            ${{ runner.OS }}-
+      - run: bundle install --path vendor/bundle --jobs 4 --retry 3
+        name: Bundle install
+      - run: bundle exec rake db:test:prepare
+        name: Setup database
+      - run: bundle exec rspec
+        name: Run RSpec
