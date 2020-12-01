@@ -13,7 +13,7 @@ class MoveProposalsFieldsToI18n < ActiveRecord::Migration[5.2]
         author = proposal.coauthorships.first.author
 
         locale = if author
-                   author.locale.presence
+                   author.try(:locale).presence
                  else
                    I18n.default_locale.to_s
                  end
