@@ -9,7 +9,7 @@ class MoveProposalsFieldsToI18n < ActiveRecord::Migration[5.2]
     reset_column_information
 
     PaperTrail.request(enabled: false) do
-      Decidim::Proposals::Proposal.find_each do |proposal|
+      Decidim::Proposals::Proposal.includes(coauthorships: :author).find_each do |proposal|
         author = proposal.coauthorships.first.author
 
         locale = if author
