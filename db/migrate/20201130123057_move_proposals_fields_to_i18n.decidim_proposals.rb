@@ -12,11 +12,7 @@ class MoveProposalsFieldsToI18n < ActiveRecord::Migration[5.2]
       Decidim::Proposals::Proposal.includes(coauthorships: :author).find_each do |proposal|
         author = proposal.coauthorships.first.author
 
-        locale = if author
-                   author.try(:locale).presence
-                 else
-                   I18n.default_locale.to_s
-                 end
+        locale = author.try(:locale).presence || I18n.default_locale.to_s
 
         proposal.new_title = {
           locale => proposal.title
