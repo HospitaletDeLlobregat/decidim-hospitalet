@@ -1,23 +1,7 @@
 GIT
-  remote: https://github.com/Platoniq/decidim-verifications-direct_verifications.git
-  revision: 33314fb9136353942d6d2cbddcc9fd257045953f
-  specs:
-    decidim-direct_verifications (0.20)
-      decidim-admin (>= 0.17.0)
-      decidim-core (>= 0.17.0)
-
-GIT
-  remote: https://github.com/alabs/decidim-module-calendar.git
-  revision: 929739b916c624b471a326569ac53802c79e6aaf
-  specs:
-    decidim-calendar (0.19.0)
-      decidim-admin (>= 0.19.0)
-      decidim-core (>= 0.19.0)
-
-GIT
-  remote: https://github.com/decidim/decidim
-  revision: adc6459b0ac729613534ca8a1e8326d26aafbd2f
-  tag: release/0.23-stable
+  remote: https://github.com/HospitaletDeLlobregat/decidim
+  revision: e959630dc5c373849397a90180641da90f88926a
+  tag: feat/v0.23-with-online-meetings
   specs:
     decidim (0.23.1)
       decidim-accountability (= 0.23.1)
@@ -215,6 +199,22 @@ GIT
       sassc-rails (~> 2.1.2)
     decidim-verifications (0.23.1)
       decidim-core (= 0.23.1)
+
+GIT
+  remote: https://github.com/Platoniq/decidim-verifications-direct_verifications.git
+  revision: 33314fb9136353942d6d2cbddcc9fd257045953f
+  specs:
+    decidim-direct_verifications (0.20)
+      decidim-admin (>= 0.17.0)
+      decidim-core (>= 0.17.0)
+
+GIT
+  remote: https://github.com/alabs/decidim-module-calendar.git
+  revision: 929739b916c624b471a326569ac53802c79e6aaf
+  specs:
+    decidim-calendar (0.19.0)
+      decidim-admin (>= 0.19.0)
+      decidim-core (>= 0.19.0)
 
 GEM
   remote: https://rubygems.org/
