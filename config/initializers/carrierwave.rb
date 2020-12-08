@@ -23,7 +23,7 @@ if Rails.env.production?
       region:                "eu-central-1"                                     # optional, defaults to 'us-east-1'
     }
     config.fog_public = true
-    config.fog_directory  = "decidim-hospitalet"                                # required
+    config.fog_directory  = "decidim-hospitalet-staging"                                # required
     config.fog_attributes = { 'Cache-Control' => "max-age=#{365.day.to_i}" }    # optional, defaults to {}
   end
 else
