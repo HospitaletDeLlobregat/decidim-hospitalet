@@ -1,0 +1,5 @@
+DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rake db:drop
+heroku pg:pull DATABASE_URL "$(DISABLE_SPRING=1 bin/rails runner "puts Rails.configuration.database_configuration['development']['database']")"
+bin/rails runner "Decidim::Organization.first.update(host: 'localhost')"
+bin/rails runner "u = Decidim::User.find_by(admin: true); u.password = 'decidim123456'; u.password_confirmation = 'decidim123456'; u.save; puts u.email"
+bin/rails db:migrate
