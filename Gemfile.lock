@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/HospitaletDeLlobregat/decidim
-  revision: e31d7959bc3621e98d9f237e5d491fc40f63a1fa
+  revision: adf87d76ac965c51f8c38b4094427f027c4e90ed
   tag: feat/v0.23-with-online-meetings
   specs:
     decidim (0.23.1)
