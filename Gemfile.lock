@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/HospitaletDeLlobregat/decidim
-  revision: e959630dc5c373849397a90180641da90f88926a
+  revision: e31d7959bc3621e98d9f237e5d491fc40f63a1fa
   tag: feat/v0.23-with-online-meetings
   specs:
     decidim (0.23.1)
@@ -385,7 +385,7 @@ GEM
       smart_properties
     erbse (0.1.4)
       temple
-    erubi (1.9.0)
+    erubi (1.10.0)
     etherpad-lite (0.3.0)
       rest-client (>= 1.6)
     excon (0.76.0)
@@ -397,8 +397,9 @@ GEM
       railties (>= 3.0.0)
     faker (2.14.0)
       i18n (>= 1.6, < 2)
-    faraday (1.0.1)
+    faraday (1.1.0)
       multipart-post (>= 1.2, < 3)
+      ruby2_keywords
     ffi (1.13.1)
     file_validators (2.3.0)
       activemodel (>= 3.2)
@@ -430,7 +431,7 @@ GEM
       activesupport (>= 4.1, < 6.0)
       railties (>= 4.1, < 6.0)
       tzinfo (~> 1.2, >= 1.2.2)
-    geocoder (1.6.1)
+    geocoder (1.6.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     graphiql-rails (1.4.11)
@@ -515,7 +516,7 @@ GEM
     method_source (1.0.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2020.0512)
+    mime-types-data (3.2020.1104)
     mimemagic (0.3.5)
     mini_magick (4.11.0)
     mini_mime (1.0.2)
@@ -568,8 +569,8 @@ GEM
     paper_trail (10.3.1)
       activerecord (>= 4.2)
       request_store (~> 1.1)
-    parallel (1.19.2)
-    parser (2.7.1.5)
+    parallel (1.20.1)
+    parser (2.7.2.0)
       ast (~> 2.4.1)
     pg (1.1.4)
     pg_search (2.3.5)
@@ -584,7 +585,7 @@ GEM
       actionmailer (>= 3)
       premailer (~> 1.7, >= 1.7.9)
     public_suffix (4.0.6)
-    puma (5.0.2)
+    puma (5.1.0)
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-attack (6.3.1)
@@ -646,7 +647,7 @@ GEM
       virtus (~> 1.0.5)
       wisper (>= 1.6.1)
     redcarpet (3.5.0)
-    redis (4.2.2)
+    redis (4.2.5)
     regexp_parser (1.8.2)
     request_store (1.5.0)
       rack (>= 1.4)
@@ -666,9 +667,9 @@ GEM
     rspec-cells (0.3.5)
       cells (>= 4.0.0, < 6.0.0)
       rspec-rails (< 5.0)
-    rspec-core (3.9.2)
+    rspec-core (3.9.3)
       rspec-support (~> 3.9.3)
-    rspec-expectations (3.9.2)
+    rspec-expectations (3.9.4)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
     rspec-html-matchers (0.9.4)
@@ -687,7 +688,7 @@ GEM
       rspec-support (~> 3.9.0)
     rspec-retry (0.6.2)
       rspec-core (> 3.3)
-    rspec-support (3.9.3)
+    rspec-support (3.9.4)
     rspec_junit_formatter (0.3.0)
       rspec-core (>= 2, < 4, != 2.12.0)
     rubocop (0.71.0)
@@ -704,6 +705,7 @@ GEM
       rubocop (>= 0.68.1)
     ruby-ole (1.2.12.2)
     ruby-progressbar (1.10.1)
+    ruby2_keywords (0.0.2)
     ruby_http_client (3.5.1)
     rubyzip (2.0.0)
     sass (3.7.4)
@@ -770,7 +772,7 @@ GEM
     truncato (0.7.11)
       htmlentities (~> 4.3.1)
       nokogiri (>= 1.7.0, <= 2.0)
-    tzinfo (1.2.7)
+    tzinfo (1.2.8)
       thread_safe (~> 0.1)
     uber (0.1.0)
     uglifier (4.2.0)
@@ -841,7 +843,7 @@ DEPENDENCIES
   virtus-multiparams
 
 RUBY VERSION
-   ruby 2.6.5p114
+   ruby 2.6.6p146
 
 BUNDLED WITH
    1.17.3
