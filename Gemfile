@@ -4,6 +4,7 @@ ruby RUBY_VERSION
 DECIDIM_VERSION = { git: "https://github.com/HospitaletDeLlobregat/decidim", tag: "feat/v0.23-with-online-meetings" }
 
 gem "decidim", DECIDIM_VERSION
+gem "decidim-dev", DECIDIM_VERSION
 gem "geocoder", "~> 1.6.1"
 
 gem "decidim-calendar", git: "https://github.com/alabs/decidim-module-calendar.git"
