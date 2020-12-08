@@ -1,0 +1,33 @@
+es:
+  activemodel:
+    attributes:
+      meeting:
+        online_meeting_url: URL de la sesión
+        type_of_meeting: Tipo de sesión
+  decidim:
+    components:
+      meetings:
+        settings:
+          global:
+            terms_and_conditions_url_for_meeting_creators: URL de los términos y condiciones para creadores de sesiones
+    meetings:
+      admin:
+        meetings:
+          form:
+            location_hints_help: "Ayuda de localización: información adicional. Por ejemplo: la planta del edificio si es una sesión presencial, o la contraseña de la sesión si es en línea con accesso restringido."
+            online_meeting_url_help: 'Enlace: permite que los participantes se conecten directamente a la sesión'
+            select_a_meeting_type: Selecciona un tipo de sesión
+      meetings:
+        filters:
+          type: Tipo
+          type_values:
+            all: Todos
+            in_person: Presencial
+            online: En línea
+        form:
+          location_hints_help: "Ayuda de localización: información adicional. Por ejemplo: la planta del edificio si es una sesión presencial, o la contraseña de la sesión si es en línea con accesso restringido."
+          online_meeting_url_help: 'Enlace: permite que los participantes se conecten directamente a la sesión'
+          select_a_meeting_type: Selecciona un tipo de sesión
+      type_of_meeting:
+        in_person: Presencial
+        online: En línea
