@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 ruby RUBY_VERSION
-DECIDIM_VERSION = { git: "https://github.com/HospitaletDeLlobregat/decidim", tag: "feat/v0.23-with-online-meetings" }
+DECIDIM_VERSION = { git: "https://github.com/decidim/decidim", tag: "release/0.23-stable" }
 
 gem "decidim", DECIDIM_VERSION
 gem "geocoder", "~> 1.6.1"
