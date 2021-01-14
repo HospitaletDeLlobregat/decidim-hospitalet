@@ -8,11 +8,15 @@ Decidim.configure do |config|
   config.default_locale = :ca
 
   if Rails.application.secrets.geocoder
-   config.maps = {
-     provider: :here,
-     api_key: Rails.application.secrets.geocoder[:here_api_key],
-     static: { url: "image.maps.ls.hereapi.com/mia/1.6/mapview"}
-   }
+    config.maps = {
+      provider: :here,
+      api_key: Rails.application.secrets.maps[:api_key],
+      static: { url: "https://image.maps.ls.hereapi.com/mia/1.6/mapview" }
+    }
+    config.geocoder = {
+      timeout: 5,
+      units: :km
+    }
   end
 
   if ENV["HEROKU_APP_NAME"].present?
