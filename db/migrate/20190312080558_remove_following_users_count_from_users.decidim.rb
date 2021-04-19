@@ -10,6 +10,7 @@ class RemoveFollowingUsersCountFromUsers < ActiveRecord::Migration[5.2]
     add_column :decidim_users, :following_users_count, :integer, null: false, default: 0
 
     Decidim::UserBaseEntity.find_each do |entity|
+      p entity.id
       following_users_count = Decidim::Follow.where(decidim_user_id: entity.id, decidim_followable_type: ["Decidim::UserBaseEntity", "Decidim::User", "Decidim::UserGroup"]).count
       entity.following_users_count = following_users_count
       entity.save
