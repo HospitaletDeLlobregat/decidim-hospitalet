@@ -20,6 +20,8 @@ gem "rails"
 gem "puma"
 gem "sprockets", "~> 3.7.2"
 
+gem "execjs", "~> 2.7.0"
+
 group :development, :test do
   gem "decidim-dev", DECIDIM_VERSION
   gem "rubocop"
