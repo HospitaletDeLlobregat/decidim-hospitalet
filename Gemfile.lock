@@ -669,6 +669,9 @@ GEM
       unicode-display_width (>= 1.4.0, < 2.0)
     rubocop-ast (1.19.1)
       parser (>= 3.1.1.0)
+    rubocop-faker (1.1.0)
+      faker (>= 2.12.0)
+      rubocop (>= 0.82.0)
     rubocop-rails (2.9.1)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
@@ -797,7 +800,7 @@ DEPENDENCIES
   decidim-dev (= 0.26.2)
   decidim-direct_verifications
   deface
-  faker (~> 2.18)
+  faker (~> 2.14)
   fog-aws
   letter_opener_web
   listen
@@ -805,6 +808,7 @@ DEPENDENCIES
   newrelic_rpm
   puma
   rails_12factor
+  rubocop-faker
   sendgrid-ruby
   sentry-rails
   sentry-ruby

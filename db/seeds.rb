@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -9,7 +10,7 @@
 
 # You can remove the 'faker' gem if you don't want Decidim seeds.
 if ENV["HEROKU_APP_NAME"].present?
-  ENV["DECIDIM_HOST"] = ENV["HEROKU_APP_NAME"] + ".herokuapp.com"
+  ENV["DECIDIM_HOST"] = "#{ENV["HEROKU_APP_NAME"]}.herokuapp.com"
   ENV["SEED"] = "true"
 end
 
@@ -38,17 +39,18 @@ scopes = [
   { ca: "Pubilla Cases" },
   { ca: "Can Serra" },
   { ca: "Bellvitge" },
-  { ca: "El Gornal" },
+  { ca: "El Gornal" }
 ].map do |scope_name|
   { name: scope_name, organization: organization, code: scope_name[:ca] }
 end
-scopes = Decidim::Scope.create!(scopes)
+Decidim::Scope.create!(scopes)
 
 puts "Deleting default L'Hospitalet categories..."
 participatory_process.categories.destroy_all
 
 puts "Creating custom L'Hospitalet categories..."
 
+# rubocop:disable Layout/LineLength
 categories = [
   { ca: "Urbanisme i espai públic: estat dels carrers, parcs, places, etc.", es: "Urbanismo y espacio público: estado de las calles, parques, plazas, etc" },
   { ca: "Activitat econòmica i ocupació: activitat comercial, promoció econòmica, noves activitats econòmiques, etc.", es: "Actividad económica y ocupación: actividad comercial, promoción económica, nuevas actividades económicas, etc." },
@@ -62,6 +64,7 @@ categories = [
   { ca: "Medi ambient i sostenibilitat", es: "Medio Ambiente y Sostenibilidad" },
   { ca: "Sanitat i salut", es: "Sanidad y salud" }
 ]
+# rubocop:enable Layout/LineLength
 
 Decidim::Category.transaction do
   categories.each do |data|
@@ -71,10 +74,10 @@ end
 
 categories = Decidim::Category.where(participatory_space: participatory_process).pluck(:id)
 
-Decidim::User.where(
-    email: "enquestes@lhon-participa.cat",
-    organization: organization,
-  ).first || Decidim::User.create!(
+Decidim::User.find_by(
+  email: "enquestes@lhon-participa.cat",
+  organization: organization
+) || Decidim::User.create!(
   {
     name: "Enquesta / Encuesta",
     nickname: "enquesta-encuesta",

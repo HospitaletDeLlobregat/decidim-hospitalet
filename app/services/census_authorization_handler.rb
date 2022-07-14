@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Checks the authorization against the census for Barcelona.
 require "digest/md5"
 
@@ -49,7 +50,7 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
 
     return @response if defined?(@response)
 
-    connection = Faraday.new(url: "https://seuelectronica.l-h.cat", ssl: { verify: false})
+    connection = Faraday.new(url: "https://seuelectronica.l-h.cat", ssl: { verify: false })
 
     response = connection.post do |request|
       request.url "/Padro/wsPadroHabitant.asmx"
@@ -60,18 +61,17 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
     @response = Nokogiri::XML(response.body).remove_namespaces!
   end
 
-
   def request_body
-    @request_body ||= <<EOS
-<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
-  <soap12:Body>
-    <EsHabitant xmlns="https://seuelectronica.l-h.cat/Padro/">
-      <DocId>#{sanitize document_number&.upcase}</DocId>
-      <DataNaix>#{sanitized_date_of_birth}</DataNaix>
-    </EsHabitant>
-  </soap12:Body>
-</soap12:Envelope>
-EOS
+    @request_body ||= <<~SOAP
+      <soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
+        <soap12:Body>
+          <EsHabitant xmlns="https://seuelectronica.l-h.cat/Padro/">
+            <DocId>#{sanitize document_number&.upcase}</DocId>
+            <DataNaix>#{sanitized_date_of_birth}</DataNaix>
+          </EsHabitant>
+        </soap12:Body>
+      </soap12:Envelope>
+    SOAP
   end
 
   def over_16

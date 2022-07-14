@@ -1,5 +1,5 @@
-# coding: utf-8
 # frozen_string_literal: true
+
 require "rails_helper"
 require "decidim/dev/test/authorization_shared_examples"
 
@@ -17,11 +17,11 @@ describe CensusAuthorizationHandler do
     }
   end
 
-  it_behaves_like "an authorization handler"
-
   before do
     handler.user = create(:user, nickname: "test_user")
   end
+
+  it_behaves_like "an authorization handler"
 
   context "with a valid response" do
     before do
@@ -95,7 +95,7 @@ describe CensusAuthorizationHandler do
     end
   end
 
-  context "unique_id" do
+  describe "unique_id" do
     it "generates a different ID for a different document number" do
       handler.document_number = "ABC123"
       unique_id1 = handler.unique_id
@@ -103,7 +103,7 @@ describe CensusAuthorizationHandler do
       handler.document_number = "XYZ456"
       unique_id2 = handler.unique_id
 
-      expect(unique_id1).to_not eq(unique_id2)
+      expect(unique_id1).not_to eq(unique_id2)
     end
 
     it "generates the same ID for the same document number" do
@@ -120,7 +120,7 @@ describe CensusAuthorizationHandler do
       handler.document_number = "ABC123"
       unique_id = handler.unique_id
 
-      expect(unique_id).to_not include(handler.document_number)
+      expect(unique_id).not_to include(handler.document_number)
     end
   end
 
@@ -132,7 +132,7 @@ describe CensusAuthorizationHandler do
           .and_return(Nokogiri::XML("Messed up response!").remove_namespaces!)
       end
 
-      it { is_expected.to_not be_valid }
+      it { is_expected.not_to be_valid }
     end
 
     context "with an invalid response code" do
@@ -142,7 +142,7 @@ describe CensusAuthorizationHandler do
           .and_return(Nokogiri::XML("<EsHabitantResult>false</EsHabitantResult>").remove_namespaces!)
       end
 
-      it { is_expected.to_not be_valid }
+      it { is_expected.not_to be_valid }
     end
   end
 

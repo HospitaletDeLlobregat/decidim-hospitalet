@@ -1,6 +1,8 @@
-require_relative 'boot'
+# frozen_string_literal: true
 
-require 'rails/all'
+require_relative "boot"
+
+require "rails/all"
 require "decidim/rails"
 # Add the frameworks used by your app that are not loaded by Decidim.
 require "action_cable/engine"
@@ -16,7 +18,7 @@ module DecidimHospitalet
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-    config.time_zone = 'Madrid'
+    config.time_zone = "Madrid"
 
     # Locales
     config.i18n.available_locales = %w(ca es)
