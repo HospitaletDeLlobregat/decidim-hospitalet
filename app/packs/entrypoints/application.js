@@ -17,3 +17,7 @@
 // Activate Active Storage
 // import * as ActiveStorage from "@rails/activestorage"
 // ActiveStorage.start()
+
+require.context('../images', true)
+require.context('../documents', true)
+
