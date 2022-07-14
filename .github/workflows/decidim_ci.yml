@@ -2,7 +2,9 @@ name: "[CI] Decidim"
 on: [push]
 
 env:
-  RUBY_VERSION: 2.7.3
+  RUBY_VERSION: 2.7.6
+  NODE_VERSION: 16.9.1
+  RAILS_ENV: test
 
 jobs:
   tests:
@@ -27,24 +29,25 @@ jobs:
       DATABASE_PASSWORD: postgres
       DATABASE_HOST: localhost
     steps:
-      - uses: actions/checkout@v2.0.0
+      - uses: actions/checkout@v2
         with:
           fetch-depth: 1
-      - uses: ruby/setup-ruby@master
+
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
-      - name: Recover dependency cache
-        uses: actions/cache@v1
-        with:
-          path: ./vendor/bundle
-          key: ${{ runner.OS }}-deps-${{ hashFiles('Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.OS }}-deps-${{ env.cache-name }}-
-            ${{ runner.OS }}-deps-
-            ${{ runner.OS }}-
-      - run: bundle install --path vendor/bundle --jobs 4 --retry 3
-        name: Bundle install
-      - run: bundle exec rake db:test:prepare
-        name: Setup database
-      - run: bundle exec rspec
-        name: Run RSpec
+          bundler-cache: true
+
+      - name: Setup & create Database
+        run: |
+          bundle exec rails db:create db:schema:load
+
+      - name: Precompile assets
+        run: |
+          yarn install
+          bundle exec rake assets:precompile
+        env:
+          RAILS_ENV: test
+
+      - name: Run RSpec
+        run: SIMPLECOV=1 CODECOV=1 bundle exec rspec
