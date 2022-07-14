@@ -27,3 +27,6 @@ Decidim.configure do |config|
     auth.form = "CensusAuthorizationHandler"
   end
 end
+
+# Inform Decidim about the assets folder
+Decidim.register_assets_path File.expand_path("app/packs", Rails.application.root)
