@@ -485,7 +485,6 @@ GEM
     mime-types-data (3.2022.0105)
     mini_magick (4.11.0)
     mini_mime (1.1.2)
-    mini_portile2 (2.8.0)
     minitest (5.16.2)
     mixlib-cli (2.1.8)
     mixlib-config (3.0.27)
@@ -498,8 +497,7 @@ GEM
     mustache (1.1.1)
     newrelic_rpm (8.9.0)
     nio4r (2.5.8)
-    nokogiri (1.13.7)
-      mini_portile2 (~> 2.8.0)
+    nokogiri (1.13.7-x86_64-linux)
       racc (~> 1.4)
     oauth (0.5.10)
     oauth2 (1.4.10)
@@ -790,7 +788,7 @@ GEM
     zeitwerk (2.6.0)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap (~> 1.7)
@@ -823,4 +821,4 @@ RUBY VERSION
    ruby 2.7.6p219
 
 BUNDLED WITH
-   2.1.4
+   2.3.13

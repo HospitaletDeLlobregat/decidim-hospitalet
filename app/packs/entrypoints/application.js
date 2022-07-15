@@ -19,5 +19,4 @@
 // ActiveStorage.start()
 
 require.context('../images', true)
-require.context('../documents', true)
 
