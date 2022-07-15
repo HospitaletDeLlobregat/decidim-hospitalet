@@ -1,0 +1,25 @@
+.extended {
+  ul {
+    list-style-type: none;
+    margin-left: 0.2em;
+    vertical-align: middle;
+  }
+
+  ul li:before {
+    content: '';
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+    background-size: 1em;
+    background-image: url("images/bullet.png");
+    background-repeat: no-repeat;
+    margin-right: 0.5em;
+    margin-bottom: -0.15em;
+  }
+}
+
+.main-footer {
+  a.main-footer__badge {
+    margin-left: 15px;
+  }
+}

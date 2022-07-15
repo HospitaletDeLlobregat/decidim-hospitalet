@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 Decidim.menu :menu do |menu|
-  page = Decidim::StaticPage.find_by(slug: 'entitats')
+  page = Decidim::StaticPage.find_by(slug: "entitats")
 
   if page
     menu.item I18n.t("menu.entities", scope: "decidim"),

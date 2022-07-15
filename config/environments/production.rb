@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -11,26 +13,17 @@ Rails.application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
-
-  # Compress JavaScripts and CSS.
-  config.assets.js_compressor = Uglifier.new(:harmony => true)
-  # config.assets.css_compressor = :sass
-
-  # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
 
   config.public_file_server.headers = {
-    'Cache-Control' => 'public, s-maxage=31536000, maxage=15552000',
-    'Expires' => "#{1.year.from_now.to_formatted_s(:rfc822)}"
+    "Cache-Control" => "public, s-maxage=31536000, maxage=15552000",
+    "Expires" => 1.year.from_now.to_formatted_s(:rfc822).to_s
   }
-
-  # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
@@ -44,15 +37,18 @@ Rails.application.configure do
   # config.action_cable.url = 'wss://example.com/cable'
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
+  # Store uploaded files on the local file system (see config/storage.yml for options)
+  config.active_storage.service = :amazon
+
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = !ENV["FORCE_SSL"].blank?
+  config.force_ssl = ENV["FORCE_SSL"].present?
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -77,22 +73,22 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.action_mailer.smtp_settings = {
-    :address        => Rails.application.secrets.smtp_address,
-    :port           => Rails.application.secrets.smtp_port,
-    :authentication => Rails.application.secrets.smtp_authentication,
-    :user_name      => Rails.application.secrets.smtp_username,
-    :password       => Rails.application.secrets.smtp_password,
-    :domain         => Rails.application.secrets.smtp_domain,
-    :enable_starttls_auto => Rails.application.secrets.smtp_starttls_auto,
-    :openssl_verify_mode => 'none'
+    address: Rails.application.secrets.smtp_address,
+    port: Rails.application.secrets.smtp_port,
+    authentication: Rails.application.secrets.smtp_authentication,
+    user_name: Rails.application.secrets.smtp_username,
+    password: Rails.application.secrets.smtp_password,
+    domain: Rails.application.secrets.smtp_domain,
+    enable_starttls_auto: Rails.application.secrets.smtp_starttls_auto,
+    openssl_verify_mode: "none"
   }
 
   if Rails.application.secrets.sendgrid
     config.action_mailer.default_options = {
       "X-SMTPAPI" => {
-        filters:  {
+        filters: {
           clicktrack: { settings: { enable: 0 } },
-          opentrack:  { settings: { enable: 0 } }
+          opentrack: { settings: { enable: 0 } }
         }
       }.to_json
     }
@@ -109,7 +105,7 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
-    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger = ActiveSupport::Logger.new($stdout)
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
@@ -124,10 +120,10 @@ Rails.application.configure do
   config.lograge.custom_options = lambda do |event|
     {
       remote_ip: event.payload[:remote_ip],
-      params: event.payload[:params].except('controller', 'action', 'format', 'utf8'),
+      params: event.payload[:params].except("controller", "action", "format", "utf8"),
       user_id: event.payload[:user_id],
       organization_id: event.payload[:organization_id],
-      referer: event.payload[:referer],
+      referer: event.payload[:referer]
     }
   end
 end

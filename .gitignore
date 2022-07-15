@@ -20,3 +20,22 @@
 /public/uploads/*
 
 .DS_Store
+
+# Ignore uploaded files in development
+/storage/*
+!/storage/.keep
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
+# Ignore .rbenv-vars
+.rbenv-vars
+.rspec-failures
+
+/public/decidim-packs
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity

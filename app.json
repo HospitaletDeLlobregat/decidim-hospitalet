@@ -1,6 +1,6 @@
 {
   "name": "decidim-hospitalet",
-  "description": "TODO: Add a short description about decidim-hospitalet",
+  "description": "Decidim l'Hospitalet de Llobregat",
   "keywords": [],
   "addons": [
     "heroku-postgresql:hobby-dev",
