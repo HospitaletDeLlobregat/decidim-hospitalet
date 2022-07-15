@@ -3,6 +3,7 @@
 Decidim.configure do |config|
   config.application_name = "Decidim Hospitalet"
   config.mailer_sender = "nocontestar@lhon-participa.cat"
+  config.force_ssl = ENV["FORCE_SSL"].present?
 
   # Uncomment this lines to set your preferred locales
   config.available_locales = [:ca, :es]

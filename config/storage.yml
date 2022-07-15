@@ -11,9 +11,9 @@ amazon:
   service: S3
   access_key_id: <%= Rails.application.secrets.aws_access_key_id %>
   secret_access_key: <%= Rails.application.secrets.aws_secret_access_key %>
-  region: Rails.application.secrets.aws_region
-  bucket: Rails.application.secrets.aws_bucket
-  endpoint: Rails.application.secrets.aws_host
+  region: <%= Rails.application.secrets.aws_region %>
+  bucket: <%= Rails.application.secrets.aws_bucket %>
+  # endpoint: Rails.application.secrets.aws_host
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
