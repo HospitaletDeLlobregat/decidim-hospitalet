@@ -349,6 +349,8 @@ GEM
       railties (>= 5)
     doorkeeper-i18n (4.0.1)
     dumb_delegator (1.0.0)
+    emd (0.6.0)
+      redcarpet (= 3.5.1)
     equalizer (0.0.11)
     erb_lint (0.0.37)
       activesupport
@@ -798,6 +800,7 @@ DEPENDENCIES
   decidim-dev (= 0.26.2)
   decidim-direct_verifications
   deface
+  emd
   faker (~> 2.14)
   fog-aws
   letter_opener_web
@@ -806,6 +809,7 @@ DEPENDENCIES
   newrelic_rpm
   puma
   rails_12factor
+  redcarpet
   rubocop-faker
   sendgrid-ruby
   sentry-rails

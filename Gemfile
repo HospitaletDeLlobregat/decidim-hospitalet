@@ -12,9 +12,11 @@ gem "decidim-direct_verifications"
 gem "bootsnap", "~> 1.7"
 
 gem "deface"
+gem "emd"
 gem "faker", "~> 2.14"
 gem "lograge"
 gem "puma"
+gem "redcarpet"
 gem "uglifier"
 gem "virtus-multiparams"
 

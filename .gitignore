@@ -30,6 +30,7 @@
 
 # Ignore .rbenv-vars
 .rbenv-vars
+.rspec-failures
 
 /public/decidim-packs
 /public/packs
