@@ -3,7 +3,7 @@
 require "rails_helper"
 
 describe "Custom styles", type: :system do
-  let(:organization) { create :organization }
+  let(:organization) { create :organization, default_locale: :ca, available_locales: [:ca, :es] }
   let!(:participatory_process) { create :participatory_process, organization: organization }
   let!(:config) { create :awesome_config, organization: organization, var: :scoped_styles, value: styles }
   let(:config_helper) { create :awesome_config, organization: organization, var: :scoped_style_bar }
