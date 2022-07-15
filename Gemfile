@@ -7,6 +7,7 @@ DECIDIM_VERSION = "0.26.2"
 
 gem "decidim", DECIDIM_VERSION
 # gem "decidim-calendar", git: "https://github.com/alabs/decidim-module-calendar.git"
+gem "decidim-decidim_awesome"
 gem "decidim-direct_verifications"
 
 gem "bootsnap", "~> 1.7"
