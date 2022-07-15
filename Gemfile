@@ -36,6 +36,7 @@ group :development do
 end
 
 group :production do
+  gem "aws-sdk-s3", require: false
   gem "dalli"
   gem "fog-aws"
   gem "newrelic_rpm"
