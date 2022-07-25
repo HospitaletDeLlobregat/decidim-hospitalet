@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/openpoke/decidim-module-calendar.git
+  revision: b99e8b586d2d463092ed66ad5994dfb991cf87f8
+  branch: update-26
+  specs:
+    decidim-calendar (0.26.0)
+      decidim-admin (>= 0.25.0, < 0.27)
+      decidim-core (>= 0.25.0, < 0.27)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -821,6 +830,7 @@ DEPENDENCIES
   byebug
   dalli
   decidim (= 0.26.2)
+  decidim-calendar!
   decidim-decidim_awesome
   decidim-dev (= 0.26.2)
   decidim-direct_verifications

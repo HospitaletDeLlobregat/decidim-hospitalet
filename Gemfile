@@ -6,7 +6,7 @@ ruby RUBY_VERSION
 DECIDIM_VERSION = "0.26.2"
 
 gem "decidim", DECIDIM_VERSION
-# gem "decidim-calendar", git: "https://github.com/alabs/decidim-module-calendar.git"
+gem "decidim-calendar", git: "https://github.com/openpoke/decidim-module-calendar.git", branch: "update-26"
 gem "decidim-decidim_awesome"
 gem "decidim-direct_verifications"
 
