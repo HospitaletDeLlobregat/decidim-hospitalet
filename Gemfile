@@ -3,7 +3,8 @@
 source "https://rubygems.org"
 
 ruby RUBY_VERSION
-DECIDIM_VERSION = "0.26.2"
+#DECIDIM_VERSION = "0.26.2"
+DECIDIM_VERSION = { git: "https://github.com/decidim/decidim", tag: "release/0.26-stable" }.freeze
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-calendar", git: "https://github.com/openpoke/decidim-module-calendar.git", branch: "update-26"
