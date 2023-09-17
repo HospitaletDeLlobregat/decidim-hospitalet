@@ -15,7 +15,6 @@ gem "bootsnap", "~> 1.7"
 
 gem "deface"
 gem "emd"
-gem "faker", "~> 2.14"
 gem "lograge"
 gem "puma", ">= 5.0.0"
 gem "redcarpet"

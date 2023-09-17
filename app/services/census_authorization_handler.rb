@@ -17,7 +17,7 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
   validates :postal_code, presence: true, format: { with: /\A[0-9]*\z/ }
 
   validate :response_valid
-  validate :over_16
+  validate :older_than_sixteen
 
   # If you need to store any of the defined attributes in the authorization you
   # can do it here.
@@ -73,7 +73,7 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
     SOAP
   end
 
-  def over_16
+  def older_than_sixteen
     errors.add(:date_of_birth, I18n.t("census_authorization_handler.age_under_16")) unless age && age >= 16
   end
 
