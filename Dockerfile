@@ -1,4 +1,4 @@
-FROM ruby:2.3.3
+FROM ruby:3.0.6
 MAINTAINER david.morcillo@codegram.com
 
 ARG rails_env=production
@@ -10,7 +10,7 @@ ENV SECRET_KEY_BASE $secret_key_base
 
 RUN apt-get update
 
-RUN curl -sL https://deb.nodesource.com/setup_5.x | bash && \
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash && \
     apt-get install -y nodejs
 
 ADD Gemfile /tmp/Gemfile

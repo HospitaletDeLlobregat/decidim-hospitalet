@@ -2,7 +2,7 @@ name: "[CI] Decidim"
 on: [push]
 
 env:
-  RUBY_VERSION: 2.7.6
+  RUBY_VERSION: 3.0.6
   NODE_VERSION: 16.9.1
   RAILS_ENV: test
 
