@@ -33,3 +33,6 @@ exclude_paths:
 - "Rakefile"
 - "vendor/**/*"
 - "db/**/*"
+- "packages/webpacker/*"
+- "packages/core/*"
+- "views/static/*"

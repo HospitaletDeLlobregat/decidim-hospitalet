@@ -4,7 +4,8 @@ require "rails_helper"
 require "decidim/dev/test/authorization_shared_examples"
 
 describe CensusAuthorizationHandler do
-  let(:subject) { handler }
+  subject { handler }
+
   let(:handler) { described_class.from_params(params) }
   let(:document_number) { "12345678A" }
   let(:postal_code) { "08901" }
