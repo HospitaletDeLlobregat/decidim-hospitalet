@@ -8,8 +8,8 @@ DECIDIM_VERSION = { github: "decidim/decidim", tag: "release/0.27-stable" }.free
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-calendar", github: "openpoke/decidim-module-calendar"
-gem "decidim-decidim_awesome"
-gem "decidim-direct_verifications"
+gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome"
+gem "decidim-direct_verifications", github: "platoniq/decidim-verifications-direct_verifications"
 
 gem "bootsnap", "~> 1.7"
 
