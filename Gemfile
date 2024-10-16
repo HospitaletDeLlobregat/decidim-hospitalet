@@ -19,6 +19,8 @@ gem "lograge"
 gem "puma", ">= 5.0.0"
 gem "redcarpet"
 gem "uglifier"
+gem 'wkhtmltopdf-binary', group: [:development, :test]
+gem 'wkhtmltopdf-heroku', group: :production
 
 group :development, :test do
   gem "byebug", platform: :mri

@@ -569,7 +569,6 @@ GEM
     mime-types-data (3.2024.1001)
     mini_magick (4.13.2)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.7)
     minitest (5.25.1)
     mixlib-cli (2.1.8)
     mixlib-config (3.0.27)
@@ -592,9 +591,6 @@ GEM
       net-protocol
     newrelic_rpm (9.14.0)
     nio4r (2.7.3)
-    nokogiri (1.16.7)
-      mini_portile2 (~> 2.8.2)
-      racc (~> 1.4)
     nokogiri (1.16.7-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.16.7-x86_64-linux)
@@ -909,12 +905,12 @@ GEM
     wisper (2.0.1)
     wisper-rspec (1.1.0)
     wkhtmltopdf-binary (0.12.6.8)
+    wkhtmltopdf-heroku (3.0.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.6.18)
 
 PLATFORMS
-  ruby
   x86_64-darwin-23
   x86_64-linux
 
@@ -948,6 +944,8 @@ DEPENDENCIES
   spring-watcher-listen
   uglifier
   web-console
+  wkhtmltopdf-binary
+  wkhtmltopdf-heroku
 
 RUBY VERSION
    ruby 3.0.6p216
