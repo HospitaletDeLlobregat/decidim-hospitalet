@@ -46,5 +46,5 @@ group :production do
   gem "sentry-rails"
   gem "sentry-ruby"
   gem "sidekiq"
-  gem "wkhtmltopdf-heroku"
+  gem "wkhtmltopdf-binary", path: "vendor/wkhtmltopdf-heroku"
 end
