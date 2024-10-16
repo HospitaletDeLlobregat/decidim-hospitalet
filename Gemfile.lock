@@ -187,14 +187,6 @@ GIT
       decidim-admin (>= 0.27.0, < 0.28)
       decidim-core (>= 0.27.0, < 0.28)
 
-GIT
-  remote: https://github.com/platoniq/decidim-verifications-direct_verifications.git
-  revision: a1581ece91df31b1abfc3b375de71d1125b1eaa8
-  specs:
-    decidim-direct_verifications (1.3.0)
-      decidim-admin (>= 0.27.0, < 0.28)
-      decidim-core (>= 0.27.0, < 0.28)
-
 PATH
   remote: vendor/wkhtmltopdf-binary
   specs:
@@ -926,7 +918,6 @@ DEPENDENCIES
   decidim-calendar!
   decidim-decidim_awesome!
   decidim-dev!
-  decidim-direct_verifications!
   deface
   emd
   faker (~> 2.14)
