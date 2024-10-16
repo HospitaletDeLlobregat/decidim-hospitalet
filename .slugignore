@@ -1,1 +1,2 @@
 /spec
+vendor/bundle/ruby/3.0.0/gems/wkhtmltopdf-binary-*/bin/*.gz
