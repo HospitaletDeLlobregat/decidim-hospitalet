@@ -19,8 +19,6 @@ gem "lograge"
 gem "puma", ">= 5.0.0"
 gem "redcarpet"
 gem "uglifier"
-gem 'wkhtmltopdf-binary', group: [:development, :test]
-gem 'wkhtmltopdf-heroku', group: :production
 
 group :development, :test do
   gem "byebug", platform: :mri
@@ -48,4 +46,5 @@ group :production do
   gem "sentry-rails"
   gem "sentry-ruby"
   gem "sidekiq"
+  gem "wkhtmltopdf-heroku"
 end
