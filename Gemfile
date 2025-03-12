@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 # DECIDIM_VERSION = "0.27.4"
-DECIDIM_VERSION = { github: "decidim/decidim", tag: "release/0.27-stable" }.freeze
+DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.27-stable" }.freeze
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-calendar", github: "openpoke/decidim-module-calendar", branch: "release/0.27-stable"
