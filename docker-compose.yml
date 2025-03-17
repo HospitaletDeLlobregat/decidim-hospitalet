@@ -1,28 +1,55 @@
-version: '2'
+version: '3'
 services:
   app:
-    build:
-      context: .
-      args:
-        rails_env: development
+    build: .
     volumes:
-      - .:/code
+      - ./entrypoint.sh:/app/entrypoint.sh
+      - ./db/seeds.rb:/app/db/seeds.rb
+      - ./tmp/pids:/app/tmp/pids
+    #   - .:/app
+    #   - bundle:/usr/local/bundle
+    #   - node_modules:/app/node_modules
     environment:
-      - DATABASE_HOST=pg
-      - DATABASE_USERNAME=postgres
+      - DATABASE_URL=postgres://postgres:decidim@db/decidim_staging
+      - SECRET_KEY_BASE=942a6ee88fe7cbc9bfd8f6dfeda5c3ef6503d0278e16dd40ec199109acde7fdda524d495a013d20e2b962dbafb6ddf1136278ea6d6ac2c134776bd445da9671e
+      - DECIDIM_FORCE_SSL=false
+      - QUEUE_ADAPTER=sidekiq
+      - REDIS_URL=redis://redis:6379/1
     ports:
       - 3000:3000
-    links:
-      - pg
+    depends_on:
+      - db
       - redis
-  pg:
-    image: postgres
+  sidekiq:
+    build: .
     volumes:
-      - pg-data:/var/lib/postgresql/data
+      - ./entrypoint.sh:/app/entrypoint.sh
+    #   - .:/app
+    #   - bundle:/usr/local/bundle
+    #   - node_modules:/app/node_modules
+    environment:
+      - DATABASE_URL=postgres://postgres:decidim@db/decidim_staging
+      - SECRET_KEY_BASE=942a6ee88fe7cbc9bfd8f6dfeda5c3ef6503d0278e16dd40ec199109acde7fdda524d495a013d20e2b962dbafb6ddf1136278ea6d6ac2c134776bd445da9671e
+      - DECIDIM_FORCE_SSL=false
+      - QUEUE_ADAPTER=sidekiq
+      - REDIS_URL=redis://redis:6379/1
+      - RUN_SIDEKIQ=true
+    depends_on:
+      - redis
+  db:
+    image: postgres:13
+    ports:
+      - "54321:5432"
+    environment:
+      - POSTGRES_PASSWORD=decidim
+    volumes:
+      - pg_data:/var/lib/postgresql/data
   redis:
     image: redis
     volumes:
-      - redis-data:/data
+      - redis_data:/data
 volumes:
-  pg-data: {}
-  redis-data: {}
+  pg_data:
+  redis_data:
+  # bundle:
+  # node_modules:

@@ -9,17 +9,13 @@ DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.27-stable" }.f
 gem "decidim", DECIDIM_VERSION
 gem "decidim-calendar", github: "openpoke/decidim-module-calendar", branch: "release/0.27-stable"
 gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "release/0.27-stable"
-# gem "decidim-direct_verifications", github: "platoniq/decidim-verifications-direct_verifications"
 
 gem "bootsnap", "~> 1.7"
 
 gem "deface"
-gem "emd"
-gem "lograge"
+gem "health_check"
 gem "puma", ">= 5.0.0"
-gem "redcarpet"
-gem "uglifier"
-gem "wkhtmltopdf-binary", path: "vendor/wkhtmltopdf-binary"
+gem "rorvswild"
 
 group :development, :test do
   gem "byebug", platform: :mri
@@ -39,12 +35,6 @@ end
 
 group :production do
   gem "aws-sdk-s3", require: false
-  gem "dalli"
-  gem "fog-aws"
-  gem "newrelic_rpm"
-  gem "rails_12factor"
-  gem "sendgrid-ruby"
-  gem "sentry-rails"
-  gem "sentry-ruby"
   gem "sidekiq"
+  gem "sidekiq-cron"
 end

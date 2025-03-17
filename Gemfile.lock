@@ -189,11 +189,6 @@ GIT
       decidim-admin (>= 0.27.0, < 0.28)
       decidim-core (>= 0.27.0, < 0.28)
 
-PATH
-  remote: vendor/wkhtmltopdf-binary
-  specs:
-    wkhtmltopdf-binary (0.12.6.8)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -265,7 +260,7 @@ GEM
       public_suffix (>= 2.0.2, < 7.0)
     ast (2.4.2)
     aws-eventstream (1.3.2)
-    aws-partitions (1.1065.0)
+    aws-partitions (1.1067.0)
     aws-sdk-core (3.220.1)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
@@ -359,10 +354,12 @@ GEM
       bigdecimal
       rexml
     crass (1.0.6)
+    cronex (0.15.0)
+      tzinfo
+      unicode (>= 0.4.4.5)
     css_parser (1.21.1)
       addressable
     csv (3.3.2)
-    dalli (3.2.8)
     date (3.4.1)
     date_validator (0.12.0)
       activemodel (>= 3)
@@ -403,8 +400,6 @@ GEM
       railties (>= 5)
     doorkeeper-i18n (4.0.1)
     dumb_delegator (1.1.0)
-    emd (0.1.0)
-      redcarpet
     erb_lint (0.0.37)
       activesupport
       better_html (~> 1.0.7)
@@ -417,6 +412,8 @@ GEM
       temple
     erubi (1.13.1)
     escape_utils (1.3.0)
+    et-orbi (1.2.11)
+      tzinfo
     excon (1.2.5)
       logger
     execjs (2.10.0)
@@ -441,37 +438,29 @@ GEM
     file_validators (3.0.0)
       activemodel (>= 3.2)
       mime-types (>= 1.0)
-    fog-aws (3.30.0)
-      base64 (~> 0.2.0)
-      fog-core (~> 2.6)
-      fog-json (~> 1.1)
-      fog-xml (~> 0.1)
     fog-core (2.6.0)
       builder
       excon (~> 1.0)
       formatador (>= 0.2, < 2.0)
       mime-types
-    fog-json (1.2.0)
-      fog-core
-      multi_json (~> 1.10)
     fog-local (0.8.0)
       fog-core (>= 1.27, < 3.0)
-    fog-xml (0.1.5)
-      fog-core
-      nokogiri (>= 1.5.11, < 2.0.0)
     formatador (1.1.0)
     foundation_rails_helper (4.0.1)
       actionpack (>= 4.1, < 7.1)
       activemodel (>= 4.1, < 7.1)
       activesupport (>= 4.1, < 7.1)
       railties (>= 4.1, < 7.1)
+    fugit (1.11.1)
+      et-orbi (~> 1, >= 1.2.11)
+      raabro (~> 1.4)
     gemoji (3.0.1)
     geocoder (1.8.5)
       base64 (>= 0.1.0)
       csv (>= 3.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    graphql (1.12.24)
+    graphql (1.12.25)
     graphql-docs (2.1.0)
       commonmarker (~> 0.16)
       escape_utils (~> 1.2)
@@ -482,6 +471,8 @@ GEM
       sass (~> 3.4)
     hashdiff (1.1.2)
     hashie (5.0.0)
+    health_check (3.1.0)
+      railties (>= 5.0)
     highline (3.1.2)
       reline
     hkdf (0.3.0)
@@ -514,7 +505,7 @@ GEM
       rails (>= 3.2.0)
     io-console (0.8.0)
     jmespath (1.6.2)
-    json (2.10.1)
+    json (2.10.2)
     jwt (2.10.1)
       base64
     kaminari (1.2.2)
@@ -546,11 +537,6 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     logger (1.6.6)
-    lograge (0.14.0)
-      actionpack (>= 4)
-      activesupport (>= 4)
-      railties (>= 4)
-      request_store (~> 1.0)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -574,14 +560,13 @@ GEM
     mime-types-data (3.2025.0304)
     mini_magick (4.13.2)
     mini_mime (1.1.5)
-    minitest (5.25.4)
+    minitest (5.25.5)
     mixlib-cli (2.1.8)
     mixlib-config (3.0.27)
       tomlrb
     mixlib-shellout (3.3.8)
       chef-utils
     msgpack (1.8.0)
-    multi_json (1.15.0)
     multi_xml (0.6.0)
     net-http (0.6.0)
       uri
@@ -594,7 +579,6 @@ GEM
       timeout
     net-smtp (0.5.1)
       net-protocol
-    newrelic_rpm (9.17.0)
     nio4r (2.7.4)
     nokogiri (1.16.8-arm64-darwin)
       racc (~> 1.4)
@@ -666,6 +650,7 @@ GEM
     public_suffix (6.0.1)
     puma (5.6.9)
       nio4r (~> 2.0)
+    raabro (1.4.0)
     racc (1.8.1)
     rack (2.2.13)
     rack-attack (6.7.0)
@@ -707,11 +692,6 @@ GEM
     rails-i18n (6.0.0)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 7)
-    rails_12factor (0.0.3)
-      rails_serve_static_assets
-      rails_stdout_logging
-    rails_serve_static_assets (0.0.5)
-    rails_stdout_logging (0.0.5)
     railties (6.1.7.10)
       actionpack (= 6.1.7.10)
       activesupport (= 6.1.7.10)
@@ -740,6 +720,7 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.4.1)
+    rorvswild (1.9.1)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
@@ -780,7 +761,7 @@ GEM
       rubocop-ast (>= 1.17.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.38.1)
+    rubocop-ast (1.39.0)
       parser (>= 3.3.1.0)
     rubocop-faker (1.2.0)
       faker (>= 2.12.0)
@@ -798,7 +779,6 @@ GEM
     rubyXL (3.4.33)
       nokogiri (>= 1.10.8)
       rubyzip (>= 1.3.0)
-    ruby_http_client (3.5.5)
     rubyzip (2.3.2)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
@@ -812,14 +792,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
     semantic_range (3.1.0)
-    sendgrid-ruby (6.7.0)
-      ruby_http_client (~> 3.4)
-    sentry-rails (5.23.0)
-      railties (>= 5.0)
-      sentry-ruby (~> 5.23.0)
-    sentry-ruby (5.23.0)
-      bigdecimal
-      concurrent-ruby (~> 1.0, >= 1.0.2)
     seven_zip_ruby (1.3.0)
     sidekiq (7.3.9)
       base64
@@ -827,6 +799,11 @@ GEM
       logger
       rack (>= 2.2.4)
       redis-client (>= 0.22.2)
+    sidekiq-cron (2.1.0)
+      cronex (>= 0.13.0)
+      fugit (~> 1.8, >= 1.11.1)
+      globalid (>= 1.0.1)
+      sidekiq (>= 6.5.0)
     simplecov (0.21.2)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -866,8 +843,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     uber (0.1.0)
-    uglifier (4.2.1)
-      execjs (>= 0.3.0, < 3)
+    unicode (0.4.4.5)
     unicode-display_width (2.6.0)
     uri (1.0.3)
     valid_email2 (2.3.1)
@@ -914,6 +890,7 @@ GEM
       ostruct
     wisper (2.0.1)
     wisper-rspec (1.1.0)
+    wkhtmltopdf-binary (0.12.6.8)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.6.18)
@@ -927,32 +904,23 @@ DEPENDENCIES
   aws-sdk-s3
   bootsnap (~> 1.7)
   byebug
-  dalli
   decidim!
   decidim-calendar!
   decidim-decidim_awesome!
   decidim-dev!
   deface
-  emd
   faker (~> 2.14)
-  fog-aws
+  health_check
   letter_opener_web
   listen
-  lograge
-  newrelic_rpm
   puma (>= 5.0.0)
-  rails_12factor
-  redcarpet
+  rorvswild
   rubocop-faker
-  sendgrid-ruby
-  sentry-rails
-  sentry-ruby
   sidekiq
+  sidekiq-cron
   spring
   spring-watcher-listen
-  uglifier
   web-console
-  wkhtmltopdf-binary!
 
 RUBY VERSION
    ruby 3.0.7p220
