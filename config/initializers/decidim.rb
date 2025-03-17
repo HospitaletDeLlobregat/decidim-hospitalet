@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 Decidim.configure do |config|
-  config.application_name = Rails.application.secrets.application_name
-  config.mailer_sender = Rails.application.secrets.mailer_sender
+  config.application_name = Rails.application.secrets.decidim[:application_name]
+
+  # The email that will be used as sender in all emails from Decidim
+  config.mailer_sender = Rails.application.secrets.decidim[:mailer_sender]
 
   # Uncomment this lines to set your preferred locales
-  config.available_locales = Rails.application.secrets.available_locales
-  config.default_locale = Rails.application.secrets.default_locale
+  config.available_locales = Rails.application.secrets.decidim[:available_locales].presence || [:en]
+  config.default_locale = Rails.application.secrets.decidim[:default_locale].presence || :en
 
   config.maps = {
     provider: :here,
