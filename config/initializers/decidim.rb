@@ -1,24 +1,50 @@
 # frozen_string_literal: true
 
 Decidim.configure do |config|
-  config.application_name = Rails.application.secrets.decidim[:application_name]
+  config.application_name = Rails.application.secrets.dig(:decidim, :application_name)
 
   # The email that will be used as sender in all emails from Decidim
-  config.mailer_sender = Rails.application.secrets.decidim[:mailer_sender]
+  config.mailer_sender = Rails.application.secrets.dig(:decidim, :mailer_sender)
 
   # Uncomment this lines to set your preferred locales
-  config.available_locales = Rails.application.secrets.decidim[:available_locales].presence || [:en]
-  config.default_locale = Rails.application.secrets.decidim[:default_locale].presence || :en
+  config.available_locales = Rails.application.secrets.dig(:decidim, :available_locales).presence || [:en]
+  config.default_locale = Rails.application.secrets.dig(:decidim, :default_locale).presence || :en
 
-  config.maps = {
-    provider: :here,
-    api_key: Rails.application.secrets.maps[:api_key],
-    static: { url: "https://image.maps.hereapi.com/mia/v3/base/mc/overlay" }
-  }
-  config.geocoder = {
-    timeout: 5,
-    units: :km
-  }
+  # Map and Geocoder configuration
+  if Rails.application.secrets.maps.present? && Rails.application.secrets.maps[:static_provider].present?
+    static_provider = Rails.application.secrets.maps[:static_provider]
+    dynamic_provider = Rails.application.secrets.maps[:dynamic_provider]
+    dynamic_url = Rails.application.secrets.maps[:dynamic_url]
+    static_url = Rails.application.secrets.maps[:static_url]
+    static_url = "https://image.maps.hereapi.com/mia/v3/base/mc/overlay" if static_provider == "here" && static_url.blank?
+    config.maps = {
+      provider: static_provider,
+      api_key: Rails.application.secrets.maps[:static_api_key],
+      static: { url: static_url },
+      dynamic: {
+        provider: dynamic_provider,
+        api_key: Rails.application.secrets.maps[:dynamic_api_key]
+      }
+    }
+    config.maps[:geocoding] = { host: Rails.application.secrets.maps[:geocoding_host], use_https: true } if Rails.application.secrets.maps[:geocoding_host]
+    config.maps[:dynamic][:tile_layer] = {}
+    config.maps[:dynamic][:tile_layer][:url] = dynamic_url if dynamic_url
+    config.maps[:dynamic][:tile_layer][:attribution] = Rails.application.secrets.maps[:attribution] if Rails.application.secrets.maps[:attribution]
+    if Rails.application.secrets.maps[:extra_vars].present?
+      vars = URI.decode_www_form(Rails.application.secrets.maps[:extra_vars])
+      vars.each do |key, value|
+        # perform a naive type conversion
+        config.maps[:dynamic][:tile_layer][key] = case value
+                                                  when /^true$|^false$/i
+                                                    value.downcase == "true"
+                                                  when /\A[-+]?\d+\z/
+                                                    value.to_i
+                                                  else
+                                                    value
+                                                  end
+      end
+    end
+  end
 
   config.base_uploads_path = "#{ENV["HEROKU_APP_NAME"]}/" if ENV["HEROKU_APP_NAME"].present?
 
@@ -36,16 +62,17 @@ Decidim.configure do |config|
   config.admin_password_repetition_times = Rails.application.secrets.dig(:decidim, :admin_password, :repetition_times).presence || 5
 
   # Additional optional configurations (see decidim-core/lib/decidim/core.rb)
-  config.cache_key_separator = Rails.application.secrets.decidim[:cache_key_separator] if Rails.application.secrets.decidim[:cache_key_separator].present?
-  config.expire_session_after = Rails.application.secrets.decidim[:expire_session_after].to_i.minutes if Rails.application.secrets.decidim[:expire_session_after].present?
-  config.enable_remember_me = Rails.application.secrets.decidim[:enable_remember_me].present? unless Rails.application.secrets.decidim[:enable_remember_me] == "auto"
-  if Rails.application.secrets.decidim[:session_timeout_interval].present?
-    config.session_timeout_interval = Rails.application.secrets.decidim[:session_timeout_interval].to_i.seconds
+  config.cache_key_separator = Rails.application.secrets.dig(:decidim, :cache_key_separator) if Rails.application.secrets.dig(:decidim, :cache_key_separator).present?
+  config.expire_session_after = Rails.application.secrets.dig(:decidim, :expire_session_after).to_i.minutes if Rails.application.secrets.dig(:decidim,
+                                                                                                                                             :expire_session_after).present?
+  config.enable_remember_me = Rails.application.secrets.dig(:decidim, :enable_remember_me).present? unless Rails.application.secrets.dig(:decidim, :enable_remember_me) == "auto"
+  if Rails.application.secrets.dig(:decidim, :session_timeout_interval).present?
+    config.session_timeout_interval = Rails.application.secrets.dig(:decidim, :session_timeout_interval).to_i.seconds
   end
-  config.follow_http_x_forwarded_host = Rails.application.secrets.decidim[:follow_http_x_forwarded_host].present?
-  config.maximum_conversation_message_length = Rails.application.secrets.decidim[:maximum_conversation_message_length].to_i
-  config.password_blacklist = Rails.application.secrets.decidim[:password_blacklist] if Rails.application.secrets.decidim[:password_blacklist].present?
-  config.allow_open_redirects = Rails.application.secrets.decidim[:allow_open_redirects] if Rails.application.secrets.decidim[:allow_open_redirects].present?
+  config.follow_http_x_forwarded_host = Rails.application.secrets.dig(:decidim, :follow_http_x_forwarded_host).present?
+  config.maximum_conversation_message_length = Rails.application.secrets.dig(:decidim, :maximum_conversation_message_length).to_i
+  config.password_blacklist = Rails.application.secrets.dig(:decidim, :password_blacklist) if Rails.application.secrets.dig(:decidim, :password_blacklist).present?
+  config.allow_open_redirects = Rails.application.secrets.dig(:decidim, :allow_open_redirects) if Rails.application.secrets.dig(:decidim, :allow_open_redirects).present?
 end
 
 if Decidim.module_installed? :api
