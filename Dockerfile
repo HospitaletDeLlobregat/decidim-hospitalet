@@ -78,6 +78,20 @@ RUN mv config/credentials.bak config/credentials 2>/dev/null || true
 
 RUN rm -rf node_modules tmp/cache vendor/bundle test spec app/packs .git
 
+ARG GIT_BRANCH=standarize
+ENV GIT_BRANCH=${GIT_BRANCH}
+ARG GIT_REPO=https://github.com/HospitaletDeLlobregat/decidim-hospitalet
+ENV GIT_REPO=${GIT_REPO}
+RUN git init . && \
+    git remote add origin $GIT_REPO && \
+    git fetch origin $GIT_BRANCH --depth 1 && \
+    echo "REVISION=$(git describe --tags --always origin/$GIT_BRANCH)" > /app/.env && \
+    echo "AUTHOR=$(git log -1 --pretty=%an origin/$GIT_BRANCH)" >> /app/.env && \
+    echo "EMAIL=$(git log -1 --pretty=%ae origin/$GIT_BRANCH)" >> /app/.env && \
+    echo "DESCRIPTION=$(git log -1 --pretty=%s origin/$GIT_BRANCH)" >> /app/.env && \
+    echo "DATE=$(git log -1 --pretty=%cd origin/$GIT_BRANCH)" >> /app/.env && \
+    rm -rf /app/.git
+
 # This image is for production env only
 FROM ruby:3.0-slim AS final
 

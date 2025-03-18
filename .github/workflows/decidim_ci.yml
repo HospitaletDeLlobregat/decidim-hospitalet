@@ -21,18 +21,18 @@ jobs:
           --health-retries 5
         env:
           POSTGRES_PASSWORD: postgres
-      redis:
-        image: redis:3.2-alpine
-        ports: ["6379:6379"]
     env:
       DATABASE_USERNAME: postgres
       DATABASE_PASSWORD: postgres
       DATABASE_HOST: localhost
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
+      - name: Install additional tools
+        run: sudo apt-get update && sudo apt-get install -y imagemagick 7zip wkhtmltopdf
+  
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
