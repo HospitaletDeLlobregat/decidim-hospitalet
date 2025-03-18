@@ -1,10 +1,10 @@
-hourly_active_step_job:
-  cron: "0 * * * *"
-  class: "InvokeRakeTaskJob"
-  queue: default
-  status: <%= ENV.fetch("CHANGE_ACTIVE_STEP", "enabled") %> # enabled by default
-  args:
-    task: decidim_participatory_processes:change_active_step
+# hourly_active_step_job:
+#   cron: "0 * * * *"
+#   class: "InvokeRakeTaskJob"
+#   queue: default
+#   status: <%= ENV.fetch("CHANGE_ACTIVE_STEP", "enabled") %> # enabled by default
+#   args:
+#     task: decidim_participatory_processes:change_active_step
 
 daily_open_data_job:
   cron: "3 3 * * *"
