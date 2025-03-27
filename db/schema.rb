@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_10_16_124626) do
+ActiveRecord::Schema.define(version: 2025_03_27_173434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
-  enable_extension "pg_stat_statements"
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
 
@@ -439,7 +438,7 @@ ActiveRecord::Schema.define(version: 2024_10_16_124626) do
 
   create_table "decidim_categorizations", force: :cascade do |t|
     t.bigint "decidim_category_id", null: false
-    t.string "categorizable_type"
+    t.string "categorizable_type", null: false
     t.bigint "categorizable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -719,7 +718,7 @@ ActiveRecord::Schema.define(version: 2024_10_16_124626) do
   end
 
   create_table "decidim_forms_answers", id: :serial, force: :cascade do |t|
-    t.text "body"
+    t.jsonb "body", default: []
     t.integer "decidim_user_id"
     t.integer "decidim_questionnaire_id"
     t.integer "decidim_question_id"
@@ -962,6 +961,10 @@ ActiveRecord::Schema.define(version: 2024_10_16_124626) do
     t.string "state"
     t.integer "iframe_access_level", default: 0
     t.integer "iframe_embed_type", default: 0
+    t.boolean "reminder_enabled"
+    t.integer "send_reminders_before_hours"
+    t.jsonb "reminder_message_custom_content"
+    t.boolean "waitlist_enabled", default: false, null: false
     t.index ["decidim_author_id", "decidim_author_type"], name: "index_decidim_meetings_meetings_on_author"
     t.index ["decidim_author_id"], name: "index_decidim_meetings_meetings_on_decidim_author_id"
     t.index ["decidim_component_id"], name: "index_decidim_meetings_meetings_on_decidim_component_id"
@@ -1005,10 +1008,12 @@ ActiveRecord::Schema.define(version: 2024_10_16_124626) do
     t.datetime "validated_at"
     t.bigint "decidim_user_group_id"
     t.boolean "public_participation", default: false
+    t.string "status", default: "registered", null: false
     t.index ["decidim_meeting_id"], name: "index_decidim_meetings_registrations_on_decidim_meeting_id"
     t.index ["decidim_user_group_id"], name: "index_decidim_meetings_registrations_on_decidim_user_group_id"
     t.index ["decidim_user_id", "decidim_meeting_id"], name: "decidim_meetings_registrations_user_meeting_unique", unique: true
     t.index ["decidim_user_id"], name: "index_decidim_meetings_registrations_on_decidim_user_id"
+    t.index ["status"], name: "index_decidim_meetings_registrations_on_status"
   end
 
   create_table "decidim_meetings_services", force: :cascade do |t|

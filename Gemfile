@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 # DECIDIM_VERSION = "0.27.4"
-DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.27-stable" }.freeze
+DECIDIM_VERSION = { github: "openpoke/decidim", branch: "0.27-backports" }.freeze
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-calendar", github: "openpoke/decidim-module-calendar", branch: "release/0.27-stable"
@@ -15,7 +15,8 @@ gem "bootsnap", "~> 1.7"
 gem "deface"
 gem "health_check"
 gem "puma", ">= 5.0.0"
-gem "rorvswild"
+gem "sentry-rails"
+gem "sentry-ruby"
 
 group :development, :test do
   gem "byebug", platform: :mri
