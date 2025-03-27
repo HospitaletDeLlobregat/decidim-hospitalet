@@ -8,7 +8,7 @@ DECIDIM_VERSION = { github: "openpoke/decidim", branch: "0.27-backports" }.freez
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-calendar", github: "openpoke/decidim-module-calendar", branch: "release/0.27-stable"
-gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "release/0.27-stable"
+gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "0.27-backports"
 
 gem "bootsnap", "~> 1.7"
 
