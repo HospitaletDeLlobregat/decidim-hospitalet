@@ -18,6 +18,9 @@ gem "puma", ">= 5.0.0"
 gem "rails_semantic_logger"
 gem "sentry-rails"
 gem "sentry-ruby"
+gem "opentelemetry-sdk"
+gem "opentelemetry-instrumentation-all" 
+gem "opentelemetry-exporter-otlp"
 
 group :development, :test do
   gem "byebug", platform: :mri
