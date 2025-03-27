@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if (sentry_dsn = ENV.fetch("SENTRY_DSN", nil))
   Sentry.init do |config|
     config.dsn = sentry_dsn
