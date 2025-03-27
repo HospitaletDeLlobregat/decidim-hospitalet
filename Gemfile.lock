@@ -694,6 +694,10 @@ GEM
     rails-i18n (6.0.0)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 7)
+    rails_semantic_logger (4.17.0)
+      rack
+      railties (>= 5.1)
+      semantic_logger (~> 4.16)
     railties (6.1.7.10)
       actionpack (= 6.1.7.10)
       activesupport (= 6.1.7.10)
@@ -793,6 +797,8 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
+    semantic_logger (4.16.1)
+      concurrent-ruby (~> 1.0)
     semantic_range (3.1.0)
     sentry-rails (5.23.0)
       railties (>= 5.0)
@@ -922,6 +928,7 @@ DEPENDENCIES
   letter_opener_web
   listen
   puma (>= 5.0.0)
+  rails_semantic_logger
   rubocop-faker
   sentry-rails
   sentry-ruby
