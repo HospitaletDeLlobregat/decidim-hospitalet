@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
-  revision: d92940f12ce05237a8465e55803e9cad6b09cd36
-  branch: release/0.27-stable
+  revision: c4b0c7d76f58d068cf7db18767225005c1f7a236
+  branch: 0.27-backports
   specs:
     decidim-decidim_awesome (0.10.4)
       decidim-admin (>= 0.26.0, < 0.28)
@@ -10,9 +10,18 @@ GIT
       sassc (~> 2.3)
 
 GIT
-  remote: https://github.com/decidim/decidim.git
-  revision: f363fe0bb2ee9324a60a54b06324cedc8ddcff5a
+  remote: https://github.com/openpoke/decidim-module-calendar.git
+  revision: 5958a8beea1d4d9cce1fae4905eb8249e918ff24
   branch: release/0.27-stable
+  specs:
+    decidim-calendar (0.27.0)
+      decidim-admin (>= 0.27.0, < 0.28)
+      decidim-core (>= 0.27.0, < 0.28)
+
+GIT
+  remote: https://github.com/openpoke/decidim.git
+  revision: a8779971800f43e14c10019ec9a95c9fd1db2251
+  branch: 0.27-backports
   specs:
     decidim (0.27.9)
       decidim-accountability (= 0.27.9)
@@ -180,20 +189,6 @@ GIT
     decidim-verifications (0.27.9)
       decidim-core (= 0.27.9)
 
-GIT
-  remote: https://github.com/openpoke/decidim-module-calendar.git
-  revision: 5958a8beea1d4d9cce1fae4905eb8249e918ff24
-  branch: release/0.27-stable
-  specs:
-    decidim-calendar (0.27.0)
-      decidim-admin (>= 0.27.0, < 0.28)
-      decidim-core (>= 0.27.0, < 0.28)
-
-PATH
-  remote: vendor/wkhtmltopdf-binary
-  specs:
-    wkhtmltopdf-binary (0.12.6.8)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -263,15 +258,16 @@ GEM
       activerecord (>= 3.0)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
-    ast (2.4.2)
+    ast (2.4.3)
     aws-eventstream (1.3.2)
-    aws-partitions (1.1065.0)
-    aws-sdk-core (3.220.1)
+    aws-partitions (1.1076.0)
+    aws-sdk-core (3.222.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
       base64
       jmespath (~> 1, >= 1.6.1)
+      logger
     aws-sdk-kms (1.99.0)
       aws-sdk-core (~> 3, >= 3.216.0)
       aws-sigv4 (~> 1.5)
@@ -359,10 +355,12 @@ GEM
       bigdecimal
       rexml
     crass (1.0.6)
+    cronex (0.15.0)
+      tzinfo
+      unicode (>= 0.4.4.5)
     css_parser (1.21.1)
       addressable
-    csv (3.3.2)
-    dalli (3.2.8)
+    csv (3.3.3)
     date (3.4.1)
     date_validator (0.12.0)
       activemodel (>= 3)
@@ -390,10 +388,10 @@ GEM
     devise-i18n (1.13.0)
       devise (>= 4.9.0)
       rails-i18n
-    devise_invitable (2.0.9)
+    devise_invitable (2.0.10)
       actionmailer (>= 5.0)
       devise (>= 4.6)
-    diff-lcs (1.6.0)
+    diff-lcs (1.6.1)
     diffy (3.4.3)
     doc2text (0.4.7)
       nokogiri (>= 1.13.2, < 1.17.0)
@@ -403,8 +401,6 @@ GEM
       railties (>= 5)
     doorkeeper-i18n (4.0.1)
     dumb_delegator (1.1.0)
-    emd (0.1.0)
-      redcarpet
     erb_lint (0.0.37)
       activesupport
       better_html (~> 1.0.7)
@@ -417,6 +413,8 @@ GEM
       temple
     erubi (1.13.1)
     escape_utils (1.3.0)
+    et-orbi (1.2.11)
+      tzinfo
     excon (1.2.5)
       logger
     execjs (2.10.0)
@@ -441,37 +439,40 @@ GEM
     file_validators (3.0.0)
       activemodel (>= 3.2)
       mime-types (>= 1.0)
-    fog-aws (3.30.0)
-      base64 (~> 0.2.0)
-      fog-core (~> 2.6)
-      fog-json (~> 1.1)
-      fog-xml (~> 0.1)
     fog-core (2.6.0)
       builder
       excon (~> 1.0)
       formatador (>= 0.2, < 2.0)
       mime-types
-    fog-json (1.2.0)
-      fog-core
-      multi_json (~> 1.10)
-    fog-local (0.8.0)
+    fog-local (0.9.0)
       fog-core (>= 1.27, < 3.0)
-    fog-xml (0.1.5)
-      fog-core
-      nokogiri (>= 1.5.11, < 2.0.0)
     formatador (1.1.0)
     foundation_rails_helper (4.0.1)
       actionpack (>= 4.1, < 7.1)
       activemodel (>= 4.1, < 7.1)
       activesupport (>= 4.1, < 7.1)
       railties (>= 4.1, < 7.1)
+    fugit (1.11.1)
+      et-orbi (~> 1, >= 1.2.11)
+      raabro (~> 1.4)
     gemoji (3.0.1)
     geocoder (1.8.5)
       base64 (>= 0.1.0)
       csv (>= 3.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    graphql (1.12.24)
+    google-protobuf (4.30.2-arm64-darwin)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.30.2-x86_64-darwin)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.30.2-x86_64-linux)
+      bigdecimal
+      rake (>= 13)
+    googleapis-common-protos-types (1.19.0)
+      google-protobuf (>= 3.18, < 5.a)
+    graphql (1.12.25)
     graphql-docs (2.1.0)
       commonmarker (~> 0.16)
       escape_utils (~> 1.2)
@@ -482,6 +483,8 @@ GEM
       sass (~> 3.4)
     hashdiff (1.1.2)
     hashie (5.0.0)
+    health_check (3.1.0)
+      railties (>= 5.0)
     highline (3.1.2)
       reline
     hkdf (0.3.0)
@@ -514,7 +517,7 @@ GEM
       rails (>= 3.2.0)
     io-console (0.8.0)
     jmespath (1.6.2)
-    json (2.10.1)
+    json (2.10.2)
     jwt (2.10.1)
       base64
     kaminari (1.2.2)
@@ -545,12 +548,7 @@ GEM
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    logger (1.6.6)
-    lograge (0.14.0)
-      actionpack (>= 4)
-      activesupport (>= 4)
-      railties (>= 4)
-      request_store (~> 1.0)
+    logger (1.7.0)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -568,20 +566,19 @@ GEM
       mixlib-config (>= 2.2.1, < 4)
       mixlib-shellout
     method_source (1.1.0)
-    mime-types (3.6.0)
+    mime-types (3.6.2)
       logger
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2025.0304)
+    mime-types-data (3.2025.0325)
     mini_magick (4.13.2)
     mini_mime (1.1.5)
-    minitest (5.25.4)
+    minitest (5.25.5)
     mixlib-cli (2.1.8)
     mixlib-config (3.0.27)
       tomlrb
     mixlib-shellout (3.3.8)
       chef-utils
     msgpack (1.8.0)
-    multi_json (1.15.0)
     multi_xml (0.6.0)
     net-http (0.6.0)
       uri
@@ -594,7 +591,6 @@ GEM
       timeout
     net-smtp (0.5.1)
       net-protocol
-    newrelic_rpm (9.17.0)
     nio4r (2.7.4)
     nokogiri (1.16.8-arm64-darwin)
       racc (~> 1.4)
@@ -639,6 +635,208 @@ GEM
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
       rack
+    opentelemetry-api (1.4.0)
+    opentelemetry-common (0.21.0)
+      opentelemetry-api (~> 1.0)
+    opentelemetry-exporter-otlp (0.29.1)
+      google-protobuf (>= 3.18)
+      googleapis-common-protos-types (~> 1.3)
+      opentelemetry-api (~> 1.1)
+      opentelemetry-common (~> 0.20)
+      opentelemetry-sdk (~> 1.2)
+      opentelemetry-semantic_conventions
+    opentelemetry-helpers-mysql (0.1.2)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-common (~> 0.21)
+    opentelemetry-helpers-sql-obfuscation (0.2.1)
+      opentelemetry-common (~> 0.21)
+    opentelemetry-instrumentation-action_mailer (0.3.0)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-active_support (~> 0.7)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-action_pack (0.10.0)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+      opentelemetry-instrumentation-rack (~> 0.21)
+    opentelemetry-instrumentation-action_view (0.8.0)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-active_support (~> 0.7)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-active_job (0.7.8)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-active_model_serializers (0.21.1)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-active_support (>= 0.7.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-active_record (0.8.1)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-active_support (0.7.0)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-all (0.71.1)
+      opentelemetry-instrumentation-active_model_serializers (~> 0.21.0)
+      opentelemetry-instrumentation-aws_lambda (~> 0.1.0)
+      opentelemetry-instrumentation-aws_sdk (~> 0.7.0)
+      opentelemetry-instrumentation-bunny (~> 0.21.0)
+      opentelemetry-instrumentation-concurrent_ruby (~> 0.21.1)
+      opentelemetry-instrumentation-dalli (~> 0.25.0)
+      opentelemetry-instrumentation-delayed_job (~> 0.22.0)
+      opentelemetry-instrumentation-ethon (~> 0.21.1)
+      opentelemetry-instrumentation-excon (~> 0.22.0)
+      opentelemetry-instrumentation-faraday (~> 0.25.0)
+      opentelemetry-instrumentation-grape (~> 0.2.0)
+      opentelemetry-instrumentation-graphql (~> 0.28.0)
+      opentelemetry-instrumentation-gruf (~> 0.2.0)
+      opentelemetry-instrumentation-http (~> 0.23.1)
+      opentelemetry-instrumentation-http_client (~> 0.22.1)
+      opentelemetry-instrumentation-koala (~> 0.20.1)
+      opentelemetry-instrumentation-lmdb (~> 0.22.1)
+      opentelemetry-instrumentation-mongo (~> 0.22.1)
+      opentelemetry-instrumentation-mysql2 (~> 0.28.0)
+      opentelemetry-instrumentation-net_http (~> 0.22.1)
+      opentelemetry-instrumentation-pg (~> 0.29.0)
+      opentelemetry-instrumentation-que (~> 0.8.0)
+      opentelemetry-instrumentation-racecar (~> 0.3.0)
+      opentelemetry-instrumentation-rack (~> 0.25.0)
+      opentelemetry-instrumentation-rails (~> 0.34.0)
+      opentelemetry-instrumentation-rake (~> 0.2.1)
+      opentelemetry-instrumentation-rdkafka (~> 0.4.0)
+      opentelemetry-instrumentation-redis (~> 0.25.1)
+      opentelemetry-instrumentation-resque (~> 0.5.0)
+      opentelemetry-instrumentation-restclient (~> 0.22.1)
+      opentelemetry-instrumentation-ruby_kafka (~> 0.21.0)
+      opentelemetry-instrumentation-sidekiq (~> 0.25.0)
+      opentelemetry-instrumentation-sinatra (~> 0.24.0)
+      opentelemetry-instrumentation-trilogy (~> 0.60.0)
+    opentelemetry-instrumentation-aws_lambda (0.1.1)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-aws_sdk (0.7.0)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-base (0.22.6)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-common (~> 0.21)
+      opentelemetry-registry (~> 0.1)
+    opentelemetry-instrumentation-bunny (0.21.4)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-concurrent_ruby (0.21.4)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-dalli (0.25.4)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-delayed_job (0.22.4)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-ethon (0.21.9)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-excon (0.22.5)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-faraday (0.25.0)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-grape (0.2.0)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+      opentelemetry-instrumentation-rack (~> 0.21)
+    opentelemetry-instrumentation-graphql (0.28.4)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-gruf (0.2.1)
+      opentelemetry-api (>= 1.0.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-http (0.23.5)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-http_client (0.22.8)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-koala (0.20.6)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-lmdb (0.22.3)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-mongo (0.22.4)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-mysql2 (0.28.0)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-helpers-mysql
+      opentelemetry-helpers-sql-obfuscation
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-net_http (0.22.8)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-pg (0.29.2)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-helpers-sql-obfuscation
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-que (0.8.4)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-racecar (0.3.4)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-rack (0.25.0)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-rails (0.34.1)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-action_mailer (~> 0.3.0)
+      opentelemetry-instrumentation-action_pack (~> 0.10.0)
+      opentelemetry-instrumentation-action_view (~> 0.8.0)
+      opentelemetry-instrumentation-active_job (~> 0.7.0)
+      opentelemetry-instrumentation-active_record (~> 0.8.0)
+      opentelemetry-instrumentation-active_support (~> 0.7.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+      opentelemetry-instrumentation-concurrent_ruby (~> 0.21.4)
+    opentelemetry-instrumentation-rake (0.2.2)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-rdkafka (0.4.9)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-redis (0.25.7)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-resque (0.5.2)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-restclient (0.22.8)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-ruby_kafka (0.21.3)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-sidekiq (0.25.7)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+    opentelemetry-instrumentation-sinatra (0.24.1)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.22.1)
+      opentelemetry-instrumentation-rack (~> 0.21)
+    opentelemetry-instrumentation-trilogy (0.60.0)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-helpers-mysql
+      opentelemetry-helpers-sql-obfuscation
+      opentelemetry-instrumentation-base (~> 0.22.1)
+      opentelemetry-semantic_conventions (>= 1.8.0)
+    opentelemetry-registry (0.3.1)
+      opentelemetry-api (~> 1.1)
+    opentelemetry-sdk (1.7.0)
+      opentelemetry-api (~> 1.1)
+      opentelemetry-common (~> 0.20)
+      opentelemetry-registry (~> 0.2)
+      opentelemetry-semantic_conventions
+    opentelemetry-semantic_conventions (1.10.1)
+      opentelemetry-api (~> 1.0)
     orm_adapter (0.5.0)
     ostruct (0.3.1)
     paper_trail (12.3.0)
@@ -647,7 +845,7 @@ GEM
     parallel (1.26.3)
     parallel_tests (3.13.0)
       parallel
-    parser (3.3.7.1)
+    parser (3.3.7.3)
       ast (~> 2.4.1)
       racc
     pg (1.1.4)
@@ -663,9 +861,11 @@ GEM
       actionmailer (>= 3)
       net-smtp
       premailer (~> 1.7, >= 1.7.9)
+    prism (1.4.0)
     public_suffix (6.0.1)
     puma (5.6.9)
       nio4r (~> 2.0)
+    raabro (1.4.0)
     racc (1.8.1)
     rack (2.2.13)
     rack-attack (6.7.0)
@@ -707,11 +907,10 @@ GEM
     rails-i18n (6.0.0)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 7)
-    rails_12factor (0.0.3)
-      rails_serve_static_assets
-      rails_stdout_logging
-    rails_serve_static_assets (0.0.5)
-    rails_stdout_logging (0.0.5)
+    rails_semantic_logger (4.17.0)
+      rack
+      railties (>= 5.1)
+      semantic_logger (~> 4.16)
     railties (6.1.7.10)
       actionpack (= 6.1.7.10)
       activesupport (= 6.1.7.10)
@@ -780,8 +979,9 @@ GEM
       rubocop-ast (>= 1.17.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.38.1)
-      parser (>= 3.3.1.0)
+    rubocop-ast (1.43.0)
+      parser (>= 3.3.7.2)
+      prism (~> 1.4)
     rubocop-faker (1.2.0)
       faker (>= 2.12.0)
       rubocop (>= 1.13.0)
@@ -798,7 +998,6 @@ GEM
     rubyXL (3.4.33)
       nokogiri (>= 1.10.8)
       rubyzip (>= 1.3.0)
-    ruby_http_client (3.5.5)
     rubyzip (2.3.2)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
@@ -811,9 +1010,9 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
+    semantic_logger (4.16.1)
+      concurrent-ruby (~> 1.0)
     semantic_range (3.1.0)
-    sendgrid-ruby (6.7.0)
-      ruby_http_client (~> 3.4)
     sentry-rails (5.23.0)
       railties (>= 5.0)
       sentry-ruby (~> 5.23.0)
@@ -827,6 +1026,11 @@ GEM
       logger
       rack (>= 2.2.4)
       redis-client (>= 0.22.2)
+    sidekiq-cron (2.2.0)
+      cronex (>= 0.13.0)
+      fugit (~> 1.8, >= 1.11.1)
+      globalid (>= 1.0.1)
+      sidekiq (>= 6.5.0)
     simplecov (0.21.2)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -866,8 +1070,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     uber (0.1.0)
-    uglifier (4.2.1)
-      execjs (>= 0.3.0, < 3)
+    unicode (0.4.4.5)
     unicode-display_width (2.6.0)
     uri (1.0.3)
     valid_email2 (2.3.1)
@@ -914,6 +1117,7 @@ GEM
       ostruct
     wisper (2.0.1)
     wisper-rspec (1.1.0)
+    wkhtmltopdf-binary (0.12.6.8)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.6.18)
@@ -927,35 +1131,31 @@ DEPENDENCIES
   aws-sdk-s3
   bootsnap (~> 1.7)
   byebug
-  dalli
   decidim!
   decidim-calendar!
   decidim-decidim_awesome!
   decidim-dev!
   deface
-  emd
   faker (~> 2.14)
-  fog-aws
+  health_check
   letter_opener_web
   listen
-  lograge
-  newrelic_rpm
+  opentelemetry-exporter-otlp
+  opentelemetry-instrumentation-all
+  opentelemetry-sdk
   puma (>= 5.0.0)
-  rails_12factor
-  redcarpet
+  rails_semantic_logger
   rubocop-faker
-  sendgrid-ruby
   sentry-rails
   sentry-ruby
   sidekiq
+  sidekiq-cron
   spring
   spring-watcher-listen
-  uglifier
   web-console
-  wkhtmltopdf-binary!
 
 RUBY VERSION
-   ruby 3.0.6p216
+   ruby 3.0.7p220
 
 BUNDLED WITH
-   2.5.10
+   2.5.4

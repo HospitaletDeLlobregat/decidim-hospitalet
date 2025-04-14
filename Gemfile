@@ -4,22 +4,23 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 # DECIDIM_VERSION = "0.27.4"
-DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.27-stable" }.freeze
+DECIDIM_VERSION = { github: "openpoke/decidim", branch: "0.27-backports" }.freeze
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-calendar", github: "openpoke/decidim-module-calendar", branch: "release/0.27-stable"
-gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "release/0.27-stable"
-# gem "decidim-direct_verifications", github: "platoniq/decidim-verifications-direct_verifications"
+gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "0.27-backports"
 
 gem "bootsnap", "~> 1.7"
 
 gem "deface"
-gem "emd"
-gem "lograge"
+gem "health_check"
+gem "opentelemetry-exporter-otlp"
+gem "opentelemetry-instrumentation-all"
+gem "opentelemetry-sdk"
 gem "puma", ">= 5.0.0"
-gem "redcarpet"
-gem "uglifier"
-gem "wkhtmltopdf-binary", path: "vendor/wkhtmltopdf-binary"
+gem "rails_semantic_logger"
+gem "sentry-rails"
+gem "sentry-ruby"
 
 group :development, :test do
   gem "byebug", platform: :mri
@@ -39,12 +40,6 @@ end
 
 group :production do
   gem "aws-sdk-s3", require: false
-  gem "dalli"
-  gem "fog-aws"
-  gem "newrelic_rpm"
-  gem "rails_12factor"
-  gem "sendgrid-ruby"
-  gem "sentry-rails"
-  gem "sentry-ruby"
   gem "sidekiq"
+  gem "sidekiq-cron"
 end
