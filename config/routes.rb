@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     mount ActiveHashcash::Engine, at: "hashcash" # http://localhost:3000/hashcash
   end
 
-  resources :entities
+  # resources :entities
 
   mount Decidim::Core::Engine => "/"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

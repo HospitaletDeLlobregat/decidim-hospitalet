@@ -78,7 +78,7 @@ RUN mv config/credentials.bak config/credentials 2>/dev/null || true
 
 RUN rm -rf node_modules tmp/cache vendor/bundle test spec app/packs .git
 
-ARG GIT_BRANCH=standarize
+ARG GIT_BRANCH=master
 ENV GIT_BRANCH=${GIT_BRANCH}
 ARG GIT_REPO=https://github.com/HospitaletDeLlobregat/decidim-hospitalet
 ENV GIT_REPO=${GIT_REPO}

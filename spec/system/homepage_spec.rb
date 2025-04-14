@@ -16,10 +16,10 @@ describe "Visit the home page", type: :system, perform_enqueued: true do
     expect(page).not_to have_content("Inicio")
   end
 
-  it "has a entities page" do
-    visit entities_path
-    expect(page).to have_content("Entitats de L'Hospitalet de Llobregat")
-  end
+  # it "has a entities page" do
+  #   visit entities_path
+  #   expect(page).to have_content("Entitats de L'Hospitalet de Llobregat")
+  # end
 
   it "downloads the reglament" do
     within "main" do
@@ -38,10 +38,10 @@ describe "Visit the home page", type: :system, perform_enqueued: true do
       expect(page).to have_content("Inicio")
     end
 
-    it "has a entities page" do
-      visit entities_path
-      expect(page).to have_content("Entidades de L'Hospitalet de Llobregat")
-    end
+    # it "has a entities page" do
+    #   visit entities_path
+    #   expect(page).to have_content("Entidades de L'Hospitalet de Llobregat")
+    # end
 
     it "downloads the reglament" do
       within "main" do
