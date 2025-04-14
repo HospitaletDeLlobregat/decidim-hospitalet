@@ -1,0 +1,3 @@
+<!-- insert_after "erb[loud]:contains('f.email_field')" -->
+
+<%= hashcash_hidden_field_tag %>

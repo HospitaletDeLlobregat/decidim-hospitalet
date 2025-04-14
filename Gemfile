@@ -12,11 +12,10 @@ gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_aweso
 
 gem "bootsnap", "~> 1.7"
 
+gem "active_hashcash", github: "BaseSecrete/active_hashcash"
 gem "deface"
 gem "health_check"
-gem "opentelemetry-exporter-otlp"
-gem "opentelemetry-instrumentation-all"
-gem "opentelemetry-sdk"
+gem "nokogiri", "~> 1.16.8"
 gem "puma", ">= 5.0.0"
 gem "rails_semantic_logger"
 gem "sentry-rails"
